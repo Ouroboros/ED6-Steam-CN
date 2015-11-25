@@ -1205,17 +1205,6 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "仸S-Breaks are actions which allow S-Crafts to be immediately unleashed\x01",
-            "while ignoring the battle order.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-    OP_56(0x0)
-
-    AnonymousTalk(
-        (
-            scpstr(SCPSTR_CODE_COLOR, 0x5),
             "※Ｓ爆发技即无视ＡＴ（行动顺序）而直接发动Ｓ战技。\x01",
             "  作为Ｓ爆发技发动的Ｓ战技，\x01",
             "  可以在Camp的[Tactics]-[Ｓ爆发技登记]中变更。\x02",
