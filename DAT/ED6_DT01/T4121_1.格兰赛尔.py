@@ -75,11 +75,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#812FLooks like you haven't had a\x01",
-            "moment's rest since everything\x01",
-            "started.\x02\x03",
-            "Take a minute now and get\x01",
-            "everything squared away.\x02",
+            "#812F作战一旦开始，\x01",
+            "就没有回旋余地了。\x02\x03",
+            "所以趁现在\x01",
+            "赶快整理好装备吧。\x02",
         )
     )
 
@@ -93,12 +92,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#854FUp until now things haven't\x01",
-            "made much sense, but I think \x01",
-            "I'm starting to get it...\x02\x03",
-            "When this much is on the line,\x01",
-            "you can't help but get a bit\x01",
-            "nervous, right? Heh...\x02",
+            "#854F事态很严重啊，\x01",
+            "刚才一时手足无措，\x01",
+            "现在终于弄明白情况了。\x02\x03",
+            "出了这么大的事，\x01",
+            "的确让人紧张啊……\x02",
         )
     )
 
@@ -130,8 +128,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#850FLet's do what it is we need\x01",
-            "to do, the best way we can!\x02",
+            "#850F好～的，今天也一样，\x01",
+            "工作、比赛都要努力！\x02",
         )
     )
 
@@ -156,8 +154,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#850FHey, new guys! Have you found\x01",
-            "Zane yet?\x02",
+            "#850F哟，是两位新人啊，\x01",
+            "找到金大哥了吗？\x02",
         )
     )
 
@@ -170,10 +168,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#850FHey, new guys! Have you found\x01",
-            "Zane yet?\x02\x03",
-            "#811FI can't wait for a chance\x01",
-            "to spar with you guys!\x02",
+            "#850F哟，是两位新人啊，\x01",
+            "找到金大哥了吗？\x02\x03",
+            "我很期待\x01",
+            "和你们的对战哦！\x02",
         )
     )
 
@@ -215,10 +213,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#830FI'll leave the breaking and\x01",
-            "entering to you guys.\x02\x03",
-            "...What? You guys can totally\x01",
-            "do this!\x02",
+            "#830F突入的任务就拜托你们了。\x02\x03",
+            "没问题，\x01",
+            "你们一定能办到的。\x02",
         )
     )
 
@@ -232,9 +229,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#832FThis is the first time I've\x01",
-            "had to handle a job this big.\x02\x03",
-            "We have no room for error!\x02",
+            "#832F这么大的一宗委托\x01",
+            "我也是第一次碰到呢。\x02\x03",
+            "这次只许成功不许失败，\x01",
+            "必须制定严密的作战计划才行。\x02",
         )
     )
 
@@ -252,11 +250,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#831FA big match like that is going\x01",
-            "to be burned into my brain for\x01",
-            "a long time to come!\x02\x03",
-            "I hope I can work alongside\x01",
-            "you guys one day...\x02",
+            "#831F真是很值得一看的比赛呢，\x01",
+            "对我们也很有参考价值。\x02\x03",
+            "真想什么时候有机会\x01",
+            "和你们一起执行任务呢。\x02",
         )
     )
 
@@ -270,12 +267,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#831FCongratulations!\x02\x03",
-            "A big match like that is going\x01",
-            "to be burned into my brain for\x01",
-            "a long time to come!\x02\x03",
-            "I hope I can work alongside\x01",
-            "you guys one day...\x02",
+            "#831F呀，恭喜你们获胜。\x02\x03",
+            "真是很值得一看的比赛呢，\x01",
+            "对我们也很有参考价值。\x02\x03",
+            "真想什么时候有机会\x01",
+            "和你们一起执行任务呢。\x02",
         )
     )
 
@@ -298,9 +294,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#830FTomorrow's the big match.\x02\x03",
-            "Don't go out there and embarrass\x01",
-            "the bracers, now, you hear?\x02",
+            "#830F你们明天要参加决赛吧。\x02\x03",
+            "作为游击士协会的代表，\x01",
+            "不要给协会蒙羞哦。\x02",
         )
     )
 
@@ -314,11 +310,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#830FTomorrow's the big match.\x02\x03",
-            "Don't go out there and embarrass\x01",
-            "the bracers, now, you hear?\x02\x03",
-            "#835FNot that I think you guys will,\x01",
-            "of course!\x02",
+            "#830F你们明天要参加决赛吧。\x02\x03",
+            "作为游击士协会的代表，\x01",
+            "不要给协会蒙羞哦。\x02\x03",
+            "#835F不过，其实这些话\x01",
+            "也用不着对现在的你们说了。\x02",
         )
     )
 
@@ -335,8 +331,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#831FAll righty, then.\x02\x03",
-            "Let's do it to it!\x02",
+            "#831F那么……\x02\x03",
+            "今天也要\x01",
+            "鼓足干劲啊。\x02",
         )
     )
 
@@ -351,9 +348,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#830FLooking forward to pitting my\x01",
-            "own skills against you two in\x01",
-            "the very near future...\x02",
+            "#830F艾丝蒂尔、约修亚，\x01",
+            "我从现在开始就期待着\x01",
+            "能和你们交手哦。\x02",
         )
     )
 
@@ -367,11 +364,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#831FHey, you. Congratulations on\x01",
-            "finishing round one.\x02\x03",
-            "Bet you weren't expecting to\x01",
-            "meet up with the Ravens there,\x01",
-            "were you?\x02",
+            "#831F呀，是你们啊。\x01",
+            "恭喜你们首战告捷。\x02\x03",
+            "哈哈，\x01",
+            "你们没有想到会和\x01",
+            "渡鸦帮那群家伙交手吧？\x02",
         )
     )
 
@@ -380,10 +377,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#505FIt was definitely a bit of a\x01",
-            "surprise!\x02\x03",
-            "#006FBut I think THEY were even MORE\x01",
-            "surprised. Heh.\x02",
+            "#505F是、是啊……\x01",
+            "吃了一惊呢。\x02\x03",
+            "#006F不过自从那次之后，\x01",
+            "他们已经有很大的变化了呢～\x02",
         )
     )
 
@@ -392,29 +389,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#019FIf we keep this up, we might\x01",
-            "even become bracers like Agate!\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0x101,
-        "#009FEw. No, one of him is plenty!\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
-        (
-            "#833FHeh heh. They fought pretty\x01",
-            "hard, but honestly, I was \x01",
-            "surprised how well you did.\x02\x03",
-            "#830FI heard all the stories about you at the\x01",
-            "Ruan Branch, but you exceed your reputations\x01",
-            "quite thoroughly!\x02",
+            "#019F是啊，他们如果能改过自身，\x01",
+            "说不定会成为像阿加特前辈那样的游击士了。\x01",
+            "　\x02",
         )
     )
 
@@ -423,8 +400,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#008FReally?\x02\x03",
-            "That's so sweet of you to say!\x02",
+            "#009F哼……\x01",
+            "那样的家伙有一个都已经嫌多了。\x02",
         )
     )
 
@@ -433,8 +410,12 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#831FHeh heh. I can't wait to cross\x01",
-            "swords with you!\x02",
+            "#833F呵呵，\x01",
+            "虽然他们也很努力，\x01",
+            "但说实话让我吃惊的是你们呢。\x02\x03",
+            "#830F虽说通过卢安支部\x01",
+            "听说了你们的活跃表现，\x01",
+            "但实力的成长已经超出了我的想象。\x02",
         )
     )
 
@@ -442,17 +423,35 @@ def main():
 
     ChrTalk(
         0x101,
-        "#001FIt's a date!\x02",
+        (
+            "#008F是、是吗……\x02\x03",
+            "让卡露娜姐姐这样一称赞，\x01",
+            "我都有些不好意思了呢。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xFE,
+        (
+            "#831F哈哈，\x01",
+            "我非常期待和你们交手哦。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x101,
+        "#001F嗯，我也是！\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        (
-            "#010FWe're looking forward to the\x01",
-            "chance ourselves.\x02",
-        )
+        "#010F到时候还请多多关照。\x02",
     )
 
     CloseMessageWindow()
@@ -467,7 +466,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "All righty, then.\x02",
+        "那么……\x02",
     )
 
     CloseMessageWindow()
@@ -475,9 +474,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Before the match, you guys should\x01",
-            "warm up against a couple of monsters.\x01",
-            "Get the ol' muscles stretched.\x02",
+            "比赛之前就去找些\x01",
+            "通缉魔兽热一热身吧。\x02",
         )
     )
 
@@ -521,10 +519,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#824FIntelligence is resorting to\x01",
-            "using hostages? That's just\x01",
-            "disgusting...\x02\x03",
-            "#822FLet's go save us a princess!\x02",
+            "#824F情报部竟然也采取\x01",
+            "扣押人质这种低级的手段……\x02\x03",
+            "#822F一定要将\x01",
+            "公主殿下他们救出来。\x02",
         )
     )
 
@@ -538,11 +536,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#822FColonel Richard, staging a\x01",
-            "coup d'etat? I'd've never\x01",
-            "believed it before today.\x02\x03",
-            "He's a pretty smooth liar, I\x01",
-            "must admit...\x02",
+            "#822F那位理查德上校\x01",
+            "竟然是政变的策划人……\x02\x03",
+            "没想到，\x01",
+            "我们一直被蒙在鼓里啊……\x02",
         )
     )
 
@@ -570,9 +567,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#820FWe lost, but we lost in a good\x01",
-            "fight. No regrets.\x02\x03",
-            "Go win the championship, guys!\x02",
+            "#820F今天我们虽然输了，\x01",
+            "但比赛本身一点也不让我后悔。\x02\x03",
+            "你们决赛可要加油啊。\x02",
         )
     )
 
@@ -586,10 +583,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#820FHey, everybody!\x02\x03",
-            "We lost, but we lost in a good\x01",
-            "fight. No regrets.\x02\x03",
-            "Go win the championship, guys!\x02",
+            "#820F哦，是你们啊！\x02\x03",
+            "今天我们虽然输了，\x01",
+            "但比赛本身一点也不让我后悔。\x02\x03",
+            "你们决赛可要加油啊。\x02",
         )
     )
 
@@ -612,10 +609,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#821FTomorrow, it's all about fighting\x01",
-            "the big boys... Makin' a big noise\x01",
-            "with some big toys...\x02\x03",
-            "You'd better bring it!\x02",
+            "#821F连你们在内，\x01",
+            "明天全都是劲敌啊。\x02\x03",
+            "我已经跃跃欲试了。\x02",
         )
     )
 
@@ -629,11 +625,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#821FGood work out there today.\x02\x03",
-            "Tomorrow, it's all about fighting\x01",
-            "the big boys... Makin' a big noise\x01",
-            "with some big toys...\x02\x03",
-            "You'd better bring it!\x02",
+            "#821F哟，今天辛苦了。\x02\x03",
+            "连你们在内，\x01",
+            "明天不管遇到那一组，都是强敌呢。\x02\x03",
+            "我已经跃跃欲试了。\x02",
         )
     )
 
@@ -685,9 +680,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#840FWe're the only ones who can\x01",
-            "possibly pull this off.\x02\x03",
-            "So let's get pulling!\x02",
+            "#840F这次作战是我们\x01",
+            "孤注一掷的选择。\x02\x03",
+            "所以一定要成功。\x02",
         )
     )
 
@@ -701,10 +696,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#845FWell, that was certainly embarrassing.\x02\x03",
-            "I am bothered by my missing memories,\x01",
-            "but right now, the queen's orders are\x01",
-            "foremost on my mind.\x02",
+            "#845F不好意思，\x01",
+            "刚才让你们见笑了。\x02\x03",
+            "虽说有点在意自己的记忆，\x01",
+            "但现在必须集中精力完成女王陛下的委托。\x02",
         )
     )
 
@@ -722,11 +717,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#840FSeeing you young bracers in\x01",
-            "action is a pretty big motivator\x01",
-            "for the rest of us.\x02\x03",
-            "I can't just let myself get\x01",
-            "left behind, you know?\x02",
+            "#840F你们这样年轻的游击士\x01",
+            "能获得武术大会的优胜，\x01",
+            "对我们来说更是种激励。\x02\x03",
+            "我也要更加\x01",
+            "努力修炼才行啊。\x02",
         )
     )
 
@@ -740,13 +735,16 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#840FHey, congratulations. That\x01",
-            "was an impressive match.\x02\x03",
-            "Seeing you young bracers in\x01",
-            "action is a pretty big motivator\x01",
-            "for the rest of us.\x02\x03",
-            "I can't just let myself get\x01",
-            "left behind, you know?\x02",
+            "#840F呀，恭喜你们获胜。\x01",
+            "那场比赛真是非常精彩刺激哦。\x02\x03",
+
+            "你们这样年轻的游击士\x01",
+            "能获得武术大会的优胜，\x01",
+            "对我们来说更是种激励。\x02\x03",
+
+            "你们这样年轻的游击士\x01",
+            "能获得武术大会的优胜，\x01",
+            "对我们来说更是种激励。\x02",
         )
     )
 
