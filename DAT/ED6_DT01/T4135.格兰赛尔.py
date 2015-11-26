@@ -26,10 +26,10 @@ def main():
 
     BuildStringList(
         '@FileName',                            # 8
-        'Museum Director',                      # 9
-        'Santos',                               # 10
-        'Licia',                                # 11
-        'Professor Alba',                       # 12
+        '馆长',                                 # 9
+        '森特',                                 # 10
+        '莉西娅',                               # 11
+        '亚鲁瓦教授',                           # 12
     )
 
     DeclEntryPoint(
@@ -498,12 +498,11 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FYou know, I've always said the harder the\x01",
-            "job, the better off you are just taking it\x01",
-            "easy. That's the key to true success.\x02\x03",
-            "#132FHahaha... Maybe that means I have\x01",
-            "the world's hardest job, because\x01",
-            "let me tell you, I take it EA-SY!\x02",
+            "#130F越是困难的任务，\x01",
+            "越要充分休息才能取得良好的结果哦。\x01",
+            "　\x02\x03",
+            "#132F哈哈，\x01",
+            "我这一年里可是不停地在休息呢。\x02",
         )
     )
 
@@ -518,15 +517,15 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FHello, Joshua.\x02\x03",
-            "You seem stressed. Is something\x01",
-            "the matter?\x02\x03",
-            "You know, I've always said the harder the\x01",
-            "job, the better off you are just taking it\x01",
-            "easy. That's the key to true success.\x02\x03",
-            "#132FHahaha... Maybe that means I have\x01",
-            "the world's hardest job, because\x01",
-            "let me tell you, I take it EA-SY!\x02",
+            "#130F哦，是约修亚啊。\x02\x03",
+            "从你的脸色来看，\x01",
+            "好像相当紧张啊，\x01",
+            "怎么回事呢？\x02\x03",
+            "越是困难的任务，\x01",
+            "越要充分休息才能取得良好的结果哦。\x01",
+            "　\x02\x03",
+            "#132F哈哈，\x01",
+            "我这一年里可是不停地在休息呢。\x02",
         )
     )
 
@@ -544,11 +543,11 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#132FI'm very curious as to what it's\x01",
-            "like inside the castle...\x02\x03",
-            "...but I'm afraid I'll have to wait\x01",
-            "until it's reopened to find out, just\x01",
-            "like everyone else.\x02",
+            "#132F我对王城里面的样子相当感兴趣……\x01",
+            " \x02\x03",
+            "不过照现在这种情况看来，\x01",
+            "只有等王城再次向普通市民开放了。\x01",
+            "　\x02",
         )
     )
 
@@ -562,11 +561,10 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FLiberl's history is quite long--\x01",
-            "and more than a little sordid!\x02\x03",
-            "Its roots go back more than a\x01",
-            "thousand years, as I understand\x01",
-            "it.\x02",
+            "#130F说起来，\x01",
+            "利贝尔王室的历史似乎相当悠久呢。\x02\x03",
+            "如果追寻源头的话，\x01",
+            "可是要回溯到一千多年以前呢。\x02",
         )
     )
 
@@ -575,9 +573,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004FWait... Liberl's only been Liberl as long as\x01",
-            "the royal family's been around, so are you\x01",
-            "telling me the royal family is THAT old?!\x02",
+            "#004F咦～\x01",
+            "利贝尔王室那么早就有了吗？\x02",
         )
     )
 
@@ -586,12 +583,13 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#132FThey are. And I, for one, would love\x01",
-            "to tour the inside of that castle...\x01",
-            "see what ghosts I could dig up.\x02\x03",
-            "You two got to see the inside\x01",
-            "of it yesterday, did you not?\x02\x03",
-            "Tell me, what was it like?\x02",
+            "#132F是的，正因为如此，\x01",
+            "我对王城里面的样子相当感兴趣……\x01",
+            "　\x02\x03",
+            "艾丝蒂尔你们昨天\x01",
+            "被招待进王城做客了吧？\x02\x03",
+            "方便的话，\x01",
+            "可以把你们的见闻告诉我吗？\x02",
         )
     )
 
@@ -600,9 +598,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#505FWell, uh...\x02\x03",
-            "It felt pretty old and historic,\x01",
-            "I guess...\x02",
+            "#505F唔……这个……\x02\x03",
+            "好像体会到了历史传统的厚重感……\x01",
+            "　\x02",
         )
     )
 
@@ -611,13 +609,12 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FThere was definitely a lot to\x01",
-            "see in there.\x02\x03",
-            "But we weren't really given much\x01",
-            "of a chance to see it.\x02\x03",
-            "I'm afraid there's nothing we can\x01",
-            "really tell you that you wouldn't\x01",
-            "already know.\x02",
+            "#010F我觉得确实有不少地方值得一看。\x01",
+            "　\x02\x03",
+            "不过，\x01",
+            "我们也没有时间将每个角落都逛一遍。\x02\x03",
+            "或许不能给教授太多的参考吧。\x01",
+            "　\x02",
         )
     )
 
@@ -626,10 +623,10 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#131FI see, I see...\x02\x03",
-            "That's too bad. I suppose I'll\x01",
-            "have to wait until the castle\x01",
-            "is reopened to the public.\x02",
+            "#131F是吗……\x02\x03",
+            "好可惜啊，\x01",
+            "只有等王城再次向普通市民开放了。\x01",
+            "　\x02",
         )
     )
 
@@ -647,10 +644,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#132FThanks to your help, my research\x01",
-            "is progressing quite nicely.\x02\x03",
-            "I may even be able to publish\x01",
-            "some results soon!\x02",
+            "#132F多亏了艾丝蒂尔你们的大力协助，\x01",
+            "我的研究才会那么顺利。\x01",
+            "　\x02\x03",
+            "近期肯定会做出成果让你们看的。\x01",
+            "　\x02",
         )
     )
 
@@ -664,9 +662,9 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FAh, Estelle! Joshua!\x02\x03",
-            "#132FThat was an incredible match.\x01",
-            "Congratulations on your victory!\x02",
+            "#130F呀，艾丝蒂尔、约修亚。\x02\x03",
+            "#132F我看到了，决赛很精彩，\x01",
+            "恭喜你们取得优胜。\x02",
         )
     )
 
@@ -675,10 +673,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#001FAwww, shucks. Tweren't nothin'!\x02\x03",
-            "...How have you been, Professor\x01",
-            "Alba?\x02\x03",
-            "Found the meaning of life yet?\x02",
+            "#001F嘿嘿，谢谢。\x02\x03",
+            "……对了，\x01",
+            "#501F亚鲁瓦教授你这边又怎样了？\x02\x03",
+            "研究有进展吗？\x02",
         )
     )
 
@@ -687,15 +685,13 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FNot quite. Though that old text the\x01",
-            "museum asked me to decipher IS coming\x01",
-            "along rather nicely.\x02\x03",
-            "I also stumbled upon quite a few books I've\x01",
-            "been meaning to reference in my research.\x01",
-            "So overall, it's been a successful day!\x02\x03",
-            "Still...I have more work than I\x01",
-            "have time to do it. But, isn't\x01",
-            "that always the way?\x02",
+            "#130F嗯，\x01",
+            "资料馆委托的古代文书的解析很顺利……\x02\x03",
+            "也找到了很多我向往以久的文献。\x01",
+            "　\x02\x03",
+            "要做的事真是很多啊，\x01",
+            "不过时间好像怎么都不够用呢。\x01",
+            "　\x02",
         )
     )
 
@@ -704,11 +700,12 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004FWow. I'm impressed, I must admit!\x02\x03",
-            "#007FI guess that's the kind of dedication\x01",
-            "it takes to be a professor.\x02\x03",
-            "I sure couldn't do it, that's\x01",
-            "for sure!\x02",
+            "#004F啊～……\x01",
+            "我要对你刮目相看了呢。\x02\x03",
+            "#007F教授到底不愧是\x01",
+            "醉心于研究的学者呢～\x02\x03",
+            "要是我的话，\x01",
+            "肯定不可能做到像你那样。\x02",
         )
     )
 
@@ -717,9 +714,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FHeh. You could never stay in your seat\x01",
-            "for more than a minute at a time-- never\x01",
-            "mind actually doing research!\x02",
+            "#010F哈哈，\x01",
+            "首先要让艾丝蒂尔一直坐在椅子上不动，\x01",
+            "这点就做不到呢。\x02",
         )
     )
 
@@ -728,15 +725,13 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FYeah, like I keep saying, sitting still\x01",
-            "always makes me sleepy. I have to move\x01",
-            "around just to stay awake!\x02\x03",
-            "#001FI'm like those fish. You know, \x01",
-            "the ones that die if they don't\x01",
-            "keep swimming?\x02\x03",
-            "I gotta keep on swimming, forever\x01",
-            "and always, right through this\x01",
-            "aquarium called life! You know?\x02",
+            "#007F嗯嗯，\x01",
+            "我一坐下就感到非常困，\x01",
+            "必须得活动活动身体才行。\x02\x03",
+            "#001F对了，\x01",
+            "正所谓只有流动的水中\x01",
+            "才会有鱼儿生存嘛。\x02\x03",
+            "我想和这是一样的哦。\x02",
         )
     )
 
@@ -744,7 +739,7 @@ def main():
 
     ChrTalk(
         0x102,
-        "#018F...Uh, sure...\x02",
+        "#018F呼～……\x02",
     )
 
     CloseMessageWindow()
@@ -752,10 +747,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#509FStop looking at me like that!\x01",
-            "That was poetic, man!\x02\x03",
-            "#506F...Anyway, I'm glad to hear\x01",
-            "your research is going well.\x02",
+            "#509F唔，你有什么不满吗……\x02\x03",
+            "#506F不、不过，\x01",
+            "研究能顺利地进行实在是太好了。\x02",
         )
     )
 
@@ -764,9 +758,11 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#132FI owe it all to you.\x02\x03",
-            "I may even be able to publish\x01",
-            "some results soon!\x02",
+            "#132F哈哈，\x01",
+            "这也多亏了艾丝蒂尔你们的大力协助啊。\x01",
+            "　\x02\x03",
+            "近期肯定会做出成果让你们看的。\x01",
+            "　\x02",
         )
     )
 
@@ -783,14 +779,13 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FI've been buried in records for\x01",
-            "three straight days. Haven't even\x01",
-            "laid eyes on the sun!\x02\x03",
-            "The life of a professor is an\x01",
-            "exhausting one sometimes. Perhaps\x01",
-            "I'll step out for a bit...\x02\x03",
-            "Treat myself to an ice cream\x01",
-            "or something!\x02",
+            "#130F呼，\x01",
+            "整整三天都埋头在资料馆里搞研究，　\x01",
+            "好久没有去晒晒太阳了。\x02\x03",
+            "我也感觉到有些累了，\x01",
+            "为了转换心情就出去转转吧。\x02\x03",
+            "偶尔奢侈一下，\x01",
+            "去尝尝冰淇淋也不错。\x02",
         )
     )
 
@@ -804,11 +799,10 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FI finally stumbled upon quite a few books I've\x01",
-            "been meaning to reference in my research. It's\x01",
-            "been a very successful day!\x02\x03",
-            "I've just got to get to cracking\x01",
-            "these old languages, now...\x02",
+            "#130F哎呀，找到不少似乎可以\x01",
+            "当作研究材料的资料呢。\x02\x03",
+            "我打算马上着手解析古文书。\x01",
+            "　\x02",
         )
     )
 
@@ -823,10 +817,10 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FHo ho, an artifact untainted by \x01",
-            "public display?\x02\x03",
-            "How exquisite! How remarkable!\x01",
-            "How positively energizing!\x02",
+            "#130F呵呵，\x01",
+            "这些可都是没有公开过的收藏品啊……\x02\x03",
+            "哎呀，\x01",
+            "真是又开心又紧张呢。\x02",
         )
     )
 
@@ -840,13 +834,12 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FHo ho, an artifact untainted by \x01",
-            "public display?\x02\x03",
-            "What treasures lie within its depths?\x01",
-            "Be they riches of money or mind, their\x01",
-            "secrets I shall surely find!\x02\x03",
-            "How exquisite! How remarkable!\x01",
-            "How positively energizing!\x02",
+            "#130F呵呵，\x01",
+            "这些可都是没有公开过的收藏品啊……\x02\x03",
+            "我来看看，\x01",
+            "究竟会有些什么样的宝贝呢。\x02\x03",
+            "哎呀，\x01",
+            "真是又开心又紧张呢。\x02",
         )
     )
 
@@ -864,9 +857,8 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FImagination is a key part of an archaeologist's\x01",
-            "work. After finding an artifact, the real trick\x01",
-            "is learning what it is and why it's important!\x02",
+            "#130F想象力对于考古学而言\x01",
+            "可是很重要的。\x02",
         )
     )
 
@@ -880,17 +872,14 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FMy, my... Everything is just so\x01",
-            "very, very fascinating!\x02\x03",
-            "That relief over there is from\x01",
-            "before the Great Collapse-- if\x01",
-            "you can believe it!\x02\x03",
-            "Has the same sort of feel to it\x01",
-            "as something you'd find inside the\x01",
-            "Tetracyclic Towers, don't you think?\x02\x03",
-            "Imagination is a key part of an archaeologist's\x01",
-            "work. After finding an artifact, the real trick\x01",
-            "is learning what it is and why it's important!\x02",
+            "#130F唔～\x01",
+            "这些展品我都很感兴趣。\x02\x03",
+            "那边的浮雕\x01",
+            "很可能是大崩坏之前的产物。\x02\x03",
+            "不觉得其风格和\x01",
+            "四轮之塔的内部有些相似吗？\x02\x03",
+            "想象力对于考古学而言\x01",
+            "可是很重要的。\x02",
         )
     )
 
@@ -908,12 +897,12 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#132FThere's a good chance that the\x01",
-            "ruins dotting Liberl are from\x01",
-            "the ancient Zemurians.\x02\x03",
-            "I have the actual testing done;\x01",
-            "now all I need is some time to\x01",
-            "translate and collate.\x02",
+            "#132F利贝尔各地散布着的遗迹\x01",
+            "可能是古代塞姆里亚文明的遗物啊。\x01",
+            "　\x02\x03",
+            "实地调查已经完成了，\x01",
+            "接下来就是参考各种文献，\x01",
+            "让考察获得更多进展。\x02",
         )
     )
 
@@ -927,15 +916,17 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#130FAir-Letten in Ruan...\x02\x03",
-            "Ahnenburg in Grancel...\x02\x03",
-            "The Tetracyclic Towers...\x02\x03",
-            "#132F...It's a real possibility that\x01",
-            "these are all ancient Zemurian\x01",
-            "ruins.\x02\x03",
-            "I have the actual testing done;\x01",
-            "now all I need is some time to\x01",
-            "translate and collate.\x02",
+            "#130F卢安近郊的大型水道桥『艾尔·雷登』……\x01",
+            "　\x02\x03",
+            "环绕王都格兰赛尔的长城『亚宁堡』……\x01",
+            "　\x02\x03",
+            "以及散布在各地的『四轮之塔』……\x01",
+            "　\x02\x03",
+            "#132F这些都有可能是\x01",
+            "古代塞姆里亚文明的遗迹。\x02\x03",
+            "实地调查已经完成了，\x01",
+            "接下来就是参考各种文献，\x01",
+            "让考察获得更多进展。\x02",
         )
     )
 
@@ -953,10 +944,9 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FI'd like to start my research,\x01",
-            "but I also really want to go see\x01",
-            "the sights...\x02\x03",
-            "Ahhh, decisions, decisions!\x02",
+            "#130F是立刻展开研究呢，\x01",
+            "还是先到街上游览呢……\x02\x03",
+            "哈哈，真是举棋不定呀。\x02",
         )
     )
 
@@ -970,14 +960,14 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130FGrancel is an amazing city.\x02\x03",
-            "Even with a high terror alert,\x01",
-            "all these people have come out\x01",
-            "just to celebrate!\x02\x03",
-            "I'd like to start my research,\x01",
-            "but I also really want to go see\x01",
-            "the sights...\x02\x03",
-            "Ahhh, decisions, decisions!\x02",
+            "#130F不愧是王都格兰赛尔。\x02\x03",
+            "恐怖事件基本没有造成什么影响，\x01",
+            "街道依旧那么热闹。\x01",
+            "　\x02\x03",
+            "唔，是立刻展开研究工作呢，\x01",
+            "还是先到街上游览呢……\x01",
+            "　\x02\x03",
+            "哈哈，真是举棋不定呀。\x02",
         )
     )
 
@@ -993,7 +983,7 @@ def main():
 
     ChrTalk(
         0xB,
-        "#130FMuch obliged.\x02",
+        "#130F承蒙您的关照了，馆长。\x02",
     )
 
     CloseMessageWindow()
@@ -1024,8 +1014,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Now where did Professor Alba\x01",
-            "get off to?\x02",
+            "亚鲁瓦教授\x01",
+            "跑到哪里去了呢？\x02",
         )
     )
 
@@ -1034,8 +1024,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I had a question for him about\x01",
-            "his special study course...\x02",
+            "我还想听听\x01",
+            "教授的特别演讲呢……\x02",
         )
     )
 
@@ -1049,9 +1039,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Something doesn't seem right\x01",
-            "out there today. Can't put my\x01",
-            "finger on what it is...\x02",
+            "外面的情况\x01",
+            "似乎和平常不太一样。\x02",
         )
     )
 
@@ -1060,9 +1049,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It's quiet...TOO quiet...and it's been\x01",
-            "so raucous lately, this silence is all\x01",
-            "the more deafening by comparison...\x02",
+            "刚才还吵吵嚷嚷的，\x01",
+            "现在一下就安静了。\x02",
         )
     )
 
@@ -1077,8 +1065,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "What do you think will happen with\x01",
-            "the Queen's Birthday Celebration?\x02",
+            "诞辰庆典\x01",
+            "准备得怎么样了呢？\x02",
         )
     )
 
@@ -1087,9 +1075,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It's going to be canceled for sure, don't you\x01",
-            "think? I mean, they wouldn't celebrate if the\x01",
-            "queen's still sick. They couldn't! Could they?\x02",
+            "总不能让女王陛下\x01",
+            "带着病体参加吧……\x02",
         )
     )
 
@@ -1103,8 +1090,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Now that the competition's wrapped up,\x01",
-            "the streets should get a bit quieter.\x02",
+            "武术大会结束以后，\x01",
+            "感觉街上也安静下来了。\x02",
         )
     )
 
@@ -1113,8 +1100,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "What do you think will happen with\x01",
-            "the Queen's Birthday Celebration?\x02",
+            "不过，诞辰庆典方面\x01",
+            "准备得怎么样了呢？\x02",
         )
     )
 
@@ -1123,9 +1110,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It's going to be canceled for sure, don't you\x01",
-            "think? I mean, they wouldn't celebrate if the\x01",
-            "queen's still sick. They couldn't! Could they?\x02",
+            "总不能让女王陛下\x01",
+            "带着病体参加吧……\x02",
         )
     )
 
@@ -1142,9 +1128,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "The tournament's done, and nobody\x01",
-            "lost any limbs. I'd call that a\x01",
-            "win overall!\x02",
+            "武术大会\x01",
+            "平安无事地结束了。\x02",
         )
     )
 
@@ -1153,8 +1138,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I'm a little jealous of Professor Alba, who\x01",
-            "actually got to see the final match.\x02",
+            "亚鲁瓦教授\x01",
+            "去看比赛了，\x01",
+            "我真有点羡慕他呀。\x02",
         )
     )
 
@@ -1167,7 +1153,10 @@ def main():
 
     ChrTalk(
         0xA,
-        "The final bout is today, right?\x02",
+        (
+            "今天终于到了\x01",
+            "武术大会总决赛了。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1175,8 +1164,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I really wish I could go watch\x01",
-            "the fight. *sigh*\x02",
+            "我不能去看比赛，\x01",
+            "呆在这儿心里直痒痒。\x02",
         )
     )
 
@@ -1190,9 +1179,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "A package postmarked from Bose\x01",
-            "arrived for the director just\x01",
-            "a moment ago.\x02",
+            "刚才收到了一封\x01",
+            "从柏斯寄给馆长的快递。\x02",
         )
     )
 
@@ -1200,10 +1188,7 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "If you'll excuse me, I need to\x01",
-            "make sure he gets it right away!\x02",
-        )
+        "必须快点交给他。\x02",
     )
 
     CloseMessageWindow()
@@ -1216,9 +1201,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Smoking and photography are prohibited in\x01",
-            "the museum. If you're a shutterbug or a\x01",
-            "nicotine fiend, please take it outside!\x02",
+            "本资料馆内\x01",
+            "禁止吸烟和摄影。\x02",
         )
     )
 
@@ -1226,10 +1210,7 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "We pride ourselves on our sense of\x01",
-            "mystique and...lack of smoke odor.\x02",
-        )
+        "请客人予以配合。\x02",
     )
 
     CloseMessageWindow()
@@ -1242,9 +1223,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "There are a lot of...strange\x01",
-            "people amongst the scholars\x01",
-            "I deal with on a daily basis.\x02",
+            "本来在研究者中\x01",
+            "奇怪的人就不少……\x02",
         )
     )
 
@@ -1253,8 +1233,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "But Professor Alba? He's just...\x01",
-            "a mystery.\x02",
+            "但亚鲁瓦教授\x01",
+            "更让人感到不可思议。\x02",
         )
     )
 
@@ -1268,8 +1248,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I doubt we'll have many visitors\x01",
-            "during the tournament...\x02",
+            "唔～武术大会开始后，\x01",
+            "到馆里来的游客变得稀少了。\x02",
         )
     )
 
@@ -1283,8 +1263,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I've seen a lot of Royal Army\x01",
-            "soldiers in the town lately.\x02",
+            "最近在街道上\x01",
+            "也时常见到王国军的士兵。\x02",
         )
     )
 
@@ -1293,9 +1273,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I wonder if it's because their\x01",
-            "airship is grounded and they're\x01",
-            "just bored...\x02",
+            "是因为亲卫队使用的飞艇\x01",
+            "停泊在空港吗……\x02",
         )
     )
 
@@ -1309,8 +1288,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Welcome to the Grancel Museum\x01",
-            "of History!\x02",
+            "欢迎光临\x01",
+            "格兰赛尔历史资料馆。\x02",
         )
     )
 
@@ -1319,9 +1298,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Our newest exhibit, 'Liberl &\x01",
-            "the Modernist Wave,' is now open\x01",
-            "to the public. It's gripping!\x02",
+            "现在正在举行\x01",
+            "『利贝尔现代化之路』\x01",
+            "收藏资料主题展。\x02",
         )
     )
 
@@ -1343,7 +1322,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "It sure is lively outside!\x02",
+        "外面很是热闹啊。\x02",
     )
 
     CloseMessageWindow()
@@ -1351,9 +1330,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "After I finish work, I might\x01",
-            "go out there and get a bit...\x01",
-            "lively...myself.\x02",
+            "等我手头的工作做完后，\x01",
+            "也要到街上去\x01",
+            "体验一下庆典的氛围。\x02",
         )
     )
 
@@ -1368,8 +1347,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We had some Royal Army soldiers\x01",
-            "in here earlier.\x02",
+            "刚才王国军的士兵\x01",
+            "也到这里来了。\x02",
         )
     )
 
@@ -1378,9 +1357,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "They were asking around if we'd\x01",
-            "seen any troops from the Royal\x01",
-            "Guard. Kind of alarming, no?\x02",
+            "好像是为了搜捕\x01",
+            "亲卫队的人而来的。\x02",
         )
     )
 
@@ -1394,8 +1372,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We had some Royal Army soldiers\x01",
-            "in here yesterday.\x02",
+            "昨天王国军的士兵\x01",
+            "也到这里来了。\x02",
         )
     )
 
@@ -1404,9 +1382,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "They were asking around if we'd\x01",
-            "seen any troops from the Royal\x01",
-            "Guard. Kind of alarming, no?\x02",
+            "好像是为了搜捕\x01",
+            "亲卫队的人而来的。\x02",
         )
     )
 
@@ -1414,7 +1391,10 @@ def main():
 
     ChrTalk(
         0xFE,
-        "They looked really frustrated.\x02",
+        (
+            "士兵们都是一幅\x01",
+            "很焦急的样子。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1431,8 +1411,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I got a letter from the museum\x01",
-            "director in Bose...\x02",
+            "刚才接到了馆长\x01",
+            "从柏斯传来的消息……\x02",
         )
     )
 
@@ -1441,9 +1421,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Apparently, he's stuck there,\x01",
-            "thanks to the airships being\x01",
-            "grounded.\x02",
+            "好像因为定期船全部停航\x01",
+            "而无法回王都来了。\x02",
         )
     )
 
@@ -1457,8 +1436,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I got a letter from the museum\x01",
-            "director in Bose...\x02",
+            "刚才接到了馆长\x01",
+            "从柏斯传来的消息……\x02",
         )
     )
 
@@ -1467,9 +1446,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Apparently, he's stuck there,\x01",
-            "thanks to the airships being\x01",
-            "grounded.\x02",
+            "好像因为定期船全部停航\x01",
+            "而无法回王都来了。\x02",
         )
     )
 
@@ -1477,7 +1455,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "*sigh*\x02",
+        "真是麻烦啊……\x02",
     )
 
     CloseMessageWindow()
@@ -1493,8 +1471,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The Museum Director's been\x01",
-            "called out on another project.\x02",
+            "馆长收到了一封信，\x01",
+            "就急急忙忙地出差去了。\x02",
         )
     )
 
@@ -1502,7 +1480,10 @@ def main():
 
     ChrTalk(
         0xFE,
-        "I think he's in Bose now.\x02",
+        (
+            "现在也许\x01",
+            "已经到柏斯了吧。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1515,9 +1496,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Professor Alba got a ticket from\x01",
-            "the director for the final match\x01",
-            "of the competition.\x02",
+            "馆长把今天的决赛门票\x01",
+            "送给了亚鲁瓦教授。\x02",
         )
     )
 
@@ -1525,7 +1505,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "Wish I were so lucky!\x02",
+        "真羡慕啊……\x02",
     )
 
     CloseMessageWindow()
@@ -1533,9 +1513,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Guess it doesn't matter. It's not\x01",
-            "like I have any time for that, with\x01",
-            "my workload as it is!\x02",
+            "算了，他们谁去看比赛和我无关，\x01",
+            "反正我是要留在这里干活的。\x02",
         )
     )
 
@@ -1550,9 +1529,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Did you know that long ago, at the height\x01",
-            "of ancient civilization, humans lived side-\x01",
-            "by-side with other intelligent beings?\x02",
+            "古代文明繁荣的时候，\x01",
+            "还存在着人类以外的\x01",
+            "拥有高度智慧的生物。\x02",
         )
     )
 
@@ -1561,8 +1540,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We refer to them as the 'ancient\x01",
-            "dragons.'\x02",
+            "其中的代表就是\x01",
+            "一种被称为『古代龙』的龙。\x02",
         )
     )
 
@@ -1576,9 +1555,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Did you know that long ago, at the height\x01",
-            "of ancient civilization, humans lived side-\x01",
-            "by-side with other intelligent beings?\x02",
+            "古代文明繁荣的时候，\x01",
+            "还存在着人类以外的\x01",
+            "拥有高度智慧的生物。\x02",
         )
     )
 
@@ -1587,8 +1566,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We refer to them as the 'ancient\x01",
-            "dragons.'\x02",
+            "其中的代表就是\x01",
+            "一种被称为『古代龙』的龙。\x02",
         )
     )
 
@@ -1597,9 +1576,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Their descendants were known to be living in the\x01",
-            "Bose region as recently as a few decades ago, but\x01",
-            "we haven't had any sightings of them recently.\x02",
+            "幸存下来的少数古代龙\x01",
+            "数十年前还在柏斯附近的地方生活，\x01",
+            "但最近以来再也没有人见到过了。\x02",
         )
     )
 
@@ -1617,8 +1596,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "This was found sunken in the\x01",
-            "depths of Lake Valleria.\x02",
+            "这里所展示的文物是\x01",
+            "以前沉在瓦雷利亚湖底的东西。\x02",
         )
     )
 
@@ -1627,9 +1606,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Seems there's an entire set of\x01",
-            "ruins at the bottom of Lake\x01",
-            "Valleria, amazingly.\x02",
+            "搞不好，\x01",
+            "瓦雷利亚湖底\x01",
+            "也沉睡着巨大的遗迹呢。\x02",
         )
     )
 
@@ -1639,12 +1618,13 @@ def main():
     label("loc_2991")
 
     OP_A2(0x1)
+    SetChrName("≡１Ｆ东展示室")
 
     ChrTalk(
         0xFE,
         (
-            "This was found sunken in the\x01",
-            "depths of Lake Valleria.\x02",
+            "这里所展示的文物是\x01",
+            "以前沉在瓦雷利亚湖底的东西。\x02",
         )
     )
 
@@ -1653,8 +1633,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It was caught by chance in a\x01",
-            "fisherman's net.\x02",
+            "一次偶然的机会\x01",
+            "被渔夫给捞上来了。\x02",
         )
     )
 
@@ -1663,9 +1643,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Seems there's an entire set of\x01",
-            "ruins at the bottom of Lake\x01",
-            "Valleria, amazingly.\x02",
+            "搞不好，\x01",
+            "瓦雷利亚湖底\x01",
+            "也沉睡着巨大的遗迹呢。\x02",
         )
     )
 
@@ -1683,9 +1663,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Those who survived the Great\x01",
-            "Collapse had quite a harrowing\x01",
-            "road ahead of them!\x02",
+            "大崩坏之后，残存下来的人们\x01",
+            "有着一段非常悲惨的历史。\x02",
         )
     )
 
@@ -1694,9 +1673,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's thanks to the Orbal Revolution,\x01",
-            "though, that our lives are as convenient\x01",
-            "and comfortable as they are today.\x02",
+            "现今人们的生活\x01",
+            "已经安定下来了，\x01",
+            "但这都是导力革命之后的事了。\x02",
         )
     )
 
@@ -1710,9 +1689,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Those who survived the Great\x01",
-            "Collapse had quite a harrowing\x01",
-            "road ahead of them!\x02",
+            "大崩坏之后，残存下来的人们\x01",
+            "有着一段非常悲惨的历史。\x02",
         )
     )
 
@@ -1720,7 +1698,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "Wars, poverty, famine...\x02",
+        "接二连三的战乱、贫困、流行病……\x02",
     )
 
     CloseMessageWindow()
@@ -1728,9 +1706,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's thanks to the Orbal Revolution,\x01",
-            "though, that our lives are as convenient\x01",
-            "and comfortable as they are today.\x02",
+            "现今人们的生活\x01",
+            "已经安定下来了，\x01",
+            "但这都是导力革命之后的事了。\x02",
         )
     )
 
@@ -1747,9 +1725,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We have almost no records of\x01",
-            "anything prior to the Great\x01",
-            "Collapse.\x02",
+            "大崩坏之前的\x01",
+            "相关资料基本上\x01",
+            "都没有保存下来。\x02",
         )
     )
 
@@ -1758,9 +1736,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "All we know is that society\x01",
-            "as a whole was much more\x01",
-            "advanced than it is now.\x02",
+            "不过说实话，\x01",
+            "那时的文明发达的程度\x01",
+            "似乎比现在还高。\x02",
         )
     )
 
@@ -1775,8 +1753,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We usually offer a special\x01",
-            "assembly for visitors...\x02",
+            "今天本应是把市民聚集起来\x01",
+            "开展研讨会的日子……\x02",
         )
     )
 
@@ -1785,9 +1763,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "...but with all the bustle of the Martial\x01",
-            "Arts Competition and the Birthday Celebration,\x01",
-            "I'm afraid it's been called off.\x02",
+            "不过在每年的武术大会\x01",
+            "和诞辰庆典期间都要休会的。\x02",
         )
     )
 
@@ -1801,8 +1778,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We usually offer a special\x01",
-            "assembly for visitors...\x02",
+            "今天本应是把市民聚集起来\x01",
+            "开展研讨会的日子……\x02",
         )
     )
 
@@ -1811,9 +1788,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "...but with all the bustle of the Martial\x01",
-            "Arts Competition and the Birthday Celebration,\x01",
-            "I'm afraid it's been called off.\x02",
+            "不过在每年的武术大会\x01",
+            "和诞辰庆典期间都要休会的。\x02",
         )
     )
 
@@ -1821,7 +1797,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "Why, you ask?\x02",
+        "你问为什么？\x02",
     )
 
     CloseMessageWindow()
@@ -1829,9 +1805,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "...Do you even HAVE to ask? I mean...\x01",
-            "who would actually show up to something\x01",
-            "like that TODAY?\x02",
+            "这是因为无法聚集\x01",
+            "足够的人来参加研讨会。\x02",
         )
     )
 
@@ -1849,8 +1824,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The museum's job isn't just\x01",
-            "to show off old relics.\x02",
+            "资料馆并非\x01",
+            "只是展示资料而已。\x02",
         )
     )
 
@@ -1864,8 +1839,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The museum's job isn't just\x01",
-            "to show off old relics.\x02",
+            "资料馆并非\x01",
+            "只是展示资料而已。\x02",
         )
     )
 
@@ -1874,8 +1849,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We're also responsible for collecting,\x01",
-            "cataloging and storing all of it.\x02",
+            "像这样对收集来的资料\x01",
+            "进行整理分类保管\x01",
+            "也是资料馆的任务之一。\x02",
         )
     )
 
@@ -1884,8 +1860,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "And we work with researchers\x01",
-            "like Professor Alba, as well.\x02",
+            "有时还要接待\x01",
+            "像亚鲁瓦教授这样\x01",
+            "来讨论研究的学术派客人。\x02",
         )
     )
 
@@ -1908,9 +1885,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Imagine my surprise when I found\x01",
-            "myself stuck in Bose with no way\x01",
-            "home!\x02",
+            "我到柏斯出差的时候，\x01",
+            "定期船停航给我带来很大麻烦。\x02",
         )
     )
 
@@ -1919,9 +1895,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "A lot of things happened in my\x01",
-            "absence, but the museum is,\x01",
-            "thankfully, still intact.\x02",
+            "外出期间虽然发生了许多事情，\x01",
+            "但资料馆完好无损，这就很好了。\x02",
         )
     )
 
@@ -1951,9 +1926,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I'm going to Bose, you see. I have\x01",
-            "a meeting with a scholar who's a\x01",
-            "specialist in ancient studies.\x02",
+            "今天我需要去和一个\x01",
+            "研究柏斯古代生物的学者见面。\x02",
         )
     )
 
@@ -1962,9 +1936,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I've got to catch an afternoon flight,\x01",
-            "so regrettably, I won't be able to go\x01",
-            "to the tournament today.\x02",
+            "过了中午我就要去搭乘定期船，\x01",
+            "所以没办法去观看今天的决赛了。\x02",
         )
     )
 
@@ -1978,8 +1951,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I was so looking forward to the\x01",
-            "final match, too...\x02",
+            "其实我非常想去竞技场\x01",
+            "看武术大会的总决赛……\x02",
         )
     )
 
@@ -1988,9 +1961,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I'm going to Bose, you see. I have\x01",
-            "a meeting with a scholar who's a\x01",
-            "specialist in ancient studies.\x02",
+            "不过今天我需要去和一个\x01",
+            "研究柏斯古代生物的学者见面。\x02",
         )
     )
 
@@ -1999,9 +1971,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I've got to catch an afternoon flight,\x01",
-            "so regrettably, I won't be able to go\x01",
-            "to the tournament today.\x02",
+            "过了中午我就要去搭乘定期船，\x01",
+            "所以没办法去观看比赛了。\x02",
         )
     )
 
@@ -2010,9 +1981,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I didn't particularly want to\x01",
-            "part with it, but I gave my\x01",
-            "ticket to Professor Alba.\x02",
+            "遗憾也没有办法，\x01",
+            "唯有将门票让给亚鲁瓦教授了。\x02",
         )
     )
 
@@ -2029,9 +1999,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Tomorrow, I was thinking of taking\x01",
-            "in the tournament's final match.\x01",
-            "It should be an exciting one!\x02",
+            "明天武术大会的决赛\x01",
+            "我也打算去看。\x02",
         )
     )
 
@@ -2040,8 +2009,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "My ticket has already been secured,\x01",
-            "so now...we wait!\x02",
+            "呵呵，\x01",
+            "实际上我连票都已经买好了。\x02",
         )
     )
 
@@ -2056,9 +2025,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I would be delighted if this museum\x01",
-            "were to double as an academic repository\x01",
-            "for ancient artifacts...\x02",
+            "作为学术调查的对象，\x01",
+            "我很想将古代遗物\x01",
+            "也收入本资料馆里……\x02",
         )
     )
 
@@ -2067,8 +2036,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "But the church refuses to even\x01",
-            "acknowledge receipt of my requests!\x02",
+            "但就算向负责管理的\x01",
+            "七耀教会提出申请，\x01",
+            "他们也不会同意吧。\x02",
         )
     )
 
@@ -2082,9 +2052,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's said these artifacts have\x01",
-            "some kind of tie to the ancient\x01",
-            "Zemurian civilization.\x02",
+            "据说古代遗物\x01",
+            "也和塞姆里亚文明\x01",
+            "有着很深的联系。\x02",
         )
     )
 
@@ -2093,9 +2063,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I would be delighted if this museum\x01",
-            "were to double as an academic repository\x01",
-            "for ancient artifacts...\x02",
+            "作为学术调查的对象，\x01",
+            "我很想将古代遗物\x01",
+            "也收入本资料馆里……\x02",
         )
     )
 
@@ -2104,8 +2074,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "But the church refuses to even\x01",
-            "acknowledge receipt of my requests!\x02",
+            "但就算向负责管理的\x01",
+            "七耀教会提出申请，\x01",
+            "他们也不会同意吧。\x02",
         )
     )
 
@@ -2123,9 +2094,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Professor Alba has kindly agreed\x01",
-            "to study some of our undisplayed\x01",
-            "archaeological finds.\x02",
+            "亚鲁瓦教授\x01",
+            "对我们这儿的未公开资料\x01",
+            "也一并进行了调查研究。\x02",
         )
     )
 
@@ -2134,8 +2105,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "They may hold some historical\x01",
-            "insight.\x02",
+            "说不定还会有\x01",
+            "新的历史性发现呢。\x02",
         )
     )
 
@@ -2148,9 +2119,16 @@ def main():
 
     ChrTalk(
         0xFE,
+        "亚鲁瓦教授是个很沉稳的人。\x02",
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xFE,
         (
-            "Professor Alba is truly a great\x01",
-            "man.\x02",
+            "他对我们这儿的未公开资料\x01",
+            "也一并进行了调查研究。\x02",
         )
     )
 
@@ -2159,19 +2137,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "He has kindly agreed to study some\x01",
-            "of our undisplayed archaeological\x01",
-            "finds.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
-        (
-            "They may bear untold historical\x01",
-            "insight...\x02",
+            "说不定还会有\x01",
+            "新的历史性发现呢。\x02",
         )
     )
 
@@ -2189,9 +2156,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "There are those who dismiss the Sept-Terrions\x01",
-            "as the things of myth and fairytale...\x01",
-            "but I'm not convinced!\x02",
+            "虽然主张『七至宝』只是\x01",
+            "单纯的传说的学者也不少……\x02",
         )
     )
 
@@ -2200,9 +2166,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We've found numerous relics within the\x01",
-            "ruins throughout this land that seem to\x01",
-            "suggest a Zemurian origin, after all...\x02",
+            "但各地残留下的遗迹是\x01",
+            "塞姆里亚文明遗物的推测，\x01",
+            "还是有几分可能性的。\x02",
         )
     )
 
@@ -2216,9 +2182,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The ancients spoke of the Sept-Terrions--\x01",
-            "seven powerful items dropped from heaven\x01",
-            "above, concealing a mystical power within them.\x02",
+            "上天赐予古代人的\x01",
+            "蕴藏着力量的『七至宝』……\x02",
         )
     )
 
@@ -2227,9 +2192,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "But we've no sources to identify\x01",
-            "just what these powers actually\x01",
-            "were...\x02",
+            "至今为止，\x01",
+            "还是没有发现能说明\x01",
+            "其为何物的相关文献。\x02",
         )
     )
 
@@ -2238,9 +2203,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "There are those who dismiss the Sept-Terrions\x01",
-            "as the things of myth and fairytale...\x01",
-            "but I'm not convinced!\x02",
+            "虽然也有不少学者\x01",
+            "主张那只是传说……\x02",
         )
     )
 
@@ -2249,9 +2213,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We've found numerous relics within the\x01",
-            "ruins throughout this land that seem to\x01",
-            "suggest a Zemurian origin, after all...\x02",
+            "但各地残留下的遗迹是\x01",
+            "塞姆里亚文明遗物的推测，\x01",
+            "还是有几分可能性的。\x02",
         )
     )
 
@@ -2268,8 +2232,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I find myself utterly fascinated\x01",
-            "by Professor Alba's studies.\x02",
+            "唔～亚鲁瓦教授的研究\x01",
+            "和我的兴趣不谋而合。\x02",
         )
     )
 
@@ -2278,9 +2242,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "He has this theory that states that one of the\x01",
-            "Sept-Terrions is called 'the Aureole', and\x01",
-            "is lost somewhere in Liberl. Can you imagine?\x02",
+            "七至宝之一的『辉之环』\x01",
+            "长眠于利贝尔某处的传说，\x01",
+            "实在含义颇深啊。\x02",
         )
     )
 
@@ -2293,10 +2257,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "Well, if it isn't my favorite\x01",
-            "professor!\x02",
-        )
+        "您客气了，亚鲁瓦教授。\x02",
     )
 
     CloseMessageWindow()
@@ -2304,8 +2265,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I suspected I might see you here\x01",
-            "today.\x02",
+            "我刚才就想着\x01",
+            "你是不是快要到了。\x02",
         )
     )
 
@@ -2329,12 +2290,16 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Tetracyclic Tower Outer Wall Segment]         Age: Pre-Septian?\x01",
-            "This wall segment was cut and carried from a Tetracyclic Tower--\x01",
-            "a structure built shortly after the Great Collapse.\x02\x03",
-            "Depicted upon it are a staff-wielding priest and a winged god-\x01",
-            "like being, typical of period frescas. Scholars continue to\x01",
-            "examine the figures depicted for any connection with Aidios.\x02",
+            "【『四轮之塔』的外壁】\x01",
+            "　　　　　　　　　　　年代：七耀历以前？\x01",
+            "　　这块朴素的石壁，是从『大崩坏』后所建\x01",
+            "的『四轮之塔』上作为研究资料切割出来的。\x01",
+            "其上所绘制的纹样是同时代建筑物中的典型，\x01",
+            "据说描述的是持杖的祭司、以及展翅的神祗的\x01",
+            "身姿。关于其与七耀教会成立之后的代表神格\x01",
+            "『空之女神』的关系，各方面的研究仍在进行\x01",
+            "中。\x01",
+            "　　\x02",
         )
     )
 
@@ -2358,12 +2323,18 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Septian 1150-1200  ~The Orbal Post-Revolutionary World~]\x01",
-            "It's been only 50 years since Prof. C. Epstein discovered Orbal\x01",
-            "energy, and world technology has advanced at lightning speed.\x02\x03",
-            "The most notable representative of these advances is, without a\x01",
-            "doubt, the modern Orbal-powered airship. Used extensively in\x01",
-            "Liberl, airships are the #1 choice for civilian transportation.\x02",
+            "【七耀历１１５０～１２００年\x01",
+            "　　　　　　　～导力革命以后的世界～】\x01",
+            "　　Ｃ·爱普斯泰恩博士发明导力器后仅仅五\x01",
+            "十年。世界以惊人的速度进步着，接连不断地\x01",
+            "开拓岀导力技术新的应用领域。堪称其象征的\x01",
+            "就是飞艇。\x01",
+            "　　\x01",
+            "　　利贝尔王国定期飞艇的运航已经成为国民\x01",
+            "们习以为常的交通方式，近年来埃雷波尼亚帝\x01",
+            "国等其他国家也开始正式引进飞艇制造业，使\x01",
+            "得飞艇级的船体逐步实用化。\x01",
+            "　　\x02",
         )
     )
 
@@ -2387,12 +2358,17 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Pre-Septian Calendar  ~The Ancient Civilization of Zemuria~]\x01",
-            "Around 1200 years ago, the advanced civilization of Zemuria was\x01",
-            "at its peak. Then, suddenly and inexplicably, it disappeared.\x02\x03",
-            "A 'Great Collapse' occurred, destroying the Zemurian culture and\x01",
-            "plunging its people into a dark age of ruin. The items exhibited\x01",
-            "on the first floor are from the very beginning of this era.\x02",
+            "【七耀历以前\x01",
+            "　　　　　～古代塞姆里亚文明～】\x01",
+            "　　距今约１２００年前，当时繁荣绝顶的塞\x01",
+            "姆里亚文明突然迎来了终结，失去了文明的人\x01",
+            "们开始度过漫长的暗黑时代。\x01",
+            "　　\x01",
+            "　　第一层的展示物据考证是『大崩坏』之后\x01",
+            "所制造的遗物。虽然据判断并非古代文明的直\x01",
+            "接遗物，但因受到其深刻影响，学术方面的价\x01",
+            "值极高。\x01",
+            "　　\x02",
         )
     )
 
@@ -2416,9 +2392,13 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Ancient Lantern]                              Age: Pre-Septian?\x01",
-            "A device built to hold fire. Most often found near towers and\x01",
-            "other ceremonial structures. May have religious significance.\x02",
+            "【古代的照明器具】\x01",
+            "　　　　　　　　　　　年代：七耀历以前？\x01",
+            "　　专用于焚烧篝火的容器。在塔之类被认为\x01",
+            "与祭祀仪式有关联的建筑物中频繁被使用，其\x01",
+            "具体用途不仅仅是照明，在宗教上可能也拥有\x01",
+            "某种程度的意义。当然这点目前还只是推测罢\x01",
+            "了。  \x02",
         )
     )
 
@@ -2442,9 +2422,12 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Stone Pillar with Relief]                     Age: Pre-Septian?\x01",
-            "Found at the bottom of Lake Valleria. Adorned with reliefs\x01",
-            "similar to those found on the walls of the Tetracyclic Towers.\x02",
+            "【浮雕石柱】\x01",
+            "　　　　　　　　　　　年代：七耀历以前？\x01",
+            "　　刻有优美雕刻的石柱。在瓦雷利亚湖的湖\x01",
+            "底被打捞上来，可以看出与『四轮之塔』的壁\x01",
+            "画类似的纹样在其上也被反复使用。\x01",
+            "　　\x02",
         )
     )
 
@@ -2468,9 +2451,12 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Floor Tile]                                   Age: Pre-Septian?\x01",
-            "A piece of tiled floor from inside a ruined building. Broken\x01",
-            "stones fit together to create beautiful and intricate patterns.\x02",
+            "【瓷工艺的地板】\x01",
+            "　　　　　　　　　　　年代：七耀历以前？\x01",
+            "　　遗迹内部彩色镶嵌的瓷工艺地板。将破碎\x01",
+            "的天然石块巧妙拼接，作出朴素而美妙的花纹\x01",
+            "样式。\x01",
+            "　　\x02",
         )
     )
 
@@ -2494,9 +2480,13 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Septian Calendar 1-500  ~The Dark Age of Ruin~]\x01",
-            "Immediately following the Great Collapse, this era is notable\x01",
-            "for the constant formation and usurpation of small countries.\x02",
+            "【七耀历１～５００年左右\x01",
+            "　　　　　　　　～暗黑时代的到来～】\x01",
+            "　　由于『大崩坏』而导致文明尽失，世界陷\x01",
+            "入了长期的混乱时代。\x01",
+            "　　大小各异的国家、势力使得无尽的战争持\x01",
+            "续了约５００年间，后世称此时代为『暗黑时\x01",
+            "代』。\x02",
         )
     )
 
@@ -2520,9 +2510,14 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Knights' Weaponry]                    Age: Septian Calendar 500\x01",
-            "In an era defined by conflict, war became a way of life, and the\x01",
-            "need for warriors spawned the knight class.\x02",
+            "【骑士们的武具】\x01",
+            "　　　　　　　　年代：七耀历５００年左右\x01",
+            "　　日夜征战的时代中，战士们的集团拥有社\x01",
+            "会性的强大影响力，最终成长为特权的骑士阶\x01",
+            "级。\x01",
+            "　　他们佩戴着如展品所示的武具投身沙场，\x01",
+            "获得战利品和领土，势力不断扩大。\x01",
+            " \x02",
         )
     )
 
@@ -2546,24 +2541,21 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Septian Calendar 500-1100  ~The Septian Era~]\x01",
-            "The first appearance of the Septian Church occured around the\x01",
-            "year 500, and marked the end of the Dark Age of Ruin.\x02",
+            "【七耀历５００～１１００年左右\x01",
+            "　　　　　　～七耀教会带来的安定期～】\x01",
+            "　　七耀教会登上历史舞台，正值暗黑时代末\x01",
+            "期，七耀历５００年左右。\x01",
+            "　　以『空之女神』为中心所整理的教义，通\x01",
+            "过教会救济民众的社会活动，瞬间深入人心。\x01",
+            "　　它的权威很快成长到连贵族、骑士阶级也\x01",
+            "无法忽视的地步，其后以教会为中心的新秩序\x01",
+            "便逐步形成了。\x01",
+            " \x02",
         )
     )
 
     CloseMessageWindow()
 
-    AnonymousTalk(
-        (
-            scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "Forming a religion based around the 'Goddess of the Sky' Aidios,\x01",
-            "the church permeated social consciousness through humanitarian\x01",
-            "aid and social unity, attracting even the knights' attentions.\x02",
-        )
-    )
-
-    CloseMessageWindow()
     OP_56(0x0)
     FadeToBright(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
@@ -2583,24 +2575,24 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Ancient Artifacts]                                 Age: Unknown\x01",
-            "'Artifact' (noun) - A relic of any shape or size found in an\x01",
-            "ancient ruin, generally of unknown or uncertain purpose.\x02",
+            "【古代文明的遗物——\x01",
+            "　　　　　　　　『古代遗产』】\x01",
+            "　　　　　　　　　　　　　　　年代：不明\x01",
+            "　　『古代遗产』是从各地发现的古代遗迹中\x01",
+            "出土的诸如器物、杖等形态各异、不可思议的\x01",
+            "遗物。\x01",
+            "　　在七耀教会的教义中，作为与女神赐予的\x01",
+            "『七至宝』相关的物品，其回收成为教会必须\x01",
+            "履行的义务之一。展品的『古代遗产』也是教\x01",
+            "会所回收的物品。\x01",
+            "　　许多传闻称其拥有超常的力量，但此展品\x01",
+            "已经失去能力，无法启动。\x01",
+            "　　\x02",
         )
     )
 
     CloseMessageWindow()
 
-    AnonymousTalk(
-        (
-            scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "The church believes these artifacts have some connection with\x01",
-            "the Sept-Terrions-- gifts from Aidios-- and their recovery is regarded\x01",
-            "as a priority one mission.\x02",
-        )
-    )
-
-    CloseMessageWindow()
     OP_56(0x0)
     FadeToBright(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
@@ -2620,10 +2612,14 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Church Sacrament]            Age: Septian Calendar 900 (approx)\x01",
-            "The church has long been a source of art, and this has been true\x01",
-            "since the dawn of the Septian Era. It was around the year 900,\x01",
-            "however, that the first known likeness of Aidios was created.\x02",
+            "【七耀教会的祭具】\x01",
+            "　　　　　　　　年代：七耀历９００年左右\x01",
+            "　　七耀教会创造岀种种的宗教艺术，由此开\x01",
+            "始教会开拓出一个稳定的时代。据考证，『空\x01",
+            "之女神』的圣像也是由此时起被塑造为现今的\x01",
+            "姿态。此外，现在所使用的祭祀道具多数也是\x01",
+            "在这个时代被定型的。\x01",
+            "　　\x02",
         )
     )
 
@@ -2647,9 +2643,12 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Church Testaments, Manuscript]        Age: Septian Calendar 500\x01",
-            "A handwritten copy of the scriptures used by the church at the\x01",
-            "end of the Dark Age.\x02",
+            "【七耀教会圣典的抄本】\x01",
+            "　　　　　　　　年代：七耀历５００年左右\x01",
+            "　　暗黑时代末期的原始七耀教会所使用的圣\x01",
+            "典抄本。中世纪没有印刷技术，因此这本书是\x01",
+            "由人手工抄写在兽皮制的纸张上的。\x01",
+            "　　\x02",
         )
     )
 
@@ -2673,9 +2672,13 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "[Medieval Loom]                        Age: Septian Calendar 900\x01",
-            "A man-powered machine used to spin thread. As the Septian Era\x01",
-            "continued, cotton and other crops became more widely cultivated.\x02",
+            "【中世纪的纺纱机】\x01",
+            "　　　　　　　　年代：七耀历９００年左右\x01",
+            "　　纺纱用的手工机械。到了稳定的中世纪，\x01",
+            "农民的生活逐渐富裕，作为商品作物的棉花栽\x01",
+            "培日渐繁盛。为了收入货币，这个时代的手工\x01",
+            "业也开始发展。\x01",
+            "　　\x02",
         )
     )
 
