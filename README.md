@@ -4,6 +4,18 @@
 
 目前仅导入了大部分 `SN` 脚本的文本, 有 41 个脚本与简体版出入较大, 需要人工处理
 
+# 进度
+
+![Progress](http://progressed.io/bar/99) 主程序
+
+![Progress](http://progressed.io/bar/93)剧情
+
+![Progress](http://progressed.io/bar/0) 魔法/战技
+
+![Progress](http://progressed.io/bar/0) 物品
+
+![Progress](http://progressed.io/bar/0) 图片
+
 # TODO
 
 - [ ]  DAT/ED6_DT01/T0100.艾利兹街道.py 有几句英文要翻译, 关键字: Monster Guide
