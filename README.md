@@ -8,7 +8,7 @@
 
 ![Progress](http://progressed.io/bar/99) 主程序
 
-![Progress](http://progressed.io/bar/94)剧情
+![Progress](http://progressed.io/bar/94) 剧情
 
 ![Progress](http://progressed.io/bar/0) 魔法/战技
 
@@ -16,12 +16,11 @@
 
 ![Progress](http://progressed.io/bar/0) 图片
 
+![Progress](http://progressed.io/bar/0) 图书
+
 # TODO
 
-- [ ]  DAT/ED6_DT01/T0100.艾利兹街道.py 有几句英文要翻译, 关键字: Monster Guide
-
-需要人工处理的文件列表:
-
+- [ ] T0100.艾利兹街道.py 有几句英文要翻译, 关键字: Monster Guide
 - [x] C0500      -1
 - [x] T0100      -6
 - [x] T4133      4
