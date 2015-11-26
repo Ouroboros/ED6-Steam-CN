@@ -2,13 +2,11 @@
 
 使用`娱乐通简体中文版`的文本, 基于 `Steam 英文版`制作
 
-目前仅导入了大部分 `SN` 脚本的文本, 有 41 个脚本与简体版出入较大, 需要人工处理
-
 # 进度
 
 ![Progress](http://progressed.io/bar/99) 主程序
 
-![Progress](http://progressed.io/bar/94) 剧情
+![Progress](http://progressed.io/bar/98) 剧情
 
 ![Progress](http://progressed.io/bar/0) 魔法/战技
 
@@ -37,10 +35,10 @@
 - [x] T2500      2
 - [x] T3115      2
 - [x] T2520      5
-- [ ] T2210_1    -1
-- [ ] T3111      1
-- [ ] T2300      7
-- [ ] T0500      6
+- [x] T2210_1    -1
+- [x] T3111      1
+- [x] T2300      7
+- [x] T0500      6
 - [ ] T1230      5
 - [ ] T4104      4
 - [ ] T2210      -1
