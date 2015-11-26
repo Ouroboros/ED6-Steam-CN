@@ -6,7 +6,7 @@
 
 ![Progress](http://progressed.io/bar/99) 主程序
 
-![Progress](http://progressed.io/bar/97) 剧情
+![Progress](http://progressed.io/bar/99) 剧情
 
 ![Progress](http://progressed.io/bar/0) 魔法/战技
 
@@ -49,7 +49,7 @@
 - [x] T4101      3
 - [x] T4101_2    3
 - [x] T1510      6
-- [ ] T4121      68
+- [x] T4121      68
 - [x] T4121_1    68
 - [x] T0120      -2
 - [x] T3132      -2
@@ -60,5 +60,6 @@
 - [x] T1310      6
 - [x] T4122      10
 - [x] T4132      22
-- [ ] T4136      56
+- [x] T4136      56
+- [x] T4136_1    ??
 - [ ] T4137      200
