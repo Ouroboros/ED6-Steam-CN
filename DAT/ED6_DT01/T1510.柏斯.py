@@ -26,22 +26,22 @@ def main():
 
     BuildStringList(
         '@FileName',                            # 8
-        'Lenard',                               # 9
-        'Sophina',                              # 10
-        'Lloyd',                                # 11
-        'Elke',                                 # 12
-        'Anette',                               # 13
-        'Sting',                                # 14
-        'Anelace',                              # 15
-        'Scherazard',                           # 16
-        'Olivier',                              # 17
-        'Dish',                                 # 18
-        'Dish',                                 # 19
-        'Dish',                                 # 20
-        'Coffee',                               # 21
-        'Coffee',                               # 22
-        'Coffee',                               # 23
-        'Coffee',                               # 24
+        '雷纳德',                               # 9
+        '索菲娜',                               # 10
+        '罗伊德',                               # 11
+        '艾露凯',                               # 12
+        '阿妮特',                               # 13
+        '斯丁克',                               # 14
+        '亚妮拉丝',                             # 15
+        '雪拉扎德',                             # 16
+        '奥利维尔',                             # 17
+        '器皿',                                 # 18
+        '器皿',                                 # 19
+        '器皿',                                 # 20
+        '咖啡',                                 # 21
+        '咖啡',                                 # 22
+        '咖啡',                                 # 23
+        '咖啡',                                 # 24
     )
 
     DeclEntryPoint(
@@ -619,9 +619,9 @@ def main():
         100,
         1,
         (
-            "Talk\x01",       # 0
-            "Shop\x01",       # 1
-            "Leave\x01",      # 2
+            "对话\x01",        # 0
+            "买东西\x01",      # 1
+            "离开\x01",        # 2
         )
     )
 
@@ -650,7 +650,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "Oh, welcome, everyone.\x02",
+        "噢，欢迎光临。\x02",
     )
 
     CloseMessageWindow()
@@ -658,8 +658,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "You came here to fish again?\x01",
-            "Well, make yourselves at home.\x02",
+            "客人又来钓鱼吗？\x01",
+            "请在这里好好放松一下吧。\x02",
         )
     )
 
@@ -673,8 +673,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "The two of them certainly\x01",
-            "drank a lot...\x02",
+            "那边的两个人，\x01",
+            "喝得真是不少啊……\x02",
         )
     )
 
@@ -683,9 +683,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I'm going to have to put in another\x01",
-            "order to Ravennue Village for some\x01",
-            "fruit wine.\x02",
+            "我必须要去拉文努村\x01",
+            "多订购一些果实酒才行了。\x02",
         )
     )
 
@@ -698,7 +697,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "So how did your fishing go?\x02",
+        "哟，鱼钓得怎么样啊？\x02",
     )
 
     CloseMessageWindow()
@@ -706,9 +705,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you happen to catch anything\x01",
-            "good, I'll cook it up for you as\x01",
-            "part of the service.\x02",
+            "如果钓到什么好东西的话，\x01",
+            "不妨让我们帮你做成菜哦。\x02",
         )
     )
 
@@ -721,7 +719,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "Hmm...\x02",
+        "唔……\x02",
     )
 
     CloseMessageWindow()
@@ -729,9 +727,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I've got some good fish in today,\x01",
-            "so please look forward to your\x01",
-            "meals.\x02",
+            "今天又进了很新鲜的鱼。\x01",
+            "敬请期待我们的料理吧。\x02",
         )
     )
 
@@ -744,7 +741,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "Were you able to meet Lloyd?\x02",
+        "来找罗伊德大叔的吗？\x02",
     )
 
     CloseMessageWindow()
@@ -752,9 +749,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you like what you see here\x01",
-            "at the inn, then please stay\x01",
-            "for the night.\x02",
+            "如果你们不介意的话，\x01",
+            "一定要留在这里住一晚。\x02",
         )
     )
 
@@ -763,8 +759,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I just had a cancellation so\x01",
-            "I have an open room.\x02",
+            "刚才正好有一个房间\x01",
+            "因为取消预定空出来了。\x02",
         )
     )
 
@@ -784,8 +780,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "Welcome to the Kingfisher Inn.\x01",
-            "Are you all here to stay?\x02",
+            "欢迎来到川蝉亭。\x01",
+            "请问几位客人是来留宿的吗？\x02",
         )
     )
 
@@ -794,8 +790,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#501FLet's see, yes and no.\x01",
-            "How should I put it?\x02",
+            "#501F嗯……也算是吧。\x01",
+            "其实我们不单是来留宿的。\x02",
         )
     )
 
@@ -804,10 +800,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FWe're here looking for a certain\x01",
-            "someone.\x02\x03",
-            "Is there a guest staying here\x01",
-            "who loves to fish?\x02",
+            "#010F我们还要找一个人。\x02\x03",
+            "请问在这里留宿的客人当中，\x01",
+            "有没有钓鱼爱好者呢？\x02",
         )
     )
 
@@ -816,8 +811,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "Well, pretty much everybody\x01",
-            "who stays here loves to fish.\x02",
+            "嗯，说到钓鱼，\x01",
+            "这里的大部分客人都非常喜欢。\x02",
         )
     )
 
@@ -826,11 +821,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FWe heard he was a friend of\x01",
-            "the old man who stayed here\x01",
-            "yesterday.\x02\x03",
-            "Do you have a clue who that\x01",
-            "might be?\x02",
+            "#020F听说昨天来留宿的老伯\x01",
+            "认识这里的一位钓友。\x02\x03",
+            "不知道你是否认识那位钓友呢。\x02",
         )
     )
 
@@ -838,10 +831,7 @@ def main():
 
     ChrTalk(
         0x8,
-        (
-            "Oh, are you talking about old\x01",
-            "man Kuwano?\x02",
-        )
+        "啊啊，你说罗伊德大叔吧。\x02",
     )
 
     CloseMessageWindow()
@@ -849,9 +839,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you're talking about his fishing\x01",
-            "buddy, then I think you must mean\x01",
-            "Lloyd.\x02",
+            "你们一说钓友，\x01",
+            "我就知道是罗伊德大叔。\x02",
         )
     )
 
@@ -859,7 +848,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#505FLloyd?\x02",
+        "#505F罗伊德？\x02",
     )
 
     CloseMessageWindow()
@@ -867,9 +856,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I've heard he's a professional angler\x01",
-            "who came all the way here from the\x01",
-            "Royal City.\x02",
+            "嗯，一位从王都来的客人，\x01",
+            "自称是专业的前卫钓鱼者。\x02",
         )
     )
 
@@ -878,8 +866,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "It seems as though he's a member\x01",
-            "of the Fisherman's Guild there.\x02",
+            "听说他也是王都的\x01",
+            "『钓公师团』的成员之一。\x02",
         )
     )
 
@@ -889,10 +877,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#506FHe sounds like a pretty amazing\x01",
-            "guy.\x02\x03",
-            "#000FDo you know where we might\x01",
-            "be able to find him?\x02",
+            "#506F听、听起来好像很厉害啊。\x02\x03",
+            "#000F那么他现在在哪呢？\x02",
         )
     )
 
@@ -901,8 +887,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "Ha ha. He's out dropping a line\x01",
-            "somewhere, of course.\x02",
+            "哈哈，这个时间他应该\x01",
+            "正在悠然自得地垂钓吧。\x02",
         )
     )
 
@@ -910,10 +896,7 @@ def main():
 
     ChrTalk(
         0x8,
-        (
-            "If I remember right, he should\x01",
-            "be out on the back pier.\x02",
-        )
+        "到里面的栈桥就可以找到他了。\x02",
     )
 
     CloseMessageWindow()
@@ -925,10 +908,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#506FHe sounds like a pretty amazing\x01",
-            "guy.\x02\x03",
-            "#000FSo you're saying he's that old man\x01",
-            "fishing out back?\x02",
+            "#506F听、听起来好像很厉害啊。\x02\x03",
+            "#000F想问一下他是不是\x01",
+            "在外面钓鱼的那个大叔？\x02",
         )
     )
 
@@ -936,10 +918,7 @@ def main():
 
     ChrTalk(
         0x8,
-        (
-            "Yeah, I'm pretty sure he's the\x01",
-            "one you're talking about.\x02",
-        )
+        "啊啊，我想就是他。\x02",
     )
 
     CloseMessageWindow()
@@ -947,9 +926,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "You might be able to get his\x01",
-            "attention if you call his name\x01",
-            "out really loud.\x02",
+            "你们大声叫他就行了，\x01",
+            "如果太小声的话他可能听不见。\x02",
         )
     )
 
@@ -966,9 +944,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you're looking for Lloyd, he's\x01",
-            "out dropping a line somewhere,\x01",
-            "of course.\x02",
+            "罗依德先生现在应该\x01",
+            "正在悠然自得地垂钓吧。\x02",
         )
     )
 
@@ -976,10 +953,7 @@ def main():
 
     ChrTalk(
         0x8,
-        (
-            "If I remember right, he should\x01",
-            "be out on the back pier.\x02",
-        )
+        "到里面的栈桥就可以找到他了。\x02",
     )
 
     CloseMessageWindow()
@@ -996,7 +970,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "That reminds me...,\x02",
+        "说起来……\x02",
     )
 
     CloseMessageWindow()
@@ -1004,9 +978,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "The Royal Army also came to\x01",
-            "investigate about a missing\x01",
-            "airliner here, too.\x02",
+            "王国军也曾经到这里\x01",
+            "打听失踪的定期船的事情。\x02",
         )
     )
 
@@ -1015,8 +988,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "But there's nothing here but\x01",
-            "placid waters.\x02",
+            "不过，\x01",
+            "这里平时可是平静得不得了。\x02",
         )
     )
 
@@ -1025,9 +998,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "And nobody's seen any suspicious\x01",
-            "individuals or an airliner for that\x01",
-            "matter.\x02",
+            "别说可疑的人物，\x01",
+            "就连定期船也不会在这里出现。\x02",
         )
     )
 
@@ -1040,9 +1012,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "The Royal Army also came to\x01",
-            "investigate about a missing\x01",
-            "airliner here, too.\x02",
+            "王国军也曾经到这里\x01",
+            "打听失踪的定期船的事情。\x02",
         )
     )
 
@@ -1051,8 +1022,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "But there's nothing here but\x01",
-            "placid waters.\x02",
+            "不过，\x01",
+            "这里平时可是平静得不得了。\x02",
         )
     )
 
@@ -1070,7 +1041,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "That reminds me...,\x02",
+        "说起来……\x02",
     )
 
     CloseMessageWindow()
@@ -1078,8 +1049,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "There's an old tower standing to\x01",
-            "the northwest of here.\x02",
+            "从这里向西北方向望去，\x01",
+            "能看到一座很古老的塔。\x02",
         )
     )
 
@@ -1088,8 +1059,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "It seems as though it's called\x01",
-            "the Amberl Tower.\x02",
+            "那个建筑物好像\x01",
+            "被称为『琥珀之塔』……\x02",
         )
     )
 
@@ -1098,8 +1069,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I wonder what in the world it was\x01",
-            "built for.\x02",
+            "那座塔究竟是\x01",
+            "为了什么而建造出来的呢。\x02",
         )
     )
 
@@ -1112,9 +1083,9 @@ def main():
     ChrTalk(
         0x8,
         (
-            "There's an old tower called the\x01",
-            "Amberl Tower standing to the\x01",
-            "northwest of here.\x02",
+            "从这里向西北方向望去，\x01",
+            "能看到一座被称为\x01",
+            "『琥珀之塔』的很古老的塔。\x02",
         )
     )
 
@@ -1123,8 +1094,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "I wonder what in the world\x01",
-            "it was built for.\x02",
+            "那座塔究竟是\x01",
+            "为了什么而建造出来的呢。\x02",
         )
     )
 
@@ -1142,7 +1113,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "Welcome to our lovely inn.\x02",
+        "噢，欢迎光临。\x02",
     )
 
     CloseMessageWindow()
@@ -1150,8 +1121,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "My little sister and I run this place\x01",
-            "here on the Valleria Lakeshore.\x02",
+            "这里是我们兄妹俩经营的\x01",
+            "瓦雷利亚湖北岸旅馆。\x02",
         )
     )
 
@@ -1160,9 +1131,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you don't have any pressing\x01",
-            "errands, why don't you stay\x01",
-            "for a while?\x02",
+            "呵呵，如果没什么急事，\x01",
+            "请在这里好好放松一下吧。\x02",
         )
     )
 
@@ -1175,8 +1145,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "My little sister and I run this place\x01",
-            "here on the Valleria Lakeshore.\x02",
+            "这里是我们兄妹俩经营的\x01",
+            "瓦雷利亚湖北岸旅馆。\x02",
         )
     )
 
@@ -1185,9 +1155,8 @@ def main():
     ChrTalk(
         0x8,
         (
-            "If you don't have any pressing\x01",
-            "errands, why don't you stay\x01",
-            "for a while?\x02",
+            "呵呵，如果没什么急事，\x01",
+            "请在这里好好放松一下吧。\x02",
         )
     )
 
@@ -1223,9 +1192,9 @@ def main():
         100,
         1,
         (
-            "Talk\x01",       # 0
-            "Rest\x01",       # 1
-            "Leave\x01",      # 2
+            "对话\x01",      # 0
+            "休息\x01",      # 1
+            "离开\x01",      # 2
         )
     )
 
@@ -1252,10 +1221,7 @@ def main():
 
     ChrTalk(
         0x9,
-        (
-            "The weather is absolutely\x01",
-            "wonderful today.\x02",
-        )
+        "今天真是好天气啊。\x02",
     )
 
     CloseMessageWindow()
@@ -1263,8 +1229,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "Hmm-hmm. It looks like the sheets\x01",
-            "will dry well too.\x02",
+            "呵呵，\x01",
+            "被子都应该晒干了吧。\x02",
         )
     )
 
@@ -1279,9 +1245,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I don't know if you'll believe me, seeing as\x01",
-            "I'm family, but my brother's dishes made\x01",
-            "with fish are something to be reckoned with.\x02",
+            "这绝对不是我在自夸，\x01",
+            "我哥烧的鱼可是非常好吃的。\x02",
         )
     )
 
@@ -1289,10 +1254,7 @@ def main():
 
     ChrTalk(
         0x9,
-        (
-            "Please look forward to a meal\x01",
-            "like no other.\x02",
-        )
+        "请你们一定要尝一下啊。\x02",
     )
 
     CloseMessageWindow()
@@ -1307,9 +1269,9 @@ def main():
     ChrTalk(
         0x9,
         (
-            "Our dishes use fish purchased\x01",
-            "straight from the fishermen\x01",
-            "themselves.\x02",
+            "本店的料理\x01",
+            "都是用从渔夫那里\x01",
+            "直接购进的鲜鱼制成的。\x02",
         )
     )
 
@@ -1318,8 +1280,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "So you can always look forward\x01",
-            "to the freshest of fish.\x02",
+            "所以说呢，来本店的客人\x01",
+            "都能品尝到最新鲜的料理。\x02",
         )
     )
 
@@ -1331,14 +1293,17 @@ def main():
 
     ChrTalk(
         0x9,
-        "The boy who came with you?\x02",
+        "你在找同伴的那个男孩子吗？\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x9,
-        "He hasn't come in here.\x02",
+        (
+            "不好意思，\x01",
+            "他好像没有到这边来哦。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1354,7 +1319,10 @@ def main():
 
     ChrTalk(
         0x9,
-        "People come here to enjoy fishing.\x02",
+        (
+            "各位，\x01",
+            "来到这里可不要错过钓鱼的乐趣啊。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1362,9 +1330,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "If you would like to borrow a fishing\x01",
-            "pole, we can loan you one, so all\x01",
-            "you need to do is ask.\x02",
+            "我们也准备了租借用的钓竿，\x01",
+            "请随意使用。\x02",
         )
     )
 
@@ -1381,9 +1348,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FUm...\x02\x03",
-            "Do you have a fishing pole I could\x01",
-            "borrow?\x02",
+            "#000F那个……\x02\x03",
+            "请问你们这里有钓鱼竿吗？\x02",
         )
     )
 
@@ -1391,7 +1357,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "Yes, of course we do.\x02",
+        "嗯，有啊。\x02",
     )
 
     CloseMessageWindow()
@@ -1399,8 +1365,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "They're right over here, and they're\x01",
-            "free to use for anyone lodging here.\x02",
+            "您是想钓鱼吧。\x01",
+            "来留宿的客人不用付租金。\x02",
         )
     )
 
@@ -1408,7 +1374,10 @@ def main():
 
     ChrTalk(
         0x101,
-        "#001FWow, really? Score!\x02",
+        (
+            "#001F啊，真的吗？\x01",
+            "太幸运了㈱\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1421,9 +1390,9 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "Borrowed \x07\x02",
-            "Progressive Rod\x07\x00",
-            ".\x02",
+            "得到了\x07\x02",
+            "钓鱼竿\x07\x00",
+            "。\x02",
         )
     )
 
@@ -1434,10 +1403,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#501FHmm, this is a pretty nice rod\x01",
-            "to be loaning out to everyone.\x02\x03",
-            "All right then, I'll put it to\x01",
-            "good use.\x02",
+            "#501F嗯，虽说是租借用的钓鱼竿，\x01",
+            "不过质量还挺不错的嘛。\x02\x03",
+            "那我就不客气地拿去用了哦。\x02",
         )
     )
 
@@ -1445,7 +1413,10 @@ def main():
 
     ChrTalk(
         0x9,
-        "Please enjoy yourself.\x02",
+        (
+            "呵呵……\x01",
+            "请好好享受钓鱼的乐趣吧。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1460,8 +1431,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#501FLet's see, are there any particular\x01",
-            "fishing spots I should be aware of?\x02",
+            "#501F想问问，\x01",
+            "你们这里有什么好的钓鱼场所呢？\x02",
         )
     )
 
@@ -1469,7 +1440,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "Well...\x02",
+        "让我想想……\x02",
     )
 
     CloseMessageWindow()
@@ -1477,19 +1448,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "There is a small island close by\x01",
-            "where you can catch a lot of fish...\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0x9,
-        (
-            "But I'd say that around the pier\x01",
-            "is the most highly recommended\x01",
-            "spot.\x02",
+            "说到好的钓鱼场所，\x01",
+            "肯定是湖上的小岛上……\x02",
         )
     )
 
@@ -1498,9 +1458,18 @@ def main():
     ChrTalk(
         0x9,
         (
-            "The lake bed has quite a few hidey-spots\x01",
-            "there for the fish, so there are a lot of\x01",
-            "them swimming around in that area.\x02",
+            "不过我觉得还是\x01",
+            "栈桥周围的环境最好。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x9,
+        (
+            "水底的地形比较复杂，\x01",
+            "所以那里的鱼也会有比较多。\x02",
         )
     )
 
@@ -1513,8 +1482,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I'd say around the pier is the most\x01",
-            "highly recommended spot.\x02",
+            "我觉得还是\x01",
+            "栈桥周围的环境最好。\x02",
         )
     )
 
@@ -1523,9 +1492,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "The lake bed has quite a few hidey-spots\x01",
-            "there for the fish, so there are a lot of\x01",
-            "them swimming around in that area.\x02",
+            "水底的地形比较复杂，\x01",
+            "所以那里的鱼也会有比较多。\x02",
         )
     )
 
@@ -1552,17 +1520,14 @@ def main():
 
     ChrTalk(
         0x9,
-        (
-            "Will you be staying here with us\x01",
-            "tonight?\x02",
-        )
+        "哎呀，客人是要留宿的吗？\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x101,
-        "#501FYeah, that's the plan...\x02",
+        "#501F嗯，有这个打算……\x02",
     )
 
     CloseMessageWindow()
@@ -1571,11 +1536,11 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FHold on, Estelle.\x02\x03",
-            "If there's anything that we haven't\x01",
-            "taken care of we'd better do it now.\x02\x03",
-            "I don't want to head back to Bose\x01",
-            "after we've gotten a room.\x02",
+            "#010F艾丝蒂尔，等一下。\x02\x03",
+            "如果有什么事情还没做的话，\x01",
+            "还是趁这个时间去完成比较好。\x02\x03",
+            "要是我们租了房间，\x01",
+            "那就不能再回柏斯了哦。\x02",
         )
     )
 
@@ -1584,7 +1549,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000F#2PUm, I guess you're right.\x02",
+        "#000F嗯，的确是啊……\x02",
     )
 
     CloseMessageWindow()
@@ -1596,7 +1561,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "Would you like to get a room here?\x02",
+        "啊，你们要租房间吗？\x02",
     )
 
     CloseMessageWindow()
@@ -1613,8 +1578,8 @@ def main():
         10,
         0,
         (
-            "[Not just yet]\x01",      # 0
-            "[Get a room]\x01",        # 1
+            "【暂时不租】\x01",      # 0
+            "【租房间】\x01",        # 1
         )
     )
 
@@ -1636,7 +1601,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "I understand.\x02",
+        "我明白了。\x02",
     )
 
     CloseMessageWindow()
@@ -1644,9 +1609,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I'll reserve your room, so please\x01",
-            "come back after you've finished\x01",
-            "with your other errands.\x02",
+            "你们可以先预约，\x01",
+            "等办完事情再来。\x02",
         )
     )
 
@@ -1660,7 +1624,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "All right then.\x02",
+        "我明白了。\x02",
     )
 
     CloseMessageWindow()
@@ -1668,8 +1632,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "Please come with me.\x01",
-            "I'll show you to your room.\x02",
+            "各位请这边走。\x01",
+            "我带你们到房间去。\x02",
         )
     )
 
@@ -1697,7 +1661,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "This is where you will be staying.\x02",
+        "这里就是客人你们的房间。\x02",
     )
 
     CloseMessageWindow()
@@ -1705,8 +1669,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I will leave you here, so please\x01",
-            "relax until dinner is served.\x02",
+            "那么，在享用晚饭之前，\x01",
+            "大家就先在这里好好休息一下吧。\x02",
         )
     )
 
@@ -1727,9 +1691,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FThis is quite a nice room. It has\x01",
-            "a certain atmosphere that you just\x01",
-            "don't find back in the city.\x02",
+            "#010F的确是一间好房子啊。\x01",
+            "和城市的酒店相比，真的别有一番风味。\x02",
         )
     )
 
@@ -1739,8 +1702,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#006F#2PYeah, it's great, huh?\x02\x03",
-            "It wasn't that expensive either.\x02",
+            "#006F#2P嗯，感觉真好。\x02\x03",
+            "而且租金又不是很贵。\x02",
         )
     )
 
@@ -1750,10 +1713,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020F#1PHmm-hmm-hmm.\x01",
-            "What to do now...?\x02\x03",
-            "How about we relax until it gets\x01",
-            "dark?\x02",
+            "#020F#1P呵呵，好了……\x02\x03",
+            "在今夜行动之前，\x01",
+            "我们就先好好休息一下吧。\x02",
         )
     )
 
@@ -1762,7 +1724,7 @@ def main():
 
     ChrTalk(
         0x104,
-        "#031FWhat a nice idea.\x02",
+        "#031F呵呵，不错的提议。\x02",
     )
 
     CloseMessageWindow()
@@ -1771,9 +1733,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004F#2PI'd be more than happy to do just\x01",
-            "that, but is it really okay to take\x01",
-            "it easy?\x02",
+            "#004F#2P啊，虽然放松一下也不错……\x01",
+            "可是这么悠然自得地休息可以吗？\x02",
         )
     )
 
@@ -1782,11 +1743,10 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#021F#1PRest when you can. That's\x01",
-            "part of a bracer's job too.\x02\x03",
-            "This is our free time, so let's\x01",
-            "enjoy a meal, take a stroll,\x01",
-            "or something else.\x02",
+            "#021F#1P休息的时候就该好好休息。\x01",
+            "这也是游击士的工作啊。\x02\x03",
+            "吃零食也好，到外面散步也好，\x01",
+            "总之现在可以自由活动哦。\x02",
         )
     )
 
@@ -1807,7 +1767,10 @@ def main():
 
     ChrTalk(
         0x9,
-        "Welcome to the Kingfisher Inn.\x02",
+        (
+            "各位客人您好。\x01",
+            "欢迎来到川蝉亭。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -1815,8 +1778,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "Please let me know if you would\x01",
-            "like to stay.\x02",
+            "如果想留宿的话，\x01",
+            "请先到我这里来登记。\x02",
         )
     )
 
@@ -1830,8 +1793,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "It seems the Royal Army was investigating\x01",
-            "around the Amberl Tower.\x02",
+            "王国军好像到\x01",
+            "琥珀之塔周边进行了调查。\x02",
         )
     )
 
@@ -1840,9 +1803,9 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I also heard some suspicious individual\x01",
-            "was found at the tower, but he turned\x01",
-            "out to be an archaeologist.\x02",
+            "而且他们好像\x01",
+            "发现了一个可疑人物。\x01",
+            "听说还是一位考古学者。\x02",
         )
     )
 
@@ -1858,8 +1821,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "My older brother Lenard started\x01",
-            "this inn.\x02",
+            "这里是原本是\x01",
+            "雷纳德哥哥经营的旅馆……\x02",
         )
     )
 
@@ -1868,8 +1831,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I grew fond of the atmosphere\x01",
-            "here when I came to visit him.\x02",
+            "我来这里玩的时候\x01",
+            "被这里的气氛所深深吸引。\x02",
         )
     )
 
@@ -1878,8 +1841,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "And so I decided to stay, and\x01",
-            "he let me work for him.\x02",
+            "所以我就干脆\x01",
+            "来帮哥哥打理这里了。\x02",
         )
     )
 
@@ -1892,8 +1855,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I grew fond of the atmosphere here\x01",
-            "when I came to visit my brother.\x02",
+            "我来这里玩的时候\x01",
+            "被这里的气氛所深深吸引……\x02",
         )
     )
 
@@ -1902,8 +1865,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "And so I decided to stay, and\x01",
-            "he let me work for him.\x02",
+            "所以我就干脆\x01",
+            "来帮哥哥打理这里了。\x02",
         )
     )
 
@@ -1922,8 +1885,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "Welcome to the Kingfisher Inn.\x01",
-            "Are you all here to stay?\x02",
+            "欢迎来到川蝉亭。\x01",
+            "请问客人是来留宿吗？\x02",
         )
     )
 
@@ -1931,14 +1894,17 @@ def main():
 
     ChrTalk(
         0x101,
-        "#501FLet's see, not exactly...\x02",
+        (
+            "#501F嗯……这个嘛，\x01",
+            "其实不是的……\x02",
+        )
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x9,
-        "Well, that's too bad...\x02",
+        "哦，真是遗憾呢……\x02",
     )
 
     CloseMessageWindow()
@@ -1946,9 +1912,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "The scenery of this place is beautiful,\x01",
-            "and a refreshing breeze blows\x01",
-            "through here all day long.\x02",
+            "这里湖边景色十分漂亮，\x01",
+            "而且全天都吹着清爽自然的风。\x02",
         )
     )
 
@@ -1957,9 +1922,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I guarantee that you'll find it\x01",
-            "relaxing here. Please visit us\x01",
-            "again when you have a chance.\x02",
+            "在这里休闲度假是最适合不过了。\x01",
+            "以后有机会一定要来这里休息一下哦。\x02",
         )
     )
 
@@ -1972,9 +1936,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "The scenery of this place is beautiful,\x01",
-            "and a refreshing breeze blows\x01",
-            "through here all day long.\x02",
+            "这里湖边景色十分漂亮，\x01",
+            "而且全天都吹着清爽自然的风。\x02",
         )
     )
 
@@ -1983,9 +1946,8 @@ def main():
     ChrTalk(
         0x9,
         (
-            "I guarantee that you'll find it\x01",
-            "relaxing here. Please visit us\x01",
-            "again when you have a chance.\x02",
+            "在这里休闲度假是最适合不过了。\x01",
+            "以后有机会一定要来这里休息一下哦。\x02",
         )
     )
 
@@ -2007,8 +1969,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The master has already gotten\x01",
-            "away from me once today.\x02",
+            "今天又让那家伙\x01",
+            "逃过了我一次的追捕。\x02",
         )
     )
 
@@ -2017,9 +1979,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I guess I'll try searching for\x01",
-            "another prime fishing spot\x01",
-            "and try my luck again.\x02",
+            "看来要选择一个更好的位置才行，\x01",
+            "再努力一下试试看吧。\x02",
         )
     )
 
@@ -2039,9 +2000,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "During the evening, the entire\x01",
-            "surrounding area is bathed in\x01",
-            "a beautiful orange color.\x02",
+            "一到傍晚，\x01",
+            "这附近就被夕阳染成橘黄色，\x01",
+            "非常漂亮呢。\x02",
         )
     )
 
@@ -2057,8 +2018,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I was able to spend another\x01",
-            "day relaxing here today.\x02",
+            "啊啊，\x01",
+            "又这样悠悠闲闲地过了一天啊。\x02",
         )
     )
 
@@ -2067,9 +2028,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's important to get away from\x01",
-            "your daily routine when you're\x01",
-            "worn out.\x02",
+            "工作累了的话，\x01",
+            "适当放松一下也是很重要的。\x02",
         )
     )
 
@@ -2078,9 +2038,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "When I return home, reality is\x01",
-            "waiting for me, so I'd better\x01",
-            "enjoy myself while I can.\x02",
+            "虽说回去还有很多工作要做，\x01",
+            "不过休息的时候还是要好好休息。\x02",
         )
     )
 
@@ -2093,9 +2052,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's important to get away from\x01",
-            "your daily routine when you're\x01",
-            "worn out.\x02",
+            "工作累了的话，\x01",
+            "适当放松一下也是很重要的。\x02",
         )
     )
 
@@ -2104,9 +2062,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "When I return home, reality is\x01",
-            "waiting for me, so I'd better\x01",
-            "enjoy myself while I can.\x02",
+            "虽说回去还有很多工作要做，\x01",
+            "不过休息的时候还是要好好休息。\x02",
         )
     )
 
@@ -2122,17 +2079,17 @@ def main():
 
     ChrTalk(
         0xFE,
-        "Oh, are you staying here too?\x02",
+        (
+            "啊呀，\x01",
+            "你们也是来这里投宿的吗？\x02",
+        )
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0xFE,
-        (
-            "Let's enjoy this wonderful place\x01",
-            "together.\x02",
-        )
+        "请多关照哦。\x02",
     )
 
     CloseMessageWindow()
@@ -2147,8 +2104,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I wonder if I should bring my\x01",
-            "husband here next year.\x02",
+            "明年我要和老公一起\x01",
+            "来这里度假。\x02",
         )
     )
 
@@ -2157,9 +2114,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "He always stays at home to watch\x01",
-            "the house while I'm gone, so I feel\x01",
-            "kind of sorry for him.\x02",
+            "每年他只有看家的份，\x01",
+            "也真是挺可怜的。\x02",
         )
     )
 
@@ -2168,9 +2124,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "But my daughter and I bonding,\x01",
-            "just the two of us, isn't a bad\x01",
-            "thing either.\x02",
+            "不过，和女儿两个人来，\x01",
+            "这种感觉也蛮不错呢。\x02",
         )
     )
 
@@ -2183,8 +2138,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I wonder if I should bring my\x01",
-            "husband here next year.\x02",
+            "明年我要和老公一起\x01",
+            "来这里度假。\x02",
         )
     )
 
@@ -2193,9 +2148,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "He always stays at home to watch\x01",
-            "the house while we're gone, so I feel\x01",
-            "kind of sorry for him.\x02",
+            "每年他只有看家的份，\x01",
+            "也真是挺可怜的呢。\x02",
         )
     )
 
@@ -2212,9 +2166,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "The Kingfisher Inn in Bose and\x01",
-            "the Maple Leaf Inn in Zeiss are\x01",
-            "my favorite places to stay.\x02",
+            "柏斯的这间川蝉亭\x01",
+            "和蔡斯的红叶亭，\x01",
+            "我都非常喜欢。\x02",
         )
     )
 
@@ -2228,8 +2182,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Although I like traveling around\x01",
-            "and seeing the sights, too...\x02",
+            "虽然顺着那些旅游胜地\x01",
+            "一路游览下来也很不错……\x02",
         )
     )
 
@@ -2238,8 +2192,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I love being able to take a vacation\x01",
-            "like this where I can relax.\x02",
+            "不过，我还是喜欢像这样\x01",
+            "悠然自得的旅行生活啊。\x02",
         )
     )
 
@@ -2252,7 +2206,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "The weather is just wonderful today.\x02",
+        "今天天气真是好呢。\x02",
     )
 
     CloseMessageWindow()
@@ -2260,9 +2214,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Maybe I'll just take a book and\x01",
-            "read by the water's edge this\x01",
-            "afternoon.\x02",
+            "我决定下午\x01",
+            "在湖边好好看书。\x02",
         )
     )
 
@@ -2271,8 +2224,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Or maybe I could give fishing\x01",
-            "a try, too.\x02",
+            "呵呵，不过看书之余，\x01",
+            "也想试试钓鱼呢。\x02",
         )
     )
 
@@ -2300,8 +2253,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's almost meal time. I wonder\x01",
-            "what's on the menu today.\x02",
+            "差不多到吃饭的时间了。\x01",
+            "今天的菜会是什么呢……\x02",
         )
     )
 
@@ -2309,10 +2262,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "The food here is the one thing\x01",
-            "I can always look forward to.\x02",
-        )
+        "这里的菜还是可以期待一下的。\x02",
     )
 
     CloseMessageWindow()
@@ -2325,8 +2275,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "There are a lot of people who\x01",
-            "come to this inn to fish.\x02",
+            "本店的大部分客人\x01",
+            "都是为了钓鱼而来的。\x02",
         )
     )
 
@@ -2335,9 +2285,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Just a little while ago, an old man\x01",
-            "came here from Bose and spent\x01",
-            "all day fishing before going home.\x02",
+            "之前从柏斯来了一个老爷爷，\x01",
+            "他为了在这里钓鱼连家也不回，\x01",
+            "一钓就是一天。\x02",
         )
     )
 
@@ -2346,8 +2296,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I'm thinking about giving it\x01",
-            "a try myself.\x02",
+            "我也想试试\x01",
+            "钓一天的鱼是什么感觉。\x02",
         )
     )
 
@@ -2360,14 +2310,14 @@ def main():
 
     ChrTalk(
         0xFE,
-        "I wonder what's for dinner today?\x02",
+        "今天的晚饭是什么呢？\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0xFE,
-        "I'm so excited I can hardly wait.\x02",
+        "我现在就开始期待了。\x02",
     )
 
     CloseMessageWindow()
@@ -2380,8 +2330,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "That Lloyd fellow who came from\x01",
-            "the Royal City is an odd apple.\x02",
+            "从王都来的那个叫罗伊德的人\x01",
+            "好像挺古怪的哦。\x02",
         )
     )
 
@@ -2390,9 +2340,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It seems that if you try to talk to him\x01",
-            "while he's fishing, he completely tunes\x01",
-            "you out.\x02",
+            "他钓鱼的时候，无论你怎么叫他，\x01",
+            "他也好像完全没有反应。\x02",
         )
     )
 
@@ -2401,8 +2350,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "He's a rather friendly gent if you\x01",
-            "meet him during dinner though.\x02",
+            "在食堂和他聊天的时候，\x01",
+            "他给人的感觉却是很随和很健谈的啊。\x02",
         )
     )
 
@@ -2418,25 +2367,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "My mother and I come here every\x01",
-            "year on vacation around this time.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
-        "It's a tradition in our family.\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
-        (
-            "My mother seems to look forward\x01",
-            "to it, every time.\x02",
+            "每年的这个时候，\x01",
+            "我和母亲\x01",
+            "都会到这里来旅游。\x02",
         )
     )
 
@@ -2445,9 +2378,29 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I kind of feel bad for my father,\x01",
-            "though, as he always gets left\x01",
-            "behind.\x02",
+            "在这里呆上几天\x01",
+            "是我们母女的例行公事。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xFE,
+        (
+            "母亲她每年\x01",
+            "都很期待这个旅游哦。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xFE,
+        (
+            "每次都是我和母亲两个人来，\x01",
+            "而把父亲自己丢在家里。\x01",
+            "总觉得他有点可怜。\x02",
         )
     )
 
@@ -2460,8 +2413,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "My mother and I come here every\x01",
-            "year on vacation around this time.\x02",
+            "每年的这个时候，\x01",
+            "我和母亲\x01",
+            "都会到这里来旅游。\x02",
         )
     )
 
@@ -2469,7 +2423,10 @@ def main():
 
     ChrTalk(
         0xFE,
-        "It's a tradition in our family.\x02",
+        (
+            "在这里呆上几天\x01",
+            "是我们母女的例行公事。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -2485,8 +2442,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "And the food is great.\x01",
-            "This place is relaxing...\x02",
+            "可以品尝美味的料理，\x01",
+            "又可以悠闲地度假……\x02",
         )
     )
 
@@ -2495,9 +2452,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "And I couldn't ask for anything\x01",
-            "more, but I have to be careful\x01",
-            "not to put on any weight.\x02",
+            "虽然这是超级的享受，\x01",
+            "不过也要注意是否会发胖啊。\x02",
         )
     )
 
@@ -2521,7 +2477,10 @@ def main():
 
     ChrTalk(
         0x101,
-        "#006F(Huh, who's this guy...?)\x02",
+        (
+            "#006F（咦……\x01",
+            "　这个人莫非是……）\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -2529,8 +2488,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010F(Um, he looks like a bracer if\x01",
-            "you ask me.)\x02",
+            "#010F（嗯，\x01",
+            "　好像和我们一样都是游击士呢。）\x02",
         )
     )
 
@@ -2538,28 +2497,28 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000FUm...\x02",
+        "#000F那个……\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0xFE,
-        "...\x02",
+        "………………………………\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x101,
-        "#002FHello? Is anybody there?\x02",
+        "#002F喂，打扰一下？\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0xFE,
-        "...\x02",
+        "………………………………\x02",
     )
 
     CloseMessageWindow()
@@ -2567,9 +2526,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#023FHoney water with soda...\x02\x03",
-            "#020FIt's been a while, hasn't it,\x01",
-            "Sting?\x02",
+            "#023F蜂蜜苏打水……\x02\x03",
+            "#020F好久不见了呢，斯丁克。\x02",
         )
     )
 
@@ -2581,8 +2539,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Weren't you...that bracer in training\x01",
-            "from some time ago?\x02",
+            "你是……\x01",
+            "以前的那个见习游击士啊。\x02",
         )
     )
 
@@ -2591,9 +2549,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FYou got it.\x02\x03",
-            "And thanks to you I can call\x01",
-            "myself a senior bracer.\x02",
+            "#020F没错呢。\x02\x03",
+            "托你的福，\x01",
+            "现在我已经是正游击士啦。\x02",
         )
     )
 
@@ -2602,9 +2560,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Hmm...I almost didn't recognize you.\x01",
-            "Do you have some work here at the\x01",
-            "Bose branch?\x02",
+            "呼……看起来的确成熟了不少。\x01",
+            "在柏斯支部有工作吗？\x02",
         )
     )
 
@@ -2612,7 +2569,7 @@ def main():
 
     ChrTalk(
         0x103,
-        "#020FAt the moment, yeah.\x02",
+        "#020F嗯，现在就正在工作呢。\x02",
     )
 
     CloseMessageWindow()
@@ -2620,9 +2577,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Right now we are dealing with a\x01",
-            "number of incidents, so we're a\x01",
-            "little shorthanded...\x02",
+            "最近发生了很多事情，\x01",
+            "游击士的人手远远不够呢……\x02",
         )
     )
 
@@ -2630,10 +2586,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "Any help you could give us would\x01",
-            "be useful.\x02",
-        )
+        "……那就靠你们了。\x02",
     )
 
     CloseMessageWindow()
@@ -2642,9 +2595,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#002F(So he was one of Schera's acquaintances,\x01",
-            "huh? He does seem like a bit of a scary\x01",
-            "guy if you ask me.)\x02",
+            "#002F（是雪拉姐的熟人吧。\x01",
+            "　感觉有点恐怖的人呢。）\x02",
         )
     )
 
@@ -2653,9 +2605,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010F(That may be so, but with the way he\x01",
-            "carries himself...he looks pretty\x01",
-            "capable as a bracer.)\x02",
+            "#010F（但是那走路的动作……\x01",
+            "　看起来应该很厉害吧。）\x02",
         )
     )
 
@@ -2669,7 +2620,10 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000FIt was...um...Sting, wasn't it?\x02",
+        (
+            "#000F啊，您是……\x01",
+            "是斯丁克先生吧？\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -2677,7 +2631,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "...\x02",
+        "………………………………\x02",
     )
 
     CloseMessageWindow()
@@ -2685,8 +2639,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FWas there some kind of incident\x01",
-            "here?\x02",
+            "#010F您会在这里，\x01",
+            "难道是发生了什么事情吗？\x02",
         )
     )
 
@@ -2695,9 +2649,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "No, just a monster extermination.\x01",
-            "No big incident or anything like\x01",
-            "that.\x02",
+            "……我是来消灭通缉魔兽的。\x01",
+            "不是什么大事。\x02",
         )
     )
 
@@ -2705,7 +2658,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "But never mind that...\x02",
+        "说起来，你们……\x02",
     )
 
     CloseMessageWindow()
@@ -2713,8 +2666,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I heard from Lugran that you're\x01",
-            "Cassius' kids. Is that true?\x02",
+            "我从卢格兰老爷子那里听说了，\x01",
+            "你们真的是卡西乌斯先生的孩子吗？\x02",
         )
     )
 
@@ -2722,14 +2675,14 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000FY-Yeah, that's right...\x02",
+        "#000F啊……嗯，是的。\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        "#010FWhy? Do you know our father?\x02",
+        "#010F您认识父亲吗？\x02",
     )
 
     CloseMessageWindow()
@@ -2737,8 +2690,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Yeah, in a sense...and he's helped\x01",
-            "me out a number of times.\x02",
+            "是啊……\x01",
+            "以前曾经受过他的照顾。\x02",
         )
     )
 
@@ -2747,9 +2700,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#505FHmm...\x02\x03",
-            "So, Dad is well known in Bose\x01",
-            "too, then.\x02",
+            "#505F唔……\x02\x03",
+            "老爸在柏斯地区\x01",
+            "熟人也相当多呢……\x02",
         )
     )
 
@@ -2757,7 +2710,7 @@ def main():
 
     ChrTalk(
         0x102,
-        "#010FYeah, it sure looks that way.\x02",
+        "#010F嗯，是呀。\x02",
     )
 
     CloseMessageWindow()
@@ -2771,8 +2724,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I hope that you can find him\x01",
-            "soon...\x02",
+            "……如果能早点得知\x01",
+            "卡西乌斯先生的消息就好了。\x02",
         )
     )
 
@@ -2798,10 +2751,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#814FIsn't that you, Scherazard?\x02\x03",
-            "#850FIt's nice to see you again. I haven't\x01",
-            "seen you since the last time you\x01",
-            "were here during your training.\x02",
+            "#814F啊，难道……\x01",
+            "这不是雪拉扎德前辈吗？\x02\x03",
+            "#850F很久不见了～\x01",
+            "自从您去修行之后就再没见面了。\x02",
         )
     )
 
@@ -2810,8 +2763,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FIf it isn't Anelace. What\x01",
-            "are you doing here?\x02",
+            "#020F啊呀，这不是亚妮拉丝嘛。\x01",
+            "你在这里做什么呢。\x02",
         )
     )
 
@@ -2820,10 +2773,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#810FWell, we had a request to\x01",
-            "exterminate a monster in\x01",
-            "this area.\x02\x03",
-            "And that's just what we did!\x02",
+            "#810嗯～\x01",
+            "协会委托我来这边消灭通缉魔兽。\x02\x03",
+            "就在刚才，\x01",
+            "我终于把工作解决掉了。\x02",
         )
     )
 
@@ -2832,10 +2785,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FOh really...?\x02\x03",
-            "So how has your swordsmanship been\x01",
-            "coming along? Have you started\x01",
-            "mastering the use of that weapon?\x02",
+            "#020F是这样啊……\x02\x03",
+            "对了，\x01",
+            "你已经找到所谓的剑之道了吗？\x02",
         )
     )
 
@@ -2846,10 +2798,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#819FPlease don't even ask.\x01",
-            "I'm still working on that.\x02\x03",
-            "#810FBy the way, Scherazard, are you\x01",
-            "here on a job with the guild?\x02",
+            "#819F呵呵，请别问了。\x01",
+            "我还处在修行阶段呢。\x02\x03",
+            "#810F说起来，\x01",
+            "前辈您也是在执行协会的任务吗？\x02",
         )
     )
 
@@ -2857,11 +2809,7 @@ def main():
 
     ChrTalk(
         0x103,
-        (
-            "#020FYeah, something like that. Although\x01",
-            "the job's a little different from the one\x01",
-            "you're handling.\x02",
-        )
+        "#020F是啊，不过我和你的任务性质不同。\x02",
     )
 
     CloseMessageWindow()
@@ -2869,10 +2817,10 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#810FIs that so...\x02\x03",
-            "This region has been plagued with\x01",
-            "a number of incidents.\x02\x03",
-            "Please be careful yourself.\x02",
+            "#810F是这样啊……\x02\x03",
+            "这个地区最近发生的\x01",
+            "不寻常的事情还真多啊。\x02\x03",
+            "您路上一定要小心哦。\x02",
         )
     )
 
@@ -2885,10 +2833,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "#810FOne more thing, Scherazard, the\x01",
-            "region has been plagued with a\x01",
-            "number of incidents recently.\x02\x03",
-            "Make sure to be careful.\x02",
+            "#810F雪拉扎德前辈，\x01",
+            "这个地区最近发生了很多不寻常的事情呢。\x02\x03",
+            "您路上一定要小心哦。\x02",
         )
     )
 
@@ -2922,11 +2869,11 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028FHmm, so you can hold your\x01",
-            "liquor, can't you?\x02\x03",
-            "Hmm-hmm-hmm... I think I've changed\x01",
-            "my mind about you.\x02\x03",
-            "Come on now, drink up!\x02",
+            "#028F唔～\x01",
+            "你的酒量也不错嘛。\x02\x03",
+            "哦呵呵……正合我意啊㈱\x02\x03",
+            "好啦好啦，赶快给我喝！\x01",
+            "（咕噜咕噜咕噜……）\x02",
         )
     )
 
@@ -2942,10 +2889,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#037FH-Hold on, Schera! Don't you think\x01",
-            "we're getting a little ahead of\x01",
-            "ourselves with this pace?\x02\x03",
-            "It could interfere with tonight's...\x02",
+            "#037F等、等一下。\x01",
+            "你喝得有点太猛了吧？\x02\x03",
+            "这样的话晚上的工作不就……\x02",
         )
     )
 
@@ -2953,10 +2899,7 @@ def main():
 
     ChrTalk(
         0xF,
-        (
-            "#029FWhat are you whining about\x01",
-            "now...?\x02",
-        )
+        "#029F……你说什么……\x02",
     )
 
     CloseMessageWindow()
@@ -2965,9 +2908,8 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#029FCome on and drink, you third-rate\x01",
-            "musician! Or are you saying that\x01",
-            "you can't keep up with me?!\x02",
+            "#029F哼哼，赖皮演奏家！\x01",
+            "难道你不愿意喝我敬你的酒吗！？\x02",
         )
     )
 
@@ -2975,7 +2917,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#038FYikes...!\x02",
+        "#038F哇哇哇……\x02",
     )
 
     CloseMessageWindow()
@@ -3010,8 +2952,8 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#038FEstelle...don't just sit there\x01",
-            "and watch! Do something!\x02",
+            "#038F艾丝蒂尔君……\x01",
+            "你们怎么不帮我说几句啊！\x02",
         )
     )
 
@@ -3020,10 +2962,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FSorry, bud. Once she gets started\x01",
-            "there's no stopping her.\x02\x03",
-            "#006FBut you don't have to worry,\x01",
-            "Schera never gets plastered.\x02",
+            "#007F不好意思啊～\x01",
+            "变成这样的话我也阻止不住了。\x02\x03",
+            "#006F别担心，\x01",
+            "雪拉姐就算喝多少瓶都不会醉的。\x02",
         )
     )
 
@@ -3031,10 +2973,7 @@ def main():
 
     ChrTalk(
         0x10,
-        (
-            "#037FUm...shouldn't you be worried\x01",
-            "about me?\x02",
-        )
+        "#037F我是说……你们不担心我吗？\x02",
     )
 
     CloseMessageWindow()
@@ -3069,7 +3008,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#037FI-Is she always like this?\x02",
+        "#037F她、她真的这么能喝吗？\x02",
     )
 
     CloseMessageWindow()
@@ -3077,11 +3016,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FWhenever she's on the job, she\x01",
-            "manages to behave herself.\x02\x03",
-            "But when it comes to having a\x01",
-            "drink, even my dad can't keep\x01",
-            "up with her.\x02",
+            "#007F雪拉姐不单是一级的游击士，\x01",
+            "而且还是一级的酒场好手呢。\x02\x03",
+            "就连我家的老爸也喝不过她。\x01",
+            "　\x02",
         )
     )
 
@@ -3093,10 +3031,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#037FI-Is that the case...?\x02\x03",
-            "At any rate, I'm kind of interested in\x01",
-            "seeing her go wild, or am I going to\x01",
-            "pass out from the drinks first...?\x02",
+            "#037F这、这么厉害啊……\x02\x03",
+            "这样说我倒是想看看她喝醉的样子。\x01",
+            "不过我还是有点怕怕呢。\x02",
         )
     )
 
@@ -3109,10 +3046,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#037FSo, am I going to get to see Schera\x01",
-            "go wild or am I going to pass out\x01",
-            "from the drinks first...?\x02\x03",
-            "Hmm, that's one big question there.\x02",
+            "#037F虽说想看她有什么大胆的表演，\x01",
+            "不过在那之前我可能已经醉了……\x02\x03",
+            "唔……这是重大的问题啊。\x02",
         )
     )
 
@@ -3139,8 +3075,8 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "Scherazard and Olivier are having a\x01",
-            "drink of chilled fruit wine together.\x02",
+            "雪拉扎德和奥利维尔\x01",
+            "以沁凉的果实酒交杯换盏。\x02",
         )
     )
 
@@ -3152,11 +3088,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FSchera...should you start drinking\x01",
-            "again when it's only noon?\x02\x03",
-            "No matter how light the liquor is,\x01",
-            "drinking too much is bad for your\x01",
-            "health, right?\x02",
+            "#000F雪拉姐呀……\x01",
+            "现在还是白天你就喝这么多了。\x02\x03",
+            "就算是再清淡的酒也有个限度啊，\x01",
+            "喝多了不怕搞坏身体吗？\x02",
         )
     )
 
@@ -3191,8 +3126,8 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#021FDon't worry, this stuff is just\x01",
-            "like water.\x02",
+            "#021F没问题，没问题。\x01",
+            "酒这种东西其实和水差不多嘛。\x02",
         )
     )
 
@@ -3227,11 +3162,10 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#035FEstelle, sometimes we all need\x01",
-            "to take a breather.\x02\x03",
-            "I understand your concern for\x01",
-            "Schera, but you can leave her\x01",
-            "to me.\x02",
+            "#035F呵呵，艾丝蒂尔君。\x01",
+            "有时候也要适当放松一下自己嘛。\x02\x03",
+            "我知道怎么服侍雪拉君，\x01",
+            "你们就放心把她交给我吧。\x02",
         )
     )
 
@@ -3241,8 +3175,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FActually, Schera's not the one I'm\x01",
-            "concerned about.\x02",
+            "#007F不、令人担心的倒不是雪拉姐……\x01",
+            "　\x02",
         )
     )
 
@@ -3250,7 +3184,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#033F???\x02",
+        "#033F？？？\x02",
     )
 
     CloseMessageWindow()
@@ -3287,10 +3221,10 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#035FI invited Schera for a friendly\x01",
-            "drink, and she readily agreed.\x02\x03",
-            "It seems as though she's finally\x01",
-            "been taken in by my charm.\x02",
+            "#035F我只是问她要不要喝一杯，\x01",
+            "她就很轻易地说ＯＫ没问题。\x02\x03",
+            "呵呵，雪拉君也终于开始\x01",
+            "注意到我无人能敌的魅力了。\x02",
         )
     )
 
@@ -3298,10 +3232,7 @@ def main():
 
     ChrTalk(
         0x101,
-        (
-            "#000F(That brash self-confidence may\x01",
-            "cost you your life...)\x02",
-        )
+        "#000F（过分的自信只会弄出人命的……）\x02",
     )
 
     CloseMessageWindow()
@@ -3313,9 +3244,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#031FHeh heh heh...\x02\x03",
-            "And after she gets wasted I'll be\x01",
-            "the one to take good care of her.\x02",
+            "#031F呵呵……\x02\x03",
+            "如果她醉倒的话，\x01",
+            "我会温柔地让她投入我的怀里。\x02",
         )
     )
 
@@ -3323,10 +3254,7 @@ def main():
 
     ChrTalk(
         0x101,
-        (
-            "#007F(It's scary how much he doesn't\x01",
-            "know...)\x02",
-        )
+        "#007F（我为你的无知有点担心……）\x02",
     )
 
     CloseMessageWindow()
@@ -3363,11 +3291,11 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028FHmm, so you can hold your\x01",
-            "liquor, can't you?\x02\x03",
-            "Hmm-hmm-hmm... I think I've changed\x01",
-            "my mind about you.\x02\x03",
-            "Come on now, drink up!\x02",
+            "#028F唔～\x01",
+            "你的酒量也不错嘛。\x02\x03",
+            "哦呵呵……正合我意啊㈱\x02\x03",
+            "好啦好啦，赶快给我喝！\x01",
+            "（咕噜咕噜咕噜……）\x02",
         )
     )
 
@@ -3383,10 +3311,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#037FH-Hold on, Schera! Don't you think\x01",
-            "we're getting a little ahead of\x01",
-            "ourselves with this pace?\x02\x03",
-            "It could interfere with tonight's...\x02",
+            "#037F等、等一下。\x01",
+            "你喝得有点太猛了吧？\x02\x03",
+            "这样的话晚上的工作不就……\x02",
         )
     )
 
@@ -3394,10 +3321,7 @@ def main():
 
     ChrTalk(
         0xF,
-        (
-            "#029FWhat are you whining about\x01",
-            "now...?\x02",
-        )
+        "#029F……你说什么……\x02",
     )
 
     CloseMessageWindow()
@@ -3406,9 +3330,8 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#029FCome on and drink, you third-rate\x01",
-            "musician! Or are you saying that\x01",
-            "you can't keep up with me?!\x02",
+            "#029F哼哼，赖皮演奏家！\x01",
+            "难道你不愿意喝我敬你的酒吗！？\x02",
         )
     )
 
@@ -3416,7 +3339,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#038FYikes...!\x02",
+        "#038F哇哇哇……\x02",
     )
 
     CloseMessageWindow()
@@ -3451,8 +3374,8 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#038FEstelle...don't just sit there\x01",
-            "and watch! Do something!\x02",
+            "#038F艾丝蒂尔君……\x01",
+            "你们怎么不帮我说几句啊！\x02",
         )
     )
 
@@ -3462,10 +3385,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FSorry, bud. Once she gets started\x01",
-            "there's no stopping her.\x02\x03",
-            "#006FBut you don't have to worry,\x01",
-            "Schera never gets plastered.\x02",
+            "#007F不好意思啊～\x01",
+            "变成这样的话我也阻止不住了。\x02\x03",
+            "#006F别担心，\x01",
+            "雪拉姐就算喝多少瓶都不会醉的。\x02",
         )
     )
 
@@ -3473,10 +3396,7 @@ def main():
 
     ChrTalk(
         0x10,
-        (
-            "#037FUm...shouldn't you be worried\x01",
-            "about me?\x02",
-        )
+        "#037F我是说……你们不担心我吗？\x02",
     )
 
     CloseMessageWindow()
@@ -3512,10 +3432,9 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028FThings are starting to heat\x01",
-            "up in here!\x02\x03",
-            "Maybe I should just strip\x01",
-            "down naked.\x02",
+            "#028F唔……好热啊～\x02\x03",
+            "干脆通通脱光算了，\x01",
+            "穿着衣服喝酒好麻烦啦。\x02",
         )
     )
 
@@ -3526,8 +3445,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004FIf you take off anything else we're\x01",
-            "really going to be in trouble.\x02",
+            "#004F你、你喝醉啦。\x01",
+            "这里有很多客人在吃饭啊！\x02",
         )
     )
 
@@ -3543,9 +3462,9 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028FEstelle, you know you're so cute\x01",
-            "when you talk like that.\x02\x03",
-            "How about giving me a kiss?\x02",
+            "#028F艾丝蒂尔～你这个小丫头\x01",
+            "真的是越看越可爱呢～\x02\x03",
+            "来，陪姐姐喝一杯好不好？\x02",
         )
     )
 
@@ -3553,7 +3472,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#002FI'll do no such thing!\x02",
+        "#002F我不喝！ \x02",
     )
 
     CloseMessageWindow()
@@ -3579,8 +3498,8 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "Scherazard and Olivier are having a\x01",
-            "drink of chilled fruit wine together.\x02",
+            "雪拉扎德和奥利维尔\x01",
+            "以沁凉的果实酒交杯换盏。\x02",
         )
     )
 
@@ -3591,11 +3510,10 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FSchera...should you start drinking\x01",
-            "again when it's only noon?\x02\x03",
-            "No matter how light the liquor is,\x01",
-            "drinking too much is bad for your\x01",
-            "health, right?\x02",
+            "#000F雪拉姐呀……\x01",
+            "现在还是白天你就喝这么多了。\x02\x03",
+            "就算是再清淡的酒也有个限度啊，\x01",
+            "喝多了不怕搞坏身体吗？\x02",
         )
     )
 
@@ -3630,8 +3548,8 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#021FDon't worry, this stuff is just\x01",
-            "like water.\x02",
+            "#021F没问题，没问题。\x01",
+            "酒这种东西其实和水差不多嘛。\x02",
         )
     )
 
@@ -3666,11 +3584,10 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#035FEstelle, sometimes we all need\x01",
-            "to take a breather.\x02\x03",
-            "I understand your concern for\x01",
-            "Schera, but you can leave her\x01",
-            "to me.\x02",
+            "#035F呵呵，艾丝蒂尔君。\x01",
+            "有时候也要适当放松一下自己嘛。\x02\x03",
+            "我知道怎么服侍雪拉君，\x01",
+            "你们就放心把她交给我吧。\x02",
         )
     )
 
@@ -3680,8 +3597,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FActually, Schera's not the one I'm\x01",
-            "concerned about.\x02",
+            "#007F不、令人担心的倒不是雪拉姐……\x01",
+            "　\x02",
         )
     )
 
@@ -3689,7 +3606,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#033F???\x02",
+        "#033F？？？\x02",
     )
 
     CloseMessageWindow()
@@ -3726,9 +3643,9 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#020FBy the way Estelle, what\x01",
-            "happened to Joshua?\x02\x03",
-            "Did he dump you or something?\x02",
+            "#020F说起来，艾丝蒂尔。\x01",
+            "约修亚他干什么去了？\x02\x03",
+            "难道是你被甩了？\x02",
         )
     )
 
@@ -3736,7 +3653,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#007FYeah, actually he did.\x02",
+        "#007F嗯……就是这样。\x02",
     )
 
     CloseMessageWindow()
@@ -3746,7 +3663,7 @@ def main():
 
     ChrTalk(
         0xF,
-        "#023FReally?!\x02",
+        "#023F真的吗！？\x02",
     )
 
     CloseMessageWindow()
@@ -3754,11 +3671,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#009FI invited him to come fishing\x01",
-            "with me, but he brushed me\x01",
-            "off for a book.\x02\x03",
-            "Don't you think that's a little\x01",
-            "cold-hearted?\x02",
+            "#009F我本来约他去钓鱼，\x01",
+            "但是他说要读书，就不管我了。\x02\x03",
+            "真是的，难道不觉得态度过于冷淡了吗？\x02",
         )
     )
 
@@ -3766,10 +3681,7 @@ def main():
 
     ChrTalk(
         0xF,
-        (
-            "#025FWhat, that's it? You had me\x01",
-            "going there for a minute...\x02",
-        )
+        "#025F什么呀，差点让我误会了……\x02",
     )
 
     CloseMessageWindow()
@@ -3781,11 +3693,9 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#020FI guess you've liked fishing ever\x01",
-            "since you were a kid, haven't\x01",
-            "you, Estelle?\x02\x03",
-            "Even though it's usually a hobby\x01",
-            "for boys.\x02",
+            "#020F我知道你从小就很喜欢钓鱼。\x01",
+            "　\x02\x03",
+            "不过这可是男孩子的兴趣哦。\x02",
         )
     )
 
@@ -3794,8 +3704,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#001FIt shouldn't matter if I'm a boy\x01",
-            "or not. I like the things I like.\x02",
+            "#001F嘿嘿，没关系啦。\x01",
+            "本来钓鱼就是非常有趣的事情嘛。\x02",
         )
     )
 
@@ -3833,8 +3743,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I see...so you heard from\x01",
-            "Mr. Kuwano, did you?\x02",
+            "是这样啊……\x01",
+            "你们是从库瓦诺那儿听说我的。\x02",
         )
     )
 
@@ -3843,8 +3753,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Yeah, I saw that strange pair\x01",
-            "about two nights ago.\x02",
+            "啊啊，我的确是看到了。\x01",
+            "就在前天夜晚，几个奇怪的家伙。\x02",
         )
     )
 
@@ -3853,9 +3763,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FI knew it...\x02\x03",
-            "Could we get you to fill us in\x01",
-            "a little more on the details?\x02",
+            "#000F果然是……\x02\x03",
+            "可以把那天看到的事情\x01",
+            "详细地告诉我们吗？\x02",
         )
     )
 
@@ -3864,8 +3774,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Before that, are you all bracers\x01",
-            "or something?\x02",
+            "……在此之前我想问一句。\x01",
+            "你们是不是游击士？\x02",
         )
     )
 
@@ -3873,10 +3783,7 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "Is this somehow related to some\x01",
-            "sorta crime?\x02",
-        )
+        "我说的话是不是牵涉到什么案件？\x02",
     )
 
     CloseMessageWindow()
@@ -3884,8 +3791,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#012FWe can't say for sure, but there\x01",
-            "does appear to be a possibility.\x02",
+            "#012F现在还不能断定。\x01",
+            "不过，相关联的可能性还是有的。\x02",
         )
     )
 
@@ -3894,8 +3801,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Gotcha... In that case, I'll\x01",
-            "do what I can to help you out.\x02",
+            "我知道了……\x01",
+            "既然是这样，我一定会协助你们的。\x02",
         )
     )
 
@@ -3904,8 +3811,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It was the other night when\x01",
-            "I was out fishing on my boat...\x02",
+            "前天晚上……\x01",
+            "也就是我在小艇上夜钓的时候。\x02",
         )
     )
 
@@ -3914,9 +3821,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I was returning to the inn, dead\x01",
-            "tired after a day of battling it out\x01",
-            "with the master of this lake...\x02",
+            "因为和努西苦战了一整天，\x01",
+            "累得不行了所以想回旅馆休息。\x02",
         )
     )
 
@@ -3925,9 +3831,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It had gotten late into the night, and\x01",
-            "it was about the time when everyone at\x01",
-            "the inn was asleep in their beds...\x02",
+            "天色也已经晚了，\x01",
+            "住宿的客人也都休息了。\x02",
         )
     )
 
@@ -3936,9 +3841,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#022FNow hold on a minute.\x01",
-            "What do you mean by\x01",
-            "'the master of this lake'?\x02",
+            "#022F请等一下。\x01",
+            "……你说的『努西』是什么？\x02",
         )
     )
 
@@ -3946,7 +3850,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "I'm glad you asked!\x02",
+        "你可要认真听好了！\x02",
     )
 
     CloseMessageWindow()
@@ -3954,9 +3858,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "The 'master' is a giant salmon\x01",
-            "that swims the murky depths of\x01",
-            "Valleria Lake!\x02",
+            "所谓的努西，\x01",
+            "是生活在这个瓦雷利亚湖的\x01",
+            "一种十分巨大的鱼精。\x02",
         )
     )
 
@@ -3965,9 +3869,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It has been the feared king of\x01",
-            "the waters among fishing-lovers\x01",
-            "for over a decade!\x02",
+            "十年来，努西一直都是\x01",
+            "我们这些钓鱼爱好者最热衷的话题，\x01",
+            "但它同时也是一种让人难以捉摸的鱼。\x02",
         )
     )
 
@@ -3978,26 +3882,30 @@ def main():
 
     ChrTalk(
         0x103,
-        "#023F(Crap...I shouldn't have asked...)\x02",
+        "#023F（不妙……）\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        (
-            "#017F(It looks like you've thrown a\x01",
-            "log onto the maniac's fire...)\x02",
-        )
+        "#017F（不小心让他兴致高昂起来了……）\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x101,
+        "#004F有、有这么厉害的鱼吗！？\x02",
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
         (
-            "#004FIs-is it really that huge of a fish\x01",
-            "like you say?!\x02",
+            "对啊，要知道这五年来，\x01",
+            "我一直在追踪那家伙啊……\x02",
         )
     )
 
@@ -4006,9 +3914,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "You bet your last mira it is!\x01",
-            "And I've been chasing the darn thing\x01",
-            "for the last five years of my life...\x02",
+            "不过，那家伙的脾性反复无常，\x01",
+            "一时游到这来一时游到那去，\x01",
+            "一时吃这种鱼饵一时吃那种鱼饵。\x02",
         )
     )
 
@@ -4017,20 +3925,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "It comes and goes in different parts\x01",
-            "of Valleria Lake and changes its\x01",
-            "feeding spots on a whim.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        (
-            "I heard from a buddy of mine that it\x01",
-            "had appeared in these parts, so I\x01",
-            "came a runnin' from the Royal City.\x02",
+            "最近，我听说那家伙在这附近出现，\x01",
+            "就急忙从王都追了过来。\x02",
         )
     )
 
@@ -4039,14 +3935,11 @@ def main():
     ChrTalk(
         0x104,
         (
-            "#035FHa, now that's what I call passion.\x01",
-            "I can completely understand where\x01",
-            "you're coming from.\x02\x03",
-            "Whenever I find something I like,\x01",
-            "I stop at nothing until I get ahold\x01",
-            "of it.\x02\x03",
-            "For example, a bottle of Grand\x01",
-            "Chardonnay and such.\x02",
+            "#035F呵呵，多么狂热的激情啊。\x01",
+            "对于你的心情我非常地理解。\x02\x03",
+            "若是看到了中意的东西，\x01",
+            "我也一定会想尽办法得到它。\x02\x03",
+            "譬如说『格兰·夏利拿』。\x02",
         )
     )
 
@@ -4055,8 +3948,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#007FIn your case 'steal it' is more\x01",
-            "accurate.\x02",
+            "#007F那样也叫得到吗？\x01",
+            "应该是不问自取偷偷喝完才对吧。\x02",
         )
     )
 
@@ -4065,10 +3958,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#026F*cough* How about we get back\x01",
-            "to our story?\x02\x03",
-            "So Lloyd, what happened when you\x01",
-            "came back from fishing that night?\x02",
+            "#026F咳咳……回到正题吧。\x02\x03",
+            "那么罗伊德先生，\x01",
+            "你夜钓回来之后又怎么了？\x02",
         )
     )
 
@@ -4076,7 +3968,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "Oh, right...\x02",
+        "啊，好……\x02",
     )
 
     CloseMessageWindow()
@@ -4084,8 +3976,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I had returned the boat and was\x01",
-            "on my way into the inn...\x02",
+            "之后，我就把小艇放好，\x01",
+            "接着正要走回旅馆睡觉……\x02",
         )
     )
 
@@ -4094,9 +3986,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "When I saw an odd couple head\x01",
-            "out onto the road from the grounds\x01",
-            "behind the building.\x02",
+            "就在那时，我看到了奇怪的二人组合。\x01",
+            "他们从旅馆出来，走到外面的街道上。\x02",
         )
     )
 
@@ -4105,8 +3996,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#012FOnto the road...in the middle of\x01",
-            "the night?\x02",
+            "#012F走到街道上……\x01",
+            "而且是在深夜的时候？\x02",
         )
     )
 
@@ -4115,9 +4006,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Yep, no doubt about it.\x01",
-            "They headed out on the\x01",
-            "New Ansel Path.\x02",
+            "啊啊，我不会看错的。\x01",
+            "就是走到安塞尔新街那里。\x02",
         )
     )
 
@@ -4126,9 +4016,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "At first I thought they were a group\x01",
-            "of people visiting from the city,\x01",
-            "heading back home...\x02",
+            "我本来以为他们\x01",
+            "是外出游玩晚归的……\x02",
         )
     )
 
@@ -4137,9 +4026,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "But it was way too late for something like\x01",
-            "that and when I asked at the inn the next\x01",
-            "day, nobody knew a thing about it.\x02",
+            "不过深更半夜才回来也太奇怪了吧。\x01",
+            "所以第二天，我向旅馆的人打听了一下，\x01",
+            "不过大家都说不认识这些家伙。\x02",
         )
     )
 
@@ -4148,8 +4037,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Thought maybe I'd seen a coupla\x01",
-            "ghosts or something then!\x02",
+            "当时我以为自己看到了幽灵，\x01",
+            "不禁感觉背后发寒。\x02",
         )
     )
 
@@ -4161,9 +4050,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004FGh-ghosts?!\x02\x03",
-            "Th-There are ghosts that come\x01",
-            "out here?!\x02",
+            "#004F幽、幽灵……\x02\x03",
+            "会、会出现吗？在这里！？\x02",
         )
     )
 
@@ -4172,8 +4060,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Ha ha, just so you know, the two\x01",
-            "I saw were a young couple.\x02",
+            "哈哈，我看到的是两人一起，\x01",
+            "而且还是一男一女的年轻组合呢。\x02",
         )
     )
 
@@ -4182,9 +4070,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "They mighta been two lost souls who committed\x01",
-            "a double suicide after not being accepted by\x01",
-            "those around them...\x02",
+            "或许那两人是一对得不到\x01",
+            "身边的人承认因而徇情的恋人……\x02",
         )
     )
 
@@ -4195,7 +4082,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#003FAwww, d-don't tell me any more!\x02",
+        "#003F啊～～～别、别再说了！\x02",
     )
 
     CloseMessageWindow()
@@ -4203,8 +4090,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#025FOh brother...a bracer that's afraid\x01",
-            "of ghosts? The guild is doomed.\x02",
+            "#025F哎呀哎呀。\x01",
+            "你还是怕听到幽灵这类的话题啊。\x02",
         )
     )
 
@@ -4213,9 +4100,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FNot to mention, her habit of always\x01",
-            "wanting to hear more ghost stories\x01",
-            "and other bizarre stuff.\x02",
+            "#010F就是越害怕才越想听嘛，\x01",
+            "怪谭之类的，还有不可思议的故事之类的。\x02",
         )
     )
 
@@ -4224,11 +4110,10 @@ def main():
     ChrTalk(
         0x104,
         (
-            "#031FHmm-hmm-hmm. Well, isn't your being scared\x01",
-            "attractive in its own right, Estelle? Not\x01",
-            "sexy, but cute nonetheless.\x02\x03",
-            "Like a little kitten shivering\x01",
-            "in the cold.\x02",
+            "#031F呵呵，看艾丝蒂尔君\x01",
+            "害怕得尖叫起来的样子，\x01",
+            "真是越看越可爱，越看越动人。\x02\x03",
+            "简直就像在寒风中战栗的小猫㈱\x02",
         )
     )
 
@@ -4239,9 +4124,16 @@ def main():
 
     ChrTalk(
         0x101,
+        "#009F哼！再说这种话就小心你的门牙！\x02",
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
         (
-            "#009F...You'd better watch out because\x01",
-            "this little kitten bites!\x02",
+            "哈哈哈……\x01",
+            "幽灵什么的只是开玩笑而已。\x02",
         )
     )
 
@@ -4250,8 +4142,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Ha ha ha. Well, I was just kidding\x01",
-            "about the ghost part.\x02",
+            "当时我还不敢肯定，\x01",
+            "不过那对男女应该不是情侣。\x02",
         )
     )
 
@@ -4259,27 +4151,14 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "But the couple did, in fact, seem to\x01",
-            "be one with a purpose and reason.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        (
-            "I say this, because the girl was\x01",
-            "wearing some rather odd clothing.\x02",
-        )
+        "因为我看到那个女子穿着很怪。\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        "#010FWhat do you mean by that?\x02",
+        "#010F穿着很怪……这怎么说呢？\x02",
     )
 
     CloseMessageWindow()
@@ -4287,8 +4166,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "I only saw her from behind,\x01",
-            "so I couldn't say for sure...\x02",
+            "我只是看到背影，\x01",
+            "也不敢肯定有没有看错。\x02",
         )
     )
 
@@ -4296,11 +4175,7 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "But it looked to me like she was\x01",
-            "wearing some kinda school\x01",
-            "uniform.\x02",
-        )
+        "不过看样子她穿的就是校服。\x02",
     )
 
     CloseMessageWindow()
@@ -4317,20 +4192,21 @@ def main():
 
     ChrTalk(
         0x101,
-        (
-            "#004FA school uniform...\x01",
-            "It couldn't be...\x02",
-        )
+        "#004F校服？难道说……\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        (
-            "#014FIt wasn't one from the Jenis\x01",
-            "Royal Academy, was it?\x02",
-        )
+        "#014F杰尼丝王立学院的？\x02",
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
+        "呵呵，你们知道得很清楚嘛。\x02",
     )
 
     CloseMessageWindow()
@@ -4338,19 +4214,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Wow, you really know your\x01",
-            "stuff, kid!\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        (
-            "You betcha. My niece goes there\x01",
-            "as well, and it looked exactly the\x01",
-            "same as the one she wears.\x02",
+            "我的外甥女也在那学校念书，\x01",
+            "所以我看得出那就是王立学院的校服。\x02",
         )
     )
 
@@ -4359,8 +4224,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#022FI see... This whole event just\x01",
-            "got a lot more interesting.\x02",
+            "#022F原来如此……\x01",
+            "终于知道所谓的奇怪家伙是谁了。\x02",
         )
     )
 
@@ -4369,9 +4234,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#009FIt's her! I know it's that lying\x01",
-            "tomboy for sure!\x02\x03",
-            "We're finally onto her trail!\x02",
+            "#009F怪不得被人叫做奇怪的家伙！\x01",
+            "肯定是那个嚣张的男人婆！\x02\x03",
+            "总算抓到你的尾巴了～！\x02",
         )
     )
 
@@ -4380,8 +4245,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "What...so she's an acquaintance\x01",
-            "of yours?\x02",
+            "怎么了……\x01",
+            "难道你们认识他们吗？\x02",
         )
     )
 
@@ -4390,9 +4255,9 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Then while you're at it, tell the two\x01",
-            "of them not to fret and rush into\x01",
-            "anything they'll regret later on.\x02",
+            "我觉得那两个人选择在\x01",
+            "深夜出现可能是出于什么目的吧，\x01",
+            "这一点你们也最好注意一下。\x02",
         )
     )
 
@@ -4401,9 +4266,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "If my mind isn't failing me, I coulda\x01",
-            "sworn they said something about\x01",
-            "coming again tonight.\x02",
+            "对了，我还听他们说过\x01",
+            "今天半夜会再来这里一次的。\x02",
         )
     )
 
@@ -4411,7 +4275,7 @@ def main():
 
     ChrTalk(
         0x102,
-        "#014FIs that true?\x02",
+        "#014F啊？真的吗？\x02",
     )
 
     CloseMessageWindow()
@@ -4419,8 +4283,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Yep. 'We'll meet back here in two\x01",
-            "days,' is what the young man said.\x02",
+            "对对，那个年轻男子亲口说过，\x01",
+            "两天后还会再来的。\x02",
         )
     )
 
@@ -4428,10 +4292,7 @@ def main():
 
     ChrTalk(
         0xA,
-        (
-            "His tone seemed rather serious,\x01",
-            "so I couldn't help but think on it.\x02",
-        )
+        "他的口气十分认真，让我印象很深。\x02",
     )
 
     CloseMessageWindow()
@@ -4439,28 +4300,10 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FWell, that's understandable...\x02\x03",
-            "We appreciate the valuable information.\x01",
-            "Just leave the rest up to us.\x02\x03",
-            "We won't let them get into any more\x01",
-            "trouble than they already are.\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        "Oh, I see...that's a relief to hear.\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        (
-            "I feel like a weight's been lifted\x01",
-            "off my shoulders now.\x02",
+            "#020F原来如此……\x02\x03",
+            "这是很重要的线索啊。\x01",
+            "感谢你的合作，之后就交给我们吧。\x02\x03",
+            "我们绝对会好好利用这些线索的。\x02",
         )
     )
 
@@ -4469,9 +4312,25 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Now that that is off my chest\x01",
-            "I feel like taking a boat out\x01",
-            "and fishing again.\x02",
+            "呼，太好了……\x01",
+            "你能这么说我很高兴。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
+        "突然感觉如释重负啊。\x02",
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
+        (
+            "……这下可安心了。\x01",
+            "我又可以安安稳稳地钓鱼了。\x02",
         )
     )
 
@@ -4480,9 +4339,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "Well, there's no time to lose!\x01",
-            "I'll leave you youngins to your\x01",
-            "work!\x02",
+            "这次不会让你逃掉的！\x01",
+            "各位朋友，我这就先失陪了！\x02",
         )
     )
 
@@ -4502,8 +4360,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FMan...I don't even measure up when\x01",
-            "it comes to that fishing nut.\x02",
+            "#000F好一个钓鱼迷呢……\x01",
+            "这样的集中力我们还真是比不上。\x02",
         )
     )
 
@@ -4512,9 +4370,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FHe mentioned something about a\x01",
-            "'Fisherman's Guild' too. I wonder\x01",
-            "what kind of group that is.\x02",
+            "#010F那个所谓的『钓公师团』，\x01",
+            "不知道是一个什么样的组织呢。\x02",
         )
     )
 
@@ -4523,10 +4380,10 @@ def main():
     ChrTalk(
         0x104,
         (
-            "#030FSo how is this couple involved with\x01",
-            "the missing airliner incident exactly?\x02\x03",
-            "If you don't mind telling me,\x01",
-            "that is.\x02",
+            "#030F听到现在，\x01",
+            "我连那对男女是什么来头也还没搞清楚。\x02\x03",
+            "究竟你们在调查什么事情，\x01",
+            "可以向我详细地解释一下吗？\x02",
         )
     )
 
@@ -4534,7 +4391,10 @@ def main():
 
     ChrTalk(
         0x103,
-        "#020FWell, in a nutshell...\x02",
+        (
+            "#020F也对。\x01",
+            "事情大致是这样的……\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -4545,8 +4405,8 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "Schera explained that they encountered\x01",
-            "Josette in Rolent.\x02",
+            "雪拉扎德向奥利维尔讲解了关于\x01",
+            "在洛连特出现的空贼团少女乔丝特的事情。\x02",
         )
     )
 
@@ -4557,10 +4417,9 @@ def main():
     ChrTalk(
         0x104,
         (
-            "#033FI see... That seems to be the\x01",
-            "person in question, all right.\x02\x03",
-            "Which means that tonight is\x01",
-            "the night, huh?\x02",
+            "#033F原来如此……还真是\x01",
+            "踏破铁鞋无觅处，得来全不费功夫。 \x02\x03",
+            "这么说，今天晚上有好戏看了。\x02",
         )
     )
 
@@ -4569,11 +4428,10 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FYeah...\x02\x03",
-            "It looks like we should probably\x01",
-            "get a room just in case.\x02\x03",
-            "We're going to be in for a late\x01",
-            "night tonight.\x02",
+            "#020F是啊……\x02\x03",
+            "为了慎重起见，\x01",
+            "我们也要租一间房间落脚比较好。\x02\x03",
+            "而且必须等到今天半夜才能行动。\x02",
         )
     )
 
@@ -4582,8 +4440,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000FAll right, let's go ask the receptionist\x01",
-            "about a room.\x02",
+            "#000F嗯。\x01",
+            "我们回柜台那里去吧。\x02",
         )
     )
 
@@ -4644,9 +4502,8 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#038FHelp a fellow out...\x01",
-            "I'm begging you...\x02\x03",
-            "I-I can't...take another...drink...\x02",
+            "#038F你们……快来救救我啊……\x02\x03",
+            "再、再喝下去会出……人命的……\x02",
         )
     )
 
@@ -4655,8 +4512,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#004FWow, I think I've just reconsidered\x01",
-            "my opinion of you, Olivier.\x02",
+            "#004F呜哇～好厉害哦。\x01",
+            "看来要对你另眼相看了。\x02",
         )
     )
 
@@ -4665,9 +4522,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FIt's pretty rare for anyone to still\x01",
-            "be conscious after a night of wine\x01",
-            "with Schera.\x02",
+            "#010F确实是啊，陪雪拉姐姐喝酒，\x01",
+            "能像你这样还有意识的可没几个哦。\x02",
         )
     )
 
@@ -4681,11 +4537,10 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028FHmm-hmm-hmm... Well, didn't the\x01",
-            "two of you come at a good time?侓\x02\x03",
-            "How about having a drink\x01",
-            "together?\x02\x03",
-            "You're both good for that, right?\x02",
+            "#028F呵呵……\x01",
+            "你们来得真巧啊⊙\x02\x03",
+            "来来来～陪姐姐一起喝酒㈱\x02\x03",
+            "好不好，好不好，来～嘛。\x02",
         )
     )
 
@@ -4695,8 +4550,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#009FW-We're going to eat dinner now,\x01",
-            "so the answer is no!\x02",
+            "#009F我、我们现在要去吃晚饭，\x01",
+            "所以就不陪你们耍酒疯了。\x02",
         )
     )
 
@@ -4705,11 +4560,9 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#029FCome on, you two. When I say,\x01",
-            "'Let's drink,' we drink!\x02\x03",
-            "You're going to make me veeeeery\x01",
-            "angry if you don't sit down for a\x01",
-            "glass with me!\x02",
+            "#029F不行不行～\x01",
+            "通通留下来陪我喝酒～\x02\x03",
+            "你们不陪，我可要大发雷霆哦～！\x02",
         )
     )
 
@@ -4722,10 +4575,7 @@ def main():
 
     ChrTalk(
         0x101,
-        (
-            "#007FOh, great, she's already reached\x01",
-            "Stage 2: Rage Mode...\x02",
-        )
+        "#007F雪拉姐已经进入疯狂状态了……\x02",
     )
 
     CloseMessageWindow()
@@ -4733,10 +4583,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#019FDon't worry, Schera. Olivier said he's\x01",
-            "good for another couple rounds.\x02\x03",
-            "How about having him keep you\x01",
-            "company?\x02",
+            "#019F雪拉姐姐、奥利维尔，\x01",
+            "看来你们相处得还不错嘛。\x02\x03",
+            "说实话，其实你们俩挺相配的。\x02",
         )
     )
 
@@ -4748,9 +4597,8 @@ def main():
     ChrTalk(
         0xF,
         (
-            "#028F#4P...Tsk.\x02\x03",
-            "#021FWhat? So you can still drink\x01",
-            "more, can you?\x02",
+            "#028F#2P…………………………（盯着看）\x02\x03",
+            "#021F什么呀～这家伙还差的远啦㈱\x02",
         )
     )
 
@@ -4762,10 +4610,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#036FEeek...\x02\x03",
-            "J-Joshua...how could you just\x01",
-            "give me to her like that?\x01",
-            "I can't... I can't...\x02",
+            "#036F哎哟……\x02\x03",
+            "约、约修亚君，\x01",
+            "你就别这样和人家开玩笑嘛。\x02",
         )
     )
 
@@ -4773,17 +4620,14 @@ def main():
 
     ChrTalk(
         0x101,
-        (
-            "#008FD-Don't you feel sorry for the\x01",
-            "poor guy?\x02",
-        )
+        "#008F好、好可怜的样子。\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0x102,
-        "#010FI don't know, should I?\x02",
+        "#010F有这回事吗？\x02",
     )
 
     CloseMessageWindow()
@@ -4794,12 +4638,9 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#035FYou're...like a little...demon...\x01",
-            "and cute at the...same time\x01",
-            "too...\x02\x03",
-            "Hee hee hee...\x01",
-            "At least the fish are polite\x01",
-            "here...*hic*\x02",
+            "#035F不过你们两个小坏蛋也……\x01",
+            "挺有情趣的……我最喜欢了……\x02\x03",
+            "…………呼呼………\x02",
         )
     )
 
@@ -4807,7 +4648,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#007FAh, I guess he'll be just fine.\x02",
+        "#007F看来白担心了。\x02",
     )
 
     CloseMessageWindow()
@@ -4816,10 +4657,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#019FHow about we sit at the\x01",
-            "counter?\x02\x03",
-            "I'd hate to bother the two\x01",
-            "of them.\x02",
+            "#019F呵呵，说得也是。\x01",
+            "那我们到去柜台那边吧。\x02\x03",
+            "不要破坏他们的二人世界了。\x02",
         )
     )
 
@@ -4828,7 +4668,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#001FRight, good idea.\x02",
+        "#001F嗯，是啊。\x02",
     )
 
     CloseMessageWindow()
@@ -4841,9 +4681,8 @@ def main():
     ChrTalk(
         0x10,
         (
-            "#036FPlease, Schera...I'm pleading\x01",
-            "with you...you and the fish...\x01",
-            "Don't pour me another glass...\x02",
+            "#036F雪拉君……求求你了……\x01",
+            "不要再灌我了好不好……\x02",
         )
     )
 
@@ -4856,7 +4695,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#038FAhhhhhh...\x02",
+        "#038F………啊啊啊啊啊啊………\x02",
     )
 
     CloseMessageWindow()
@@ -4920,7 +4759,7 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "There are some fishing rods propped against the rack.\x02",
+            "钓鱼工具并排摆在架子上。\x02",
         )
     )
 
