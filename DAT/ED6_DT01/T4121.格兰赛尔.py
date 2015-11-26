@@ -5367,8 +5367,10 @@ def main():
 
     ChrTalk(
         0xB,
-        "#820F#2P那么，\x01",
+        (
+            "#820F#2P那么，\x01",
             "我们也告辞了。\x02",
+        )
     )
 
     CloseMessageWindow()

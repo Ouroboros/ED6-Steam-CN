@@ -2196,7 +2196,6 @@ def main():
         0x103,
         "#020F啊，这不是亚妮拉丝吗。\x02",
     )
-    )
 
     CloseMessageWindow()
 

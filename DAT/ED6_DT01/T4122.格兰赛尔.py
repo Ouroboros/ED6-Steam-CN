@@ -5431,8 +5431,6 @@ def main():
             "不过你听了肯定会吓一跳呢……\x02",
         )
     )
-        )
-    )
 
     CloseMessageWindow()
 
@@ -5497,7 +5495,6 @@ def main():
             "目不转睛地盯着我的脸看……\x02",
         )
     )
-    )
 
     CloseMessageWindow()
 
@@ -5557,7 +5554,6 @@ def main():
     ChrTalk(
         0x101,
         "#008F啊！？\x02",
-    )
     )
 
     CloseMessageWindow()

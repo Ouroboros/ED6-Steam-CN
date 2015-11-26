@@ -1524,8 +1524,6 @@ def main():
             "稍微有点安不下心来……\x02",
         )
     )
-        )
-    )
 
     CloseMessageWindow()
 
@@ -2381,8 +2379,6 @@ def main():
             "比赛真是精彩啊。\x02",
         )
     )
-        )
-    )
 
     CloseMessageWindow()
 
@@ -2426,7 +2422,6 @@ def main():
             "#501F啊～～\x01",
             "卡露娜姐姐你们也认识金先生吗？\x02",
         )
-    )
     )
 
     CloseMessageWindow()
@@ -2644,7 +2639,6 @@ def main():
     ChrTalk(
         0x101,
         "#004F嗯，好……\x02",
-    )
     )
 
     CloseMessageWindow()

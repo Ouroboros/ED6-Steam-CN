@@ -434,8 +434,6 @@ def main():
             "你为什么会来这种地方啊？\x02",
         )
     )
-        )
-    )
 
     CloseMessageWindow()
 
@@ -455,7 +453,6 @@ def main():
     ChrTalk(
         0x103,
         "#020F原来如此，真是辛苦你了。\x02",
-    )
     )
 
     CloseMessageWindow()
