@@ -68,9 +68,10 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#011F#3PI get it...the 'One-Eyed Lion.'\x02\x03",
-            "I wonder if there's a way to keep\x01",
-            "it from seeing you...\x02",
+            "#011F#1P原来如此，\x01",
+            "『独眼狮子』啊…………\x02\x03",
+            "照谜语上所写的，\x01",
+            "这看起来不就是一只狮子吗？\x02",
         )
     )
 
@@ -79,8 +80,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#006F#6PThis must be the 'Land Harbor.'\x02\x03",
-            "No doubt about it.\x02",
+            "#006F#2P这里也正是『陆地之港』吧。\x02\x03",
+            "绝对没错。\x02",
         )
     )
 
@@ -90,8 +91,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010F#3PAll right, let's see what we\x01",
-            "can find.\x02",
+            "#010F#1P是啊，那就调查一下吧。\x01",
+            "　\x02",
         )
     )
 
@@ -137,8 +138,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#012F#3POkay, I found the card.\x02\x03",
-            "We should confirm its contents.\x02",
+            "#012F#1P嗯，有一张卡片。\x02\x03",
+            "立刻确认内容。\x02",
         )
     )
 
@@ -146,7 +147,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#006FRight!\x02",
+        "#006F嗯！\x02",
     )
 
     CloseMessageWindow()
@@ -157,20 +158,16 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "'Ah, seeker. The eyes of Aidios see only the\x01",
-            "truth, and pass it on to you.'\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    AnonymousTalk(
-        (
-            scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "'Beyond the drawbridge, look to the barrels\x01",
-            "near the Steel Crane. Do so, and the blue\x01",
-            "light will be revealed.\x01\x01",
-            "-Phantom Thief B'\x02",
+            "『啊，探寻者们。\x01",
+            "　如女神一般直视真实，\x01",
+            "　抛弃虚伪的人啊。\x01",
+            "　\x01",
+            "　前往开合桥的对面、\x01",
+            "　安身于钢铁之鹤旁的\x01",
+            "　木桶所在之处吧。\x01",
+            "　如是，探寻者们，\x01",
+            "　汝等将至苍之光所在。\x01",
+            "　　　　　　　　　　　　　　　怪盗Ｂ』\x02",
         )
     )
 
@@ -183,14 +180,12 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#509F#4PHmm...another weirdo clue. Now it's a\x01",
-            "'Steel Crane'? Sounds suspiciously easy\x01",
-            "to figure out this time...\x02\x03",
-            "#505FThe drawbridge it mentions is\x01",
-            "probably the one over in the\x01",
-            "harbor.\x02\x03",
-            "Ugh. How much longer are\x01",
-            "we going to have to do this?\x02",
+            "#509F#2P哼，怎么还是这种东西。\x01",
+            "这回又是『钢铁之鹤』了。\x02\x03",
+            "#505F所谓『开合桥的对面』\x01",
+            "就是港湾的方向吧……\x02\x03",
+            "呼，我们究竟要被这种东西\x01",
+            "捉弄到什么时候啊。\x02",
         )
     )
 
@@ -200,9 +195,10 @@ def main():
     ChrTalk(
         0x105,
         (
-            "#041F#4PHa ha. I'm sure we must be\x01",
-            "nearing the end.\x02\x03",
-            "We just have to keep going.\x02",
+            "#041F#4P呵呵，\x01",
+            "只要再坚持一下就好了。\x02\x03",
+            "再加把劲吧，\x01",
+            "艾丝蒂尔。\x02",
         )
     )
 
@@ -212,8 +208,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#018F#3POkay, Estelle. What do you\x01",
-            "need to pick up your spirits?\x02",
+            "#018F#1P艾丝蒂尔…………\x01",
+            "你不是一向都很干劲十足的吗？\x02",
         )
     )
 
@@ -225,11 +221,11 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#008F#4PUm...\x02\x03",
-            "I-I'm just tired, is all.\x01",
-            "I'm fine. Really!\x02\x03",
-            "See? I'm ready to get back\x01",
-            "in the game!\x02",
+            "#008F#2P啊…………\x02\x03",
+            "人、人家只是\x01",
+            "觉得找了这么久有点累嘛。\x02\x03",
+            "好、好了，\x01",
+            "我们鼓足干劲出发吧！\x02",
         )
     )
 
@@ -237,7 +233,7 @@ def main():
 
     ChrTalk(
         0x102,
-        "#017F#3PI swear...\x02",
+        "#017F#1P真拿你没办法……\x02",
     )
 
     CloseMessageWindow()
