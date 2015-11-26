@@ -69,9 +69,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I didn't think the assault cavalry would\x01",
-            "go down so fast. Not bad at all... I have\x01",
-            "a newfound respect for bracers.\x02",
+            "突击骑兵队被打败了吗。\x01",
+            "游击士干得不错嘛。\x02",
         )
     )
 
@@ -84,8 +83,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "We can't afford to hold back.\x01",
-            "Not against any of them.\x02",
+            "不管对手是谁，\x01",
+            "我一定会全力战斗的。\x02",
         )
     )
 
@@ -110,8 +109,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "There are two bracer teams still\x01",
-            "in the running this year.\x02",
+            "今年游击士的小组\x01",
+            "还剩下两组。\x02",
         )
     )
 
@@ -119,7 +118,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "...May the best team win.\x02",
+        "不管怎么样，互相加油吧。\x02",
     )
 
     CloseMessageWindow()
@@ -130,10 +129,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "All we can do is our best, and\x01",
-            "our best is all we can do.\x02",
-        )
+        "一会儿就轮到我们出场了。\x02",
     )
 
     CloseMessageWindow()
@@ -141,8 +137,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Here's where we show whether or\x01",
-            "not all that practice paid off!\x02",
+            "正好趁这个机会\x01",
+            "检验一下平时训练的成果。\x02",
         )
     )
 
@@ -166,7 +162,10 @@ def main():
 
     ChrTalk(
         0xFE,
-        "Those Raven guys are tough customers!\x02",
+        (
+            "『渡鸦帮』那些家伙们\x01",
+            "打得不错啊。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -174,9 +173,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "It's quite unusual to have non-\x01",
-            "bracer civilian teams in the\x01",
-            "competition. May be a first...\x02",
+            "游击士以外的平民小组\x01",
+            "在正式比赛中出场还真是少见呢。\x02",
         )
     )
 
@@ -188,10 +186,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "Is it our turn yet? I'm dyin'\x01",
-            "to do some killin'!\x02",
-        )
+        "还没轮到我们出场吗？\x02",
     )
 
     CloseMessageWindow()
@@ -215,9 +210,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Even the Royal Army acknowledges\x01",
-            "your skill. I've heard a lot\x01",
-            "about you, in fact.\x02",
+            "你们的战斗在王国军中\x01",
+            "得到了很高的评价呢。\x02",
         )
     )
 
@@ -226,9 +220,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "...I'll be watching you guys,\x01",
-            "so be sure to live up to the\x01",
-            "rumors, you got it?\x02",
+            "今天也要仔细地\x01",
+            "观摩你们的比赛啊。\x02",
         )
     )
 
@@ -241,9 +234,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Without General Morgan here, we all need to give\x01",
-            "110 percent. And we absolutely will. So you'd\x01",
-            "better believe you'll be seeing us again!\x02",
+            "摩尔根将军不能参赛，\x01",
+            "我们一定要连他的那份一起加油啊。\x02",
         )
     )
 
@@ -268,9 +260,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Hmm... The pool of competitors narrows.\x01",
-            "We may find ourselves facing our most\x01",
-            "feared opponents today...\x02",
+            "唔，我们的对手\x01",
+            "说不定是那些家伙……\x02",
         )
     )
 
@@ -282,17 +273,17 @@ def main():
 
     ChrTalk(
         0xFE,
-        (
-            "Border garrison... Not to be\x01",
-            "messed with, for sure.\x02",
-        )
+        "我们国境守卫队是精锐部队。\x02",
     )
 
     CloseMessageWindow()
 
     ChrTalk(
         0xFE,
-        "But we're not about to lose!\x02",
+        (
+            "不管对手是谁，\x01",
+            "也绝对不能轻易地输掉。\x02",
+        )
     )
 
     CloseMessageWindow()
@@ -316,8 +307,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Looks like you're next. Have a\x01",
-            "good match!\x02",
+            "接下来轮到你们了呢。\x01",
+            "祝你们取得胜利。\x02",
         )
     )
 
@@ -330,9 +321,9 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "This tournament is where we military\x01",
-            "and you bracers alike get to shame-\x01",
-            "lessly display some prowess.\x02",
+            "通过这次武术大会，\x01",
+            "就能了解到其他的部队\x01",
+            "和你们游击士的水平了。\x02",
         )
     )
 
@@ -341,9 +332,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "Shake what you've got up there,\x01",
-            "and don't lose an eye-- 'cause\x01",
-            "that would really hurt!\x02",
+            "对我们来说\x01",
+            "也有很好的促进作用。\x02",
         )
     )
 
@@ -368,8 +358,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I'm feeling good! Confident!\x01",
-            "Tough, and alive!\x02",
+            "身体状态非常不错，\x01",
+            "今年应该能取得好成绩吧。\x02",
         )
     )
 
@@ -382,8 +372,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "So don't you DARE break my focus,\x01",
-            "or I will KICK you!\x02",
+            "请不要打扰。\x01",
+            "我现在正在集中精神。\x02",
         )
     )
 
@@ -407,8 +397,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "I'm going out there and giving it\x01",
-            "everything I've got. No regrets!\x02",
+            "为了不留下遗憾，\x01",
+            "一定要尽全力战斗到最后。\x02",
         )
     )
 
@@ -422,8 +412,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "You guys are pretty good...for\x01",
-            "your age. Heh.\x02",
+            "唔，虽然年轻，\x01",
+            "但是看起来很厉害的样子。\x02",
         )
     )
 
@@ -431,7 +421,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "May the best team win!\x02",
+        "今天一起奋战吧。\x02",
     )
 
     CloseMessageWindow()
@@ -443,7 +433,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "So you're bracers, huh?\x02",
+        "你们是游击士吗？\x02",
     )
 
     CloseMessageWindow()
@@ -451,8 +441,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "You guys are pretty good...for\x01",
-            "your age. Heh.\x02",
+            "唔，虽然年轻，\x01",
+            "但是看起来很厉害的样子。\x02",
         )
     )
 
@@ -460,7 +450,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "May the best team win!\x02",
+        "今天一起奋战吧。\x02",
     )
 
     CloseMessageWindow()
