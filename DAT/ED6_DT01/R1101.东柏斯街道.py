@@ -26,11 +26,11 @@ def main():
 
     BuildStringList(
         '@FileName',                            # 8
-        'Mechanic',                             # 9
-        'Haulage Vehicle',                      # 10
-        'Grant',                                # 11
-        'Verte Bridge - Checkpoint',            # 12
-        'Bose',                                 # 13
+        '修理员',                               # 9
+        '运输车',                               # 10
+        '库拉茨',                               # 11
+        '威尔特桥·关所方向',                   # 12
+        '柏斯方向',                             # 13
     )
 
     DeclEntryPoint(
@@ -332,7 +332,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#004FWhat's that headed this way...?\x02",
+        "#004F那是……\x02",
     )
 
     CloseMessageWindow()
@@ -420,8 +420,8 @@ def main():
     ChrTalk(
         0xA,
         (
-            "#821F#4PWell, if it isn't Scherazard!\x01",
-            "How have you been?\x02",
+            "#821F#4P哟！\x01",
+            "这不是雪拉扎德吗。\x02",
         )
     )
 
@@ -430,9 +430,10 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#023FFine. I haven't seen you in a while,\x01",
-            "either.\x02\x03",
-            "What are you up to?\x02",
+            "#023F库拉茨，好久不见了。\x02\x03",
+            "你为什么会来这种地方啊？\x02",
+        )
+    )
         )
     )
 
@@ -441,14 +442,31 @@ def main():
     ChrTalk(
         0xA,
         (
-            "#820F#4PAs you can see, I'm doing an\x01",
-            "escort job.\x02\x03",
-            "I'm sure that you've heard about all the\x01",
-            "airliners being grounded after the Linde\x01",
-            "incident, right?\x02\x03",
-            "Because of that we have to move\x01",
-            "all this cargo to the Royal City\x01",
-            "by ground transport.\x02",
+            "#820F#4P正如你所见，我在执行护卫工作。\x02\x03",
+            "拜上次那个事件所赐，\x01",
+            "定期船停航的消息你也知道了吧。\x02\x03",
+            "所以，囤积的货物\x01",
+            "就只能从陆路运往王都了。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x103,
+        "#020F原来如此，真是辛苦你了。\x02",
+    )
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0xA,
+        (
+            "#820F#4P这么说来，\x01",
+            "你身边的那些年轻人是干什么的？\x02\x03",
+            "难道说……\x01",
+            "你们打算调查那个事件？\x02",
         )
     )
 
@@ -457,8 +475,8 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#020FI see. Well, your efforts are\x01",
-            "appreciated.\x02",
+            "#023F没错啊。\x01",
+            "……怎么了，有什么问题吗？\x02",
         )
     )
 
@@ -467,34 +485,10 @@ def main():
     ChrTalk(
         0xA,
         (
-            "#820F#4PSo, how about yourself? What are\x01",
-            "you doing with these youngsters?\x02\x03",
-            "Don't tell me you're looking into\x01",
-            "the incident...?\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0x103,
-        (
-            "#023FThat was the plan. Why? Do you know\x01",
-            "something we should be aware of?\x02",
-        )
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xA,
-        (
-            "#823F#4PWell...\x02\x03",
-            "#820FI think it would be best if you\x01",
-            "spoke with Lugran about it at\x01",
-            "the Bose branch.\x02\x03",
-            "Anyway, I've got to get going.\x01",
-            "Catch you later.\x02",
+            "#823F#4P算了……\x02\x03",
+            "#820F详细的情况，\x01",
+            "还是到柏斯支部去问卢格兰爷爷吧。\x02\x03",
+            "那么，再见吧。\x02",
         )
     )
 
@@ -528,9 +522,8 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#505FChief Warrant Officer Ashton and now him...\x01",
-            "Everyone keeps hinting at something, but no one will\x01",
-            "just come out and say it. I wonder what's up.\x02",
+            "#505F刚才阿斯顿队长也是……\x01",
+            "怎么大家说话时都支支吾吾的。\x02",
         )
     )
 
@@ -539,9 +532,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#012FWell, there must be a good reason for it,\x01",
-            "and we'll probably find our answers at the\x01",
-            "Bose branch.\x02",
+            "#012F看样子是发生了什么事情。\x01",
+            "还是先到游击士协会看看吧。\x02",
         )
     )
 
@@ -550,10 +542,9 @@ def main():
     ChrTalk(
         0x103,
         (
-            "#026FAgreed. If we do as he suggests and ask\x01",
-            "Lugran about it, we may just get a clue\x01",
-            "as to what's going on.\x02\x03",
-            "#020FAnyway, let's get moving.\x02",
+            "#026F好了，正如他所说的，\x01",
+            "到柏斯支部就会明白了。\x02\x03",
+            "#020F那么，快些赶路吧。\x02",
         )
     )
 
