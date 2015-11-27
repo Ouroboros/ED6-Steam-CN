@@ -8,13 +8,23 @@
 
 ![Progress](http://progressed.io/bar/99) 剧情
 
-![Progress](http://progressed.io/bar/0) 魔法/战技
+![Progress](http://progressed.io/bar/100) 我方魔法/战技
 
-![Progress](http://progressed.io/bar/0) 物品
+![Progress](http://progressed.io/bar/100) 物品
+
+![Progress](http://progressed.io/bar/100) 手册
+
+![Progress](http://progressed.io/bar/0) 敌方资料/魔法/战技
+
+![Progress](http://progressed.io/bar/0) 料理
+
+![Progress](http://progressed.io/bar/0) 商店
+
+![Progress](http://progressed.io/bar/0) 地名
+
+![Progress](http://progressed.io/bar/0) 书
 
 ![Progress](http://progressed.io/bar/0) 图片
-
-![Progress](http://progressed.io/bar/0) 图书
 
 # TODO
 

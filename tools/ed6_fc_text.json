@@ -292,7 +292,7 @@
   {
     "rva": "00157190",
     "original": "%c%c%s%c%cには%c%c%s%c%cがあります。\n\t\t\t\t\t\t\t\t\t相手に有効な属性を見極めて使いましょう。",
-    "translation": ""
+    "translation": "%c%c%s%c%cには%c%c%s%c%cがあります。\n\t\t\t\t\t\t\t\t\t相手に有効な属性を見極めて使いましょう。"
   },
   {
     "rva": "001571E8",
@@ -3903,6 +3903,61 @@
   {
     "rva": "0017286C",
     "original": " Yes",
+    "translation": ""
+  },
+  {
+    "rva": "0015CCE4",
+    "original": "９",
+    "translation": "９"
+  },
+  {
+    "rva": "0015CCE8",
+    "original": "８",
+    "translation": "８"
+  },
+  {
+    "rva": "0015CCEC",
+    "original": "７",
+    "translation": "７"
+  },
+  {
+    "rva": "0015CCF0",
+    "original": "６",
+    "translation": "６"
+  },
+  {
+    "rva": "0015CCF4",
+    "original": "５",
+    "translation": "５"
+  },
+  {
+    "rva": "0015CCF8",
+    "original": "４",
+    "translation": "４"
+  },
+  {
+    "rva": "0015CCFC",
+    "original": "３",
+    "translation": "３"
+  },
+  {
+    "rva": "0015CD00",
+    "original": "２",
+    "translation": "２"
+  },
+  {
+    "rva": "0015CD04",
+    "original": "１",
+    "translation": "１"
+  },
+  {
+    "rva": "0015858C",
+    "original": "         %5d／%5d",
+    "translation": "         %5d／%5d"
+  },
+  {
+    "rva": "",
+    "original": "",
     "translation": ""
   }
 ]
