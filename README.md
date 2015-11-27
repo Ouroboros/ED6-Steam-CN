@@ -2,6 +2,14 @@
 
 使用`娱乐通简体中文版`的文本, 基于`Steam 英文版`制作
 
+* 高 DPI 下建议禁用缩放, [禁用方法](https://www.microsoft.com/surface/zh-cn/support/apps-and-windows-store/app-display-issues?os=windows-8.1-update-1#Solution2)
+```
+步骤 1：在文件资源管理器中，点击并按住或右键单击应用的可执行文件 (.exe)，然后选择“属性”。
+步骤 2：选择“兼容性”选项卡。
+步骤 3：在“设置”部分中，选择“高 DPI 设置时禁用显示缩放”。
+步骤 4：点击或单击“确定”。
+```
+
 # 进度
 
 ![Progress](http://progressed.io/bar/99) 主程序
