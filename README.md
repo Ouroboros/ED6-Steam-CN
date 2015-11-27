@@ -2,14 +2,16 @@
 
 使用`娱乐通简体中文版`的文本, 基于`Steam 英文版`制作
 
-## 安装方法
+## 使用方法
 
 * 解压到游戏目录, 不会覆盖原版游戏任何文件
+* 启动`ed6_win_cn.exe`
 
 ## 注意事项
 
 * 仅支持 Steam 版 FC
-* 由于对 ed6_win_cn.exe 做了修改, 因此需要手动启动 Steam 客户端, 再启动游戏
+* 仅支持 Windows 7 及以上系统
+* 由于对 `ed6_win_cn.exe` 做了修改, 因此需要手动启动 Steam 客户端, 再启动游戏
 * 高 DPI 下建议<a href="https://www.microsoft.com/surface/zh-cn/support/apps-and-windows-store/app-display-issues?os=windows-8.1-update-1#Solution2" target="_blank">禁用缩放</a>
 ```
 步骤 1：在文件资源管理器中，点击并按住或右键单击应用的可执行文件 (.exe)，然后选择“属性”。
