@@ -40,9 +40,9 @@
 
 ![Progress](http://progressed.io/bar/0) 料理
 
-![Progress](http://progressed.io/bar/0) 商店
+![Progress](http://progressed.io/bar/100) 商店
 
-![Progress](http://progressed.io/bar/0) 地名
+![Progress](http://progressed.io/bar/100) 地名
 
 ![Progress](http://progressed.io/bar/0) 书
 
