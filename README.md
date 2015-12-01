@@ -36,7 +36,7 @@
 
 ![Progress](http://progressed.io/bar/100) 手册
 
-![Progress](http://progressed.io/bar/0) 敌方资料/魔法/战技
+![Progress](http://progressed.io/bar/99) 敌方资料/魔法/战技
 
 ![Progress](http://progressed.io/bar/0) 料理
 
