@@ -712,7 +712,7 @@
   {
     "rva": "00158638",
     "original": " %2d  %2d  %2d  %2d  %2d  %2d  %2d",
-    "translation": ""
+    "translation": " %2d %2d %2d %2d %2d %2d %2d"
   },
   {
     "rva": "0015865C",
@@ -982,7 +982,7 @@
   {
     "rva": "0015A0D4",
     "original": "◆━━━        ━━━◆",
-    "translation": ""
+    "translation": "◆━━━        ━━━◆"
   },
   {
     "rva": "0015A0F0",
@@ -992,7 +992,7 @@
   {
     "rva": "0015A0FC",
     "original": "◆━                ━◆",
-    "translation": ""
+    "translation": "◆━                ━◆"
   },
   {
     "rva": "0015A118",
