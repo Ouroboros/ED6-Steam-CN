@@ -292,7 +292,7 @@
   {
     "rva": "00157190",
     "original": "%c%c%s%c%cには%c%c%s%c%cがあります。\n\t\t\t\t\t\t\t\t\t相手に有効な属性を見極めて使いましょう。",
-    "translation": "%c%c%s%c%cには%c%c%s%c%cがあります。\n\t\t\t\t\t\t\t\t\t相手に有効な属性を見極めて使いましょう。"
+    "translation": "%c%c%s%c%c都有%c%c%s%c%c，\n\t\t\t\t\t\t\t\t\t看清对敌人有效的属性使用吧。"
   },
   {
     "rva": "001571E8",
