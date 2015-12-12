@@ -3078,7 +3078,7 @@
   {
     "rva": "0015E9D0",
     "original": "%c%8sのＨＰを、%4d回復した。",
-    "translation": "ＨＰ回复了%4d。"
+    "translation": "%c%8sＨＰ回复了%4d。"
   },
   {
     "rva": "0015E9F0",
