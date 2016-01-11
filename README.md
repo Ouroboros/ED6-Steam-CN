@@ -22,7 +22,7 @@
 
 ## 下载
 
-<a href="https://github.com/Ouroboros/ED6-FC-Steam-CN/releases/latest" target="_blank">0.31</a>
+<a href="https://github.com/Ouroboros/ED6-FC-Steam-CN/releases/latest" target="_blank">0.4</a>
 
 ## 进度
 
