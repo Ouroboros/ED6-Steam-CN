@@ -11,6 +11,7 @@
 
 * 仅支持 Steam 版 FC
 * 仅支持 Windows 7 及以上系统
+* 请确保系统安装有`黑体`, 非中文的 `Win10` 默认可能没有安装
 * 由于对 `ed6_win_cn.exe` 做了修改, 因此需要手动启动 Steam 客户端, 再启动游戏
 * 高 DPI 下建议<a href="https://www.microsoft.com/surface/zh-cn/support/apps-and-windows-store/app-display-issues?os=windows-8.1-update-1#Solution2" target="_blank">禁用缩放</a>
 ```
