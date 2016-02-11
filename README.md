@@ -13,6 +13,7 @@
 * 仅支持 Windows 7 及以上系统
 * 请确保系统安装有**黑体**, 非中文的 **Win10** 默认可能没有安装
 * 由于对 `ed6_win_cn.exe` 做了修改, 因此需要手动启动 Steam 客户端, 再启动游戏
+* Steam 的存档在这个目录`C:\Program Files (x86)\Steam\userdata\230497681\251150\remote\FC`
 * 高 DPI 下建议<a href="https://www.microsoft.com/surface/zh-cn/support/apps-and-windows-store/app-display-issues?os=windows-8.1-update-1#Solution2" target="_blank">禁用缩放</a>
 ```
 步骤 1：在文件资源管理器中，点击并按住或右键单击应用的可执行文件 (.exe)，然后选择“属性”。
