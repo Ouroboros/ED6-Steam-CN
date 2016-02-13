@@ -890,7 +890,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B2F6",
+    "rva": "0015B374",
     "original": "━━━◆",
     "translation": ""
   },
@@ -920,7 +920,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B635",
+    "rva": "0015D070",
     "original": "    %4d",
     "translation": ""
   },
@@ -945,7 +945,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B632",
+    "rva": "0015D144",
     "original": "       %4d",
     "translation": ""
   },
@@ -1000,7 +1000,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B631",
+    "rva": "0015D210",
     "original": "        %4d",
     "translation": ""
   },
@@ -1320,7 +1320,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B2F2",
+    "rva": "0015B370",
     "original": "━━━━━◆",
     "translation": ""
   },
@@ -1345,7 +1345,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B2E6",
+    "rva": "0015B364",
     "original": "━━━━━━━━━━━◆",
     "translation": ""
   },
@@ -1415,7 +1415,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B315",
+    "rva": "0015DE80",
     "original": "-----",
     "translation": ""
   },
@@ -1980,7 +1980,7 @@
     "translation": ""
   },
   {
-    "rva": "0015E9A9",
+    "rva": "0015E9F0",
     "original": "    Mira  ",
     "translation": ""
   },
@@ -2400,7 +2400,7 @@
     "translation": "把%d个换成%d米拉。"
   },
   {
-    "rva": "0015B3EE",
+    "rva": "0015F664",
     "original": "Sepith",
     "translation": ""
   },
@@ -2410,7 +2410,7 @@
     "translation": ""
   },
   {
-    "rva": "0015B2FA",
+    "rva": "0015B378",
     "original": "━◆",
     "translation": ""
   },
@@ -3605,12 +3605,12 @@
     "translation": ""
   },
   {
-    "rva": "0015FE02",
+    "rva": "0016240C",
     "original": "Junior Bracer - %s Class",
     "translation": ""
   },
   {
-    "rva": "0015FE86",
+    "rva": "00162428",
     "original": "準遊撃士・%s級",
     "translation": "准游击士·%s级"
   },
@@ -3670,7 +3670,7 @@
     "translation": "手册"
   },
   {
-    "rva": "0015DFBA",
+    "rva": "00162708",
     "original": "ステータス",
     "translation": "人物状态"
   },
@@ -3860,7 +3860,7 @@
     "translation": "有效率(%)"
   },
   {
-    "rva": "0015B31E",
+    "rva": "00162E24",
     "original": "Item",
     "translation": ""
   },
@@ -3910,12 +3910,12 @@
     "translation": "９"
   },
   {
-    "rva": "00001E42",
+    "rva": "0015FDA8",
     "original": "８",
     "translation": "８"
   },
   {
-    "rva": "0015B411",
+    "rva": "0015FDAC",
     "original": "７",
     "translation": "７"
   },
@@ -3925,7 +3925,7 @@
     "translation": "６"
   },
   {
-    "rva": "00024B34",
+    "rva": "0015FDB4",
     "original": "５",
     "translation": "５"
   },
@@ -3945,7 +3945,7 @@
     "translation": "２"
   },
   {
-    "rva": "0014E489",
+    "rva": "0015FDC4",
     "original": "１",
     "translation": "１"
   },
