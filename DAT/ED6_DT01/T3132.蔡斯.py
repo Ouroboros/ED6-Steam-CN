@@ -2859,8 +2859,8 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "Linen Room\x01",
-            "※Employees Only\x02",
+            "制服室\x01",
+            "※员工专用\x02",
         )
     )
 
