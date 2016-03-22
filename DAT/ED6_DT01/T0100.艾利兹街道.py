@@ -6120,8 +6120,8 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "Received \x07\x02",
-            "Monster Guide\x07\x00",
+            "得到了\x07\x02",
+            "魔兽手册\x07\x00",
             ".\x02",
         )
     )
@@ -6135,7 +6135,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#505FWhat's this book for?\x02",
+        "#505F这个手册是做什么的?\x02",
     )
 
     CloseMessageWindow()
@@ -6143,12 +6143,12 @@ def main():
     ChrTalk(
         0x1A,
         (
-            "#020FIt's called a Monster Guide, and it's\x01",
-            "used to record information about\x01",
-            "monsters and other opponents you meet.\x02\x03",
-            "#020FWhenever you figure out an enemy's\x01",
-            "attributes, you should make an\x01",
-            "immediate note of it in there.\x02",
+            "#020F这是魔兽手册,它\x01",
+            "会记录下你遇到的\x01",
+            "魔兽和其他敌人的信息.\x02\x03",
+            "#020F无论何时,当你\x01",
+            "遇到敌人,你应该\x01",
+            "立刻记下它的属性.\x02",
         )
     )
 
