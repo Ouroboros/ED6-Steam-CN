@@ -15,6 +15,10 @@
 * 由于对 `ed6_win_cn.exe` 做了修改, 因此需要手动启动 Steam 客户端, 再启动游戏
 * Steam 的存档在这个目录`C:\Program Files (x86)\Steam\userdata\230497681\251150\remote\FC`
 * 高 DPI 下建议<a href="https://www.microsoft.com/surface/zh-cn/support/apps-and-windows-store/app-display-issues?os=windows-8.1-update-1#Solution2" target="_blank">禁用缩放</a>
+* 
+## 特别提示
+* 如果无法启动或游戏crash,请在Config设置Reset to default,并备份原`ed6_win.exe`,再将`ed6_win_cn.exe`修改为`ed6_win.exe`,使用Steam客户端启动即可
+* 
 ```
 步骤 1：在文件资源管理器中，点击并按住或右键单击应用的可执行文件 (.exe)，然后选择“属性”。
 步骤 2：选择“兼容性”选项卡。
