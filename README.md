@@ -56,8 +56,8 @@
 
 ## TODO
 
-- [ ] T0100.艾利兹街道.py 有几句英文要翻译, 关键字: Monster Guide
-- [ ] T3132.蔡斯.py 有一句英文要翻译, 关键字: Linen Room
+- [x] T0100.艾利兹街道.py 有几句英文要翻译, 关键字: Monster Guide
+- [x] T3132.蔡斯.py 有一句英文要翻译, 关键字: Linen Room
 - [x] C0500      -1
 - [x] T0100      -6
 - [x] T4133      4
