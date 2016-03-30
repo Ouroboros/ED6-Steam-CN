@@ -6122,7 +6122,7 @@ def main():
             scpstr(SCPSTR_CODE_COLOR, 0x0),
             "得到了\x07\x02",
             "魔兽手册\x07\x00",
-            ".\x02",
+            "。\x02",
         )
     )
 
@@ -6135,7 +6135,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#505F这个手册是做什么的?\x02",
+        "#505F嗯？这本手册是？\x02",
     )
 
     CloseMessageWindow()
@@ -6143,12 +6143,10 @@ def main():
     ChrTalk(
         0x1A,
         (
-            "#020F这是魔兽手册,它\x01",
-            "会记录下你遇到的\x01",
-            "魔兽和其他敌人的信息.\x02\x03",
-            "#020F无论何时,当你\x01",
-            "遇到敌人,你应该\x01",
-            "立刻记下它的属性.\x02",
+            "#020F这是魔兽手册，\x01",
+            "可以记录下战斗时对手的信息哦。\x02\x03",
+            "#020F如果看穿了敌人的特性\x01",
+            "就马上在手册上记录吧。\x02",
         )
     )
 
@@ -6157,11 +6155,9 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#010FSounds pretty straightforward\x01",
-            "to me.\x02\x03",
-            "'He who controls the flow of\x01",
-            "information, controls the tide\x01",
-            "of battle,' right?\x02",
+            "#010F这样啊……\x01",
+            "控制了情报就控制了战局。\x02\x03"
+            "是这个意思吧？\x02",
         )
     )
 
@@ -6170,9 +6166,8 @@ def main():
     ChrTalk(
         0x1A,
         (
-            "#021FThat's exactly what I'm saying.\x01",
-            "You've really got a good head\x01",
-            "on your shoulders, Joshua.\x02",
+            "#021F呵呵，就是那样哦。\x01",
+            "已经很清楚了嘛。\x02",
         )
     )
 
@@ -6181,8 +6176,9 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#501FThat's some pretty useful advice.\x02\x03",
-            "#001FThanks for the tip, Schera!\x02",
+            "#501F哈～\x01",
+            "得到好东西了呢。\x02\x03",
+            "#001F谢啦，雪拉姐！\x02",
         )
     )
 
@@ -6190,7 +6186,10 @@ def main():
 
     ChrTalk(
         0x102,
-        "#010FWe'll put it to good use.\x02",
+        (
+            "#010F十分感谢，\x01",
+            "我们会好好使用的。\x02",
+        )
     )
 
     CloseMessageWindow()
