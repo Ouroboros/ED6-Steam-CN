@@ -2025,11 +2025,6 @@
     "translation": ""
   },
   {
-    "rva": "00159118",
-    "original": "　 Bracer Guild\n　 Lodgings\n　 Orbal Factory\n　 Septian Church\n　 Various Shops",
-    "translation": "　 游击士协会\n　 旅馆、酒店\n　 导力器工房\n　 七耀教会\n　 各种商店"
-  },
-  {
     "rva": "00159314",
     "original": "Mirage sepith",
     "translation": ""
@@ -3973,6 +3968,11 @@
     "rva": "001589A4",
     "original": "導力器ライン表示の切り替えをします。",
     "translation": "更改导力器回路显示样式。"
+  },
+  {
+    "rva": "00159168",
+    "original": "　 遊撃士協会\n　 ホテル、宿酒場\n　 オーブメント工房\n　 七耀教会\n　 各種ショップ",
+    "translation": "　 游击士协会\n　 旅馆、酒店\n　 导力器工房\n　 七耀教会\n　 各种商店"
   },
   {
     "rva": "00000000",
