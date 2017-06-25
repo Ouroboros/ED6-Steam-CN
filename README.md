@@ -23,9 +23,6 @@
 步骤 4：点击或单击“确定”。
 ```
 
-## 特别提示
-* 如果无法启动或游戏crash,请在Config设置Reset to default,并备份原`ed6_win.exe`,再将`ed6_win_cn.exe`修改为`ed6_win.exe`,使用Steam客户端启动即可
-
 ## 下载
 
 <a href="https://github.com/Ouroboros/ED6-FC-Steam-CN/releases/latest" target="_blank">0.6</a>
