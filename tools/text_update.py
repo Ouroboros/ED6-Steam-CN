@@ -26,10 +26,12 @@ def main():
                 break
 
             else:
-                print('missing %s' % original)
+                print('missing %s @ %s' % (original.decode('GBK'), t['rva']))
+                t['rva'] = '00000000'
                 # ibp()
 
     open('ed6_fc_text_update.json', 'wb').write(json.dumps(text, ensure_ascii = False, indent = '  ').encode('utf_8_sig'))
+    console.pause('done')
 
 if __name__ == '__main__':
     Try(main)

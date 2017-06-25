@@ -4,7 +4,10 @@ def iterable(text):
     return text if isinstance(text, (list, tuple)) else [text]
 
 def main():
-    ed6_fc_text = json.loads(open('ed6_fc_text.json', 'rb').read().decode('utf-8-sig'))
+    try:
+        ed6_fc_text = json.loads(open('ed6_fc_text_update.json', 'rb').read().decode('utf-8-sig'))
+    except:
+        ed6_fc_text = json.loads(open('ed6_fc_text.json', 'rb').read().decode('utf-8-sig'))
 
     entries = []
     for text in ed6_fc_text:
@@ -13,6 +16,10 @@ def main():
             continue
 
         rva = int(text['rva'], 16)
+
+        if rva == 0:
+            continue
+
         entries.append((rva, translation))
 
     fs = fileio.FileStream('ed6fc.text', 'wb')
