@@ -1850,11 +1850,6 @@
     "translation": ""
   },
   {
-    "rva": "00158894",
-    "original": "戦闘ボイスオンオフの切り替えをします。",
-    "translation": "切换战斗语音的开关。"
-  },
-  {
     "rva": "001588C0",
     "original": "Enemies become weaker based on number of retries.\nFeel free to use this function if you can't win a battle.",
     "translation": ""
@@ -3973,6 +3968,11 @@
     "rva": "00159168",
     "original": "　 遊撃士協会\n　 ホテル、宿酒場\n　 オーブメント工房\n　 七耀教会\n　 各種ショップ",
     "translation": "　 游击士协会\n　 旅馆、酒店\n　 导力器工房\n　 七耀教会\n　 各种商店"
+  },
+  {
+    "rva": "00158870",
+    "original": "戦闘ボイス言語の切り替えをします。",
+    "translation": "切换战斗语音语言。"
   },
   {
     "rva": "00000000",
