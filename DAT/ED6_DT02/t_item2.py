@@ -57,6 +57,10 @@ def main():
         name = cn[index].name.encode('GBK') + b'\x00'
         desc = cn[index].desc.encode('GBK') + b'\x00'
 
+        if index == 527:
+            name = '魔兽手册'.encode('GBK') + b'\x00'
+            desc = '用来记录遭遇过之敌人情报的手册。'.encode('GBK') + b'\x00'
+
         fs.WriteUShort(fs.Position + 4)                 # name offset
         fs.WriteUShort(fs.Position + 2 + len(name))     # desc offset
         fs.Write(name)
