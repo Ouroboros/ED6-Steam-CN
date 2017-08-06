@@ -1,8 +1,6 @@
 ﻿from ED6ScenarioHelper import *
 
 def main():
-    # 洛连特市长官邸
-
     CreateScenaFile(
         FileName            = 'T0210   ._SN',
         MapName             = 'Rolent',
@@ -346,28 +344,28 @@ def main():
         "Function_1_5DC",          # 01, 1
         "Function_2_64B",          # 02, 2
         "Function_3_661",          # 03, 3
-        "Function_4_15CA",         # 04, 4
-        "Function_5_21D8",         # 05, 5
-        "Function_6_2B19",         # 06, 6
-        "Function_7_3D70",         # 07, 7
-        "Function_8_4774",         # 08, 8
-        "Function_9_49C7",         # 09, 9
-        "Function_10_4C15",        # 0A, 10
-        "Function_11_4D0B",        # 0B, 11
-        "Function_12_4E27",        # 0C, 12
-        "Function_13_4F1C",        # 0D, 13
-        "Function_14_5012",        # 0E, 14
-        "Function_15_50C0",        # 0F, 15
-        "Function_16_517B",        # 10, 16
-        "Function_17_5919",        # 11, 17
-        "Function_18_5962",        # 12, 18
-        "Function_19_6F37",        # 13, 19
-        "Function_20_6F5A",        # 14, 20
-        "Function_21_6F7B",        # 15, 21
-        "Function_22_6F9E",        # 16, 22
-        "Function_23_7B28",        # 17, 23
-        "Function_24_7B44",        # 18, 24
-        "Function_25_7B65",        # 19, 25
+        "Function_4_10AA",         # 04, 4
+        "Function_5_192E",         # 05, 5
+        "Function_6_1F77",         # 06, 6
+        "Function_7_2CC1",         # 07, 7
+        "Function_8_3336",         # 08, 8
+        "Function_9_3511",         # 09, 9
+        "Function_10_36D6",        # 0A, 10
+        "Function_11_378C",        # 0B, 11
+        "Function_12_384B",        # 0C, 12
+        "Function_13_38EA",        # 0D, 13
+        "Function_14_3989",        # 0E, 14
+        "Function_15_39F9",        # 0F, 15
+        "Function_16_3A8E",        # 10, 16
+        "Function_17_405F",        # 11, 17
+        "Function_18_40A8",        # 12, 18
+        "Function_19_50C2",        # 13, 19
+        "Function_20_50E5",        # 14, 20
+        "Function_21_5106",        # 15, 21
+        "Function_22_5129",        # 16, 22
+        "Function_23_5850",        # 17, 23
+        "Function_24_586C",        # 18, 24
+        "Function_25_588D",        # 19, 25
     )
 
 
@@ -580,8 +578,8 @@ def main():
     label("Function_3_661")
 
     TalkBegin(0x8)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_AE3")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_A32")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_994")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_92D")
     OP_A2(0x0)
     TurnDirection(0xFE, 0x101, 0)
 
@@ -663,9 +661,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_AE0")
+    Jump("loc_991")
 
-    label("loc_A32")
+    label("loc_92D")
 
 
     ChrTalk(
@@ -679,14 +677,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_AE0")
+    label("loc_991")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_AE3")
+    label("loc_994")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_END)), "loc_CA5")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_BEE")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_END)), "loc_A6B")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_A1D")
     OP_A2(0x0)
 
     ChrTalk(
@@ -702,9 +700,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_CA2")
+    Jump("loc_A68")
 
-    label("loc_BEE")
+    label("loc_A1D")
 
 
     ChrTalk(
@@ -719,13 +717,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_CA2")
+    label("loc_A68")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_CA5")
+    label("loc_A6B")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_D1E")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_ACC")
 
     ChrTalk(
         0xFE,
@@ -738,12 +736,12 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_D1E")
+    label("loc_ACC")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_E23")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_DDF")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_B92")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_B5B")
     OP_A2(0x0)
 
     ChrTalk(
@@ -759,9 +757,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_E20")
+    Jump("loc_B8F")
 
-    label("loc_DDF")
+    label("loc_B5B")
 
 
     ChrTalk(
@@ -774,14 +772,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_E20")
+    label("loc_B8F")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_E23")
+    label("loc_B92")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 3)), scpexpr(EXPR_END)), "loc_F0E")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_EA8")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 3)), scpexpr(EXPR_END)), "loc_C34")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_BED")
     OP_A2(0x0)
 
     ChrTalk(
@@ -794,9 +792,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_F0B")
+    Jump("loc_C31")
 
-    label("loc_EA8")
+    label("loc_BED")
 
 
     ChrTalk(
@@ -810,13 +808,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_F0B")
+    label("loc_C31")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_F0E")
+    label("loc_C34")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_FAF")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_C9B")
 
     ChrTalk(
         0x8,
@@ -829,11 +827,11 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_FAF")
+    label("loc_C9B")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_1079")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_D02")
 
     ChrTalk(
         0xFE,
@@ -846,12 +844,12 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_1079")
+    label("loc_D02")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_1212")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_11C4")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_DE4")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_DAA")
     OP_A2(0x0)
 
     ChrTalk(
@@ -868,9 +866,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_120F")
+    Jump("loc_DE1")
 
-    label("loc_11C4")
+    label("loc_DAA")
 
 
     ChrTalk(
@@ -884,14 +882,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_120F")
+    label("loc_DE1")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_1212")
+    label("loc_DE4")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_139C")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1316")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_EF5")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_EA3")
     OP_A2(0x0)
 
     ChrTalk(
@@ -910,9 +908,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_1399")
+    Jump("loc_EF2")
 
-    label("loc_1316")
+    label("loc_EA3")
 
 
     ChrTalk(
@@ -927,13 +925,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_1399")
+    label("loc_EF2")
 
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_139C")
+    label("loc_EF5")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1533")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 0)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1039")
     OP_A2(0x0)
 
     ChrTalk(
@@ -981,9 +979,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_15C6")
+    Jump("loc_10A6")
 
-    label("loc_1533")
+    label("loc_1039")
 
 
     ChrTalk(
@@ -998,20 +996,20 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_15C6")
+    label("loc_10A6")
 
     TalkEnd(0x8)
     Return()
 
     # Function_3_661 end
 
-    def Function_4_15CA(): pass
+    def Function_4_10AA(): pass
 
-    label("Function_4_15CA")
+    label("Function_4_10AA")
 
     TalkBegin(0x9)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_16AE")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1679")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_115F")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1131")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1034,9 +1032,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_16AB")
+    Jump("loc_115C")
 
-    label("loc_1679")
+    label("loc_1131")
 
 
     ChrTalk(
@@ -1049,13 +1047,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_16AB")
+    label("loc_115C")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_16AE")
+    label("loc_115F")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_END)), "loc_1725")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_END)), "loc_11B4")
 
     ChrTalk(
         0xFE,
@@ -1073,12 +1071,12 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_1725")
+    label("loc_11B4")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_19A8")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1938")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_1396")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1348")
     EventBegin(0x0)
     OP_69(0x9, 0x3E8)
     OP_A2(0x25C)
@@ -1151,9 +1149,9 @@ def main():
 
     CloseMessageWindow()
     EventEnd(0x1)
-    Jump("loc_19A5")
+    Jump("loc_1393")
 
-    label("loc_1938")
+    label("loc_1348")
 
 
     ChrTalk(
@@ -1173,14 +1171,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_19A5")
+    label("loc_1393")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_19A8")
+    label("loc_1396")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_1B19")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1AB1")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_1499")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1448")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1210,9 +1208,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_1B16")
+    Jump("loc_1496")
 
-    label("loc_1AB1")
+    label("loc_1448")
 
 
     ChrTalk(
@@ -1226,14 +1224,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_1B16")
+    label("loc_1496")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_1B19")
+    label("loc_1499")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_1C59")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1BE4")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_156C")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_151F")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1263,9 +1261,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_1C56")
+    Jump("loc_1569")
 
-    label("loc_1BE4")
+    label("loc_151F")
 
 
     ChrTalk(
@@ -1286,14 +1284,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_1C56")
+    label("loc_1569")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_1C59")
+    label("loc_156C")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_1D9E")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1D24")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_1665")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1601")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1326,9 +1324,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_1D9B")
+    Jump("loc_1662")
 
-    label("loc_1D24")
+    label("loc_1601")
 
 
     ChrTalk(
@@ -1352,14 +1350,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_1D9B")
+    label("loc_1662")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_1D9E")
+    label("loc_1665")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_1F07")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1E83")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_174E")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_16FD")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1389,9 +1387,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_1F04")
+    Jump("loc_174B")
 
-    label("loc_1E83")
+    label("loc_16FD")
 
 
     ChrTalk(
@@ -1412,14 +1410,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_1F04")
+    label("loc_174B")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_1F07")
+    label("loc_174E")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_20DB")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_2056")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_1870")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_181D")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1461,9 +1459,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_20D8")
+    Jump("loc_186D")
 
-    label("loc_2056")
+    label("loc_181D")
 
 
     ChrTalk(
@@ -1486,13 +1484,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_20D8")
+    label("loc_186D")
 
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_20DB")
+    label("loc_1870")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_2192")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1901")
     OP_A2(0x1)
 
     ChrTalk(
@@ -1531,9 +1529,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_21D4")
+    Jump("loc_192A")
 
-    label("loc_2192")
+    label("loc_1901")
 
 
     ChrTalk(
@@ -1546,20 +1544,20 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_21D4")
+    label("loc_192A")
 
     TalkEnd(0x9)
     Return()
 
-    # Function_4_15CA end
+    # Function_4_10AA end
 
-    def Function_5_21D8(): pass
+    def Function_5_192E(): pass
 
-    label("Function_5_21D8")
+    label("Function_5_192E")
 
     TalkBegin(0xA)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_22F8")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_2273")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4D, 0)), scpexpr(EXPR_END)), "loc_19FB")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_19B0")
     OP_A2(0x2)
 
     ChrTalk(
@@ -1581,9 +1579,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_22F5")
+    Jump("loc_19F8")
 
-    label("loc_2273")
+    label("loc_19B0")
 
 
     ChrTalk(
@@ -1597,14 +1595,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_22F5")
+    label("loc_19F8")
 
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_22F8")
+    label("loc_19FB")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_2553")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 3)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_247F")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_END)), "loc_1BA9")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 3)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1B34")
     EventBegin(0x0)
     OP_69(0xA, 0x3E8)
     OP_A2(0x25B)
@@ -1672,9 +1670,9 @@ def main():
 
     CloseMessageWindow()
     EventEnd(0x1)
-    Jump("loc_2550")
+    Jump("loc_1BA6")
 
-    label("loc_247F")
+    label("loc_1B34")
 
 
     ChrTalk(
@@ -1697,14 +1695,14 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_2550")
+    label("loc_1BA6")
 
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_2553")
+    label("loc_1BA9")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_26DD")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_2648")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 7)), scpexpr(EXPR_END)), "loc_1CB4")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1C54")
     OP_A2(0x2)
 
     ChrTalk(
@@ -1744,9 +1742,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_26DA")
+    Jump("loc_1CB1")
 
-    label("loc_2648")
+    label("loc_1C54")
 
 
     ChrTalk(
@@ -1770,13 +1768,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_26DA")
+    label("loc_1CB1")
 
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_26DD")
+    label("loc_1CB4")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 6)), scpexpr(EXPR_END)), "loc_2771")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x49, 6)), scpexpr(EXPR_END)), "loc_1D0C")
 
     ChrTalk(
         0xFE,
@@ -1797,11 +1795,11 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_2771")
+    label("loc_1D0C")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_283B")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x47, 1)), scpexpr(EXPR_END)), "loc_1D78")
 
     ChrTalk(
         0xFE,
@@ -1829,16 +1827,16 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_283B")
+    label("loc_1D78")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_2845")
-    Jump("loc_2B15")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 3)), scpexpr(EXPR_END)), "loc_1D82")
+    Jump("loc_1F73")
 
-    label("loc_2845")
+    label("loc_1D82")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_28C1")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x42, 2)), scpexpr(EXPR_END)), "loc_1DCB")
 
     ChrTalk(
         0xA,
@@ -1856,12 +1854,12 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_28C1")
+    label("loc_1DCB")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_29FE")
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_29A6")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x40, 5)), scpexpr(EXPR_END)), "loc_1EAF")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1E6B")
     OP_A2(0x2)
 
     ChrTalk(
@@ -1900,9 +1898,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_29FB")
+    Jump("loc_1EAC")
 
-    label("loc_29A6")
+    label("loc_1E6B")
 
 
     ChrTalk(
@@ -1922,13 +1920,13 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_29FB")
+    label("loc_1EAC")
 
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_29FE")
+    label("loc_1EAF")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_2AB6")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_1F40")
     OP_A2(0x2)
     OP_62(0xA, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
     Sleep(1000)
@@ -1952,9 +1950,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_2B15")
+    Jump("loc_1F73")
 
-    label("loc_2AB6")
+    label("loc_1F40")
 
 
     ChrTalk(
@@ -1974,19 +1972,19 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_2B15")
+    label("loc_1F73")
 
     TalkEnd(0xA)
     Return()
 
-    # Function_5_21D8 end
+    # Function_5_192E end
 
-    def Function_6_2B19(): pass
+    def Function_6_1F77(): pass
 
-    label("Function_6_2B19")
+    label("Function_6_1F77")
 
     TalkBegin(0xC)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 5)), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 3)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 0)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 6)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 7)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_3CBA")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 5)), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 3)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 0)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 6)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 7)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_2C51")
     EventBegin(0x0)
 
     ChrTalk(
@@ -2021,13 +2019,13 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (1, "loc_2C46"),
-        (0, "loc_3C57"),
-        (SWITCH_DEFAULT, "loc_3CB7"),
+        (1, "loc_2076"),
+        (0, "loc_2C0B"),
+        (SWITCH_DEFAULT, "loc_2C4E"),
     )
 
 
-    label("loc_2C46")
+    label("loc_2076")
 
     ClearMapFlags(0x1)
     Fade(1000)
@@ -2071,29 +2069,29 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_2DEF"),
-        (1, "loc_2E00"),
-        (2, "loc_2E11"),
-        (SWITCH_DEFAULT, "loc_2E22"),
+        (0, "loc_21A8"),
+        (1, "loc_21B9"),
+        (2, "loc_21CA"),
+        (SWITCH_DEFAULT, "loc_21DB"),
     )
 
 
-    label("loc_2DEF")
+    label("loc_21A8")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2E22")
+    Jump("loc_21DB")
 
-    label("loc_2E00")
+    label("loc_21B9")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x3), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2E22")
+    Jump("loc_21DB")
 
-    label("loc_2E11")
+    label("loc_21CA")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2E22")
+    Jump("loc_21DB")
 
-    label("loc_2E22")
+    label("loc_21DB")
 
 
     ChrTalk(
@@ -2125,29 +2123,29 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_2F16"),
-        (1, "loc_2F27"),
-        (2, "loc_2F38"),
-        (SWITCH_DEFAULT, "loc_2F49"),
+        (0, "loc_227A"),
+        (1, "loc_228B"),
+        (2, "loc_229C"),
+        (SWITCH_DEFAULT, "loc_22AD"),
     )
 
 
-    label("loc_2F16")
+    label("loc_227A")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2F49")
+    Jump("loc_22AD")
 
-    label("loc_2F27")
+    label("loc_228B")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x3), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2F49")
+    Jump("loc_22AD")
 
-    label("loc_2F38")
+    label("loc_229C")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_2F49")
+    Jump("loc_22AD")
 
-    label("loc_2F49")
+    label("loc_22AD")
 
 
     ChrTalk(
@@ -2180,33 +2178,33 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_305C"),
-        (1, "loc_306D"),
-        (2, "loc_3070"),
-        (3, "loc_3081"),
-        (SWITCH_DEFAULT, "loc_3084"),
+        (0, "loc_237F"),
+        (1, "loc_2390"),
+        (2, "loc_2393"),
+        (3, "loc_23A4"),
+        (SWITCH_DEFAULT, "loc_23A7"),
     )
 
 
-    label("loc_305C")
+    label("loc_237F")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_3084")
+    Jump("loc_23A7")
 
-    label("loc_306D")
+    label("loc_2390")
 
-    Jump("loc_3084")
+    Jump("loc_23A7")
 
-    label("loc_3070")
+    label("loc_2393")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x3), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_3084")
+    Jump("loc_23A7")
 
-    label("loc_3081")
+    label("loc_23A4")
 
-    Jump("loc_3084")
+    Jump("loc_23A7")
 
-    label("loc_3084")
+    label("loc_23A7")
 
 
     ChrTalk(
@@ -2243,42 +2241,42 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_31E3"),
-        (1, "loc_31F4"),
-        (2, "loc_3205"),
-        (3, "loc_3216"),
-        (4, "loc_3227"),
-        (SWITCH_DEFAULT, "loc_322A"),
+        (0, "loc_24A9"),
+        (1, "loc_24BA"),
+        (2, "loc_24CB"),
+        (3, "loc_24DC"),
+        (4, "loc_24ED"),
+        (SWITCH_DEFAULT, "loc_24F0"),
     )
 
 
-    label("loc_31E3")
+    label("loc_24A9")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_SUB), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_322A")
+    Jump("loc_24F0")
 
-    label("loc_31F4")
+    label("loc_24BA")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x3), scpexpr(EXPR_SUB), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_322A")
+    Jump("loc_24F0")
 
-    label("loc_3205")
+    label("loc_24CB")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_322A")
+    Jump("loc_24F0")
 
-    label("loc_3216")
+    label("loc_24DC")
 
     RunExpression(0x1, (scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x3), scpexpr(EXPR_ADD), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    Jump("loc_322A")
+    Jump("loc_24F0")
 
-    label("loc_3227")
+    label("loc_24ED")
 
-    Jump("loc_322A")
+    Jump("loc_24F0")
 
-    label("loc_322A")
+    label("loc_24F0")
 
-    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0xC), scpexpr(EXPR_EQU), scpexpr(EXPR_END)), "loc_32CA")
+    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0xC), scpexpr(EXPR_EQU), scpexpr(EXPR_END)), "loc_2549")
     OP_2B(0x1A, 0x4)
     OP_28(0x1A, 0x1, 0x8000)
 
@@ -2291,11 +2289,11 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_33FD")
+    Jump("loc_25FB")
 
-    label("loc_32CA")
+    label("loc_2549")
 
-    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x8), scpexpr(EXPR_GE), scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0xB), scpexpr(EXPR_LEQ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_3378")
+    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x8), scpexpr(EXPR_GE), scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0xB), scpexpr(EXPR_LEQ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_25B0")
     OP_2B(0x1A, 0x2)
     OP_28(0x1A, 0x1, 0x4000)
 
@@ -2308,11 +2306,11 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_33FD")
+    Jump("loc_25FB")
 
-    label("loc_3378")
+    label("loc_25B0")
 
-    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x7), scpexpr(EXPR_LEQ), scpexpr(EXPR_END)), "loc_33FD")
+    Jc((scpexpr(EXPR_GET_RESULT, 0x1), scpexpr(EXPR_PUSH_LONG, 0x7), scpexpr(EXPR_LEQ), scpexpr(EXPR_END)), "loc_25FB")
     OP_28(0x1A, 0x1, 0x2000)
 
     ChrTalk(
@@ -2325,7 +2323,7 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_33FD")
+    label("loc_25FB")
 
     TurnDirection(0xC, 0x8, 400)
     TurnDirection(0x102, 0x8, 400)
@@ -2536,11 +2534,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_3BB7():
+    def lambda_2B6B():
         OP_92(0xFE, 0x0, 0x0, 0xBB8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x1, 0, lambda_3BB7)
+    QueueWorkItem(0x1, 0, lambda_2B6B)
     SetChrFlags(0xC, 0x40)
     OP_92(0xC, 0x0, 0x0, 0xBB8, 0x0)
     SetChrFlags(0xC, 0x80)
@@ -2571,9 +2569,9 @@ def main():
     OP_21()
     OP_4F(0x1, (scpexpr(EXPR_PUSH_LONG, 0xA), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
     OP_1E()
-    Jump("loc_3CB7")
+    Jump("loc_2C4E")
 
-    label("loc_3C57")
+    label("loc_2C0B")
 
 
     ChrTalk(
@@ -2586,13 +2584,13 @@ def main():
 
     CloseMessageWindow()
     EventEnd(0x1)
-    Jump("loc_3CB7")
+    Jump("loc_2C4E")
 
-    label("loc_3CB7")
+    label("loc_2C4E")
 
-    Jump("loc_3D6C")
+    Jump("loc_2CBD")
 
-    label("loc_3CBA")
+    label("loc_2C51")
 
 
     ChrTalk(
@@ -2607,19 +2605,19 @@ def main():
 
     CloseMessageWindow()
 
-    label("loc_3D6C")
+    label("loc_2CBD")
 
     TalkEnd(0xC)
     Return()
 
-    # Function_6_2B19 end
+    # Function_6_1F77 end
 
-    def Function_7_3D70(): pass
+    def Function_7_2CC1(): pass
 
-    label("Function_7_3D70")
+    label("Function_7_2CC1")
 
     EventBegin(0x0)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 5)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_470F")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 5)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_32E7")
     Fade(1000)
     SetChrPos(0x101, 75500, 0, 55990, 0)
     SetChrPos(0x102, 76250, 0, 55794, 315)
@@ -2757,11 +2755,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_44CF():
+    def lambda_3159():
         OP_6D(77550, 0, 56660, 1000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_44CF)
+    QueueWorkItem(0x101, 1, lambda_3159)
     OP_8E(0x102, 0x12E8A, 0x0, 0xDAE8, 0x7D0, 0x0)
     OP_8E(0x102, 0x12DCC, 0x0, 0xDE8D, 0x7D0, 0x0)
     OP_8C(0x102, 225, 400)
@@ -2806,9 +2804,9 @@ def main():
     OP_28(0x1A, 0x1, 0x4)
     OP_28(0x1A, 0x1, 0x8)
     EventEnd(0x0)
-    Jump("loc_4773")
+    Jump("loc_3335")
 
-    label("loc_470F")
+    label("loc_32E7")
 
 
     ChrTalk(
@@ -2822,23 +2820,23 @@ def main():
     CloseMessageWindow()
     EventEnd(0x1)
 
-    label("loc_4773")
+    label("loc_3335")
 
     Return()
 
-    # Function_7_3D70 end
+    # Function_7_2CC1 end
 
-    def Function_8_4774(): pass
+    def Function_8_3336(): pass
 
-    label("Function_8_4774")
+    label("Function_8_3336")
 
     SetMapFlags(0x80)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_OR), scpexpr(EXPR_END)), "loc_4788")
-    Jump("loc_49C1")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 2)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 1)), scpexpr(EXPR_OR), scpexpr(EXPR_END)), "loc_334A")
+    Jump("loc_350B")
 
-    label("loc_4788")
+    label("loc_334A")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_47F9")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 4)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_33A4")
     EventBegin(0x1)
 
     ChrTalk(
@@ -2853,11 +2851,11 @@ def main():
     OP_90(0x0, 0x0, 0x0, 0x3E8, 0xBB8, 0x0)
     Sleep(50)
     EventEnd(0x4)
-    Jump("loc_49C1")
+    Jump("loc_350B")
 
-    label("loc_47F9")
+    label("loc_33A4")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 7)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_4938")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4B, 7)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_349F")
     EventBegin(0x0)
     Fade(1000)
     SetChrPos(0x101, -5150, 0, -3680, 180)
@@ -2900,9 +2898,9 @@ def main():
     OP_90(0x0, 0x0, 0x0, 0x3E8, 0xBB8, 0x0)
     Sleep(50)
     EventEnd(0x4)
-    Jump("loc_49C1")
+    Jump("loc_350B")
 
-    label("loc_4938")
+    label("loc_349F")
 
     EventBegin(0x1)
 
@@ -2920,16 +2918,16 @@ def main():
     Sleep(50)
     EventEnd(0x4)
 
-    label("loc_49C1")
+    label("loc_350B")
 
     ClearMapFlags(0x80)
     Return()
 
-    # Function_8_4774 end
+    # Function_8_3336 end
 
-    def Function_9_49C7(): pass
+    def Function_9_3511(): pass
 
-    label("Function_9_49C7")
+    label("Function_9_3511")
 
     EventBegin(0x0)
     OP_A2(0x25E)
@@ -3002,11 +3000,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_9_49C7 end
+    # Function_9_3511 end
 
-    def Function_10_4C15(): pass
+    def Function_10_36D6(): pass
 
-    label("Function_10_4C15")
+    label("Function_10_36D6")
 
     EventBegin(0x0)
     OP_6D(78710, 0, 52510, 1000)
@@ -3037,11 +3035,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_10_4C15 end
+    # Function_10_36D6 end
 
-    def Function_11_4D0B(): pass
+    def Function_11_378C(): pass
 
-    label("Function_11_4D0B")
+    label("Function_11_378C")
 
     EventBegin(0x0)
     OP_6D(77520, 0, 50360, 1000)
@@ -3071,11 +3069,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_11_4D0B end
+    # Function_11_378C end
 
-    def Function_12_4E27(): pass
+    def Function_12_384B(): pass
 
-    label("Function_12_4E27")
+    label("Function_12_384B")
 
     EventBegin(0x0)
     OP_6D(82150, 0, 50830, 1000)
@@ -3104,11 +3102,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_12_4E27 end
+    # Function_12_384B end
 
-    def Function_13_4F1C(): pass
+    def Function_13_38EA(): pass
 
-    label("Function_13_4F1C")
+    label("Function_13_38EA")
 
     EventBegin(0x0)
     OP_6D(82490, 310, 57230, 1000)
@@ -3137,11 +3135,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_13_4F1C end
+    # Function_13_38EA end
 
-    def Function_14_5012(): pass
+    def Function_14_3989(): pass
 
-    label("Function_14_5012")
+    label("Function_14_3989")
 
     EventBegin(0x0)
     OP_6D(78330, 0, 57050, 1000)
@@ -3168,11 +3166,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_14_5012 end
+    # Function_14_3989 end
 
-    def Function_15_50C0(): pass
+    def Function_15_39F9(): pass
 
-    label("Function_15_50C0")
+    label("Function_15_39F9")
 
     EventBegin(0x0)
     OP_6D(84700, 0, 55320, 1000)
@@ -3201,11 +3199,11 @@ def main():
     EventEnd(0x1)
     Return()
 
-    # Function_15_50C0 end
+    # Function_15_39F9 end
 
-    def Function_16_517B(): pass
+    def Function_16_3A8E(): pass
 
-    label("Function_16_517B")
+    label("Function_16_3A8E")
 
     EventBegin(0x0)
     ClearMapFlags(0x1)
@@ -3452,11 +3450,11 @@ def main():
     OP_4F(0x1, (scpexpr(EXPR_PUSH_LONG, 0x57), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
     Return()
 
-    # Function_16_517B end
+    # Function_16_3A8E end
 
-    def Function_17_5919(): pass
+    def Function_17_405F(): pass
 
-    label("Function_17_5919")
+    label("Function_17_405F")
 
     Sleep(100)
     OP_8E(0x8, 0x14A14, 0x0, 0xCF26, 0x7D0, 0x0)
@@ -3468,11 +3466,11 @@ def main():
     SetChrFlags(0x8, 0x80)
     Return()
 
-    # Function_17_5919 end
+    # Function_17_405F end
 
-    def Function_18_5962(): pass
+    def Function_18_40A8(): pass
 
-    label("Function_18_5962")
+    label("Function_18_40A8")
 
     ClearChrFlags(0xB, 0x80)
     OP_44(0x8, 0xFF)
@@ -3849,8 +3847,8 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#011F#2P那样的话，\x01",
-            "可以马上去炫耀一下啊。\x02",
+            "#011F#2P而且你还，\x01",
+            "拿着它晃来晃去呢。\x02",
         )
     )
 
@@ -4071,50 +4069,50 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_18_5962 end
+    # Function_18_40A8 end
 
-    def Function_19_6F37(): pass
+    def Function_19_50C2(): pass
 
-    label("Function_19_6F37")
+    label("Function_19_50C2")
 
-    Jc((scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_END)), "loc_6F59")
+    Jc((scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_END)), "loc_50E4")
     TurnDirection(0x0, 0xFE, 0)
     TurnDirection(0x1, 0xFE, 0)
     TurnDirection(0xB, 0xFE, 0)
     OP_48()
-    Jump("Function_19_6F37")
+    Jump("Function_19_50C2")
 
-    label("loc_6F59")
+    label("loc_50E4")
 
     Return()
 
-    # Function_19_6F37 end
+    # Function_19_50C2 end
 
-    def Function_20_6F5A(): pass
+    def Function_20_50E5(): pass
 
-    label("Function_20_6F5A")
+    label("Function_20_50E5")
 
     Sleep(500)
     OP_8E(0x102, 0x14190, 0x0, 0xFFFFFFEC, 0xBB8, 0x0)
     TurnDirection(0x102, 0x8, 0)
     Return()
 
-    # Function_20_6F5A end
+    # Function_20_50E5 end
 
-    def Function_21_6F7B(): pass
+    def Function_21_5106(): pass
 
-    label("Function_21_6F7B")
+    label("Function_21_5106")
 
     OP_8E(0x101, 0x133F8, 0x0, 0x190, 0xBB8, 0x0)
     OP_8C(0x101, 180, 400)
     TurnDirection(0xB, 0x101, 400)
     Return()
 
-    # Function_21_6F7B end
+    # Function_21_5106 end
 
-    def Function_22_6F9E(): pass
+    def Function_22_5129(): pass
 
-    label("Function_22_6F9E")
+    label("Function_22_5129")
 
     EventBegin(0x0)
     FadeToBright(2000, 0)
@@ -4386,38 +4384,38 @@ def main():
     ClearMapFlags(0x400000)
     Return()
 
-    # Function_22_6F9E end
+    # Function_22_5129 end
 
-    def Function_23_7B28(): pass
+    def Function_23_5850(): pass
 
-    label("Function_23_7B28")
+    label("Function_23_5850")
 
     OP_8E(0x101, 0xFFFFE69C, 0x0, 0x4EC, 0x7D0, 0x0)
     TurnDirection(0x101, 0x8, 0)
     Return()
 
-    # Function_23_7B28 end
+    # Function_23_5850 end
 
-    def Function_24_7B44(): pass
+    def Function_24_586C(): pass
 
-    label("Function_24_7B44")
+    label("Function_24_586C")
 
     Sleep(500)
     OP_8E(0x102, 0xFFFFEBF6, 0x0, 0x3E8, 0x7D0, 0x0)
     TurnDirection(0x102, 0x8, 0)
     Return()
 
-    # Function_24_7B44 end
+    # Function_24_586C end
 
-    def Function_25_7B65(): pass
+    def Function_25_588D(): pass
 
-    label("Function_25_7B65")
+    label("Function_25_588D")
 
     OP_8E(0x8, 0xFFFFEDFE, 0x0, 0xB7C, 0x7D0, 0x0)
     TurnDirection(0x8, 0x101, 0)
     Return()
 
-    # Function_25_7B65 end
+    # Function_25_588D end
 
     SaveToFile()
 

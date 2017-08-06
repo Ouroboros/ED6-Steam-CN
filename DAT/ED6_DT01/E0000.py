@@ -103,8 +103,8 @@ def main():
         "Function_1_10A",          # 01, 1
         "Function_2_10B",          # 02, 2
         "Function_3_121",          # 03, 3
-        "Function_4_FBB",          # 04, 4
-        "Function_5_1605",         # 05, 5
+        "Function_4_A20",          # 04, 4
+        "Function_5_E1B",          # 05, 5
     )
 
 
@@ -257,16 +257,16 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_69F"),
-        (1, "loc_75F"),
-        (2, "loc_815"),
-        (3, "loc_8D1"),
-        (4, "loc_9C9"),
-        (SWITCH_DEFAULT, "loc_9F1"),
+        (0, "loc_4D5"),
+        (1, "loc_541"),
+        (2, "loc_5BD"),
+        (3, "loc_629"),
+        (4, "loc_6C0"),
+        (SWITCH_DEFAULT, "loc_6E0"),
     )
 
 
-    label("loc_69F")
+    label("loc_4D5")
 
 
     ChrTalk(
@@ -280,9 +280,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_9F1")
+    Jump("loc_6E0")
 
-    label("loc_75F")
+    label("loc_541")
 
 
     ChrTalk(
@@ -296,9 +296,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_9F1")
+    Jump("loc_6E0")
 
-    label("loc_815")
+    label("loc_5BD")
 
 
     ChrTalk(
@@ -312,9 +312,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_9F1")
+    Jump("loc_6E0")
 
-    label("loc_8D1")
+    label("loc_629")
 
 
     ChrTalk(
@@ -330,9 +330,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_9F1")
+    Jump("loc_6E0")
 
-    label("loc_9C9")
+    label("loc_6C0")
 
 
     ChrTalk(
@@ -341,9 +341,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_9F1")
+    Jump("loc_6E0")
 
-    label("loc_9F1")
+    label("loc_6E0")
 
 
     ChrTalk(
@@ -458,9 +458,9 @@ def main():
 
     # Function_3_121 end
 
-    def Function_4_FBB(): pass
+    def Function_4_A20(): pass
 
-    label("Function_4_FBB")
+    label("Function_4_A20")
 
     EventBegin(0x0)
     ClearChrFlags(0x9, 0x80)
@@ -651,11 +651,11 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_4_FBB end
+    # Function_4_A20 end
 
-    def Function_5_1605(): pass
+    def Function_5_E1B(): pass
 
-    label("Function_5_1605")
+    label("Function_5_E1B")
 
     ClearMapFlags(0x1)
     EventBegin(0x0)
@@ -784,30 +784,30 @@ def main():
     FadeToBright(6000, 0)
     StopSound(0x9C40, 0x1ADB0, 0x32C8)
 
-    def lambda_1995():
+    def lambda_1118():
         OP_6D(250, 5000, -9420, 11000)
         ExitThread()
 
-    QueueWorkItem(0x101, 0, lambda_1995)
+    QueueWorkItem(0x101, 0, lambda_1118)
 
-    def lambda_19AD():
+    def lambda_1130():
         OP_67(0, 10000, -10000, 11000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_19AD)
+    QueueWorkItem(0x101, 1, lambda_1130)
 
-    def lambda_19C5():
+    def lambda_1148():
         OP_6B(2980, 11000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_19C5)
+    QueueWorkItem(0x101, 2, lambda_1148)
     Sleep(4000)
 
-    def lambda_19DA():
+    def lambda_115D():
         OP_6C(53000, 7000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_19DA)
+    QueueWorkItem(0x101, 3, lambda_115D)
     WaitChrThread(0x101, 0x0)
     Fade(1000)
     OP_6B(2000, 0)
@@ -852,7 +852,7 @@ def main():
             "#035F#2P知道啦，知道啦。\x01",
             "拜托你不要发出那么吓人的声音嘛。\x02\x03",
             "好的，那边就继续拜托你了，\x01",
-            "别忘了代我向首相大人问好。\x02",
+            "别忘了代我向宰相大人问好。\x02",
         )
     )
 
@@ -914,34 +914,34 @@ def main():
     OP_22(0x27, 0x0, 0x64)
     Sleep(1000)
 
-    def lambda_1D99():
+    def lambda_143D():
         OP_6B(2300, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1D99)
+    QueueWorkItem(0x101, 1, lambda_143D)
 
-    def lambda_1DA9():
+    def lambda_144D():
         OP_6D(930, 5000, -4690, 2000)
         ExitThread()
 
-    QueueWorkItem(0x103, 2, lambda_1DA9)
+    QueueWorkItem(0x103, 2, lambda_144D)
 
-    def lambda_1DC1():
+    def lambda_1465():
         OP_8E(0xFE, 0xA96, 0x1388, 0xFFFFFDF8, 0x3E8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_1DC1)
+    QueueWorkItem(0x103, 1, lambda_1465)
     TurnDirection(0x104, 0x103, 400)
 
-    def lambda_1DE3():
+    def lambda_1487():
 
-        label("loc_1DE3")
+        label("loc_1487")
 
         TurnDirection(0xFE, 0x103, 0)
         OP_48()
-        Jump("loc_1DE3")
+        Jump("loc_1487")
 
-    QueueWorkItem2(0x104, 1, lambda_1DE3)
+    QueueWorkItem2(0x104, 1, lambda_1487)
     WaitChrThread(0x101, 0x1)
     WaitChrThread(0x103, 0x2)
     WaitChrThread(0x103, 0x1)
@@ -953,29 +953,29 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_1E1B():
+    def lambda_14C0():
         OP_67(0, 8510, -10000, 5000)
         ExitThread()
 
-    QueueWorkItem(0x101, 0, lambda_1E1B)
+    QueueWorkItem(0x101, 0, lambda_14C0)
 
-    def lambda_1E33():
+    def lambda_14D8():
         OP_6B(2300, 5000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1E33)
+    QueueWorkItem(0x101, 1, lambda_14D8)
 
-    def lambda_1E43():
+    def lambda_14E8():
         OP_6C(142000, 5000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_1E43)
+    QueueWorkItem(0x101, 2, lambda_14E8)
 
-    def lambda_1E53():
+    def lambda_14F8():
         OP_6D(100, 5000, -9500, 5000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_1E53)
+    QueueWorkItem(0x101, 3, lambda_14F8)
     OP_8E(0x103, 0xAA, 0x1388, 0xFFFFE50C, 0x7D0, 0x0)
     TurnDirection(0x103, 0x104, 400)
     WaitChrThread(0x101, 0x0)
@@ -1165,11 +1165,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_2913():
+    def lambda_1C10():
         OP_6B(2100, 8000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_2913)
+    QueueWorkItem(0x101, 1, lambda_1C10)
 
     ChrTalk(
         0x104,
@@ -1177,8 +1177,8 @@ def main():
             "#035F是一个你很熟悉的人。\x02\x03",
             "一位被王国军尊奉为\x01",
             "最强的剑士、稀世的战略家。\x02\x03",
-            "同时也是大陆上四位拥有\x01",
-            "特别称号的游击士的其中一位。\x02",
+            "整个大陆中拥有特殊称号的游击士\x01",
+            "不足五位，而他同时还是其中之一。\x02",
         )
     )
 
@@ -1241,7 +1241,7 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_5_1605 end
+    # Function_5_E1B end
 
     SaveToFile()
 

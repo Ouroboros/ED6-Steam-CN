@@ -1,8 +1,6 @@
 ﻿from ED6ScenarioHelper import *
 
 def main():
-    # 神秘森林
-
     CreateScenaFile(
         FileName            = 'C0302   ._SN',
         MapName             = 'Rolent',
@@ -342,15 +340,15 @@ def main():
         "Function_0_34A",          # 00, 0
         "Function_1_360",          # 01, 1
         "Function_2_3B0",          # 02, 2
-        "Function_3_2F07",         # 03, 3
-        "Function_4_2F27",         # 04, 4
-        "Function_5_2F8D",         # 05, 5
-        "Function_6_32C8",         # 06, 6
-        "Function_7_3592",         # 07, 7
-        "Function_8_35B9",         # 08, 8
-        "Function_9_37BA",         # 09, 9
-        "Function_10_395A",        # 0A, 10
-        "Function_11_3A24",        # 0B, 11
+        "Function_3_26C3",         # 03, 3
+        "Function_4_26E3",         # 04, 4
+        "Function_5_2749",         # 05, 5
+        "Function_6_2A84",         # 06, 6
+        "Function_7_2D4E",         # 07, 7
+        "Function_8_2D75",         # 08, 8
+        "Function_9_2F76",         # 09, 9
+        "Function_10_3116",        # 0A, 10
+        "Function_11_31E0",        # 0B, 11
     )
 
 
@@ -407,7 +405,7 @@ def main():
 
     label("Function_2_3B0")
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 6)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 4)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_2F06")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 6)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x4C, 4)), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_26C2")
     ClearMapFlags(0x1)
     EventBegin(0x0)
     OP_62(0x101, 0x0, 2000, 0x2, 0x7, 0x50, 0x1)
@@ -517,17 +515,17 @@ def main():
     OP_62(0xB, 0x0, 2000, 0x26, 0x27, 0xFA, 0x2)
     Sleep(1000)
 
-    def lambda_85A():
+    def lambda_795():
         OP_6D(-58480, 30, -5380, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_85A)
+    QueueWorkItem(0x101, 1, lambda_795)
 
-    def lambda_872():
+    def lambda_7AD():
         OP_6C(0, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_872)
+    QueueWorkItem(0x101, 3, lambda_7AD)
     Sleep(1500)
     OP_62(0x101, 0x0, 2000, 0xC, 0xD, 0xFA, 0x2)
     OP_22(0x31, 0x0, 0x64)
@@ -569,7 +567,7 @@ def main():
     OP_5F(0x0)
     OP_56(0x0)
     FadeToBright(300, 0)
-    Jc((scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_EQU), scpexpr(EXPR_END)), "loc_C4F")
+    Jc((scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_EQU), scpexpr(EXPR_END)), "loc_B0C")
     SetChrChipByIndex(0x101, 6)
 
     ChrTalk(
@@ -579,45 +577,45 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_9F6():
+    def lambda_8D1():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_9F6)
+    QueueWorkItem(0x102, 1, lambda_8D1)
 
-    def lambda_A04():
+    def lambda_8DF():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_A04)
+    QueueWorkItem(0x103, 1, lambda_8DF)
     OP_8E(0x101, 0xFFFF1974, 0x14, 0xFFFFDBF2, 0x1770, 0x0)
 
-    def lambda_A26():
+    def lambda_901():
 
-        label("loc_A26")
-
-        TurnDirection(0xFE, 0x101, 400)
-        OP_48()
-        Jump("loc_A26")
-
-    QueueWorkItem2(0x102, 1, lambda_A26)
-
-    def lambda_A37():
-
-        label("loc_A37")
+        label("loc_901")
 
         TurnDirection(0xFE, 0x101, 400)
         OP_48()
-        Jump("loc_A37")
+        Jump("loc_901")
 
-    QueueWorkItem2(0x103, 1, lambda_A37)
+    QueueWorkItem2(0x102, 1, lambda_901)
+
+    def lambda_912():
+
+        label("loc_912")
+
+        TurnDirection(0xFE, 0x101, 400)
+        OP_48()
+        Jump("loc_912")
+
+    QueueWorkItem2(0x103, 1, lambda_912)
     OP_8E(0x101, 0xFFFF1406, 0x0, 0xFFFFE034, 0x1770, 0x0)
 
-    def lambda_A5C():
+    def lambda_937():
         OP_8E(0xFE, 0xFFFF1334, 0x1E, 0xFFFFF646, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_A5C)
+    QueueWorkItem(0x101, 1, lambda_937)
 
     ChrTalk(
         0x102,
@@ -645,44 +643,44 @@ def main():
     SetChrChipByIndex(0x102, 8)
     SetChrChipByIndex(0x103, 10)
 
-    def lambda_B02():
+    def lambda_9BF():
         OP_6C(45000, 3000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_B02)
+    QueueWorkItem(0x101, 2, lambda_9BF)
 
-    def lambda_B12():
+    def lambda_9CF():
         OP_6D(-60120, -80, 1150, 3000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_B12)
+    QueueWorkItem(0x101, 3, lambda_9CF)
 
-    def lambda_B2A():
+    def lambda_9E7():
         OP_8E(0xFE, 0xFFFF1302, 0x14, 0xFFFFDD64, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_B2A)
+    QueueWorkItem(0x102, 1, lambda_9E7)
     Sleep(600)
 
-    def lambda_B4A():
+    def lambda_A07():
         OP_8E(0xFE, 0xFFFF1302, 0x14, 0xFFFFDD64, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_B4A)
+    QueueWorkItem(0x103, 1, lambda_A07)
     WaitChrThread(0x102, 0x1)
 
-    def lambda_B6A():
+    def lambda_A27():
         OP_8E(0xFE, 0xFFFF0FB0, 0xFFFFFF74, 0xFFFFF114, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_B6A)
+    QueueWorkItem(0x102, 1, lambda_A27)
     WaitChrThread(0x103, 0x1)
 
-    def lambda_B8A():
+    def lambda_A47():
         OP_8E(0xFE, 0xFFFF16CC, 0xA, 0xFFFFF114, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_B8A)
+    QueueWorkItem(0x103, 1, lambda_A47)
     OP_62(0x9, 0x0, 2000, 0x2, 0x7, 0x50, 0x1)
     OP_22(0x27, 0x0, 0x64)
     Sleep(50)
@@ -695,34 +693,34 @@ def main():
     OP_62(0x8, 0x0, 2000, 0x2, 0x7, 0x50, 0x1)
     OP_22(0x27, 0x0, 0x64)
 
-    def lambda_C10():
+    def lambda_ACD():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x9, 1, lambda_C10)
+    QueueWorkItem(0x9, 1, lambda_ACD)
 
-    def lambda_C1E():
+    def lambda_ADB():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0xB, 1, lambda_C1E)
+    QueueWorkItem(0xB, 1, lambda_ADB)
 
-    def lambda_C2C():
+    def lambda_AE9():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0xA, 1, lambda_C2C)
+    QueueWorkItem(0xA, 1, lambda_AE9)
 
-    def lambda_C3A():
+    def lambda_AF7():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_C3A)
+    QueueWorkItem(0x8, 1, lambda_AF7)
     WaitChrThread(0x101, 0x1)
     WaitChrThread(0x101, 0x2)
-    Jump("loc_110A")
+    Jump("loc_ED7")
 
-    label("loc_C4F")
+    label("loc_B0C")
 
     OP_2B(0x1A, 0x1)
 
@@ -837,58 +835,58 @@ def main():
     OP_22(0x27, 0x0, 0x64)
     Sleep(1000)
 
-    def lambda_105C():
+    def lambda_E29():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x9, 1, lambda_105C)
+    QueueWorkItem(0x9, 1, lambda_E29)
 
-    def lambda_106A():
+    def lambda_E37():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0xB, 1, lambda_106A)
+    QueueWorkItem(0xB, 1, lambda_E37)
 
-    def lambda_1078():
+    def lambda_E45():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0xA, 1, lambda_1078)
+    QueueWorkItem(0xA, 1, lambda_E45)
 
-    def lambda_1086():
+    def lambda_E53():
         TurnDirection(0xFE, 0x101, 400)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_1086)
+    QueueWorkItem(0x8, 1, lambda_E53)
 
-    def lambda_1094():
+    def lambda_E61():
         OP_8E(0xFE, 0xFFFF133E, 0x1E, 0xFFFFF650, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1094)
+    QueueWorkItem(0x101, 1, lambda_E61)
     Sleep(300)
 
-    def lambda_10B4():
+    def lambda_E81():
         OP_8E(0xFE, 0xFFFF0FB0, 0xFFFFFF74, 0xFFFFF114, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_10B4)
+    QueueWorkItem(0x102, 1, lambda_E81)
     Sleep(300)
 
-    def lambda_10D4():
+    def lambda_EA1():
         OP_8E(0xFE, 0xFFFF16CC, 0xA, 0xFFFFF114, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_10D4)
+    QueueWorkItem(0x103, 1, lambda_EA1)
 
-    def lambda_10EF():
+    def lambda_EBC():
         OP_6C(45000, 1500)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_10EF)
+    QueueWorkItem(0x101, 3, lambda_EBC)
     OP_6D(-60120, -80, 1150, 1500)
 
-    label("loc_110A")
+    label("loc_ED7")
 
     WaitChrThread(0x8, 0x1)
 
@@ -980,10 +978,10 @@ def main():
         0x8,
         (
             "#412F有什么好怕的！\x02\x03",
-            "就算是游击士，\x01",
-            "也只不过是女人和小孩罢了！\x02\x03",
-            "要让他们从尝尝\x01",
-            "我们『卡普亚一家』的厉害！\x02",
+            "就算是游击士，也只不过是\x01",
+            "女人和小孩罢了！\x02\x03",
+            "要让他们尝尝我们『卡普亚\x01",
+            "一家』的厉害！\x02",
         )
     )
 
@@ -1008,17 +1006,17 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_15B5():
+    def lambda_1205():
         OP_6B(3000, 1000)
         ExitThread()
 
-    QueueWorkItem(0x8, 2, lambda_15B5)
+    QueueWorkItem(0x8, 2, lambda_1205)
 
-    def lambda_15C5():
+    def lambda_1215():
         OP_6D(-60120, -80, 3200, 1000)
         ExitThread()
 
-    QueueWorkItem(0x8, 3, lambda_15C5)
+    QueueWorkItem(0x8, 3, lambda_1215)
     Sleep(500)
     OP_82(0x0, 0x0)
     OP_22(0xCB, 0x0, 0x64)
@@ -1057,54 +1055,54 @@ def main():
     OP_56(0x1)
     OP_59()
 
-    def lambda_167C():
+    def lambda_12B2():
         OP_6D(-60120, -80, 1150, 800)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_167C)
+    QueueWorkItem(0x101, 3, lambda_12B2)
     SetChrChipByIndex(0xA, 4)
 
-    def lambda_1699():
+    def lambda_12CF():
         OP_92(0xFE, 0x101, 0x3E8, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xA, 1, lambda_1699)
+    QueueWorkItem(0xA, 1, lambda_12CF)
     SetChrChipByIndex(0x9, 4)
 
-    def lambda_16B3():
+    def lambda_12E9():
         OP_92(0xFE, 0x102, 0x3E8, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x9, 1, lambda_16B3)
+    QueueWorkItem(0x9, 1, lambda_12E9)
     SetChrChipByIndex(0xB, 4)
 
-    def lambda_16CD():
+    def lambda_1303():
         OP_92(0xFE, 0x103, 0x3E8, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xB, 1, lambda_16CD)
+    QueueWorkItem(0xB, 1, lambda_1303)
     SetChrChipByIndex(0x8, 1)
 
-    def lambda_16E7():
+    def lambda_131D():
         OP_92(0xFE, 0x101, 0x3E8, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_16E7)
+    QueueWorkItem(0x8, 1, lambda_131D)
     Sleep(400)
     Battle(0x385, 0x0, 0x0, 0x0, 0xFF)
     Switch(
         (scpexpr(EXPR_PUSH_VALUE_INDEX, 0x3), scpexpr(EXPR_END)),
-        (1, "loc_1714"),
-        (SWITCH_DEFAULT, "loc_1719"),
+        (1, "loc_134A"),
+        (SWITCH_DEFAULT, "loc_134F"),
     )
 
 
-    label("loc_1714")
+    label("loc_134A")
 
     OP_B4(0x0)
-    Jump("loc_1719")
+    Jump("loc_134F")
 
-    label("loc_1719")
+    label("loc_134F")
 
     EventBegin(0x0)
     OP_44(0x101, 0xFF)
@@ -1203,11 +1201,11 @@ def main():
     CloseMessageWindow()
     OP_82(0x0, 0x0)
 
-    def lambda_1AA1():
+    def lambda_1644():
         OP_8F(0xFE, 0xFFFF20C2, 0xFFFFFEE8, 0x2DA, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1AA1)
+    QueueWorkItem(0x101, 1, lambda_1644)
     OP_8E(0x103, 0xFFFF1AC8, 0xFFFFFF06, 0x44C, 0xBB8, 0x0)
     OP_8E(0x103, 0xFFFF1F0A, 0xFFFFFED4, 0x6A4, 0xBB8, 0x0)
     TurnDirection(0x103, 0x8, 400)
@@ -1252,11 +1250,11 @@ def main():
     OP_22(0x1F6, 0x0, 0x64)
     OP_99(0x103, 0x0, 0x4, 0x7D0)
 
-    def lambda_1C9A():
+    def lambda_17C1():
         OP_99(0x103, 0x7, 0x9, 0x7D0)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_1C9A)
+    QueueWorkItem(0x103, 1, lambda_17C1)
     OP_62(0x8, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
     OP_96(0x8, 0xFFFF268A, 0xFFFFFF24, 0x109A, 0x1F4, 0x1388)
     SetChrChipByIndex(0x8, 13)
@@ -1288,15 +1286,15 @@ def main():
     OP_51(0x103, 0x8, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
     SetChrChipByIndex(0x103, 10)
 
-    def lambda_1E0E():
+    def lambda_18C1():
 
-        label("loc_1E0E")
+        label("loc_18C1")
 
         OP_99(0xFE, 0x0, 0x7, 0x3E8)
         OP_48()
-        Jump("loc_1E0E")
+        Jump("loc_18C1")
 
-    QueueWorkItem2(0x103, 1, lambda_1E0E)
+    QueueWorkItem2(0x103, 1, lambda_18C1)
     OP_62(0x8, 0x0, 2000, 0x14, 0x17, 0xFA, 0x1)
     OP_22(0x31, 0x0, 0x64)
     Sleep(1000)
@@ -1341,11 +1339,11 @@ def main():
     TurnDirection(0x102, 0xD, 800)
     SetChrChipByIndex(0x102, 8)
 
-    def lambda_1F77():
+    def lambda_1A10():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_1F77)
+    QueueWorkItem(0x8, 1, lambda_1A10)
 
     ChrTalk(
         0x102,
@@ -1354,11 +1352,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_1FA1():
+    def lambda_1A39():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1FA1)
+    QueueWorkItem(0x101, 1, lambda_1A39)
     OP_44(0x103, 0xFF)
     OP_62(0x103, 0x0, 2000, 0x2, 0x7, 0x50, 0x1)
     OP_22(0x27, 0x0, 0x64)
@@ -1412,29 +1410,29 @@ def main():
     CloseMessageWindow()
     SetChrChipByIndex(0x101, 6)
 
-    def lambda_2209():
+    def lambda_1C7E():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_2209)
+    QueueWorkItem(0x8, 1, lambda_1C7E)
 
-    def lambda_2217():
+    def lambda_1C8C():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_2217)
+    QueueWorkItem(0x101, 1, lambda_1C8C)
 
-    def lambda_2225():
+    def lambda_1C9A():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x103, 1, lambda_2225)
+    QueueWorkItem(0x103, 1, lambda_1C9A)
 
-    def lambda_2233():
+    def lambda_1CA8():
         TurnDirection(0xFE, 0xD, 400)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_2233)
+    QueueWorkItem(0x102, 1, lambda_1CA8)
     OP_72(0x2, 0x4)
     OP_72(0x3, 0x4)
     SetChrFlags(0xD, 0x4)
@@ -1447,67 +1445,67 @@ def main():
     OP_43(0xE, 0x1, 0x0, 0x6)
     OP_B0(0x2, 0x1E)
 
-    def lambda_227B():
+    def lambda_1CF0():
         OP_6E(511, 6000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_227B)
+    QueueWorkItem(0x101, 3, lambda_1CF0)
     OP_24(0x79, 0x5A)
     Sleep(500)
     OP_24(0x79, 0x64)
     Sleep(2500)
 
-    def lambda_229D():
+    def lambda_1D12():
 
-        label("loc_229D")
-
-        TurnDirection(0xFE, 0xD, 400)
-        OP_48()
-        Jump("loc_229D")
-
-    QueueWorkItem2(0x8, 1, lambda_229D)
-
-    def lambda_22AE():
-
-        label("loc_22AE")
+        label("loc_1D12")
 
         TurnDirection(0xFE, 0xD, 400)
         OP_48()
-        Jump("loc_22AE")
+        Jump("loc_1D12")
 
-    QueueWorkItem2(0x101, 1, lambda_22AE)
+    QueueWorkItem2(0x8, 1, lambda_1D12)
 
-    def lambda_22BF():
+    def lambda_1D23():
 
-        label("loc_22BF")
-
-        TurnDirection(0xFE, 0xD, 400)
-        OP_48()
-        Jump("loc_22BF")
-
-    QueueWorkItem2(0x103, 1, lambda_22BF)
-
-    def lambda_22D0():
-
-        label("loc_22D0")
+        label("loc_1D23")
 
         TurnDirection(0xFE, 0xD, 400)
         OP_48()
-        Jump("loc_22D0")
+        Jump("loc_1D23")
 
-    QueueWorkItem2(0x102, 1, lambda_22D0)
+    QueueWorkItem2(0x101, 1, lambda_1D23)
 
-    def lambda_22E1():
+    def lambda_1D34():
+
+        label("loc_1D34")
+
+        TurnDirection(0xFE, 0xD, 400)
+        OP_48()
+        Jump("loc_1D34")
+
+    QueueWorkItem2(0x103, 1, lambda_1D34)
+
+    def lambda_1D45():
+
+        label("loc_1D45")
+
+        TurnDirection(0xFE, 0xD, 400)
+        OP_48()
+        Jump("loc_1D45")
+
+    QueueWorkItem2(0x102, 1, lambda_1D45)
+
+    def lambda_1D56():
         OP_6D(-61600, 3050, 5140, 10000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_22E1)
+    QueueWorkItem(0x101, 2, lambda_1D56)
 
-    def lambda_22F9():
+    def lambda_1D6E():
         OP_6C(33000, 10000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_22F9)
+    QueueWorkItem(0x101, 3, lambda_1D6E)
     Sleep(5000)
     OP_43(0x9, 0x1, 0x0, 0x7)
     OP_43(0xB, 0x1, 0x0, 0x7)
@@ -1528,35 +1526,35 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_2396():
+    def lambda_1DD1():
         OP_8E(0xFE, 0xFFFF121C, 0xFFFFFEC0, 0x11D0, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_2396)
+    QueueWorkItem(0x8, 1, lambda_1DD1)
     Sleep(200)
     SetChrChipByIndex(0x9, 4)
 
-    def lambda_23BB():
+    def lambda_1DF6():
         OP_8E(0xFE, 0xFFFF17B2, 0xFFFFFE8E, 0x159A, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x9, 1, lambda_23BB)
+    QueueWorkItem(0x9, 1, lambda_1DF6)
     Sleep(200)
     SetChrChipByIndex(0xB, 4)
 
-    def lambda_23E0():
+    def lambda_1E1B():
         OP_8E(0xFE, 0xFFFF1668, 0xFFFFFEC0, 0x1040, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xB, 1, lambda_23E0)
+    QueueWorkItem(0xB, 1, lambda_1E1B)
     Sleep(100)
     SetChrChipByIndex(0xA, 4)
 
-    def lambda_2405():
+    def lambda_1E40():
         OP_8E(0xFE, 0xFFFF11A4, 0xFFFFFF4C, 0xC3A, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xA, 1, lambda_2405)
+    QueueWorkItem(0xA, 1, lambda_1E40)
     WaitChrThread(0x8, 0x1)
     SetChrPos(0xC, -67370, 8500, 6060, 123)
     TurnDirection(0x8, 0xC, 0)
@@ -1568,23 +1566,23 @@ def main():
     SetChrChipByIndex(0xA, 3)
     WaitChrThread(0x101, 0x2)
 
-    def lambda_2460():
+    def lambda_1E9B():
         OP_6D(-62640, 4570, 5610, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_2460)
+    QueueWorkItem(0x101, 1, lambda_1E9B)
 
-    def lambda_2478():
+    def lambda_1EB3():
         OP_6E(363, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_2478)
+    QueueWorkItem(0x101, 2, lambda_1EB3)
 
-    def lambda_2488():
+    def lambda_1EC3():
         OP_67(0, 10510, -10000, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_2488)
+    QueueWorkItem(0x101, 3, lambda_1EC3)
     Sleep(1000)
     OP_22(0x6A, 0x0, 0x64)
     OP_6F(0x2, 60)
@@ -1657,65 +1655,65 @@ def main():
     SetChrFlags(0xB, 0x4)
     SetChrFlags(0xA, 0x4)
 
-    def lambda_26C8():
+    def lambda_205F():
         OP_8E(0xFE, 0xFFFF010B, 0xFFFFFF38, 0x13BA, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x8, 1, lambda_26C8)
+    QueueWorkItem(0x8, 1, lambda_205F)
     Sleep(200)
 
-    def lambda_26E8():
+    def lambda_207F():
         OP_6D(-61640, -300, 5890, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 0, lambda_26E8)
+    QueueWorkItem(0x101, 0, lambda_207F)
 
-    def lambda_2700():
+    def lambda_2097():
         OP_67(0, 9430, -10000, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_2700)
+    QueueWorkItem(0x101, 1, lambda_2097)
 
-    def lambda_2718():
+    def lambda_20AF():
         OP_6C(9000, 2000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_2718)
+    QueueWorkItem(0x101, 2, lambda_20AF)
     SetChrChipByIndex(0x9, 4)
 
-    def lambda_272D():
+    def lambda_20C4():
         OP_8E(0xFE, 0xFFFEBBB4, 0xFFFFFEB6, 0x6810, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x9, 1, lambda_272D)
+    QueueWorkItem(0x9, 1, lambda_20C4)
     Sleep(200)
     SetChrChipByIndex(0xB, 4)
 
-    def lambda_2752():
+    def lambda_20E9():
         OP_8E(0xFE, 0xFFFEBBB4, 0xFFFFFEB6, 0x6810, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xB, 1, lambda_2752)
+    QueueWorkItem(0xB, 1, lambda_20E9)
     Sleep(100)
     SetChrChipByIndex(0xA, 4)
 
-    def lambda_2777():
+    def lambda_210E():
         OP_8E(0xFE, 0xFFFEBBB4, 0xFFFFFEB6, 0x6810, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xA, 1, lambda_2777)
+    QueueWorkItem(0xA, 1, lambda_210E)
 
-    def lambda_2792():
+    def lambda_2129():
         OP_8E(0xFE, 0xFFFF19F6, 0xFFFFFEE8, 0x7D9, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x101, 3, lambda_2792)
+    QueueWorkItem(0x101, 3, lambda_2129)
 
-    def lambda_27AD():
+    def lambda_2144():
         OP_8E(0xFE, 0xFFFF1410, 0x14, 0xFFFFFB46, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0x102, 3, lambda_27AD)
+    QueueWorkItem(0x102, 3, lambda_2144)
     WaitChrThread(0x8, 0x1)
     ClearChrFlags(0x8, 0x4)
     SetChrBattleFlags(0x8, 0x20)
@@ -1741,73 +1739,73 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_289D():
+    def lambda_21FA():
 
-        label("loc_289D")
-
-        TurnDirection(0xFE, 0xD, 400)
-        OP_48()
-        Jump("loc_289D")
-
-    QueueWorkItem2(0x101, 0, lambda_289D)
-
-    def lambda_28AE():
-
-        label("loc_28AE")
+        label("loc_21FA")
 
         TurnDirection(0xFE, 0xD, 400)
         OP_48()
-        Jump("loc_28AE")
+        Jump("loc_21FA")
 
-    QueueWorkItem2(0x103, 0, lambda_28AE)
+    QueueWorkItem2(0x101, 0, lambda_21FA)
 
-    def lambda_28BF():
+    def lambda_220B():
 
-        label("loc_28BF")
+        label("loc_220B")
 
         TurnDirection(0xFE, 0xD, 400)
         OP_48()
-        Jump("loc_28BF")
+        Jump("loc_220B")
 
-    QueueWorkItem2(0x102, 0, lambda_28BF)
+    QueueWorkItem2(0x103, 0, lambda_220B)
+
+    def lambda_221C():
+
+        label("loc_221C")
+
+        TurnDirection(0xFE, 0xD, 400)
+        OP_48()
+        Jump("loc_221C")
+
+    QueueWorkItem2(0x102, 0, lambda_221C)
     OP_22(0xCD, 0x0, 0x64)
     OP_43(0xD, 0x1, 0x0, 0x8)
     OP_43(0xE, 0x1, 0x0, 0x9)
     OP_43(0x8, 0x3, 0x0, 0x4)
 
-    def lambda_28EA():
+    def lambda_2247():
         OP_6D(-68070, 1230, 7050, 3000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_28EA)
+    QueueWorkItem(0x101, 1, lambda_2247)
 
-    def lambda_2902():
+    def lambda_225F():
         OP_6C(69000, 6000)
         ExitThread()
 
-    QueueWorkItem(0x101, 2, lambda_2902)
+    QueueWorkItem(0x101, 2, lambda_225F)
 
-    def lambda_2912():
+    def lambda_226F():
         OP_6B(4000, 6000)
         ExitThread()
 
-    QueueWorkItem(0x102, 2, lambda_2912)
+    QueueWorkItem(0x102, 2, lambda_226F)
     SetChrFlags(0x9, 0x80)
     SetChrFlags(0xB, 0x80)
     SetChrFlags(0xA, 0x80)
     Sleep(3000)
 
-    def lambda_2936():
+    def lambda_2293():
         OP_6D(-60410, -60, 750, 3000)
         ExitThread()
 
-    QueueWorkItem(0x102, 1, lambda_2936)
+    QueueWorkItem(0x102, 1, lambda_2293)
 
-    def lambda_294E():
+    def lambda_22AB():
         OP_67(0, 9000, -10000, 3000)
         ExitThread()
 
-    QueueWorkItem(0x102, 3, lambda_294E)
+    QueueWorkItem(0x102, 3, lambda_22AB)
     Sleep(3000)
     OP_82(0x2, 0x0)
     OP_20(0x7D0)
@@ -1963,15 +1961,15 @@ def main():
     NewScene("ED6_DT01/T0121   ._SN", 103, 0, 0)
     IdleLoop()
 
-    label("loc_2F06")
+    label("loc_26C2")
 
     Return()
 
     # Function_2_3B0 end
 
-    def Function_3_2F07(): pass
+    def Function_3_26C3(): pass
 
-    label("Function_3_2F07")
+    label("Function_3_26C3")
 
     OP_24(0x79, 0x46)
     Sleep(500)
@@ -1982,11 +1980,11 @@ def main():
     OP_24(0x79, 0x64)
     Return()
 
-    # Function_3_2F07 end
+    # Function_3_26C3 end
 
-    def Function_4_2F27(): pass
+    def Function_4_26E3(): pass
 
-    label("Function_4_2F27")
+    label("Function_4_26E3")
 
     Sleep(6000)
     OP_24(0x79, 0x64)
@@ -2013,231 +2011,231 @@ def main():
     OP_23(0x79)
     Return()
 
-    # Function_4_2F27 end
+    # Function_4_26E3 end
 
-    def Function_5_2F8D(): pass
+    def Function_5_2749(): pass
 
-    label("Function_5_2F8D")
+    label("Function_5_2749")
 
     SetChrPos(0xFE, -37060, 17100, -13200, 291)
     LoadEffect(0x1, "map\\\\mp021_00.eff")
 
-    def lambda_2FB8():
+    def lambda_2774():
         OP_8E(0xFE, 0xFFFEF318, 0x283C, 0x24B8, 0x1838, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_2FB8)
+    QueueWorkItem(0xFE, 2, lambda_2774)
     Sleep(3000)
 
-    def lambda_2FD8():
+    def lambda_2794():
         OP_8F(0xFE, 0xFFFEF318, 0x2454, 0x24B8, 0x157C, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_2FD8)
+    QueueWorkItem(0xFE, 2, lambda_2794)
     Sleep(500)
 
-    def lambda_2FF8():
+    def lambda_27B4():
         OP_8F(0xFE, 0xFFFEF318, 0x2454, 0x24B8, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_2FF8)
+    QueueWorkItem(0xFE, 2, lambda_27B4)
 
-    def lambda_3013():
+    def lambda_27CF():
         OP_8C(0xFE, 155, 6)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3013)
+    QueueWorkItem(0xFE, 3, lambda_27CF)
     Sleep(100)
 
-    def lambda_3026():
+    def lambda_27E2():
         OP_8C(0xFE, 155, 8)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3026)
+    QueueWorkItem(0xFE, 3, lambda_27E2)
     Sleep(100)
 
-    def lambda_3039():
+    def lambda_27F5():
         OP_8C(0xFE, 155, 10)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3039)
+    QueueWorkItem(0xFE, 3, lambda_27F5)
     Sleep(100)
 
-    def lambda_304C():
+    def lambda_2808():
         OP_8C(0xFE, 155, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_304C)
+    QueueWorkItem(0xFE, 3, lambda_2808)
     Sleep(100)
 
-    def lambda_305F():
+    def lambda_281B():
         OP_8C(0xFE, 155, 14)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_305F)
+    QueueWorkItem(0xFE, 3, lambda_281B)
     Sleep(100)
 
-    def lambda_3072():
+    def lambda_282E():
         OP_8C(0xFE, 155, 16)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3072)
+    QueueWorkItem(0xFE, 3, lambda_282E)
     Sleep(100)
 
-    def lambda_3085():
+    def lambda_2841():
         OP_8C(0xFE, 155, 18)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3085)
+    QueueWorkItem(0xFE, 3, lambda_2841)
     Sleep(100)
 
-    def lambda_3098():
+    def lambda_2854():
         OP_8C(0xFE, 155, 20)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3098)
+    QueueWorkItem(0xFE, 3, lambda_2854)
     Sleep(100)
 
-    def lambda_30AB():
+    def lambda_2867():
         OP_8C(0xFE, 155, 22)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_30AB)
+    QueueWorkItem(0xFE, 3, lambda_2867)
     Sleep(100)
 
-    def lambda_30BE():
+    def lambda_287A():
         OP_8C(0xFE, 155, 25)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_30BE)
+    QueueWorkItem(0xFE, 3, lambda_287A)
 
-    def lambda_30CC():
+    def lambda_2888():
         OP_8F(0xFE, 0xFFFEF318, 0x1C84, 0x24B8, 0x1194, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_30CC)
+    QueueWorkItem(0xFE, 2, lambda_2888)
     Sleep(500)
 
-    def lambda_30EC():
+    def lambda_28A8():
         OP_8F(0xFE, 0xFFFEF318, 0x1C84, 0x24B8, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_30EC)
+    QueueWorkItem(0xFE, 2, lambda_28A8)
     Sleep(100)
 
-    def lambda_310C():
+    def lambda_28C8():
         OP_8C(0xFE, 155, 28)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_310C)
+    QueueWorkItem(0xFE, 3, lambda_28C8)
     Sleep(100)
 
-    def lambda_311F():
+    def lambda_28DB():
         OP_8C(0xFE, 155, 30)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_311F)
+    QueueWorkItem(0xFE, 3, lambda_28DB)
     Sleep(100)
 
-    def lambda_3132():
+    def lambda_28EE():
         OP_8C(0xFE, 155, 32)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3132)
+    QueueWorkItem(0xFE, 3, lambda_28EE)
     Sleep(100)
     PlayEffect(0x1, 0x2, 0xE, 0, 0, 0, 0, 0, 0, 1500, 1500, 1500, 0xFF, 0, 0, 0, 0)
     OP_22(0xCC, 0x0, 0x64)
 
-    def lambda_317F():
+    def lambda_293B():
         OP_8F(0xFE, 0xFFFEF318, 0x1C84, 0x24B8, 0xDAC, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_317F)
+    QueueWorkItem(0xFE, 2, lambda_293B)
     Sleep(100)
 
-    def lambda_319F():
+    def lambda_295B():
         OP_8C(0xFE, 155, 30)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_319F)
+    QueueWorkItem(0xFE, 3, lambda_295B)
     Sleep(100)
 
-    def lambda_31B2():
+    def lambda_296E():
         OP_8C(0xFE, 155, 28)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_31B2)
+    QueueWorkItem(0xFE, 3, lambda_296E)
     Sleep(100)
     Sleep(100)
 
-    def lambda_31CA():
+    def lambda_2986():
         OP_8F(0xFE, 0xFFFEF318, 0xCE4, 0x24B8, 0xBB8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_31CA)
+    QueueWorkItem(0xFE, 2, lambda_2986)
     Sleep(300)
 
-    def lambda_31EA():
+    def lambda_29A6():
         OP_8C(0xFE, 155, 25)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_31EA)
+    QueueWorkItem(0xFE, 3, lambda_29A6)
     Sleep(100)
 
-    def lambda_31FD():
+    def lambda_29B9():
         OP_8C(0xFE, 155, 22)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_31FD)
+    QueueWorkItem(0xFE, 3, lambda_29B9)
     Sleep(100)
 
-    def lambda_3210():
+    def lambda_29CC():
         OP_8C(0xFE, 155, 20)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3210)
+    QueueWorkItem(0xFE, 3, lambda_29CC)
 
-    def lambda_321E():
+    def lambda_29DA():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_321E)
+    QueueWorkItem(0xFE, 2, lambda_29DA)
     Sleep(500)
     Sleep(300)
 
-    def lambda_3243():
+    def lambda_29FF():
         OP_8C(0xFE, 155, 18)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3243)
+    QueueWorkItem(0xFE, 3, lambda_29FF)
     Sleep(100)
 
-    def lambda_3256():
+    def lambda_2A12():
         OP_8C(0xFE, 155, 16)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3256)
+    QueueWorkItem(0xFE, 3, lambda_2A12)
     Sleep(100)
 
-    def lambda_3269():
+    def lambda_2A25():
         OP_8C(0xFE, 155, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3269)
+    QueueWorkItem(0xFE, 3, lambda_2A25)
     Sleep(100)
 
-    def lambda_327C():
+    def lambda_2A38():
         OP_8C(0xFE, 155, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_327C)
+    QueueWorkItem(0xFE, 3, lambda_2A38)
     Sleep(1000)
 
-    def lambda_328F():
+    def lambda_2A4B():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x5DC, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_328F)
+    QueueWorkItem(0xFE, 2, lambda_2A4B)
     Sleep(2000)
     OP_82(0x2, 0x2)
     WaitChrThread(0xFE, 0x2)
@@ -2245,256 +2243,256 @@ def main():
     OP_7C(0x0, 0xC8, 0xBB8, 0x64)
     Return()
 
-    # Function_5_2F8D end
+    # Function_5_2749 end
 
-    def Function_6_32C8(): pass
+    def Function_6_2A84(): pass
 
-    label("Function_6_32C8")
+    label("Function_6_2A84")
 
     SetChrPos(0xFE, -37060, 300, -13200, 291)
 
-    def lambda_32DF():
+    def lambda_2A9B():
         OP_8E(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x1838, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_32DF)
+    QueueWorkItem(0xFE, 2, lambda_2A9B)
     Sleep(3000)
 
-    def lambda_32FF():
+    def lambda_2ABB():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x157C, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_32FF)
+    QueueWorkItem(0xFE, 2, lambda_2ABB)
     Sleep(500)
 
-    def lambda_331F():
+    def lambda_2ADB():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_331F)
+    QueueWorkItem(0xFE, 2, lambda_2ADB)
 
-    def lambda_333A():
+    def lambda_2AF6():
         OP_8C(0xFE, 155, 6)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_333A)
+    QueueWorkItem(0xFE, 3, lambda_2AF6)
     Sleep(100)
 
-    def lambda_334D():
+    def lambda_2B09():
         OP_8C(0xFE, 155, 8)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_334D)
+    QueueWorkItem(0xFE, 3, lambda_2B09)
     Sleep(100)
 
-    def lambda_3360():
+    def lambda_2B1C():
         OP_8C(0xFE, 155, 10)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3360)
+    QueueWorkItem(0xFE, 3, lambda_2B1C)
     Sleep(100)
 
-    def lambda_3373():
+    def lambda_2B2F():
         OP_8C(0xFE, 155, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3373)
+    QueueWorkItem(0xFE, 3, lambda_2B2F)
     Sleep(100)
 
-    def lambda_3386():
+    def lambda_2B42():
         OP_8C(0xFE, 155, 14)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3386)
+    QueueWorkItem(0xFE, 3, lambda_2B42)
     Sleep(100)
 
-    def lambda_3399():
+    def lambda_2B55():
         OP_8C(0xFE, 155, 16)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3399)
+    QueueWorkItem(0xFE, 3, lambda_2B55)
     Sleep(100)
 
-    def lambda_33AC():
+    def lambda_2B68():
         OP_8C(0xFE, 155, 18)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_33AC)
+    QueueWorkItem(0xFE, 3, lambda_2B68)
     Sleep(100)
 
-    def lambda_33BF():
+    def lambda_2B7B():
         OP_8C(0xFE, 155, 20)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_33BF)
+    QueueWorkItem(0xFE, 3, lambda_2B7B)
     Sleep(100)
 
-    def lambda_33D2():
+    def lambda_2B8E():
         OP_8C(0xFE, 155, 22)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_33D2)
+    QueueWorkItem(0xFE, 3, lambda_2B8E)
     Sleep(100)
 
-    def lambda_33E5():
+    def lambda_2BA1():
         OP_8C(0xFE, 155, 25)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_33E5)
+    QueueWorkItem(0xFE, 3, lambda_2BA1)
 
-    def lambda_33F3():
+    def lambda_2BAF():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x1194, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_33F3)
+    QueueWorkItem(0xFE, 2, lambda_2BAF)
     Sleep(500)
 
-    def lambda_3413():
+    def lambda_2BCF():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3413)
+    QueueWorkItem(0xFE, 2, lambda_2BCF)
     Sleep(100)
 
-    def lambda_3433():
+    def lambda_2BEF():
         OP_8C(0xFE, 155, 28)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3433)
+    QueueWorkItem(0xFE, 3, lambda_2BEF)
     Sleep(100)
 
-    def lambda_3446():
+    def lambda_2C02():
         OP_8C(0xFE, 155, 30)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3446)
+    QueueWorkItem(0xFE, 3, lambda_2C02)
     Sleep(100)
 
-    def lambda_3459():
+    def lambda_2C15():
         OP_8C(0xFE, 155, 32)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3459)
+    QueueWorkItem(0xFE, 3, lambda_2C15)
     Sleep(100)
 
-    def lambda_346C():
+    def lambda_2C28():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0xDAC, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_346C)
+    QueueWorkItem(0xFE, 2, lambda_2C28)
     Sleep(100)
 
-    def lambda_348C():
+    def lambda_2C48():
         OP_8C(0xFE, 155, 30)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_348C)
+    QueueWorkItem(0xFE, 3, lambda_2C48)
     Sleep(100)
 
-    def lambda_349F():
+    def lambda_2C5B():
         OP_8C(0xFE, 155, 28)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_349F)
+    QueueWorkItem(0xFE, 3, lambda_2C5B)
     Sleep(100)
     Sleep(100)
 
-    def lambda_34B7():
+    def lambda_2C73():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0xBB8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_34B7)
+    QueueWorkItem(0xFE, 2, lambda_2C73)
     Sleep(300)
 
-    def lambda_34D7():
+    def lambda_2C93():
         OP_8C(0xFE, 155, 25)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_34D7)
+    QueueWorkItem(0xFE, 3, lambda_2C93)
     Sleep(100)
 
-    def lambda_34EA():
+    def lambda_2CA6():
         OP_8C(0xFE, 155, 22)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_34EA)
+    QueueWorkItem(0xFE, 3, lambda_2CA6)
     Sleep(100)
 
-    def lambda_34FD():
+    def lambda_2CB9():
         OP_8C(0xFE, 155, 20)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_34FD)
+    QueueWorkItem(0xFE, 3, lambda_2CB9)
 
-    def lambda_350B():
+    def lambda_2CC7():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_350B)
+    QueueWorkItem(0xFE, 2, lambda_2CC7)
     Sleep(500)
     Sleep(300)
 
-    def lambda_3530():
+    def lambda_2CEC():
         OP_8C(0xFE, 155, 18)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3530)
+    QueueWorkItem(0xFE, 3, lambda_2CEC)
     Sleep(100)
 
-    def lambda_3543():
+    def lambda_2CFF():
         OP_8C(0xFE, 155, 16)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3543)
+    QueueWorkItem(0xFE, 3, lambda_2CFF)
     Sleep(100)
 
-    def lambda_3556():
+    def lambda_2D12():
         OP_8C(0xFE, 155, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3556)
+    QueueWorkItem(0xFE, 3, lambda_2D12)
     Sleep(100)
 
-    def lambda_3569():
+    def lambda_2D25():
         OP_8C(0xFE, 155, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3569)
+    QueueWorkItem(0xFE, 3, lambda_2D25)
     Sleep(1000)
 
-    def lambda_357C():
+    def lambda_2D38():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x5DC, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_357C)
+    QueueWorkItem(0xFE, 2, lambda_2D38)
     Return()
 
-    # Function_6_32C8 end
+    # Function_6_2A84 end
 
-    def Function_7_3592(): pass
+    def Function_7_2D4E(): pass
 
-    label("Function_7_3592")
+    label("Function_7_2D4E")
 
     OP_99(0xFE, 0x3, 0x0, 0x3E8)
     SetChrChipByIndex(0xFE, 3)
     TurnDirection(0xFE, 0xD, 200)
 
-    def lambda_35AD():
+    def lambda_2D69():
 
-        label("loc_35AD")
+        label("loc_2D69")
 
         TurnDirection(0xFE, 0xD, 0)
         OP_48()
-        Jump("loc_35AD")
+        Jump("loc_2D69")
 
-    QueueWorkItem2(0xFE, 2, lambda_35AD)
+    QueueWorkItem2(0xFE, 2, lambda_2D69)
     Return()
 
-    # Function_7_3592 end
+    # Function_7_2D4E end
 
-    def Function_8_35B9(): pass
+    def Function_8_2D75(): pass
 
-    label("Function_8_35B9")
+    label("Function_8_2D75")
 
     LoadEffect(0x1, "map\\\\mp021_00.eff")
     PlayEffect(0x1, 0x2, 0xE, 0, 0, 0, 0, 0, 0, 1500, 1500, 1500, 0xFF, 0, 0, 0, 0)
@@ -2502,235 +2500,235 @@ def main():
     OP_6F(0x2, 160)
     OP_70(0x2, 0xF0)
 
-    def lambda_361B():
+    def lambda_2DD7():
         OP_8F(0xFE, 0xFFFEF318, 0x2710, 0x24B8, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_361B)
+    QueueWorkItem(0xFE, 2, lambda_2DD7)
 
-    def lambda_3636():
+    def lambda_2DF2():
         OP_8C(0xFE, 243, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3636)
+    QueueWorkItem(0xFE, 3, lambda_2DF2)
     Sleep(100)
 
-    def lambda_3649():
+    def lambda_2E05():
         OP_8C(0xFE, 243, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3649)
+    QueueWorkItem(0xFE, 3, lambda_2E05)
     Sleep(100)
 
-    def lambda_365C():
+    def lambda_2E18():
         OP_8C(0xFE, 243, 17)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_365C)
+    QueueWorkItem(0xFE, 3, lambda_2E18)
     Sleep(500)
     Sleep(300)
 
-    def lambda_3674():
+    def lambda_2E30():
         OP_8C(0xFE, 243, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3674)
+    QueueWorkItem(0xFE, 3, lambda_2E30)
     Sleep(100)
 
-    def lambda_3687():
+    def lambda_2E43():
         OP_8C(0xFE, 243, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3687)
+    QueueWorkItem(0xFE, 3, lambda_2E43)
     Sleep(100)
     Sleep(1000)
 
-    def lambda_369F():
+    def lambda_2E5B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_369F)
+    QueueWorkItem(0xFE, 2, lambda_2E5B)
     Sleep(500)
 
-    def lambda_36BF():
+    def lambda_2E7B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0xBB8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_36BF)
+    QueueWorkItem(0xFE, 2, lambda_2E7B)
     Sleep(500)
 
-    def lambda_36DF():
+    def lambda_2E9B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_36DF)
+    QueueWorkItem(0xFE, 2, lambda_2E9B)
     Sleep(500)
 
-    def lambda_36FF():
+    def lambda_2EBB():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_36FF)
+    QueueWorkItem(0xFE, 2, lambda_2EBB)
     Sleep(500)
 
-    def lambda_371F():
+    def lambda_2EDB():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_371F)
+    QueueWorkItem(0xFE, 2, lambda_2EDB)
     Sleep(500)
 
-    def lambda_373F():
+    def lambda_2EFB():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x1B58, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_373F)
+    QueueWorkItem(0xFE, 2, lambda_2EFB)
     Sleep(500)
 
-    def lambda_375F():
+    def lambda_2F1B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x1F40, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_375F)
+    QueueWorkItem(0xFE, 2, lambda_2F1B)
     Sleep(500)
 
-    def lambda_377F():
+    def lambda_2F3B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x2328, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_377F)
+    QueueWorkItem(0xFE, 2, lambda_2F3B)
     Sleep(500)
 
-    def lambda_379F():
+    def lambda_2F5B():
         OP_8F(0xFE, 0xFFFEA0A2, 0x61A8, 0xFFFFB474, 0x2710, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_379F)
+    QueueWorkItem(0xFE, 2, lambda_2F5B)
     Sleep(500)
     Return()
 
-    # Function_8_35B9 end
+    # Function_8_2D75 end
 
-    def Function_9_37BA(): pass
+    def Function_9_2F76(): pass
 
-    label("Function_9_37BA")
+    label("Function_9_2F76")
 
 
-    def lambda_37C0():
+    def lambda_2F7C():
         OP_8F(0xFE, 0xFFFEF318, 0x12C, 0x24B8, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_37C0)
+    QueueWorkItem(0xFE, 2, lambda_2F7C)
 
-    def lambda_37DB():
+    def lambda_2F97():
         OP_8C(0xFE, 243, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_37DB)
+    QueueWorkItem(0xFE, 3, lambda_2F97)
     Sleep(100)
 
-    def lambda_37EE():
+    def lambda_2FAA():
         OP_8C(0xFE, 243, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_37EE)
+    QueueWorkItem(0xFE, 3, lambda_2FAA)
     Sleep(100)
 
-    def lambda_3801():
+    def lambda_2FBD():
         OP_8C(0xFE, 243, 17)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3801)
+    QueueWorkItem(0xFE, 3, lambda_2FBD)
     Sleep(500)
     Sleep(300)
 
-    def lambda_3819():
+    def lambda_2FD5():
         OP_8C(0xFE, 243, 15)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_3819)
+    QueueWorkItem(0xFE, 3, lambda_2FD5)
     Sleep(100)
 
-    def lambda_382C():
+    def lambda_2FE8():
         OP_8C(0xFE, 243, 12)
         ExitThread()
 
-    QueueWorkItem(0xFE, 3, lambda_382C)
+    QueueWorkItem(0xFE, 3, lambda_2FE8)
     Sleep(100)
     Sleep(2000)
 
-    def lambda_3844():
+    def lambda_3000():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x7D0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3844)
+    QueueWorkItem(0xFE, 2, lambda_3000)
     Sleep(500)
 
-    def lambda_3864():
+    def lambda_3020():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0xBB8, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3864)
+    QueueWorkItem(0xFE, 2, lambda_3020)
     Sleep(500)
 
-    def lambda_3884():
+    def lambda_3040():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0xFA0, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3884)
+    QueueWorkItem(0xFE, 2, lambda_3040)
     Sleep(500)
 
-    def lambda_38A4():
+    def lambda_3060():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x1388, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_38A4)
+    QueueWorkItem(0xFE, 2, lambda_3060)
     Sleep(500)
 
-    def lambda_38C4():
+    def lambda_3080():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x1770, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_38C4)
+    QueueWorkItem(0xFE, 2, lambda_3080)
     Sleep(500)
 
-    def lambda_38E4():
+    def lambda_30A0():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x1B58, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_38E4)
+    QueueWorkItem(0xFE, 2, lambda_30A0)
     Sleep(500)
 
-    def lambda_3904():
+    def lambda_30C0():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x1F40, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3904)
+    QueueWorkItem(0xFE, 2, lambda_30C0)
     Sleep(500)
 
-    def lambda_3924():
+    def lambda_30E0():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x2328, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3924)
+    QueueWorkItem(0xFE, 2, lambda_30E0)
     Sleep(500)
 
-    def lambda_3944():
+    def lambda_3100():
         OP_8F(0xFE, 0xFFFEA0A2, 0x12C, 0xFFFFB474, 0x2710, 0x0)
         ExitThread()
 
-    QueueWorkItem(0xFE, 2, lambda_3944)
+    QueueWorkItem(0xFE, 2, lambda_3100)
     Return()
 
-    # Function_9_37BA end
+    # Function_9_2F76 end
 
-    def Function_10_395A(): pass
+    def Function_10_3116(): pass
 
-    label("Function_10_395A")
+    label("Function_10_3116")
 
     SetMapFlags(0x8000000)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x50, 6)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_3A1B")
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_3E(0x386, 1)"), scpexpr(EXPR_END)), "loc_39CB")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x50, 6)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_31D7")
+    Jc((scpexpr(EXPR_EXEC_OP, "OP_3E(0x386, 1)"), scpexpr(EXPR_END)), "loc_3185")
     OP_71(0x0, 0x4)
     OP_71(0x1, 0x4)
     OP_22(0x11, 0x0, 0x64)
@@ -2752,9 +2750,9 @@ def main():
     SetMessageWindowPos(72, 320, 56, 3)
     OP_64(0x0, 0x1)
     OP_A2(0x286)
-    Jump("loc_3A1B")
+    Jump("loc_31D7")
 
-    label("loc_39CB")
+    label("loc_3185")
 
     FadeToDark(300, 0, 100)
 
@@ -2771,24 +2769,24 @@ def main():
     OP_56(0x0)
     FadeToBright(300, 0)
 
-    label("loc_3A1B")
+    label("loc_31D7")
 
     TalkEnd(0xFF)
     ClearMapFlags(0x8000000)
     Return()
 
-    # Function_10_395A end
+    # Function_10_3116 end
 
-    def Function_11_3A24(): pass
+    def Function_11_31E0(): pass
 
-    label("Function_11_3A24")
+    label("Function_11_31E0")
 
     SetMapFlags(0x8000000)
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x52, 3)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_3B1F")
+    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x52, 3)), scpexpr(EXPR_EQUZ), scpexpr(EXPR_END)), "loc_32D0")
     OP_22(0x2B, 0x0, 0x64)
     OP_70(0x4, 0x3C)
     Sleep(500)
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_3E(0xF7, 1)"), scpexpr(EXPR_END)), "loc_3A9E")
+    Jc((scpexpr(EXPR_EXEC_OP, "OP_3E(0xF7, 1)"), scpexpr(EXPR_END)), "loc_3256")
     FadeToDark(300, 0, 100)
     OP_22(0x11, 0x0, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
@@ -2808,9 +2806,9 @@ def main():
     SetMessageWindowPos(72, 320, 56, 3)
     FadeToBright(300, 0)
     OP_A2(0x293)
-    Jump("loc_3B1C")
+    Jump("loc_32CD")
 
-    label("loc_3A9E")
+    label("loc_3256")
 
     FadeToDark(300, 0, 100)
     SetChrName("")
@@ -2833,11 +2831,11 @@ def main():
     OP_6F(0x4, 60)
     OP_70(0x4, 0x0)
 
-    label("loc_3B1C")
+    label("loc_32CD")
 
-    Jump("loc_3B5F")
+    Jump("loc_3308")
 
-    label("loc_3B1F")
+    label("loc_32D0")
 
     FadeToDark(300, 0, 100)
     SetChrName("")
@@ -2854,14 +2852,14 @@ def main():
     FadeToBright(300, 0)
     OP_83(0xF, 0x2)
 
-    label("loc_3B5F")
+    label("loc_3308")
 
     Sleep(30)
     TalkEnd(0xFF)
     ClearMapFlags(0x8000000)
     Return()
 
-    # Function_11_3A24 end
+    # Function_11_31E0 end
 
     SaveToFile()
 

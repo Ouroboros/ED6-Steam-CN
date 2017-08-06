@@ -101,8 +101,8 @@ def main():
         "Function_1_146",          # 01, 1
         "Function_2_147",          # 02, 2
         "Function_3_15D",          # 03, 3
-        "Function_4_FF7",          # 04, 4
-        "Function_5_1641",         # 05, 5
+        "Function_4_A5C",          # 04, 4
+        "Function_5_E57",          # 05, 5
     )
 
 
@@ -284,16 +284,16 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_6DB"),
-        (1, "loc_79B"),
-        (2, "loc_851"),
-        (3, "loc_90D"),
-        (4, "loc_A05"),
-        (SWITCH_DEFAULT, "loc_A2D"),
+        (0, "loc_511"),
+        (1, "loc_57D"),
+        (2, "loc_5F9"),
+        (3, "loc_665"),
+        (4, "loc_6FC"),
+        (SWITCH_DEFAULT, "loc_71C"),
     )
 
 
-    label("loc_6DB")
+    label("loc_511")
 
 
     ChrTalk(
@@ -307,9 +307,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_A2D")
+    Jump("loc_71C")
 
-    label("loc_79B")
+    label("loc_57D")
 
 
     ChrTalk(
@@ -323,9 +323,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_A2D")
+    Jump("loc_71C")
 
-    label("loc_851")
+    label("loc_5F9")
 
 
     ChrTalk(
@@ -339,9 +339,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_A2D")
+    Jump("loc_71C")
 
-    label("loc_90D")
+    label("loc_665")
 
 
     ChrTalk(
@@ -357,9 +357,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_A2D")
+    Jump("loc_71C")
 
-    label("loc_A05")
+    label("loc_6FC")
 
 
     ChrTalk(
@@ -368,9 +368,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_A2D")
+    Jump("loc_71C")
 
-    label("loc_A2D")
+    label("loc_71C")
 
 
     ChrTalk(
@@ -485,9 +485,9 @@ def main():
 
     # Function_3_15D end
 
-    def Function_4_FF7(): pass
+    def Function_4_A5C(): pass
 
-    label("Function_4_FF7")
+    label("Function_4_A5C")
 
     EventBegin(0x0)
     ClearChrFlags(0x9, 0x80)
@@ -546,7 +546,7 @@ def main():
     ChrTalk(
         0x9,
         (
-            "真是世态炎凉啊。\x01",
+            "真是世态炎凉啊，\x01",
             "连小女孩也做起空贼来了……\x02",
         )
     )
@@ -678,11 +678,11 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_4_FF7 end
+    # Function_4_A5C end
 
-    def Function_5_1641(): pass
+    def Function_5_E57(): pass
 
-    label("Function_5_1641")
+    label("Function_5_E57")
 
     OP_77(0x0, 0x0, 0x0, 0x0, 0x0)
     ClearMapFlags(0x1)
@@ -894,11 +894,11 @@ def main():
     OP_22(0x27, 0x0, 0x64)
     TurnDirection(0x104, 0x103, 500)
 
-    def lambda_1BEB():
+    def lambda_1298():
         OP_6B(3000, 1000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1BEB)
+    QueueWorkItem(0x101, 1, lambda_1298)
     OP_6D(-190, 5000, -6110, 1000)
     Sleep(1000)
 
@@ -909,11 +909,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_1C29():
+    def lambda_12D7():
         OP_6D(100, 5000, -9000, 2500)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1C29)
+    QueueWorkItem(0x101, 1, lambda_12D7)
     OP_8E(0x103, 0x0, 0x1388, 0xFFFFE142, 0x7D0, 0x0)
 
     ChrTalk(
@@ -1118,7 +1118,7 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_5_1641 end
+    # Function_5_E57 end
 
     SaveToFile()
 

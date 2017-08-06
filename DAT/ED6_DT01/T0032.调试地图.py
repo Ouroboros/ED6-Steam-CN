@@ -34,7 +34,7 @@ def main():
         'CH02400嘉恩',                          # 14
         'CH02410戴尔蒙市长',                    # 15
         'CH02420基尔巴特',                      # 16
-        'CH02430麻绪婆婆',                      # 17
+        'CH02430毛婆婆',                      # 17
         'CH02440格斯塔夫维修长',                # 18
         'CH02450希德少校',                      # 19
         'CH02460希尔丹夫人',                    # 20
@@ -2000,33 +2000,33 @@ def main():
         "Function_6_10F2",         # 06, 6
         "Function_7_1116",         # 07, 7
         "Function_8_1168",         # 08, 8
-        "Function_9_11EB",         # 09, 9
-        "Function_10_123D",        # 0A, 10
-        "Function_11_128F",        # 0B, 11
-        "Function_12_1351",        # 0C, 12
-        "Function_13_13A3",        # 0D, 13
-        "Function_14_1471",        # 0E, 14
-        "Function_15_152A",        # 0F, 15
-        "Function_16_157C",        # 10, 16
-        "Function_17_15C3",        # 11, 17
-        "Function_18_1615",        # 12, 18
-        "Function_19_1658",        # 13, 19
-        "Function_20_169B",        # 14, 20
-        "Function_21_16B4",        # 15, 21
-        "Function_22_16CD",        # 16, 22
-        "Function_23_16E6",        # 17, 23
-        "Function_24_16FF",        # 18, 24
-        "Function_25_1718",        # 19, 25
-        "Function_26_1731",        # 1A, 26
-        "Function_27_174A",        # 1B, 27
-        "Function_28_179C",        # 1C, 28
-        "Function_29_17FD",        # 1D, 29
-        "Function_30_1891",        # 1E, 30
-        "Function_31_18E3",        # 1F, 31
-        "Function_32_1971",        # 20, 32
-        "Function_33_19A5",        # 21, 33
-        "Function_34_19D9",        # 22, 34
-        "Function_35_1A4B",        # 23, 35
+        "Function_9_11E7",         # 09, 9
+        "Function_10_1239",        # 0A, 10
+        "Function_11_128B",        # 0B, 11
+        "Function_12_1343",        # 0C, 12
+        "Function_13_1395",        # 0D, 13
+        "Function_14_1461",        # 0E, 14
+        "Function_15_151A",        # 0F, 15
+        "Function_16_156C",        # 10, 16
+        "Function_17_15B3",        # 11, 17
+        "Function_18_1605",        # 12, 18
+        "Function_19_1648",        # 13, 19
+        "Function_20_168B",        # 14, 20
+        "Function_21_16A0",        # 15, 21
+        "Function_22_16B5",        # 16, 22
+        "Function_23_16CA",        # 17, 23
+        "Function_24_16DF",        # 18, 24
+        "Function_25_16F4",        # 19, 25
+        "Function_26_1709",        # 1A, 26
+        "Function_27_171E",        # 1B, 27
+        "Function_28_1770",        # 1C, 28
+        "Function_29_17D1",        # 1D, 29
+        "Function_30_1863",        # 1E, 30
+        "Function_31_18B5",        # 1F, 31
+        "Function_32_1943",        # 20, 32
+        "Function_33_1977",        # 21, 33
+        "Function_34_19AB",        # 22, 34
+        "Function_35_1A1D",        # 23, 35
     )
 
 
@@ -2227,9 +2227,9 @@ def main():
 
     # Function_8_1168 end
 
-    def Function_9_11EB(): pass
+    def Function_9_11E7(): pass
 
-    label("Function_9_11EB")
+    label("Function_9_11E7")
 
     TalkBegin(0xFE)
 
@@ -2270,11 +2270,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_9_11EB end
+    # Function_9_11E7 end
 
-    def Function_10_123D(): pass
+    def Function_10_1239(): pass
 
-    label("Function_10_123D")
+    label("Function_10_1239")
 
     TalkBegin(0xFE)
 
@@ -2315,11 +2315,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_10_123D end
+    # Function_10_1239 end
 
-    def Function_11_128F(): pass
+    def Function_11_128B(): pass
 
-    label("Function_11_128F")
+    label("Function_11_128B")
 
     TalkBegin(0xFE)
 
@@ -2402,11 +2402,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_11_128F end
+    # Function_11_128B end
 
-    def Function_12_1351(): pass
+    def Function_12_1343(): pass
 
-    label("Function_12_1351")
+    label("Function_12_1343")
 
     TalkBegin(0xFE)
 
@@ -2447,11 +2447,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_12_1351 end
+    # Function_12_1343 end
 
-    def Function_13_13A3(): pass
+    def Function_13_1395(): pass
 
-    label("Function_13_13A3")
+    label("Function_13_1395")
 
     TalkBegin(0xFE)
 
@@ -2520,11 +2520,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_13_13A3 end
+    # Function_13_1395 end
 
-    def Function_14_1471(): pass
+    def Function_14_1461(): pass
 
-    label("Function_14_1471")
+    label("Function_14_1461")
 
     TalkBegin(0xFE)
 
@@ -2586,11 +2586,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_14_1471 end
+    # Function_14_1461 end
 
-    def Function_15_152A(): pass
+    def Function_15_151A(): pass
 
-    label("Function_15_152A")
+    label("Function_15_151A")
 
     TalkBegin(0xFE)
 
@@ -2631,11 +2631,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_15_152A end
+    # Function_15_151A end
 
-    def Function_16_157C(): pass
+    def Function_16_156C(): pass
 
-    label("Function_16_157C")
+    label("Function_16_156C")
 
     TalkBegin(0xFE)
 
@@ -2669,11 +2669,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_16_157C end
+    # Function_16_156C end
 
-    def Function_17_15C3(): pass
+    def Function_17_15B3(): pass
 
-    label("Function_17_15C3")
+    label("Function_17_15B3")
 
     TalkBegin(0xFE)
 
@@ -2714,11 +2714,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_17_15C3 end
+    # Function_17_15B3 end
 
-    def Function_18_1615(): pass
+    def Function_18_1605(): pass
 
-    label("Function_18_1615")
+    label("Function_18_1605")
 
     TalkBegin(0xFE)
 
@@ -2752,11 +2752,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_18_1615 end
+    # Function_18_1605 end
 
-    def Function_19_1658(): pass
+    def Function_19_1648(): pass
 
-    label("Function_19_1658")
+    label("Function_19_1648")
 
     TalkBegin(0xFE)
 
@@ -2790,28 +2790,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_19_1658 end
+    # Function_19_1648 end
 
-    def Function_20_169B(): pass
+    def Function_20_168B(): pass
 
-    label("Function_20_169B")
-
-    TalkBegin(0xFE)
-
-    ChrTalk(
-        0xFE,
-        "没有表情\x02",
-    )
-
-    CloseMessageWindow()
-    TalkEnd(0xFE)
-    Return()
-
-    # Function_20_169B end
-
-    def Function_21_16B4(): pass
-
-    label("Function_21_16B4")
+    label("Function_20_168B")
 
     TalkBegin(0xFE)
 
@@ -2824,28 +2807,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_21_16B4 end
+    # Function_20_168B end
 
-    def Function_22_16CD(): pass
+    def Function_21_16A0(): pass
 
-    label("Function_22_16CD")
-
-    TalkBegin(0xFE)
-
-    ChrTalk(
-        0xFE,
-        "没有表情\x02",
-    )
-
-    CloseMessageWindow()
-    TalkEnd(0xFE)
-    Return()
-
-    # Function_22_16CD end
-
-    def Function_23_16E6(): pass
-
-    label("Function_23_16E6")
+    label("Function_21_16A0")
 
     TalkBegin(0xFE)
 
@@ -2858,28 +2824,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_23_16E6 end
+    # Function_21_16A0 end
 
-    def Function_24_16FF(): pass
+    def Function_22_16B5(): pass
 
-    label("Function_24_16FF")
-
-    TalkBegin(0xFE)
-
-    ChrTalk(
-        0xFE,
-        "没有表情\x02",
-    )
-
-    CloseMessageWindow()
-    TalkEnd(0xFE)
-    Return()
-
-    # Function_24_16FF end
-
-    def Function_25_1718(): pass
-
-    label("Function_25_1718")
+    label("Function_22_16B5")
 
     TalkBegin(0xFE)
 
@@ -2892,11 +2841,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_25_1718 end
+    # Function_22_16B5 end
 
-    def Function_26_1731(): pass
+    def Function_23_16CA(): pass
 
-    label("Function_26_1731")
+    label("Function_23_16CA")
 
     TalkBegin(0xFE)
 
@@ -2909,11 +2858,62 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_26_1731 end
+    # Function_23_16CA end
 
-    def Function_27_174A(): pass
+    def Function_24_16DF(): pass
 
-    label("Function_27_174A")
+    label("Function_24_16DF")
+
+    TalkBegin(0xFE)
+
+    ChrTalk(
+        0xFE,
+        "没有表情\x02",
+    )
+
+    CloseMessageWindow()
+    TalkEnd(0xFE)
+    Return()
+
+    # Function_24_16DF end
+
+    def Function_25_16F4(): pass
+
+    label("Function_25_16F4")
+
+    TalkBegin(0xFE)
+
+    ChrTalk(
+        0xFE,
+        "没有表情\x02",
+    )
+
+    CloseMessageWindow()
+    TalkEnd(0xFE)
+    Return()
+
+    # Function_25_16F4 end
+
+    def Function_26_1709(): pass
+
+    label("Function_26_1709")
+
+    TalkBegin(0xFE)
+
+    ChrTalk(
+        0xFE,
+        "没有表情\x02",
+    )
+
+    CloseMessageWindow()
+    TalkEnd(0xFE)
+    Return()
+
+    # Function_26_1709 end
+
+    def Function_27_171E(): pass
+
+    label("Function_27_171E")
 
     TalkBegin(0xFE)
 
@@ -2954,11 +2954,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_27_174A end
+    # Function_27_171E end
 
-    def Function_28_179C(): pass
+    def Function_28_1770(): pass
 
-    label("Function_28_179C")
+    label("Function_28_1770")
 
     TalkBegin(0xFE)
 
@@ -3006,11 +3006,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_28_179C end
+    # Function_28_1770 end
 
-    def Function_29_17FD(): pass
+    def Function_29_17D1(): pass
 
-    label("Function_29_17FD")
+    label("Function_29_17D1")
 
     TalkBegin(0xFE)
 
@@ -3079,11 +3079,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_29_17FD end
+    # Function_29_17D1 end
 
-    def Function_30_1891(): pass
+    def Function_30_1863(): pass
 
-    label("Function_30_1891")
+    label("Function_30_1863")
 
     TalkBegin(0xFE)
 
@@ -3124,11 +3124,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_30_1891 end
+    # Function_30_1863 end
 
-    def Function_31_18E3(): pass
+    def Function_31_18B5(): pass
 
-    label("Function_31_18E3")
+    label("Function_31_18B5")
 
     TalkBegin(0xFE)
 
@@ -3197,11 +3197,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_31_18E3 end
+    # Function_31_18B5 end
 
-    def Function_32_1971(): pass
+    def Function_32_1943(): pass
 
-    label("Function_32_1971")
+    label("Function_32_1943")
 
     TalkBegin(0xFE)
 
@@ -3228,11 +3228,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_32_1971 end
+    # Function_32_1943 end
 
-    def Function_33_19A5(): pass
+    def Function_33_1977(): pass
 
-    label("Function_33_19A5")
+    label("Function_33_1977")
 
     TalkBegin(0xFE)
 
@@ -3259,11 +3259,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_33_19A5 end
+    # Function_33_1977 end
 
-    def Function_34_19D9(): pass
+    def Function_34_19AB(): pass
 
-    label("Function_34_19D9")
+    label("Function_34_19AB")
 
     TalkBegin(0xFE)
 
@@ -3318,11 +3318,11 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_34_19D9 end
+    # Function_34_19AB end
 
-    def Function_35_1A4B(): pass
+    def Function_35_1A1D(): pass
 
-    label("Function_35_1A4B")
+    label("Function_35_1A1D")
 
     TalkBegin(0xFE)
 
@@ -3335,7 +3335,7 @@ def main():
     TalkEnd(0xFE)
     Return()
 
-    # Function_35_1A4B end
+    # Function_35_1A1D end
 
     SaveToFile()
 
