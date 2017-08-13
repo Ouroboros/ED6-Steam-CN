@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -3179,7 +3179,7 @@ def main():
         0x101,
         (
             "#000F老爸也真是的……\x02\x03",
-            "生日庆典、还有王都观光，\x01",
+            "生日庆典，还有王都观光，\x01",
             "如果能一起就好了……\x02",
         )
     )

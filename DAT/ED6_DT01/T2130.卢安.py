@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 卢安
@@ -2716,7 +2716,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "哈哈哈，说得对、说得对！\x02",
+        "哈哈哈，说得对，说得对！\x02",
     )
 
     CloseMessageWindow()
@@ -2832,7 +2832,7 @@ def main():
         0xE,
         (
             "#776F#2P你们竟然把老师宝贵的家给……\x01",
-            "竟然、竟然、竟然把……！\x02",
+            "竟然……竟然……竟然把……！\x02",
         )
     )
 
@@ -3773,7 +3773,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "罗、啰嗦！\x02",
+        "啰、啰嗦！\x02",
     )
 
     CloseMessageWindow()

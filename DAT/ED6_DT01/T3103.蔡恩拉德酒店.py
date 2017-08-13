@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡恩拉德酒店
@@ -3368,7 +3368,7 @@ def main():
         0x107,
         (
             "#060F哎……！？\x02\x03",
-            "……啊，嗯、是啊！\x01",
+            "……啊，嗯，是啊！\x01",
             "停了停了！\x02",
         )
     )
@@ -3620,7 +3620,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "嗯，嗯……\x02",
+        "嗯、嗯……\x02",
     )
 
     CloseMessageWindow()

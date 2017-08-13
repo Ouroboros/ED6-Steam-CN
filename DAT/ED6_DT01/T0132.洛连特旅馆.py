@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     CreateScenaFile(
@@ -543,7 +543,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "艾丝蒂尔、约修亚。\x01",
+            "艾丝蒂尔，约修亚。\x01",
             "啊，连雪拉扎德也来了……\x02",
         )
     )
@@ -660,7 +660,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "艾丝蒂尔、约修亚。\x01",
+            "艾丝蒂尔，约修亚。\x01",
             "我听说了你们在农场和矿山有活跃的表现。\x02",
         )
     )
@@ -691,7 +691,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "艾丝蒂尔、约修亚。\x01",
+            "艾丝蒂尔，约修亚。\x01",
             "我听说了你们在农场和矿山有活跃的表现。\x02",
         )
     )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -807,7 +807,7 @@ def main():
         0xFE,
         (
             "……嗯，\x01",
-            "结晶光学论集、结晶光学论集……\x02",
+            "结晶光学论集……结晶光学论集……\x02",
         )
     )
 
@@ -3347,7 +3347,7 @@ def main():
 
     ChrTalk(
         0x107,
-        "#067F啊，啊哈哈……\x02",
+        "#067F啊、啊哈哈……\x02",
     )
 
     CloseMessageWindow()

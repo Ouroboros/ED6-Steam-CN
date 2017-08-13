@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -1568,7 +1568,7 @@ def main():
         0x10E,
         (
             "#130F哎呀……\x01",
-            "艾丝蒂尔、约修亚。\x02\x03",
+            "艾丝蒂尔，约修亚。\x02\x03",
             "今天白天你们辛苦了吧。\x01",
             "掌握到什么线索了吗？\x02",
         )

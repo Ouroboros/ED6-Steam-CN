@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 空贼要塞
@@ -545,7 +545,7 @@ def main():
             "#002F说起来……\x01",
             "这里到底是个什么地方啊？\x02\x03",
             "就算是他们建的基地，\x01",
-            "也未免太大、太古老了吧。\x02",
+            "也未免太大，太古老了吧。\x02",
         )
     )
 

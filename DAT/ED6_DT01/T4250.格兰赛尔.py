@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -614,7 +614,7 @@ def main():
             "恭喜金先生你们获得武术大会的优胜。\x01",
             "　\x02\x03",
             "我看了你们的比赛，\x01",
-            "真是威风凛凛、令人叹为观止啊。\x02",
+            "真是威风凛凛，令人叹为观止啊。\x02",
         )
     )
 
@@ -1942,7 +1942,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#009F那是、那是因为……\x02",
+        "#009F那是……那是因为……\x02",
     )
 
     CloseMessageWindow()
@@ -2001,7 +2001,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#009F那是、那是因为……\x02",
+        "#009F那是……那是因为……\x02",
     )
 
     CloseMessageWindow()
@@ -2040,7 +2040,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#009F那是、那是因为……\x02",
+        "#009F那是……那是因为……\x02",
     )
 
     CloseMessageWindow()
@@ -2147,7 +2147,7 @@ def main():
         "男性的声音",
         (
             "#3P喂～～～～～！\x01",
-            "艾丝蒂尔、约修亚！\x02",
+            "艾丝蒂尔，约修亚！\x02",
         )
     )
 
@@ -2589,7 +2589,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#506F嗯、好的……\x02",
+        "#506F嗯，好的……\x02",
     )
 
     CloseMessageWindow()

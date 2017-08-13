@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     CreateScenaFile(
@@ -962,7 +962,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "西向航线是从格兰赛尔起飞、\x01",
+            "西向航线是从格兰赛尔起飞，\x01",
             "途中经过洛连特、柏斯、卢安，\x01",
             "最后到蔡斯的顺序……\x02",
         )

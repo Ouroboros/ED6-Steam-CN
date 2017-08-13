@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -2557,7 +2557,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#005F#5P艾尔贝离宫攻略战、\x01",
+            "#005F#5P艾尔贝离宫攻略战，\x01",
             "暨人质解救作战现在开始！\x02",
         )
     )

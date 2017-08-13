@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -1332,7 +1332,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "#701F#5P不、没什么……\x01",
+            "#701F#5P不，没什么……\x01",
             "因为接到联络后我们也在不断搜索。\x02\x03",
             "对了……\x01",
             "是什么线索呢……？\x02",

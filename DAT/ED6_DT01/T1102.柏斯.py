@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -991,7 +991,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "这也难怪，机长、乘务员\x01",
+            "这也难怪，机长、乘务员，\x01",
             "还有乘客一个都没有找到呢。\x02",
         )
     )
@@ -1022,7 +1022,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "这也难怪，机长、乘务员\x01",
+            "这也难怪，机长、乘务员，\x01",
             "还有乘客一个都没有找到呢。\x02",
         )
     )

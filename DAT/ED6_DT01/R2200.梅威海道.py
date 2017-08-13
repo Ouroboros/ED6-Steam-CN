@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 梅威海道
@@ -917,7 +917,7 @@ def main():
         0x136,
         (
             "#041F呵呵……\x02\x03",
-            "艾丝蒂尔、约修亚，\x01",
+            "艾丝蒂尔，约修亚，\x01",
             "你们两个感情真好。\x02\x03",
             "感觉就像真正的姐弟俩。\x02",
         )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 中央工房　演算室
@@ -1569,7 +1569,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "#5P不不、这个嘛……\x01",
+            "#5P不不，这个嘛……\x01",
             "我当然知道博士是个天才。\x02",
         )
     )

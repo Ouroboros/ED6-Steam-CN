@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -830,7 +830,7 @@ def main():
 
     ChrTalk(
         0xC,
-        "别抱怨、别抱怨。\x02",
+        "别抱怨，别抱怨。\x02",
     )
 
     CloseMessageWindow()

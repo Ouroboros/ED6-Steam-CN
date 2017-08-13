@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 布莱特家
@@ -738,7 +738,7 @@ def main():
         "男人的声音",
         (
             "#1P……喂。\x01",
-            "艾丝蒂尔、约修亚。\x02",
+            "艾丝蒂尔，约修亚。\x02",
         )
     )
 

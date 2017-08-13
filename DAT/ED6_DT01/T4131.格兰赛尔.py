@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -560,7 +560,7 @@ def main():
 
     ChrTalk(
         0xE,
-        "#170F哦，艾丝蒂尔、约修亚。\x02",
+        "#170F哦，艾丝蒂尔，约修亚。\x02",
     )
 
     CloseMessageWindow()
@@ -1136,7 +1136,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#008F啊，嗯、是的。\x01",
+            "#008F啊，嗯，是的。\x01",
             "平安无事地回去了。\x02\x03",
             "#007F（唔……\x01",
             "　其实我知道她就是尤莉亚小姐，\x01",

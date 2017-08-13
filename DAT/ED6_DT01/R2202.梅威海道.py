@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 梅威海道
@@ -1216,7 +1216,7 @@ def main():
         0x105,
         (
             "#049F#2P对不起……\x01",
-            "艾丝蒂尔、约修亚。\x02",
+            "艾丝蒂尔，约修亚。\x02",
         )
     )
 

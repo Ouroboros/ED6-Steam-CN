@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 洛连特
@@ -4052,7 +4052,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#507F（嘿嘿，他害羞啦、他害羞啦。）\x02",
+        "#507F（嘿嘿，他害羞啦，他害羞啦。）\x02",
     )
 
     CloseMessageWindow()

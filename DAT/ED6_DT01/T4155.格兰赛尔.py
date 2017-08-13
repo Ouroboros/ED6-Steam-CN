@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -218,7 +218,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "哇啊、被、被发现了。 \x02",
+        "哇啊，被、被发现了。 \x02",
     )
 
     CloseMessageWindow()

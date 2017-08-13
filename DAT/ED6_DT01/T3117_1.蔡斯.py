@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -583,7 +583,7 @@ def main():
     ChrTalk(
         0x9,
         (
-            "喂、我说……\x01",
+            "喂，我说……\x01",
             "她没事吧？\x02",
         )
     )

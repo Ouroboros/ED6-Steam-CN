@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     CreateScenaFile(
@@ -1892,7 +1892,7 @@ def main():
     ChrTalk(
         0xE,
         (
-            "#100F艾丝蒂尔、约修亚，\x01",
+            "#100F艾丝蒂尔，约修亚，\x01",
             "立刻决定探索组的成员吧。\x02",
         )
     )

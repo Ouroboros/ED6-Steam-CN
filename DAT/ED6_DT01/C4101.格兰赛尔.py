@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -3020,7 +3020,7 @@ def main():
         0x101,
         (
             "#000F我向全体作战成员宣布……\x02\x03",
-            "艾尔贝离宫攻略战、\x01",
+            "艾尔贝离宫攻略战，\x01",
             "暨人质解救作战现在开始！\x02",
         )
     )

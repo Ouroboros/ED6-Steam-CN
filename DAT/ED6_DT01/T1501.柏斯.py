@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -1230,7 +1230,7 @@ def main():
     ChrTalk(
         0x102,
         (
-            "#014F（啊，啊啊……）\x02\x03",
+            "#014F（啊、啊啊……）\x02\x03",
             "（先找出空贼飞艇的确是个良策，\x01",
             "　嗯，我也赞同这个做法。）\x02",
         )

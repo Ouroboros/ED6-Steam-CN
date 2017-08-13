@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -1416,7 +1416,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "哦，艾丝蒂尔、约修亚。\x02",
+        "哦，艾丝蒂尔，约修亚。\x02",
     )
 
     CloseMessageWindow()

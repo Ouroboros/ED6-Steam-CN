@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -2544,7 +2544,7 @@ def main():
         0xFE,
         (
             "唔～然后是煎肉……\x01",
-            "啊、不对，是先做汤吧。\x02",
+            "啊，不对，是先做汤吧。\x02",
         )
     )
 

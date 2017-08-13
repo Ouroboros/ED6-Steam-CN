@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -254,7 +254,7 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "艾丝蒂尔、约修亚和奥利维尔\x01",
+            "艾丝蒂尔，约修亚和奥利维尔\x01",
             "在选手登记的单子上填写了必要事项。\x02",
         )
     )
@@ -5394,8 +5394,8 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "经过、不经过、\x01",
-            "经过、不经过、经过……\x02",
+            "经过……不经过……\x01",
+            "经过……不经过……经过……\x02",
         )
     )
 

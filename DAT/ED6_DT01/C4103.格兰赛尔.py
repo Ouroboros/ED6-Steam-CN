@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -870,7 +870,7 @@ def main():
     ChrTalk(
         0x9,
         (
-            "亲卫队中队长、\x01",
+            "亲卫队中队长，\x01",
             "尤莉亚·舒华兹！？\x02",
         )
     )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 威尔特桥　关所
@@ -158,7 +158,7 @@ def main():
     ChrTalk(
         0xA,
         (
-            "艾丝蒂尔、约修亚，\x01",
+            "艾丝蒂尔，约修亚，\x01",
             "你们二位不必手下留情。\x02",
         )
     )
@@ -268,7 +268,7 @@ def main():
 
     ChrTalk(
         0x14,
-        "终于、终于结束了……\x02",
+        "终于，终于结束了……\x02",
     )
 
     CloseMessageWindow()
@@ -351,7 +351,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "……斯科特、哈罗德。\x02",
+        "……斯科特，哈罗德。\x02",
     )
 
     CloseMessageWindow()
@@ -511,7 +511,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "……斯科特、哈罗德。\x02",
+        "……斯科特，哈罗德。\x02",
     )
 
     CloseMessageWindow()

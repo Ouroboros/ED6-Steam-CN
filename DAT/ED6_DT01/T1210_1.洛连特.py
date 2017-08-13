@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 洛连特
@@ -206,7 +206,7 @@ def main():
         0xFE,
         (
             "不过，\x01",
-            "恐怕是一种潜伏等待猎物到来、\x01",
+            "恐怕是一种潜伏等待猎物到来，\x01",
             "然后出来将其捕获的魔兽。\x02",
         )
     )

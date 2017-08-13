@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -3141,7 +3141,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "#680F#2P而且人又细心、又坚强，\x01",
+            "#680F#2P而且人又细心，又坚强，\x01",
             "无论什么时候都面带开朗的笑容。\x02\x03",
             "虽说一开始摆弄机器\x01",
             "就会马上迷了进去……\x02\x03",

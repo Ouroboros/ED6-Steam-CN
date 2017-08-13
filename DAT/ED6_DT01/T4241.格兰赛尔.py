@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -409,7 +409,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#580F竟然、竟然会是这样……\x02",
+        "#580F竟然，竟然会是这样……\x02",
     )
 
     CloseMessageWindow()
@@ -1948,7 +1948,7 @@ def main():
             "#094F我相信他们。\x02\x03",
             "虽然他们对事情有一些误解，\x01",
             "但他们还是利贝尔的子民……\x02\x03",
-            "#090F如果看到了我、听到我的声音，\x01",
+            "#090F如果看到了我，听到我的声音，\x01",
             "还有什么理由会展开攻击呢。\x02",
         )
     )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 卢安
@@ -3308,7 +3308,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "#2P罗、啰嗦！\x01",
+            "#2P啰、啰嗦！\x01",
             "你这家伙懂什么！\x02",
         )
     )

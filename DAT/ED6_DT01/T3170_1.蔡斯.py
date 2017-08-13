@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -358,7 +358,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#506F啊，啊哈哈……\x01",
+            "#506F啊、啊哈哈……\x01",
             "多谢您的款待。\x02",
         )
     )
@@ -758,7 +758,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#506F啊，啊哈哈……\x01",
+            "#506F啊、啊哈哈……\x01",
             "多谢您的款待。\x02",
         )
     )

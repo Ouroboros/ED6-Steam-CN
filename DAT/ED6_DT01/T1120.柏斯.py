@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -439,7 +439,7 @@ def main():
     ChrTalk(
         0x9,
         (
-            "帐、帐、帐、\x01",
+            "账、账、账、\x01",
             "账本被军队没收了……\x02",
         )
     )
@@ -521,7 +521,7 @@ def main():
 
     ChrTalk(
         0x9,
-        "我、我的工房里、商品都被～！！\x02",
+        "我、我的工房里……商品都被～！！\x02",
     )
 
     CloseMessageWindow()

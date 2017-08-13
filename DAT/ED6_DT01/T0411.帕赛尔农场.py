@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 帕赛尔农场
@@ -407,7 +407,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "嗯、那个……\x01",
+            "嗯，那个……\x01",
             "约修亚哥哥要去消灭魔兽吗？\x02",
         )
     )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 阳光铃铛酒廊
@@ -6259,7 +6259,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#008F啊、嗯，谢谢……\x02",
+        "#008F啊……嗯，谢谢……\x02",
     )
 
     CloseMessageWindow()
@@ -6557,7 +6557,7 @@ def main():
         (
             "#130F对，作为那里的名誉会员，\x01",
             "我可以在那里借住一段时间。\x02\x03",
-            "艾丝蒂尔、约修亚，\x01",
+            "艾丝蒂尔，约修亚，\x01",
             "如果方便的话你们也过来玩哦。\x02",
         )
     )
@@ -7435,7 +7435,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000F哎、这个……\x02",
+        "#000F哎，这个……\x02",
     )
 
     CloseMessageWindow()

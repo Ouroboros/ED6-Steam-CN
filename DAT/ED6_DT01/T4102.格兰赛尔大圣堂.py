@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔大圣堂
@@ -4457,7 +4457,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000F（嗯、好的……！）\x02",
+        "#000F（嗯，好的……！）\x02",
     )
 
     CloseMessageWindow()

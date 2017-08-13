@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -142,7 +142,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "………………、\x01",
+            "………………，\x01",
             "……………………。\x02",
         )
     )

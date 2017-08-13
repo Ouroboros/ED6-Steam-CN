@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 卢安
@@ -1908,7 +1908,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "#649F#1P意识到了、意识到了。\x02",
+        "#649F#1P意识到了，意识到了。\x02",
     )
 
     CloseMessageWindow()
@@ -2022,7 +2022,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#008F啊，啊啊，睡衣是吧。\x02\x03",
+            "#008F啊、啊啊，睡衣是吧。\x02\x03",
             "嗯，就随便借一件给我行了。\x02",
         )
     )

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 洛连特
@@ -230,7 +230,7 @@ def main():
             "#741F呵呵，没关系。\x01",
             "这是为了培养新生的战斗力嘛。\x02\x03",
             "以后还要靠他们\x01",
-            "上刀山、下火海呢，呵呵。\x02",
+            "上刀山，下火海呢，呵呵。\x02",
         )
     )
 

@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 巴伦诺灯塔
@@ -889,7 +889,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "嗯，嗯嗯。\x01",
+            "嗯、嗯嗯。\x01",
             "你们说得没错。\x02",
         )
     )
@@ -1346,7 +1346,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "嗯，嗯嗯。\x01",
+            "嗯、嗯嗯。\x01",
             "你们说得没错。\x02",
         )
     )

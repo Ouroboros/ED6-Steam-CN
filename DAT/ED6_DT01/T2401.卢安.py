@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 卢安
@@ -811,7 +811,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#002F嗯、是的……\x02",
+        "#002F嗯，是的……\x02",
     )
 
     CloseMessageWindow()

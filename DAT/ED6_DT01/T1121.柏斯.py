@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -2448,7 +2448,7 @@ def main():
         (
             "#001F#5P嘿嘿，我也觉得非常开心呢。\x02\x03",
             "靠我们的努力能\x01",
-            "帮到大家的忙、让大家开心，\x01",
+            "帮到大家的忙，让大家开心，\x01",
             "也算是尽到了游击士的职责呢⊙\x02",
         )
     )
@@ -3187,7 +3187,7 @@ def main():
     AnonymousTalk(
         (
             scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "致艾丝蒂尔、约修亚：\x02",
+            "致艾丝蒂尔，约修亚：\x02",
         )
     )
 

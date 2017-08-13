@@ -1,4 +1,4 @@
-﻿from ED6ScenarioHelper import *
+from ED6ScenarioHelper import *
 
 def main():
     CreateScenaFile(
@@ -902,7 +902,7 @@ def main():
         (
             "#582F一直忍着不出声，\x01",
             "结果就没大脑啦笨女人啦之类的，\x01",
-            "越说越来劲、越说越放肆……\x02",
+            "越说越来劲，越说越放肆……\x02",
         )
     )
 
