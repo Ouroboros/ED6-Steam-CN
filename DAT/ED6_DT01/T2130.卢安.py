@@ -3773,7 +3773,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "罗、罗嗦！\x02",
+        "罗、啰嗦！\x02",
     )
 
     CloseMessageWindow()

@@ -2309,7 +2309,7 @@ def main():
 
     ChrTalk(
         0x108,
-        "#079F噗啊～～好～爽啊！\x02",
+        "#079F哇～流到身上了！\x02",
     )
 
     SetChrSubChip(0x108, 5)

@@ -4321,7 +4321,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "……唔，能行吗？\x02",
+        "……唔，倒也无所谓。\x02",
     )
 
     CloseMessageWindow()

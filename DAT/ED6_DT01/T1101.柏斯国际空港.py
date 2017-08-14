@@ -4801,7 +4801,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000F#2P嗯？你们两个怎么了啊。\x02",
+        "#000F#2P嗯，你们两个怎么了啊？\x02",
     )
 
     CloseMessageWindow()
@@ -4968,7 +4968,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#000F#1P嗯？你们两个怎么了啊。\x02",
+        "#000F#1P嗯，你们两个怎么了啊？\x02",
     )
 
     CloseMessageWindow()
