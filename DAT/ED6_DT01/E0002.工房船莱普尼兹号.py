@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 工房船莱普尼兹号

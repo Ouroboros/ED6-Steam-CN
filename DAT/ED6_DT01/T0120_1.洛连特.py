@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 洛连特
@@ -119,7 +119,7 @@ def main():
         0x8,
         (
             "哟，\x01",
-            "艾丝蒂尔，约修亚。\x02",
+            "艾丝蒂尔、约修亚。\x02",
         )
     )
 

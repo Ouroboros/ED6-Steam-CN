@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -662,7 +662,7 @@ def main():
     ChrTalk(
         0xB,
         (
-            "#130F呀，艾丝蒂尔，约修亚。\x02\x03",
+            "#130F呀，艾丝蒂尔、约修亚。\x02\x03",
             "#132F我看到了，决赛很精彩，\x01",
             "恭喜你们取得优胜。\x02",
         )

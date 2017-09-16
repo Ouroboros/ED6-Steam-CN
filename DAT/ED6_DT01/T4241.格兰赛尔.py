@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -409,7 +409,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#580F竟然，竟然会是这样……\x02",
+        "#580F竟然、竟然会是这样……\x02",
     )
 
     CloseMessageWindow()

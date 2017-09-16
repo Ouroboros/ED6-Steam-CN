@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 巴伦诺灯塔
@@ -1610,7 +1610,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#000F啊，嗯……那么，\x01",
+            "#000F啊……嗯，那么，\x01",
             "多多保重了，老爷爷。\x02",
         )
     )

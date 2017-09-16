@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 洛连特
@@ -224,7 +224,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "啊～～怎么，怎么会这样～\x02",
+        "啊～～怎么、怎么会这样～\x02",
     )
 
     CloseMessageWindow()
@@ -347,7 +347,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "啊～～怎么，怎么会这样～\x02",
+        "啊～～怎么、怎么会这样～\x02",
     )
 
     CloseMessageWindow()

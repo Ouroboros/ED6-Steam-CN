@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -425,7 +425,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#502F别害羞，别害羞。\x01",
+            "#502F别害羞、别害羞。\x01",
             "姐姐我可是很明白你的心情哦㈱\x02\x03",
             "#503F不、不过也难怪嘛……\x02\x03",
             "虽说只是演戏性质，\x01",

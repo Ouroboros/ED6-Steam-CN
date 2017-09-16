@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 亚班特酒馆
@@ -2030,7 +2030,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "约修亚，艾丝蒂尔，\x01",
+            "约修亚、艾丝蒂尔，\x01",
             "我一定会在这里支持你们的。\x02",
         )
     )
@@ -2241,7 +2241,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "艾丝蒂尔，约修亚。\x01",
+            "艾丝蒂尔、约修亚。\x01",
             "怎么样？工作还顺利吗？\x02",
         )
     )

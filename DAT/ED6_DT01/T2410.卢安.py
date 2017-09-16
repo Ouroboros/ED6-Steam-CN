@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 卢安
@@ -563,7 +563,7 @@ def main():
         0x8,
         (
             "#750F呵呵，你们太过奖了。\x01",
-            "艾丝蒂尔，约修亚。\x02",
+            "艾丝蒂尔、约修亚。\x02",
         )
     )
 

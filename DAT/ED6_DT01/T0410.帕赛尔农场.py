@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 帕赛尔农场
@@ -449,7 +449,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "艾丝蒂尔，约修亚，\x01",
+            "艾丝蒂尔、约修亚，\x01",
             "你们已经成为很棒的游击士了。\x02",
         )
     )
@@ -564,7 +564,7 @@ def main():
     ChrTalk(
         0x101,
         (
-            "#001F叔叔，阿姨，\x01",
+            "#001F叔叔、阿姨，\x01",
             "你们早上好啊！\x02",
         )
     )

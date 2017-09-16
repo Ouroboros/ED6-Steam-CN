@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 巴伦诺灯塔
@@ -494,7 +494,7 @@ def main():
 
     ChrTalk(
         0x105,
-        "#048F艾丝蒂尔，约修亚……\x02",
+        "#048F艾丝蒂尔、约修亚……\x02",
     )
 
     CloseMessageWindow()

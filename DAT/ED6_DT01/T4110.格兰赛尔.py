@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 格兰赛尔
@@ -3407,7 +3407,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "……哎、哎呀，作为男人，\x01",
+            "……啊、啊呀，作为男人，\x01",
             "同时作为丈夫，那样也是应该的嘛。\x02",
         )
     )

@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -1446,7 +1446,7 @@ def main():
             "#395F#5P啊……\x01",
             "倒没那样的感觉呢。\x02\x03",
             "可是可是，你们总是在一起，\x01",
-            "相处得又那么自然，那么温馨，\x01",
+            "相处得又那么自然、那么温馨，\x01",
             "感觉两人好像彼此都互通心意似的……\x02",
         )
     )

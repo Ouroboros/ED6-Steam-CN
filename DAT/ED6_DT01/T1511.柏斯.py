@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 柏斯
@@ -573,7 +573,7 @@ def main():
         (
             "#020F#5P唔……可能是因为\x01",
             "我从来都不会挑酒喝吧。\x02\x03",
-            "加了蝎子的，毒蛇的，什么酒都喝过。\x02\x03",
+            "加了蝎子的、毒蛇的，什么酒都喝过。\x02\x03",
             "#021F越古怪的酒喝起来才越有滋味。\x02",
         )
     )

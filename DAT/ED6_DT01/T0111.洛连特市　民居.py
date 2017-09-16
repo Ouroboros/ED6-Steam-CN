@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 洛连特市 民居
@@ -647,7 +647,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "你们好，艾丝蒂尔，约修亚。\x01",
+            "你们好，艾丝蒂尔、约修亚。\x01",
             "听说你们最近很活跃啊。\x02",
         )
     )
@@ -993,7 +993,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "艾丝蒂尔，约修亚。\x01",
+            "艾丝蒂尔、约修亚。\x01",
             "你们如果看见了我家的尤妮\x01",
             "就叫她早些回家。\x02",
         )
@@ -2686,7 +2686,7 @@ def main():
     ChrTalk(
         0xFE,
         (
-            "爸爸他，\x01",
+            "爸爸他、\x01",
             "爸爸他要回家了哦～\x02",
         )
     )

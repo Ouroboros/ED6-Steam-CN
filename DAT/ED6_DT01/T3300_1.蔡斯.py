@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 蔡斯
@@ -204,7 +204,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "唔，哇，连名字都！？\x02",
+        "唔……哇，连名字都！？\x02",
     )
 
     CloseMessageWindow()

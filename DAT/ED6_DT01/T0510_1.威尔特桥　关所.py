@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 威尔特桥　关所
@@ -424,7 +424,7 @@ def main():
     ChrTalk(
         0x8,
         (
-            "艾丝蒂尔，约修亚，\x01",
+            "艾丝蒂尔、约修亚，\x01",
             "今天真是辛苦你们了。\x02",
         )
     )

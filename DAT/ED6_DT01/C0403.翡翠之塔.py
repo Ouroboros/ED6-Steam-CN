@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     # 翡翠之塔
@@ -2511,7 +2511,7 @@ def main():
 
     AnonymousTalk(
         (
-            "这一次是为了测试战斗的操作和\x01",
+            "本版本是为了测试战斗的感觉及\x01",
             "手感而制作的版本，\x01",
             "没有加入的要素还有很多。\x02",
         )
@@ -2521,16 +2521,16 @@ def main():
 
     AnonymousTalk(
         (
-            "今后会根据测试员\x01",
+            "今后会根据各位测试员\x01",
             "提交的意见和感想\x01",
-            "制作更高完成度的体验版。\x02",
+            "制作出更高完成度的体验版。\x02",
         )
     )
 
     CloseMessageWindow()
 
     AnonymousTalk(
-        "──现在返回主菜单。\x07\x00\x02",
+        "──现在将返回主菜单。\x07\x00\x02",
     )
 
     CloseMessageWindow()

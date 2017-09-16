@@ -1,4 +1,4 @@
-from ED6ScenarioHelper import *
+﻿from ED6ScenarioHelper import *
 
 def main():
     CreateScenaFile(
@@ -101,8 +101,8 @@ def main():
         "Function_1_146",          # 01, 1
         "Function_2_147",          # 02, 2
         "Function_3_15D",          # 03, 3
-        "Function_4_A5C",          # 04, 4
-        "Function_5_E57",          # 05, 5
+        "Function_4_FF7",          # 04, 4
+        "Function_5_1641",         # 05, 5
     )
 
 
@@ -284,16 +284,16 @@ def main():
     FadeToBright(300, 0)
     Switch(
         (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_511"),
-        (1, "loc_57D"),
-        (2, "loc_5F9"),
-        (3, "loc_665"),
-        (4, "loc_6FC"),
-        (SWITCH_DEFAULT, "loc_71C"),
+        (0, "loc_6DB"),
+        (1, "loc_79B"),
+        (2, "loc_851"),
+        (3, "loc_90D"),
+        (4, "loc_A05"),
+        (SWITCH_DEFAULT, "loc_A2D"),
     )
 
 
-    label("loc_511")
+    label("loc_6DB")
 
 
     ChrTalk(
@@ -307,9 +307,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_71C")
+    Jump("loc_A2D")
 
-    label("loc_57D")
+    label("loc_79B")
 
 
     ChrTalk(
@@ -323,9 +323,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_71C")
+    Jump("loc_A2D")
 
-    label("loc_5F9")
+    label("loc_851")
 
 
     ChrTalk(
@@ -339,9 +339,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_71C")
+    Jump("loc_A2D")
 
-    label("loc_665")
+    label("loc_90D")
 
 
     ChrTalk(
@@ -357,9 +357,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_71C")
+    Jump("loc_A2D")
 
-    label("loc_6FC")
+    label("loc_A05")
 
 
     ChrTalk(
@@ -368,9 +368,9 @@ def main():
     )
 
     CloseMessageWindow()
-    Jump("loc_71C")
+    Jump("loc_A2D")
 
-    label("loc_71C")
+    label("loc_A2D")
 
 
     ChrTalk(
@@ -485,9 +485,9 @@ def main():
 
     # Function_3_15D end
 
-    def Function_4_A5C(): pass
+    def Function_4_FF7(): pass
 
-    label("Function_4_A5C")
+    label("Function_4_FF7")
 
     EventBegin(0x0)
     ClearChrFlags(0x9, 0x80)
@@ -678,11 +678,11 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_4_A5C end
+    # Function_4_FF7 end
 
-    def Function_5_E57(): pass
+    def Function_5_1641(): pass
 
-    label("Function_5_E57")
+    label("Function_5_1641")
 
     OP_77(0x0, 0x0, 0x0, 0x0, 0x0)
     ClearMapFlags(0x1)
@@ -894,11 +894,11 @@ def main():
     OP_22(0x27, 0x0, 0x64)
     TurnDirection(0x104, 0x103, 500)
 
-    def lambda_1298():
+    def lambda_1BEB():
         OP_6B(3000, 1000)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_1298)
+    QueueWorkItem(0x101, 1, lambda_1BEB)
     OP_6D(-190, 5000, -6110, 1000)
     Sleep(1000)
 
@@ -909,11 +909,11 @@ def main():
 
     CloseMessageWindow()
 
-    def lambda_12D7():
+    def lambda_1C29():
         OP_6D(100, 5000, -9000, 2500)
         ExitThread()
 
-    QueueWorkItem(0x101, 1, lambda_12D7)
+    QueueWorkItem(0x101, 1, lambda_1C29)
     OP_8E(0x103, 0x0, 0x1388, 0xFFFFE142, 0x7D0, 0x0)
 
     ChrTalk(
@@ -1118,7 +1118,7 @@ def main():
     IdleLoop()
     Return()
 
-    # Function_5_E57 end
+    # Function_5_1641 end
 
     SaveToFile()
 
