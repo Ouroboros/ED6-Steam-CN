@@ -2515,7 +2515,7 @@ def main():
 
     ChrTalk(
         0x12,
-        "#020F哎、哎呀、真的吗？\x02",
+        "#020F哎、哎呀，真的吗？\x02",
     )
 
     CloseMessageWindow()

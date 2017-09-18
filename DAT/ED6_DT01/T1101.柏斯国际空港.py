@@ -1484,7 +1484,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "啊、嗯！\x02",
+        "啊，嗯！\x02",
     )
 
     CloseMessageWindow()
@@ -2131,7 +2131,7 @@ def main():
 
     ChrTalk(
         0xA,
-        "啊、嗯！\x02",
+        "啊，嗯！\x02",
     )
 
     CloseMessageWindow()
@@ -4625,7 +4625,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#008F啊，啊哈哈……是啊。\x02",
+        "#008F啊、啊哈哈……是啊。\x02",
     )
 
     CloseMessageWindow()

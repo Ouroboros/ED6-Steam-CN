@@ -218,7 +218,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "哇啊、被、被发现了。 \x02",
+        "哇啊，被、被发现了。 \x02",
     )
 
     CloseMessageWindow()

@@ -965,7 +965,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#506F啊、嗯，再见。\x02",
+        "#506F啊……嗯，再见。\x02",
     )
 
     CloseMessageWindow()
@@ -1106,7 +1106,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#506F啊、嗯，再见。\x02",
+        "#506F啊……嗯，再见。\x02",
     )
 
     CloseMessageWindow()
@@ -1225,7 +1225,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#506F啊、嗯，再见。\x02",
+        "#506F啊……嗯，再见。\x02",
     )
 
     CloseMessageWindow()
@@ -1334,7 +1334,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#506F啊、嗯，再见。\x02",
+        "#506F啊……嗯，再见。\x02",
     )
 
     CloseMessageWindow()

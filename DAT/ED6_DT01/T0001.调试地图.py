@@ -604,7 +604,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "#010F我啊、和爱娜！结婚了！\x02",
+        "#010F我啊，和爱娜！结婚了！\x02",
     )
 
     CloseMessageWindow()

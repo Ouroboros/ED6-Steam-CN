@@ -1728,7 +1728,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "啊、嗯，回来了。\x02",
+        "啊……嗯，回来了。\x02",
     )
 
     CloseMessageWindow()

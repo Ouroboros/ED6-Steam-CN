@@ -204,7 +204,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "唔、哇，连名字都！？\x02",
+        "唔……哇，连名字都！？\x02",
     )
 
     CloseMessageWindow()
@@ -863,7 +863,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "啊、好、好吧。\x02",
+        "啊，好、好吧。\x02",
     )
 
     CloseMessageWindow()

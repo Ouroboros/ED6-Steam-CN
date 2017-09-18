@@ -482,7 +482,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "大家、大家……\x02",
+        "大家……大家……\x02",
     )
 
     CloseMessageWindow()
@@ -2077,7 +2077,7 @@ def main():
 
     ChrTalk(
         0x10,
-        "#228F呀、呀啊啊！！\x02",
+        "#228F啊、啊呀呀！！\x02",
     )
 
     CloseMessageWindow()

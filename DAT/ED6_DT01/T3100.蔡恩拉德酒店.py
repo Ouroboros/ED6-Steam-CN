@@ -2894,7 +2894,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "不，不是火灾吧！？\x02",
+        "不、不是火灾吧！？\x02",
     )
 
     CloseMessageWindow()
@@ -3920,7 +3920,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "嗯，嗯……\x02",
+        "嗯、嗯……\x02",
     )
 
     CloseMessageWindow()

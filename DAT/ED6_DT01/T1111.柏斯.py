@@ -1812,7 +1812,7 @@ def main():
 
     ChrTalk(
         0xFE,
-        "啊、哎……莉拉！？\x02",
+        "啊，哎……莉拉！？\x02",
     )
 
     CloseMessageWindow()

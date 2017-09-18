@@ -6122,7 +6122,7 @@ def main():
             scpstr(SCPSTR_CODE_COLOR, 0x0),
             "得到了 \x07\x02",
             "魔兽手册\x07\x00",
-            ".\x02",
+            "。\x02",
         )
     )
 

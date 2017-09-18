@@ -2251,7 +2251,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#373F哎、唔、啊……\x02",
+        "#373F哎……唔，啊……\x02",
     )
 
     CloseMessageWindow()

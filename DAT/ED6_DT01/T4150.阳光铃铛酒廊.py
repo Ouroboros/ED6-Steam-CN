@@ -1612,7 +1612,7 @@ def main():
 
     ChrTalk(
         0x101,
-        "#008F哎、这个……\x02",
+        "#008F哎，这个……\x02",
     )
 
     CloseMessageWindow()
