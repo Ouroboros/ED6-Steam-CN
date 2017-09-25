@@ -4810,10 +4810,13 @@ def main():
     OP_0D()
     PlayMovie(0x1, "")
     Sleep(500)
+#STEAM_ONLY_BEGIN
     OP_83(0x15, 0x0)
+#STEAM_ONLY_END
     OP_AD(0x4003A, 0x0, 0x0, 0xC8)
     Sleep(2000)
     OP_56(0x3)
+#STEAM_ONLY_BEGIN
     FadeToBright(0, 0)
     OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
     SetMessageWindowPos(72, 320, 56, 3)
@@ -4850,6 +4853,7 @@ def main():
     SaveClearData()
 
     label("loc_5ECB")
+#STEAM_ONLY_END
 
     Sleep(1000)
     OP_AE(0x1F4)

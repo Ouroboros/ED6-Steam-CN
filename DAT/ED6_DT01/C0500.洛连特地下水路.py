@@ -842,6 +842,70 @@ def main():
     QueueWorkItem(0x1, 1, lambda_ACD)
     Sleep(200)
     Battle(0x11, 0x10000B, 0x0, 0x0, 0x9)
+
+#STEAM_ONLY_BEGIN
+    EventBegin(0x0)
+    OP_44(0x101, 0xFF)
+    OP_44(0x102, 0xFF)
+    SetChrChipByIndex(0x101, 65535)
+    SetChrChipByIndex(0x102, 65535)
+    SetChrPos(0x101, 1810, 0, 10700, 0)
+    SetChrPos(0x102, 1810, 0, 9370, 0)
+    OP_69(0x101, 0x0)
+    FadeToBright(1000, 0)
+    OP_0D()
+
+    ChrTalk(
+        0x101,
+        (
+            "#502F哼哼，比预想中轻松啊。\x02\x03",
+            "#508F好！\x01",
+            "保持这种势头，继续前进吧。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+    TurnDirection(0x102, 0x101, 400)
+
+    ChrTalk(
+        0x102,
+        (
+            "#010F艾丝蒂尔，等一下。\x02\x03",
+            "#010F我们先把刚才那种魔兽\x01",
+            "记录到魔兽手册中吧。\x02",
+        )
+    )
+
+    CloseMessageWindow()
+    TurnDirection(0x101, 0x102, 400)
+
+    ChrTalk(
+        0x101,
+        (
+            "#008F啊，有道理。\x02\x03",
+            "#502F（奋笔疾书）……\x02\x03",
+            "#006F好，记下来啦。\x02",
+        )
+    )
+    CloseMessageWindow()
+    FadeToDark(300, 0, 100)
+
+    AnonymousTalk(
+        (
+            scpstr(SCPSTR_CODE_COLOR, 0x5),
+            "※在战斗中所遇到的对手的情报\x01",
+            "  会被自动记录到魔兽手册中。\x02\x03",
+            "※另外，取胜时记录的内容和逃跑时\x01",
+            "  记录的内容是不同的。\x02\x03",            
+        )
+    )
+
+    CloseMessageWindow()
+    OP_56(0x0)
+    FadeToBright(300, 0)
+    OP_A2(0x0)
+#STEAM_ONLY_END
+
     EventEnd(0x2)
     SetMapFlags(0x1)
     Return()
