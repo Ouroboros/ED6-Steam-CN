@@ -1121,7 +1121,7 @@ def main():
         (
             scpstr(SCPSTR_CODE_COLOR, 0x0),
             "收下了\x07\x02",
-            "妨害２\x07\x00",
+            "妨碍２\x07\x00",
             "的结晶回路。\x02",
         )
     )
@@ -1142,7 +1142,7 @@ def main():
 
     ChrTalk(
         0x8,
-        "没错，妨害２的结晶回路。\x02",
+        "没错，妨碍２的结晶回路。\x02",
     )
 
     CloseMessageWindow()

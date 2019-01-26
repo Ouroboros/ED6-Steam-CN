@@ -7385,7 +7385,7 @@ def main():
         (
             scpstr(SCPSTR_CODE_COLOR, 0x0),
             "得到了\x07\x02",
-            "妨害３\x07\x00",
+            "妨碍３\x07\x00",
             "的结晶回路。\x02",
         )
     )
