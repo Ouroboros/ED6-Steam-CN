@@ -28,27 +28,27 @@
 
 ## 进度
 
-![Progress](http://progressed.io/bar/99) 主程序
+![Progress](https://progress-bar.dev/99) 主程序
 
-![Progress](http://progressed.io/bar/100) 剧情
+![Progress](https://progress-bar.dev/100) 剧情
 
-![Progress](http://progressed.io/bar/100) 我方魔法/战技
+![Progress](https://progress-bar.dev/100) 我方魔法/战技
 
-![Progress](http://progressed.io/bar/100) 物品
+![Progress](https://progress-bar.dev/100) 物品
 
-![Progress](http://progressed.io/bar/100) 手册
+![Progress](https://progress-bar.dev/100) 手册
 
-![Progress](http://progressed.io/bar/99) 敌方资料/魔法/战技
+![Progress](https://progress-bar.dev/99) 敌方资料/魔法/战技
 
-![Progress](http://progressed.io/bar/0) 料理
+![Progress](https://progress-bar.dev/0) 料理
 
-![Progress](http://progressed.io/bar/100) 商店
+![Progress](https://progress-bar.dev/100) 商店
 
-![Progress](http://progressed.io/bar/100) 地名
+![Progress](https://progress-bar.dev/100) 地名
 
-![Progress](http://progressed.io/bar/0) 书
+![Progress](https://progress-bar.dev/0) 书
 
-![Progress](http://progressed.io/bar/0) 图片
+![Progress](https://progress-bar.dev/0) 图片
 
 ## TODO
 
