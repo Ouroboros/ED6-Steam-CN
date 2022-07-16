@@ -1,112 +1,148 @@
-﻿from ED6ScenarioHelper import *
+import sys
+sys.path.append(r'D:\Dev\Source\Falcom\Decompiler2')
 
-def main():
-    CreateScenaFile(
-        FileName            = 'E0111   ._SN',
-        MapName             = 'Event',
-        Location            = 'E0111.x',
-        MapIndex            = 1,
-        MapDefaultBGM       = "ed60031",
-        Flags               = 0,
-        EntryFunctionIndex  = 0xFFFF,
-        Reserved            = 0,
-        IncludedScenario    = [
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
-        ],
+from Falcom.ED6.Parser.scena_writer_helper import *
+try:
+    import E0111_hook
+except ModuleNotFoundError:
+    pass
+
+scena = createScenaWriter('E0111   ._SN')
+
+stringTable = [
+    TXT(0x00, '@FileName'),
+    TXT(0x01, ''),
+]
+
+# id: 0xFFFF offset: 0x0
+@scena.Header('Header')
+def Header():
+    header = ScenaHeader()
+    header.mapName        = 'Event'
+    header.mapModel       = 'E0111.x'
+    header.mapIndex       = 1
+    header.bgm            = 31
+    header.flags          = 0x0000
+    header.entryFunction  = 0xFFFF
+    header.importTable    = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF]
+    header.reserved       = 0
+    return header
+
+# id: 0xFFFF offset: 0x351
+@scena.StringTable('StringTable')
+def StringTable():
+    return stringTable
+
+# id: 0x10000 offset: 0x64
+@scena.EntryPoint('EntryPoint')
+def EntryPoint():
+    return (
+        ScenaEntryPoint(
+            dword_00        = 0x00000000,
+            dword_04        = 0x00000000,
+            dword_08        = 0x00001770,
+            word_0C         = 0x0004,
+            word_0E         = 0x0000,
+            dword_10        = 0,
+            dword_14        = 9500,
+            dword_18        = -10000,
+            dword_1C        = 0,
+            dword_20        = 0,
+            dword_24        = 0,
+            dword_28        = 2800,
+            dword_2C        = 262,
+            word_30         = 45,
+            word_32         = 0,
+            word_34         = 360,
+            word_36         = 0,
+            word_38         = 0,
+            word_3A         = 0,
+            preInitScena    = 0x0000,
+            preInitFunction = 0x0000,
+            initScena       = 0x0000,
+            initFunction    = 0x0001,
+        ),
     )
 
-    BuildStringList(
-        '@FileName',                            # 8
+# id: 0x10001 offset: 0xA8
+@scena.ChipData('ChipData')
+def ChipData():
+    return [
+        # (ch, cp)
+    ]
+
+# id: 0x10002 offset: 0xA8
+@scena.NpcData('NpcData')
+def NpcData():
+    return (
     )
 
-    DeclEntryPoint(
-        Unknown_00              = 0,
-        Unknown_04              = 0,
-        Unknown_08              = 6000,
-        Unknown_0C              = 4,
-        Unknown_0E              = 0,
-        Unknown_10              = 0,
-        Unknown_14              = 9500,
-        Unknown_18              = -10000,
-        Unknown_1C              = 0,
-        Unknown_20              = 0,
-        Unknown_24              = 0,
-        Unknown_28              = 2800,
-        Unknown_2C              = 262,
-        Unknown_30              = 45,
-        Unknown_32              = 0,
-        Unknown_34              = 360,
-        Unknown_36              = 0,
-        Unknown_38              = 0,
-        Unknown_3A              = 0,
-        InitScenaIndex          = 0,
-        InitFunctionIndex       = 0,
-        EntryScenaIndex         = 0,
-        EntryFunctionIndex      = 1,
+# id: 0x10003 offset: 0xA8
+@scena.MonsterData('MonsterData')
+def MonsterData():
+    return (
     )
 
-
-    DeclActor(
-        TriggerX            = 51600,
-        TriggerZ            = 0,
-        TriggerY            = 74000,
-        TriggerRange        = 1000,
-        ActorX              = 51600,
-        ActorZ              = 1000,
-        ActorY              = 74000,
-        Flags               = 0x7C,
-        TalkScenaIndex      = 0,
-        TalkFunctionIndex   = 2,
-        Unknown_22          = 0,
+# id: 0x10004 offset: 0xA8
+@scena.EventData('EventData')
+def EventData():
+    return (
     )
 
-
-    ScpFunction(
-        "Function_0_CE",           # 00, 0
-        "Function_1_CF",           # 01, 1
-        "Function_2_119",          # 02, 2
+# id: 0x10005 offset: 0xA8
+@scena.ActorData('ActorData')
+def ActorData():
+    return (
+        ScenaActorData(
+            triggerX            = 51600,
+            triggerZ            = 0,
+            triggerY            = 74000,
+            triggerRange        = 1000,
+            actorX              = 51600,
+            actorZ              = 1000,
+            actorY              = 74000,
+            flags               = 0x007C,
+            talkScenaIndex      = 0x0000,
+            talkFunctionIndex   = 0x0002,
+            word_22             = 0x0000,
+        ),
     )
 
+# id: 0x0000 offset: 0xCC
+@scena.Code('PreInit')
+def PreInit():
+    Return()
 
-    def Function_0_CE(): pass
-
-    label("Function_0_CE")
+# id: 0x0001 offset: 0xCD
+@scena.Code('Init')
+def Init():
+    LoadEffect(0x00, 'map\\\\mp027_00.eff')
+    PlayEffect(0x00, 0x00, 0x00FF, 51600, 1000, 74000, 0, 0, 0, 1300, 1300, 1300, 0x00FF, 0, 0, 0, 0)
 
     Return()
 
-    # Function_0_CE end
+# id: 0x0002 offset: 0x117
+@scena.Code('ReInit')
+def ReInit():
+    FadeOut(300, 0, 100)
 
-    def Function_1_CF(): pass
-
-    label("Function_1_CF")
-
-    LoadEffect(0x0, "map\\\\mp027_00.eff")
-    PlayEffect(0x0, 0x0, 0xFF, 51600, 1000, 74000, 0, 0, 0, 1300, 1300, 1300, 0xFF, 0, 0, 0, 0)
-    Return()
-
-    # Function_1_CF end
-
-    def Function_2_119(): pass
-
-    label("Function_2_119")
-
-    FadeToDark(300, 0, 100)
-
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x5),
-            "这是一台可供旅行者回复体力的导力器装置。\x07\x00\x02",
-        )
+            (TxtCtl.SetColor, 0x5),
+            '这是一台可供旅行者回复体力的导力器装置。',
+            (TxtCtl.SetColor, 0x0),
+            TxtCtl.Enter,
+        ),
     )
 
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -114,71 +150,108 @@ def main():
         32,
         1,
         (
-            "在此休息\x01",      # 0
-            "离开\x01",          # 1
-        )
+            TXT(0x00, '在此休息\n'),
+            TXT(0x01, '离开\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_5F(0x0)
-    OP_56(0x0)
-    Jc((scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_EQU), scpexpr(EXPR_END)), "loc_334")
-    FadeToBright(100, 0)
+    MenuEnd(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_5F(0x0000)
+    OP_56(0x00)
+
+    If(
+        (
+            (Expr.PushReg, 0x0),
+            (Expr.PushLong, 0x0),
+            Expr.Equ,
+            Expr.Return,
+        ),
+        'loc_330',
+    )
+
+    FadeIn(100, 0)
     Sleep(500)
-    SoundLoad(13)
-    OP_82(0x0, 0x2)
-    PlayEffect(0x0, 0x2, 0xFF, 51600, 1000, 74000, 0, 0, 0, 700, 700, 700, 0xFF, 0, 0, 0, 0)
-    OP_6F(0x0, 0)
-    OP_70(0x0, 0x32)
-    OP_73(0x0)
-    OP_20(0xBB8)
-    OP_22(0xC, 0x0, 0x64)
-    OP_82(0x2, 0x2)
-    LoadEffect(0x1, "map\\\\mp027_01.eff")
-    PlayEffect(0x1, 0x1, 0xFF, 51600, 1000, 74000, 0, 0, 0, 1500, 1500, 1500, 0xFF, 0, 0, 0, 0)
-    FadeToDark(1000, 0, -1)
+
+    OP_26(13)
+    StopEffect(0x00, 0x02)
+    PlayEffect(0x00, 0x02, 0x00FF, 51600, 1000, 74000, 0, 0, 0, 700, 700, 700, 0x00FF, 0, 0, 0, 0)
+    OP_6F(0x0000, 0)
+    OP_70(0x0000, 50)
+    OP_73(0x0000)
+    OP_20(0x00000BB8)
+    PlaySE(12, 0x00, 0x64)
+    StopEffect(0x02, 0x02)
+    LoadEffect(0x01, 'map\\\\mp027_01.eff')
+    PlayEffect(0x01, 0x01, 0x00FF, 51600, 1000, 74000, 0, 0, 0, 1500, 1500, 1500, 0x00FF, 0, 0, 0, 0)
+    FadeOut(1000, 0, -1)
     Sleep(700)
-    OP_22(0xD, 0x0, 0x64)
+
+    PlaySE(13, 0x00, 0x64)
     OP_0D()
-    OP_31(0x0, 0xFE, 0x0)
-    OP_31(0x1, 0xFE, 0x0)
-    OP_31(0x2, 0xFE, 0x0)
-    OP_31(0x3, 0xFE, 0x0)
-    OP_31(0x4, 0xFE, 0x0)
-    OP_31(0x5, 0xFE, 0x0)
-    OP_31(0x6, 0xFE, 0x0)
-    OP_31(0x7, 0xFE, 0x0)
-    SetChrPos(0x0, 52220, 0, 75340, 168)
-    SetChrPos(0x1, 52220, 0, 75340, 168)
-    SetChrPos(0x2, 52220, 0, 75340, 168)
-    SetChrPos(0x3, 52220, 0, 75340, 168)
-    OP_69(0x0, 0x0)
-    OP_30(0x0)
+    SetChrStatus(0x0000, 0xFE, 0)
+    SetChrStatus(0x0001, 0xFE, 0)
+    SetChrStatus(0x0002, 0xFE, 0)
+    SetChrStatus(0x0003, 0xFE, 0)
+    SetChrStatus(0x0004, 0xFE, 0)
+    SetChrStatus(0x0005, 0xFE, 0)
+    SetChrStatus(0x0006, 0xFE, 0)
+    SetChrStatus(0x0007, 0xFE, 0)
+    SetChrPos(0x0000, 52220, 0, 75340, 168)
+    SetChrPos(0x0001, 52220, 0, 75340, 168)
+    SetChrPos(0x0002, 52220, 0, 75340, 168)
+    SetChrPos(0x0003, 52220, 0, 75340, 168)
+    OP_69(0x0000, 0)
+    OP_30(0x00)
     Sleep(3500)
-    OP_82(0x1, 0x2)
-    LoadEffect(0x0, "map\\\\mp027_00.eff")
-    PlayEffect(0x0, 0x0, 0xFF, 51600, 1000, 74000, 0, 0, 0, 1300, 1300, 1300, 0xFF, 0, 0, 0, 0)
-    OP_6F(0x0, 0)
+
+    StopEffect(0x01, 0x02)
+    LoadEffect(0x00, 'map\\\\mp027_00.eff')
+    PlayEffect(0x00, 0x00, 0x00FF, 51600, 1000, 74000, 0, 0, 0, 1300, 1300, 1300, 0x00FF, 0, 0, 0, 0)
+    OP_6F(0x0000, 0)
     OP_1E()
-    FadeToBright(1000, 0)
-    OP_56(0x0)
-    TalkEnd(0xFF)
-    Return()
-
-    label("loc_334")
-
-    Jc((scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_NEQ), scpexpr(EXPR_END)), "loc_34E")
-    FadeToBright(300, 0)
-    TalkEnd(0xFF)
-    Return()
-
-    label("loc_34E")
+    FadeIn(1000, 0)
+    OP_56(0x00)
+    TalkEnd(0x00FF)
 
     Return()
 
-    # Function_2_119 end
+    def _loc_330(): pass
 
-    SaveToFile()
+    label('loc_330')
 
-Try(main)
+    If(
+        (
+            (Expr.PushReg, 0x0),
+            (Expr.PushLong, 0x0),
+            Expr.Neq,
+            Expr.Return,
+        ),
+        'loc_34A',
+    )
+
+    FadeIn(300, 0)
+    TalkEnd(0x00FF)
+
+    Return()
+
+    def _loc_34A(): pass
+
+    label('loc_34A')
+
+    Return()
+
+def main():
+    scena.run(globals())
+
+if __name__ == '__main__':
+    Try(main)

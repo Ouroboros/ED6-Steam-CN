@@ -1,80 +1,112 @@
-﻿from ED6ScenarioHelper import *
+import sys
+sys.path.append(r'D:\Dev\Source\Falcom\Decompiler2')
+
+from Falcom.ED6.Parser.scena_writer_helper import *
+try:
+    import E0100_hook
+except ModuleNotFoundError:
+    pass
+
+scena = createScenaWriter('E0100   ._SN')
+
+stringTable = [
+    TXT(0x00, '@FileName'),
+    TXT(0x01, ''),
+]
+
+# id: 0xFFFF offset: 0x0
+@scena.Header('Header')
+def Header():
+    header = ScenaHeader()
+    header.mapName        = 'event'
+    header.mapModel       = 'E0100.x'
+    header.mapIndex       = 1
+    header.bgm            = 10
+    header.flags          = 0x0000
+    header.entryFunction  = 0xFFFF
+    header.importTable    = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF]
+    header.reserved       = 0
+    return header
+
+# id: 0xFFFF offset: 0xAE
+@scena.StringTable('StringTable')
+def StringTable():
+    return stringTable
+
+# id: 0x10000 offset: 0x64
+@scena.EntryPoint('EntryPoint')
+def EntryPoint():
+    return (
+        ScenaEntryPoint(
+            dword_00        = 0x00000000,
+            dword_04        = 0x00000000,
+            dword_08        = 0x00001770,
+            word_0C         = 0x0004,
+            word_0E         = 0x0000,
+            dword_10        = 0,
+            dword_14        = 8000,
+            dword_18        = -10000,
+            dword_1C        = 0,
+            dword_20        = 0,
+            dword_24        = 0,
+            dword_28        = 3000,
+            dword_2C        = 262,
+            word_30         = 45,
+            word_32         = 0,
+            word_34         = 360,
+            word_36         = 0,
+            word_38         = 0,
+            word_3A         = 0,
+            preInitScena    = 0x0000,
+            preInitFunction = 0x0000,
+            initScena       = 0x0000,
+            initFunction    = 0x0001,
+        ),
+    )
+
+# id: 0x10001 offset: 0xA8
+@scena.ChipData('ChipData')
+def ChipData():
+    return [
+        # (ch, cp)
+    ]
+
+# id: 0x10002 offset: 0xA8
+@scena.NpcData('NpcData')
+def NpcData():
+    return (
+    )
+
+# id: 0x10003 offset: 0xA8
+@scena.MonsterData('MonsterData')
+def MonsterData():
+    return (
+    )
+
+# id: 0x10004 offset: 0xA8
+@scena.EventData('EventData')
+def EventData():
+    return (
+    )
+
+# id: 0x10005 offset: 0xA8
+@scena.ActorData('ActorData')
+def ActorData():
+    return (
+    )
+
+# id: 0x0000 offset: 0xA8
+@scena.Code('PreInit')
+def PreInit():
+    Return()
+
+# id: 0x0001 offset: 0xA9
+@scena.Code('Init')
+def Init():
+    Return()
 
 def main():
-    CreateScenaFile(
-        FileName            = 'E0100   ._SN',
-        MapName             = 'event',
-        Location            = 'E0100.x',
-        MapIndex            = 1,
-        MapDefaultBGM       = "ed60010",
-        Flags               = 0,
-        EntryFunctionIndex  = 0xFFFF,
-        Reserved            = 0,
-        IncludedScenario    = [
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
-        ],
-    )
+    scena.run(globals())
 
-    BuildStringList(
-        '@FileName',                            # 8
-    )
-
-    DeclEntryPoint(
-        Unknown_00              = 0,
-        Unknown_04              = 0,
-        Unknown_08              = 6000,
-        Unknown_0C              = 4,
-        Unknown_0E              = 0,
-        Unknown_10              = 0,
-        Unknown_14              = 8000,
-        Unknown_18              = -10000,
-        Unknown_1C              = 0,
-        Unknown_20              = 0,
-        Unknown_24              = 0,
-        Unknown_28              = 3000,
-        Unknown_2C              = 262,
-        Unknown_30              = 45,
-        Unknown_32              = 0,
-        Unknown_34              = 360,
-        Unknown_36              = 0,
-        Unknown_38              = 0,
-        Unknown_3A              = 0,
-        InitScenaIndex          = 0,
-        InitFunctionIndex       = 0,
-        EntryScenaIndex         = 0,
-        EntryFunctionIndex      = 1,
-    )
-
-
-    ScpFunction(
-        "Function_0_AA",           # 00, 0
-        "Function_1_AB",           # 01, 1
-    )
-
-
-    def Function_0_AA(): pass
-
-    label("Function_0_AA")
-
-    Return()
-
-    # Function_0_AA end
-
-    def Function_1_AB(): pass
-
-    label("Function_1_AB")
-
-    Return()
-
-    # Function_1_AB end
-
-    SaveToFile()
-
-Try(main)
+if __name__ == '__main__':
+    Try(main)

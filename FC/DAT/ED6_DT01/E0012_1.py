@@ -1,213 +1,336 @@
-﻿from ED6ScenarioHelper import *
+import sys
+sys.path.append(r'D:\Dev\Source\Falcom\Decompiler2')
 
-def main():
-    CreateScenaFile(
-        FileName            = 'E0012_1 ._SN',
-        MapName             = 'event',
-        Location            = 'E0012.x',
-        MapIndex            = 1,
-        MapDefaultBGM       = "ed60010",
-        Flags               = 0,
-        EntryFunctionIndex  = 0xFFFF,
-        Reserved            = 0,
-        IncludedScenario    = [
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            ''
-        ],
+from Falcom.ED6.Parser.scena_writer_helper import *
+try:
+    import E0012_1_hook
+except ModuleNotFoundError:
+    pass
+
+scena = createScenaWriter('E0012_1 ._SN')
+
+stringTable = [
+    TXT(0x00, '@FileName'),
+    TXT(0x01, ''),
+]
+
+# id: 0xFFFF offset: 0x0
+@scena.Header('Header')
+def Header():
+    header = ScenaHeader()
+    header.mapName        = 'event'
+    header.mapModel       = 'E0012.x'
+    header.mapIndex       = 1
+    header.bgm            = 10
+    header.flags          = 0x0000
+    header.entryFunction  = 0xFFFF
+    header.importTable    = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF]
+    header.reserved       = 0
+    return header
+
+# id: 0xFFFF offset: 0x127B
+@scena.StringTable('StringTable')
+def StringTable():
+    return stringTable
+
+# id: 0x10000 offset: 0x64
+@scena.EntryPoint('EntryPoint')
+def EntryPoint():
+    return (
+        ScenaEntryPoint(
+            dword_00        = 0x00000000,
+            dword_04        = 0x00000000,
+            dword_08        = 0x00001770,
+            word_0C         = 0x0004,
+            word_0E         = 0x0000,
+            dword_10        = 0,
+            dword_14        = 9500,
+            dword_18        = -10000,
+            dword_1C        = 0,
+            dword_20        = 0,
+            dword_24        = 0,
+            dword_28        = 2800,
+            dword_2C        = 262,
+            word_30         = 45,
+            word_32         = 0,
+            word_34         = 360,
+            word_36         = 0,
+            word_38         = 0,
+            word_3A         = 0,
+            preInitScena    = 0x0000,
+            preInitFunction = 0x0000,
+            initScena       = 0x0000,
+            initFunction    = 0x0001,
+        ),
     )
 
-    BuildStringList(
-        '@FileName',                            # 8
+# id: 0x10001 offset: 0xA8
+@scena.ChipData('ChipData')
+def ChipData():
+    return [
+        # (ch, cp)
+    ]
+
+# id: 0x10002 offset: 0xA8
+@scena.NpcData('NpcData')
+def NpcData():
+    return (
     )
 
-    DeclEntryPoint(
-        Unknown_00              = 0,
-        Unknown_04              = 0,
-        Unknown_08              = 6000,
-        Unknown_0C              = 4,
-        Unknown_0E              = 0,
-        Unknown_10              = 0,
-        Unknown_14              = 9500,
-        Unknown_18              = -10000,
-        Unknown_1C              = 0,
-        Unknown_20              = 0,
-        Unknown_24              = 0,
-        Unknown_28              = 2800,
-        Unknown_2C              = 262,
-        Unknown_30              = 45,
-        Unknown_32              = 0,
-        Unknown_34              = 360,
-        Unknown_36              = 0,
-        Unknown_38              = 0,
-        Unknown_3A              = 0,
-        InitScenaIndex          = 0,
-        InitFunctionIndex       = 0,
-        EntryScenaIndex         = 0,
-        EntryFunctionIndex      = 1,
+# id: 0x10003 offset: 0xA8
+@scena.MonsterData('MonsterData')
+def MonsterData():
+    return (
     )
 
-
-    ScpFunction(
-        "Function_0_AA",           # 00, 0
-        "Function_1_AB",           # 01, 1
-        "Function_2_AC",           # 02, 2
+# id: 0x10004 offset: 0xA8
+@scena.EventData('EventData')
+def EventData():
+    return (
     )
 
+# id: 0x10005 offset: 0xA8
+@scena.ActorData('ActorData')
+def ActorData():
+    return (
+    )
 
-    def Function_0_AA(): pass
-
-    label("Function_0_AA")
-
+# id: 0x0000 offset: 0xA8
+@scena.Code('PreInit')
+def PreInit():
     Return()
 
-    # Function_0_AA end
-
-    def Function_1_AB(): pass
-
-    label("Function_1_AB")
-
+# id: 0x0001 offset: 0xA9
+@scena.Code('Init')
+def Init():
     Return()
 
-    # Function_1_AB end
-
-    def Function_2_AC(): pass
-
-    label("Function_2_AC")
-
-    EventBegin(0x0)
+# id: 0x0002 offset: 0xAA
+@scena.Code('ReInit')
+def ReInit():
+    EventBegin(0x00)
     Fade(1000)
-    SetChrPos(0x101, 29200, 0, -7430, 270)
-    SetChrPos(0x102, 30010, 0, -8090, 270)
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_42(0x6)"), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_NEG), scpexpr(EXPR_NEQ), scpexpr(EXPR_END)), "loc_F4")
-    SetChrPos(0x107, 29960, 0, -6410, 225)
+    SetChrPos(0x0101, 29200, 0, -7430, 270)
+    SetChrPos(0x0102, 30010, 0, -8090, 270)
 
-    label("loc_F4")
+    If(
+        (
+            (Expr.Eval, "OP_42(0x0006)"),
+            (Expr.PushLong, 0x1),
+            Expr.Neg,
+            Expr.Neq,
+            Expr.Return,
+        ),
+        'loc_F2',
+    )
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_42(0x5)"), scpexpr(EXPR_PUSH_LONG, 0x1), scpexpr(EXPR_NEG), scpexpr(EXPR_NEQ), scpexpr(EXPR_END)), "loc_113")
-    SetChrPos(0x106, 31010, 0, -7540, 270)
+    SetChrPos(0x0107, 29960, 0, -6410, 225)
 
-    label("loc_113")
+    def _loc_F2(): pass
 
-    OP_6D(28990, 0, -7070, 2000)
+    label('loc_F2')
+
+    If(
+        (
+            (Expr.Eval, "OP_42(0x0005)"),
+            (Expr.PushLong, 0x1),
+            Expr.Neg,
+            Expr.Neq,
+            Expr.Return,
+        ),
+        'loc_111',
+    )
+
+    SetChrPos(0x0106, 31010, 0, -7540, 270)
+
+    def _loc_111(): pass
+
+    label('loc_111')
+
+    CameraMove(28990, 0, -7070, 2000)
     OP_0D()
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#000F菲小姐，\x01",
-            "打扰一下好吗？\x02",
-        )
+            '#0010180494V#000F菲小姐，\n',
+            '打扰一下好吗？',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    SetChrFlags(0xA, 0x10)
-    TalkBegin(0xA)
-    OP_4A(0xA, 255)
-    ClearChrFlags(0xA, 0x10)
-    OP_62(0xFE, 0x0, 2000, 0x26, 0x26, 0xFA, 0x1)
+    SetChrFlags(0x000A, 0x0010)
+    TalkBegin(0x000A)
+    OP_4A(0x000A, 255)
+    ClearChrFlags(0x000A, 0x0010)
+    OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
-    TurnDirection(0xFE, 0x101, 400)
+
+    ChrTurnDirection(0x00FE, 0x0101, 400)
 
     ChrTalk(
-        0xFE,
-        "嗯？什么事？\x02",
+        0x00FE,
+        (
+            '#1980180495V嗯？什么事？',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#000F在你正忙的时候来打扰真是抱歉。\x02\x03",
-            "#000F这是某人托我们带给您的东西。\x01",
-            "　\x02\x03",
-            "这个，请您收下。\x02",
-        )
+            '#0010180496V#000F在你正忙的时候来打扰真是抱歉。',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180497V#000F这是某人托我们带给您的东西。\n',
+            '　',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180444V这个，请您收下。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(100)
-    OP_22(0x11, 0x0, 0x64)
-    FadeToDark(300, 0, 100)
-    SetChrName("")
+
+    PlaySE(17, 0x00, 0x64)
+    FadeOut(300, 0, 100)
+    SetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "交出了\x07\x02",
-            "给菲的情书\x07\x00",
-            "。\x02",
-        )
+            (TxtCtl.SetColor, 0x0),
+            '交出了',
+            (TxtCtl.SetColor, 0x2),
+            '给菲的情书',
+            (TxtCtl.SetColor, 0x0),
+            '。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    OP_56(0x00)
+    FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
     Sleep(100)
-    OP_3F(0x35E, 1)
-    OP_62(0xFE, 0x0, 2000, 0x2, 0x7, 0x50, 0x1)
-    OP_22(0x27, 0x0, 0x64)
+
+    RemoveItem(0x035E, 1)
+    OP_62(0x00FE, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
-        0xFE,
-        "这封信……\x02",
+        0x00FE,
+        (
+            '#1980180499V这封信……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "…………难道说，\x01",
-            "是沃尔费堡垒的布拉姆写的？\x02",
-        )
+            '#1980180500V…………难道说，\n',
+            '是沃尔费堡垒的布拉姆写的？',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#000F嗯，是的。\x02\x03",
-            "#002F（好！\x01",
-            "　这就把礼物拿给她。）\x02",
-        )
+            '#0010160314V#000F嗯，是的。',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180502V#002F（好！\n',
+            '　这就把礼物拿给她。）',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(100)
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_3A0")
-    OP_62(0x101, 0x0, 2000, 0x14, 0x17, 0xFA, 0x1)
-    OP_22(0x31, 0x0, 0x64)
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            Expr.Ez,
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Ez,
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Ez,
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_39E',
+    )
+
+    OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
+    PlaySE(49, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#008F（……哎呀，虽然心里一直惦记着，\x01",
-            "　最后还是忘记买礼物了。）\x02",
-        )
+            '#0010180482V#008F（……哎呀，虽然心里一直惦记着，\n',
+            '　最后还是忘记买礼物了。）',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_A2(0xA)
-    Jump("loc_7E0")
+    SetScenaFlags(ScenaFlag(0x0001, 2, 0xA))
 
-    label("loc_3A0")
+    Jump('loc_7BA')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_42B")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    def _loc_39E(): pass
+
+    label('loc_39E')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Ez,
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Ez,
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_428',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -215,44 +338,95 @@ def main():
         10,
         0,
         (
-            "【工作手套】\x01",      # 0
-            "【放弃】\x01",          # 1
-        )
+            TXT(0x00, '【工作手套】\n'),
+            TXT(0x01, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_41C"),
-        (1, "loc_422"),
-        (SWITCH_DEFAULT, "loc_428"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_419'),
+        (0x00000001, 'loc_41F'),
+        (-1, 'loc_425'),
     )
 
+    def _loc_419(): pass
 
-    label("loc_41C")
+    label('loc_419')
 
-    OP_A2(0x6)
-    Jump("loc_428")
+    SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    label("loc_422")
+    Jump('loc_425')
 
-    OP_A2(0x9)
-    Jump("loc_428")
+    def _loc_41F(): pass
 
-    label("loc_428")
+    label('loc_41F')
 
-    Jump("loc_7E0")
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    label("loc_42B")
+    Jump('loc_425')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_4B8")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    def _loc_425(): pass
+
+    label('loc_425')
+
+    Jump('loc_7BA')
+
+    def _loc_428(): pass
+
+    label('loc_428')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            Expr.Ez,
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Ez,
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_4B0',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -260,44 +434,95 @@ def main():
         10,
         0,
         (
-            "【果馅饼】\x01",      # 0
-            "【放弃】\x01",        # 1
-        )
+            TXT(0x00, '【果馅饼】\n'),
+            TXT(0x01, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_4A9"),
-        (1, "loc_4AF"),
-        (SWITCH_DEFAULT, "loc_4B5"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_4A1'),
+        (0x00000001, 'loc_4A7'),
+        (-1, 'loc_4AD'),
     )
 
+    def _loc_4A1(): pass
 
-    label("loc_4A9")
+    label('loc_4A1')
 
-    OP_A2(0x7)
-    Jump("loc_4B5")
+    SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    label("loc_4AF")
+    Jump('loc_4AD')
 
-    OP_A2(0x9)
-    Jump("loc_4B5")
+    def _loc_4A7(): pass
 
-    label("loc_4B5")
+    label('loc_4A7')
 
-    Jump("loc_7E0")
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    label("loc_4B8")
+    Jump('loc_4AD')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_547")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    def _loc_4AD(): pass
+
+    label('loc_4AD')
+
+    Jump('loc_7BA')
+
+    def _loc_4B0(): pass
+
+    label('loc_4B0')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            Expr.Ez,
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Ez,
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_53C',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -305,44 +530,94 @@ def main():
         10,
         0,
         (
-            "【绒毛编织帽】\x01",      # 0
-            "【放弃】\x01",            # 1
-        )
+            TXT(0x00, '【绒毛编织帽】\n'),
+            TXT(0x01, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_538"),
-        (1, "loc_53E"),
-        (SWITCH_DEFAULT, "loc_544"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_52D'),
+        (0x00000001, 'loc_533'),
+        (-1, 'loc_539'),
     )
 
+    def _loc_52D(): pass
 
-    label("loc_538")
+    label('loc_52D')
 
-    OP_A2(0x8)
-    Jump("loc_544")
+    SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    label("loc_53E")
+    Jump('loc_539')
 
-    OP_A2(0x9)
-    Jump("loc_544")
+    def _loc_533(): pass
 
-    label("loc_544")
+    label('loc_533')
 
-    Jump("loc_7E0")
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    label("loc_547")
+    Jump('loc_539')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_5EB")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    def _loc_539(): pass
+
+    label('loc_539')
+
+    Jump('loc_7BA')
+
+    def _loc_53C(): pass
+
+    label('loc_53C')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Ez,
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_5DA',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -350,51 +625,104 @@ def main():
         10,
         0,
         (
-            "【工作手套】\x01",      # 0
-            "【果馅饼】\x01",        # 1
-            "【放弃】\x01",          # 2
-        )
+            TXT(0x00, '【工作手套】\n'),
+            TXT(0x01, '【果馅饼】\n'),
+            TXT(0x02, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_5D6"),
-        (1, "loc_5DC"),
-        (2, "loc_5E2"),
-        (SWITCH_DEFAULT, "loc_5E8"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_5C5'),
+        (0x00000001, 'loc_5CB'),
+        (0x00000002, 'loc_5D1'),
+        (-1, 'loc_5D7'),
     )
 
+    def _loc_5C5(): pass
 
-    label("loc_5D6")
+    label('loc_5C5')
 
-    OP_A2(0x6)
-    Jump("loc_5E8")
+    SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    label("loc_5DC")
+    Jump('loc_5D7')
 
-    OP_A2(0x7)
-    Jump("loc_5E8")
+    def _loc_5CB(): pass
 
-    label("loc_5E2")
+    label('loc_5CB')
 
-    OP_A2(0x9)
-    Jump("loc_5E8")
+    SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    label("loc_5E8")
+    Jump('loc_5D7')
 
-    Jump("loc_7E0")
+    def _loc_5D1(): pass
 
-    label("loc_5EB")
+    label('loc_5D1')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_691")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
+
+    Jump('loc_5D7')
+
+    def _loc_5D7(): pass
+
+    label('loc_5D7')
+
+    Jump('loc_7BA')
+
+    def _loc_5DA(): pass
+
+    label('loc_5DA')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Ez,
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_67C',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -402,51 +730,104 @@ def main():
         10,
         0,
         (
-            "【工作手套】\x01",        # 0
-            "【绒毛编织帽】\x01",      # 1
-            "【放弃】\x01",            # 2
-        )
+            TXT(0x00, '【工作手套】\n'),
+            TXT(0x01, '【绒毛编织帽】\n'),
+            TXT(0x02, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_67C"),
-        (1, "loc_682"),
-        (2, "loc_688"),
-        (SWITCH_DEFAULT, "loc_68E"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_667'),
+        (0x00000001, 'loc_66D'),
+        (0x00000002, 'loc_673'),
+        (-1, 'loc_679'),
     )
 
+    def _loc_667(): pass
 
-    label("loc_67C")
+    label('loc_667')
 
-    OP_A2(0x6)
-    Jump("loc_68E")
+    SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    label("loc_682")
+    Jump('loc_679')
 
-    OP_A2(0x8)
-    Jump("loc_68E")
+    def _loc_66D(): pass
 
-    label("loc_688")
+    label('loc_66D')
 
-    OP_A2(0x9)
-    Jump("loc_68E")
+    SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    label("loc_68E")
+    Jump('loc_679')
 
-    Jump("loc_7E0")
+    def _loc_673(): pass
 
-    label("loc_691")
+    label('loc_673')
 
-    Jc((scpexpr(EXPR_EXEC_OP, "OP_40(0x14D)"), scpexpr(EXPR_EQUZ), scpexpr(EXPR_EXEC_OP, "OP_40(0x1B2)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_EXEC_OP, "OP_40(0x14A)"), scpexpr(EXPR_NEQUZ_I64), scpexpr(EXPR_END)), "loc_739")
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
+
+    Jump('loc_679')
+
+    def _loc_679(): pass
+
+    label('loc_679')
+
+    Jump('loc_7BA')
+
+    def _loc_67C(): pass
+
+    label('loc_67C')
+
+    If(
+        (
+            (Expr.Eval, "OP_40(0x014D)"),
+            Expr.Ez,
+            (Expr.Eval, "OP_40(0x01B2)"),
+            Expr.Nez64,
+            (Expr.Eval, "OP_40(0x014A)"),
+            Expr.Nez64,
+            Expr.Return,
+        ),
+        'loc_71C',
+    )
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -454,50 +835,91 @@ def main():
         10,
         0,
         (
-            "【果馅饼】\x01",          # 0
-            "【绒毛编织帽】\x01",      # 1
-            "【放弃】\x01",            # 2
-        )
+            TXT(0x00, '【果馅饼】\n'),
+            TXT(0x01, '【绒毛编织帽】\n'),
+            TXT(0x02, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_724"),
-        (1, "loc_72A"),
-        (2, "loc_730"),
-        (SWITCH_DEFAULT, "loc_736"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_707'),
+        (0x00000001, 'loc_70D'),
+        (0x00000002, 'loc_713'),
+        (-1, 'loc_719'),
     )
 
+    def _loc_707(): pass
 
-    label("loc_724")
+    label('loc_707')
 
-    OP_A2(0x7)
-    Jump("loc_736")
+    SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    label("loc_72A")
+    Jump('loc_719')
 
-    OP_A2(0x8)
-    Jump("loc_736")
+    def _loc_70D(): pass
 
-    label("loc_730")
+    label('loc_70D')
 
-    OP_A2(0x9)
-    Jump("loc_736")
+    SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    label("loc_736")
+    Jump('loc_719')
 
-    Jump("loc_7E0")
+    def _loc_713(): pass
 
-    label("loc_739")
+    label('loc_713')
 
-    FadeToDark(300, 0, 100)
-    RunExpression(0x0, (scpexpr(EXPR_PUSH_LONG, 0x0), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0x18), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
+
+    Jump('loc_719')
+
+    def _loc_719(): pass
+
+    label('loc_719')
+
+    Jump('loc_7BA')
+
+    def _loc_71C(): pass
+
+    label('loc_71C')
+
+    FadeOut(300, 0, 100)
+
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0x0),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0x18),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
     Menu(
         0,
@@ -505,623 +927,790 @@ def main():
         10,
         0,
         (
-            "【工作手套】\x01",        # 0
-            "【果馅饼】\x01",          # 1
-            "【绒毛编织帽】\x01",      # 2
-            "【放弃】\x01",            # 3
-        )
+            TXT(0x00, '【工作手套】\n'),
+            TXT(0x01, '【果馅饼】\n'),
+            TXT(0x02, '【绒毛编织帽】\n'),
+            TXT(0x03, '【放弃】\n'),
+        ),
     )
 
-    MenuEnd(0x0)
-    OP_5F(0x0)
-    OP_4F(0x28, (scpexpr(EXPR_PUSH_LONG, 0xFFFF), scpexpr(EXPR_STUB), scpexpr(EXPR_END)))
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    MenuEnd(0x0000)
+    OP_5F(0x0000)
+
+    ExecExpressionWithVar(
+        0x28,
+        (
+            (Expr.PushLong, 0xFFFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
+
+    OP_56(0x00)
+    FadeIn(300, 0)
+
     Switch(
-        (scpexpr(EXPR_GET_RESULT, 0x0), scpexpr(EXPR_END)),
-        (0, "loc_7CB"),
-        (1, "loc_7CE"),
-        (2, "loc_7D4"),
-        (3, "loc_7DA"),
-        (SWITCH_DEFAULT, "loc_7E0"),
+        (
+            (Expr.PushReg, 0x0),
+            Expr.Return,
+        ),
+        (0x00000000, 'loc_7A5'),
+        (0x00000001, 'loc_7A8'),
+        (0x00000002, 'loc_7AE'),
+        (0x00000003, 'loc_7B4'),
+        (-1, 'loc_7BA'),
     )
 
+    def _loc_7A5(): pass
 
-    label("loc_7CB")
+    label('loc_7A5')
 
-    OP_A2(0x6)
+    SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    label("loc_7CE")
+    def _loc_7A8(): pass
 
-    OP_A2(0x7)
-    Jump("loc_7E0")
+    label('loc_7A8')
 
-    label("loc_7D4")
+    SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    OP_A2(0x8)
-    Jump("loc_7E0")
+    Jump('loc_7BA')
 
-    label("loc_7DA")
+    def _loc_7AE(): pass
 
-    OP_A2(0x9)
-    Jump("loc_7E0")
+    label('loc_7AE')
 
-    label("loc_7E0")
+    SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 6)), scpexpr(EXPR_END)), "loc_AAB")
+    Jump('loc_7BA')
+
+    def _loc_7B4(): pass
+
+    label('loc_7B4')
+
+    SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
+
+    Jump('loc_7BA')
+
+    def _loc_7BA(): pass
+
+    label('loc_7BA')
+
+    If(
+        (
+            (Expr.TestScenaFlags, ScenaFlag(0x0000, 6, 0x6)),
+            Expr.Return,
+        ),
+        'loc_A7F',
+    )
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#000F对了，\x01",
-            "这是他送你的礼物。\x02",
-        )
+            '#0010180449V#000F对了，\n',
+            '这是他送你的礼物。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(100)
-    OP_22(0x11, 0x0, 0x64)
-    FadeToDark(300, 0, 100)
-    SetChrName("")
+
+    PlaySE(17, 0x00, 0x64)
+    FadeOut(300, 0, 100)
+    SetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "交出了\x07\x02",
-            "工作手套\x07\x00",
-            "。\x02",
-        )
+            (TxtCtl.SetColor, 0x0),
+            '交出了',
+            (TxtCtl.SetColor, 0x2),
+            '工作手套',
+            (TxtCtl.SetColor, 0x0),
+            '。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    OP_56(0x00)
+    FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
     Sleep(100)
-    OP_62(0xFE, 0x0, 2000, 0x0, 0x1, 0xFA, 0x2)
-    OP_22(0x26, 0x0, 0x64)
+
+    OP_62(0x00FE, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
+    PlaySE(38, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "……礼物？\x01",
-            "工作手套？\x02",
-        )
+            '#1980180504V……礼物？\n',
+            '工作手套？',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "好、好吧，\x01",
-            "我收下了……\x02",
-        )
+            '#1980180505V好、好吧，\n',
+            '我收下了……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_8C(0xFE, 270, 400)
+    SetChrDirection(0x00FE, 270, 400)
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "哼，真是的，\x01",
-            "那个家伙到底在想什么，\x01",
-            "我一点都不明白……\x02",
-        )
+            '#1980180506V哼，真是的，\n',
+            '那个家伙到底在想什么，\n',
+            '我一点都不明白……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
-        "……………………………\x02",
+        0x00FE,
+        (
+            '#1980180507V……………………………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(400)
-    OP_62(0x101, 0x0, 2000, 0x14, 0x17, 0xFA, 0x1)
-    OP_22(0x31, 0x0, 0x64)
+
+    OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
+    PlaySE(49, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#509F（唔…………………）\x02\x03",
-            "（这、这个礼物\x01",
-            "　好像失败了……）\x02",
-        )
+            '#0010180454V#509F（唔…………………）',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180455V（这、这个礼物\n',
+            '　好像失败了……）',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_62(0xFE, 0x0, 2000, 0x26, 0x26, 0xFA, 0x1)
+    OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
-    OP_8C(0xFE, 90, 400)
-    OP_62(0xFE, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
+
+    SetChrDirection(0x00FE, 90, 400)
+    OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
     ChrTalk(
-        0xFE,
-        "……哎呀，对、对不起。\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "现在不是\x01",
-            "说这种话的时候。\x02",
-        )
+            '#1980180510V……哎呀，对、对不起。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "谢谢你们\x01",
-            "特地给我送过来。\x02",
-        )
+            '#1980180511V现在不是\n',
+            '说这种话的时候。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "那…………\x01",
-            "我要继续工作了。\x02",
-        )
+            '#1980180512V谢谢你们\n',
+            '特地给我送过来。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0x101,
-        "#506F啊……嗯，再见。\x02",
-    )
-
-    CloseMessageWindow()
-    OP_3F(0x14D, 1)
-    OP_28(0x31, 0x1, 0x40)
-    OP_2B(0x31, 0x2)
-    Jump("loc_123F")
-
-    label("loc_AAB")
-
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x0, 7)), scpexpr(EXPR_END)), "loc_D8D")
-
-    ChrTalk(
-        0x101,
+        0x00FE,
         (
-            "#000F对了，\x01",
-            "这是他送你的礼物。\x02",
-        )
+            '#1980180513V那…………\n',
+            '我要继续工作了。',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x0101,
+        (
+            '#0010180459V#506F啊……嗯，再见。',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+    RemoveItem(0x014D, 1)
+    OP_28(0x0031, 0x01, 0x0040)
+    OP_2B(0x0031, 0x0002)
+
+    Jump('loc_120A')
+
+    def _loc_A7F(): pass
+
+    label('loc_A7F')
+
+    If(
+        (
+            (Expr.TestScenaFlags, ScenaFlag(0x0000, 7, 0x7)),
+            Expr.Return,
+        ),
+        'loc_D51',
+    )
+
+    ChrTalk(
+        0x0101,
+        (
+            '#0010180449V#000F对了，\n',
+            '这是他送你的礼物。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(100)
-    OP_22(0x11, 0x0, 0x64)
-    FadeToDark(300, 0, 100)
-    SetChrName("")
+
+    PlaySE(17, 0x00, 0x64)
+    FadeOut(300, 0, 100)
+    SetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "交出了\x07\x02",
-            "果馅饼\x07\x00",
-            "。\x02",
-        )
+            (TxtCtl.SetColor, 0x0),
+            '交出了',
+            (TxtCtl.SetColor, 0x2),
+            '果馅饼',
+            (TxtCtl.SetColor, 0x0),
+            '。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    OP_56(0x00)
+    FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
     Sleep(100)
-    OP_62(0xFE, 0x0, 2000, 0xE, 0xF, 0xFA, 0x2)
-    OP_22(0x31, 0x0, 0x64)
+
+    OP_62(0x00FE, 0x00000000, 2000, 0x0E, 0x0F, 0x000000FA, 0x02)
+    PlaySE(49, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "谢、谢谢了。\x01",
-            "我很高兴…………\x02",
-        )
+            '#1980180516V谢、谢谢了。\n',
+            '我很高兴…………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "不过我最近要\x01",
-            "控制甜食的数量。\x02",
-        )
+            '#1980180517V不过我最近要\n',
+            '控制甜食的数量。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "尽管这样，\x01",
-            "却送这样的礼物给我……\x02",
-        )
+            '#1980180518V尽管这样，\n',
+            '却送这样的礼物给我……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_8C(0xFE, 270, 400)
+    SetChrDirection(0x00FE, 270, 400)
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "哼！他不懂得体贴别人这点\x01",
-            "看来还是完全没变。\x02",
-        )
+            '#1980180519V哼！他不懂得体贴别人这点\n',
+            '看来还是完全没变。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
-        "……………………………\x02",
+        0x00FE,
+        (
+            '#1980180507V……………………………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(400)
-    OP_62(0x101, 0x0, 2000, 0x14, 0x17, 0xFA, 0x1)
-    OP_22(0x31, 0x0, 0x64)
+
+    OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
+    PlaySE(49, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#509F（唔…………………）\x02\x03",
-            "（这、这个礼物\x01",
-            "　好像失败了……）\x02",
-        )
+            '#0010180454V#509F（唔…………………）',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180455V（这、这个礼物\n',
+            '　好像失败了……）',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_62(0xFE, 0x0, 2000, 0x26, 0x26, 0xFA, 0x1)
+    OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
-    OP_8C(0xFE, 90, 400)
-    OP_62(0xFE, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
+
+    SetChrDirection(0x00FE, 90, 400)
+    OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
     ChrTalk(
-        0xFE,
-        "……哎呀，对、对不起。\x02",
+        0x00FE,
+        (
+            '#1980180510V……哎呀，对、对不起。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "现在不是\x01",
-            "说这种话的时候。\x02",
-        )
+            '#1980180511V现在不是\n',
+            '说这种话的时候。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "谢谢你们\x01",
-            "特地给我送过来。\x02",
-        )
+            '#1980180512V谢谢你们\n',
+            '特地给我送过来。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "那…………\x01",
-            "我要继续工作了。\x02",
-        )
+            '#1980180513V那…………\n',
+            '我要继续工作了。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_3F(0x1B2, 1)
-    OP_28(0x31, 0x1, 0x80)
-    OP_2B(0x31, 0x2)
-    Jump("loc_123F")
+    RemoveItem(0x01B2, 1)
+    OP_28(0x0031, 0x01, 0x0080)
+    OP_2B(0x0031, 0x0002)
 
-    label("loc_D8D")
+    Jump('loc_120A')
 
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x1, 0)), scpexpr(EXPR_END)), "loc_FD3")
+    def _loc_D51(): pass
+
+    label('loc_D51')
+
+    If(
+        (
+            (Expr.TestScenaFlags, ScenaFlag(0x0001, 0, 0x8)),
+            Expr.Return,
+        ),
+        'loc_FBF',
+    )
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#506F啊……嗯，再见。\x01",
-            "这是他送你的礼物。\x02",
-        )
+            '#0010180449V#506F啊……嗯，再见。\n',
+            '这是他送你的礼物。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(100)
-    OP_22(0x11, 0x0, 0x64)
-    FadeToDark(300, 0, 100)
-    SetChrName("")
+
+    PlaySE(17, 0x00, 0x64)
+    FadeOut(300, 0, 100)
+    SetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x0),
-            "交出了\x07\x02",
-            "绒毛编织帽\x07\x00",
-            "。\x02",
-        )
+            (TxtCtl.SetColor, 0x0),
+            '交出了',
+            (TxtCtl.SetColor, 0x2),
+            '绒毛编织帽',
+            (TxtCtl.SetColor, 0x0),
+            '。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    OP_56(0x00)
+    FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
     Sleep(100)
-    OP_62(0xFE, 0x0, 2000, 0x26, 0x26, 0xFA, 0x1)
+
+    OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(800)
 
     ChrTalk(
-        0xFE,
-        "哇，好可爱呀……\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
-        "……………………………\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "哎呀，\x01",
-            "他总算是稍微……\x02",
-        )
+            '#1980180528V哇，好可爱呀……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "……开始为我着想了呢。\x01",
-            "呵呵。\x02",
-        )
+            '#1980180507V……………………………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "不过既然知道该这样，\x01",
-            "为什么不早点……\x02",
-        )
+            '#1980180530V哎呀，\n',
+            '他总算是稍微……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
-        "……………………………\x02",
+        0x00FE,
+        (
+            '#1980180531V……开始为我着想了呢。\n',
+            '呵呵。',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x00FE,
+        (
+            '#1980180532V不过既然知道该这样，\n',
+            '为什么不早点……',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+
+    ChrTalk(
+        0x00FE,
+        (
+            '#1980180507V……………………………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(800)
-    OP_62(0xFE, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
+
+    OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
     ChrTalk(
-        0xFE,
-        "……哎呀，对、对不起。\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "现在不是\x01",
-            "说这种话的时候。\x02",
-        )
+            '#1980180510V……哎呀，对、对不起。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "谢谢你们\x01",
-            "特地给我送过来。\x02",
-        )
+            '#1980180511V现在不是\n',
+            '说这种话的时候。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "那…………\x01",
-            "我要继续工作了。\x02",
-        )
+            '#1980180512V谢谢你们\n',
+            '特地给我送过来。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0x101,
-        "#000F嗯，再见了。\x02",
-    )
-
-    CloseMessageWindow()
-    OP_3F(0x14A, 1)
-    OP_28(0x31, 0x1, 0x20)
-    OP_2B(0x31, 0x4)
-    Jump("loc_123F")
-
-    label("loc_FD3")
-
-    Jc((scpexpr(EXPR_TEST_SCENA_FLAGS, MakeScenarioFlags(0x1, 1)), scpexpr(EXPR_END)), "loc_1015")
-
-    ChrTalk(
-        0x101,
+        0x00FE,
         (
-            "#505F（……唔～\x01",
-            "　没有看到合适的礼物。）\x02",
-        )
+            '#1980180513V那…………\n',
+            '我要继续工作了。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
-    label("loc_1015")
+    ChrTalk(
+        0x0101,
+        (
+            '#0010160346V#000F嗯，再见了。',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+    RemoveItem(0x014A, 1)
+    OP_28(0x0031, 0x01, 0x0020)
+    OP_2B(0x0031, 0x0004)
+
+    Jump('loc_120A')
+
+    def _loc_FBF(): pass
+
+    label('loc_FBF')
+
+    If(
+        (
+            (Expr.TestScenaFlags, ScenaFlag(0x0001, 1, 0x9)),
+            Expr.Return,
+        ),
+        'loc_FFB',
+    )
+
+    ChrTalk(
+        0x0101,
+        (
+            '#0010180483V#505F（……唔～\n',
+            '　没有看到合适的礼物。）',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+
+    def _loc_FFB(): pass
+
+    label('loc_FFB')
 
     Sleep(400)
 
     ChrTalk(
-        0xFE,
-        "呼～这样啊……\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "那家伙啊，\x01",
-            "肯定是已经反省过了。\x02",
-        )
+            '#1980180541V呼～这样啊……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_8C(0xFE, 270, 400)
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "不过，\x01",
-            "就算他现在想到要写封信给我……\x02",
-        )
+            '#1980180542V那家伙啊，\n',
+            '肯定是已经反省过了。',
+            TxtCtl.Enter,
+        ),
+    )
+
+    CloseMessageWindow()
+    SetChrDirection(0x00FE, 270, 400)
+
+    ChrTalk(
+        0x00FE,
+        (
+            '#1980180543V不过，\n',
+            '就算他现在想到要写封信给我……',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
-        "……………………………\x02",
+        0x00FE,
+        (
+            '#1980180507V……………………………',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
     Sleep(400)
-    OP_62(0x101, 0x0, 2000, 0x14, 0x17, 0xFA, 0x1)
-    OP_22(0x31, 0x0, 0x64)
+
+    OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
+    PlaySE(49, 0x00, 0x64)
     Sleep(800)
 
     ChrTalk(
-        0x101,
+        0x0101,
         (
-            "#509F（唔…………………）\x02\x03",
-            "（果然还是应该送点礼物才行……）\x01",
-            "　\x02",
-        )
+            '#0010180454V#509F（唔…………………）',
+            TxtCtl.Enter,
+            TxtCtl.Clear,
+            '#0010180489V（果然还是应该送点礼物才行……）\n',
+            '　',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_62(0xFE, 0x0, 2000, 0x26, 0x26, 0xFA, 0x1)
+    OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
-    OP_8C(0xFE, 90, 400)
-    OP_62(0xFE, 0x0, 2000, 0x28, 0x2B, 0x64, 0x3)
+
+    SetChrDirection(0x00FE, 90, 400)
+    OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
     ChrTalk(
-        0xFE,
-        "……哎呀，对、对不起。\x02",
-    )
-
-    CloseMessageWindow()
-
-    ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "现在不是\x01",
-            "说这种话的时候。\x02",
-        )
+            '#1980180510V……哎呀，对、对不起。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "谢谢你们\x01",
-            "特地给我送过来。\x02",
-        )
+            '#1980180511V现在不是\n',
+            '说这种话的时候。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0xFE,
+        0x00FE,
         (
-            "那…………\x01",
-            "我要继续工作了。\x02",
-        )
+            '#1980180512V谢谢你们\n',
+            '特地给我送过来。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
 
     ChrTalk(
-        0x101,
-        "#506F啊……嗯，再见。\x02",
+        0x00FE,
+        (
+            '#1980180513V那…………\n',
+            '我要继续工作了。',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_28(0x31, 0x1, 0x100)
 
-    label("loc_123F")
+    ChrTalk(
+        0x0101,
+        (
+            '#0010180459V#506F啊……嗯，再见。',
+            TxtCtl.Enter,
+        ),
+    )
 
-    OP_22(0x17, 0x0, 0x64)
-    FadeToDark(300, 0, 100)
+    CloseMessageWindow()
+    OP_28(0x0031, 0x01, 0x0100)
+
+    def _loc_120A(): pass
+
+    label('loc_120A')
+
+    PlaySE(23, 0x00, 0x64)
+    FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName("")
+    SetChrName('')
 
-    AnonymousTalk(
+    Talk(
         (
-            scpstr(SCPSTR_CODE_COLOR, 0x2),
-            "任务【爱之使者】\x07\x00",
-            "完成！\x02",
-        )
+            (TxtCtl.SetColor, 0x2),
+            '任务【爱之使者】',
+            (TxtCtl.SetColor, 0x0),
+            '完成！',
+            TxtCtl.Enter,
+        ),
     )
 
     CloseMessageWindow()
-    OP_56(0x0)
-    FadeToBright(300, 0)
+    OP_56(0x00)
+    FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
-    OP_3F(0x35E, 1)
-    OP_28(0x31, 0x4, 0x10)
-    OP_28(0x31, 0x1, 0x10)
-    OP_A2(0x5)
+    RemoveItem(0x035E, 1)
+    OP_28(0x0031, 0x04, 0x10)
+    OP_28(0x0031, 0x01, 0x0010)
+    SetScenaFlags(ScenaFlag(0x0000, 5, 0x5))
     Sleep(50)
-    EventEnd(0x4)
-    OP_4B(0xA, 255)
+
+    EventEnd(0x04)
+    OP_4B(0x000A, 255)
+
     Return()
 
-    # Function_2_AC end
+def main():
+    scena.run(globals())
 
-    SaveToFile()
-
-Try(main)
+if __name__ == '__main__':
+    Try(main)
