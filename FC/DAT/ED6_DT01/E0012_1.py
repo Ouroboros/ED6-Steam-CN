@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('E0012_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x127B
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,54 +54,54 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xA9
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xA9
+@scena.Code('func_01_A9')
+def func_01_A9():
+    Return()
+
 # id: 0x0002 offset: 0xAA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_AA')
+def func_02_AA():
     EventBegin(0x00)
     Fade(1000)
-    SetChrPos(0x0101, 29200, 0, -7430, 270)
-    SetChrPos(0x0102, 30010, 0, -8090, 270)
+    ChrSetPos(0x0101, 29200, 0, -7430, 270)
+    ChrSetPos(0x0102, 30010, 0, -8090, 270)
 
     If(
         (
@@ -124,7 +114,7 @@ def ReInit():
         'loc_F2',
     )
 
-    SetChrPos(0x0107, 29960, 0, -6410, 225)
+    ChrSetPos(0x0107, 29960, 0, -6410, 225)
 
     def _loc_F2(): pass
 
@@ -141,7 +131,7 @@ def ReInit():
         'loc_111',
     )
 
-    SetChrPos(0x0106, 31010, 0, -7540, 270)
+    ChrSetPos(0x0106, 31010, 0, -7540, 270)
 
     def _loc_111(): pass
 
@@ -160,10 +150,10 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    SetChrFlags(0x000A, 0x0010)
+    ChrSetFlags(0x000A, 0x0010)
     TalkBegin(0x000A)
     OP_4A(0x000A, 255)
-    ClearChrFlags(0x000A, 0x0010)
+    ChrClearFlags(0x000A, 0x0010)
     OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
 
@@ -199,7 +189,7 @@ def ReInit():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -273,7 +263,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_39E',
+        'loc_3D0',
     )
 
     OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
@@ -292,11 +282,11 @@ def ReInit():
     CloseMessageWindow()
     SetScenaFlags(ScenaFlag(0x0001, 2, 0xA))
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_39E(): pass
+    def _loc_3D0(): pass
 
-    label('loc_39E')
+    label('loc_3D0')
 
     If(
         (
@@ -309,7 +299,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_428',
+        'loc_45A',
     )
 
     FadeOut(300, 0, 100)
@@ -363,36 +353,36 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_419'),
-        (0x00000001, 'loc_41F'),
-        (-1, 'loc_425'),
+        (0x00000000, 'loc_44B'),
+        (0x00000001, 'loc_451'),
+        (-1, 'loc_457'),
     )
 
-    def _loc_419(): pass
+    def _loc_44B(): pass
 
-    label('loc_419')
+    label('loc_44B')
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    Jump('loc_425')
+    Jump('loc_457')
 
-    def _loc_41F(): pass
+    def _loc_451(): pass
 
-    label('loc_41F')
+    label('loc_451')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_425')
+    Jump('loc_457')
 
-    def _loc_425(): pass
+    def _loc_457(): pass
 
-    label('loc_425')
+    label('loc_457')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_428(): pass
+    def _loc_45A(): pass
 
-    label('loc_428')
+    label('loc_45A')
 
     If(
         (
@@ -405,7 +395,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_4B0',
+        'loc_4E2',
     )
 
     FadeOut(300, 0, 100)
@@ -459,36 +449,36 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_4A1'),
-        (0x00000001, 'loc_4A7'),
-        (-1, 'loc_4AD'),
+        (0x00000000, 'loc_4D3'),
+        (0x00000001, 'loc_4D9'),
+        (-1, 'loc_4DF'),
     )
 
-    def _loc_4A1(): pass
+    def _loc_4D3(): pass
 
-    label('loc_4A1')
+    label('loc_4D3')
 
     SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    Jump('loc_4AD')
+    Jump('loc_4DF')
 
-    def _loc_4A7(): pass
+    def _loc_4D9(): pass
 
-    label('loc_4A7')
+    label('loc_4D9')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_4AD')
+    Jump('loc_4DF')
 
-    def _loc_4AD(): pass
+    def _loc_4DF(): pass
 
-    label('loc_4AD')
+    label('loc_4DF')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_4B0(): pass
+    def _loc_4E2(): pass
 
-    label('loc_4B0')
+    label('loc_4E2')
 
     If(
         (
@@ -501,7 +491,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_53C',
+        'loc_56E',
     )
 
     FadeOut(300, 0, 100)
@@ -555,36 +545,36 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_52D'),
-        (0x00000001, 'loc_533'),
-        (-1, 'loc_539'),
+        (0x00000000, 'loc_55F'),
+        (0x00000001, 'loc_565'),
+        (-1, 'loc_56B'),
     )
 
-    def _loc_52D(): pass
+    def _loc_55F(): pass
 
-    label('loc_52D')
+    label('loc_55F')
 
     SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    Jump('loc_539')
+    Jump('loc_56B')
 
-    def _loc_533(): pass
+    def _loc_565(): pass
 
-    label('loc_533')
+    label('loc_565')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_539')
+    Jump('loc_56B')
 
-    def _loc_539(): pass
+    def _loc_56B(): pass
 
-    label('loc_539')
+    label('loc_56B')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_53C(): pass
+    def _loc_56E(): pass
 
-    label('loc_53C')
+    label('loc_56E')
 
     If(
         (
@@ -596,7 +586,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_5DA',
+        'loc_60C',
     )
 
     FadeOut(300, 0, 100)
@@ -651,45 +641,45 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_5C5'),
-        (0x00000001, 'loc_5CB'),
-        (0x00000002, 'loc_5D1'),
-        (-1, 'loc_5D7'),
+        (0x00000000, 'loc_5F7'),
+        (0x00000001, 'loc_5FD'),
+        (0x00000002, 'loc_603'),
+        (-1, 'loc_609'),
     )
 
-    def _loc_5C5(): pass
+    def _loc_5F7(): pass
 
-    label('loc_5C5')
+    label('loc_5F7')
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    Jump('loc_5D7')
+    Jump('loc_609')
 
-    def _loc_5CB(): pass
+    def _loc_5FD(): pass
 
-    label('loc_5CB')
+    label('loc_5FD')
 
     SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    Jump('loc_5D7')
+    Jump('loc_609')
 
-    def _loc_5D1(): pass
+    def _loc_603(): pass
 
-    label('loc_5D1')
+    label('loc_603')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_5D7')
+    Jump('loc_609')
 
-    def _loc_5D7(): pass
+    def _loc_609(): pass
 
-    label('loc_5D7')
+    label('loc_609')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_5DA(): pass
+    def _loc_60C(): pass
 
-    label('loc_5DA')
+    label('loc_60C')
 
     If(
         (
@@ -701,7 +691,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_67C',
+        'loc_6AE',
     )
 
     FadeOut(300, 0, 100)
@@ -756,45 +746,45 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_667'),
-        (0x00000001, 'loc_66D'),
-        (0x00000002, 'loc_673'),
-        (-1, 'loc_679'),
+        (0x00000000, 'loc_699'),
+        (0x00000001, 'loc_69F'),
+        (0x00000002, 'loc_6A5'),
+        (-1, 'loc_6AB'),
     )
 
-    def _loc_667(): pass
+    def _loc_699(): pass
 
-    label('loc_667')
+    label('loc_699')
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    Jump('loc_679')
+    Jump('loc_6AB')
 
-    def _loc_66D(): pass
+    def _loc_69F(): pass
 
-    label('loc_66D')
+    label('loc_69F')
 
     SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    Jump('loc_679')
+    Jump('loc_6AB')
 
-    def _loc_673(): pass
+    def _loc_6A5(): pass
 
-    label('loc_673')
+    label('loc_6A5')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_679')
+    Jump('loc_6AB')
 
-    def _loc_679(): pass
+    def _loc_6AB(): pass
 
-    label('loc_679')
+    label('loc_6AB')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_67C(): pass
+    def _loc_6AE(): pass
 
-    label('loc_67C')
+    label('loc_6AE')
 
     If(
         (
@@ -806,7 +796,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_71C',
+        'loc_74E',
     )
 
     FadeOut(300, 0, 100)
@@ -861,45 +851,45 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_707'),
-        (0x00000001, 'loc_70D'),
-        (0x00000002, 'loc_713'),
-        (-1, 'loc_719'),
+        (0x00000000, 'loc_739'),
+        (0x00000001, 'loc_73F'),
+        (0x00000002, 'loc_745'),
+        (-1, 'loc_74B'),
     )
 
-    def _loc_707(): pass
+    def _loc_739(): pass
 
-    label('loc_707')
+    label('loc_739')
 
     SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    Jump('loc_719')
+    Jump('loc_74B')
 
-    def _loc_70D(): pass
+    def _loc_73F(): pass
 
-    label('loc_70D')
+    label('loc_73F')
 
     SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    Jump('loc_719')
+    Jump('loc_74B')
 
-    def _loc_713(): pass
+    def _loc_745(): pass
 
-    label('loc_713')
+    label('loc_745')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_719')
+    Jump('loc_74B')
 
-    def _loc_719(): pass
+    def _loc_74B(): pass
 
-    label('loc_719')
+    label('loc_74B')
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_71C(): pass
+    def _loc_74E(): pass
 
-    label('loc_71C')
+    label('loc_74E')
 
     FadeOut(300, 0, 100)
 
@@ -954,53 +944,53 @@ def ReInit():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_7A5'),
-        (0x00000001, 'loc_7A8'),
-        (0x00000002, 'loc_7AE'),
-        (0x00000003, 'loc_7B4'),
-        (-1, 'loc_7BA'),
+        (0x00000000, 'loc_7D7'),
+        (0x00000001, 'loc_7DA'),
+        (0x00000002, 'loc_7E0'),
+        (0x00000003, 'loc_7E6'),
+        (-1, 'loc_7EC'),
     )
 
-    def _loc_7A5(): pass
+    def _loc_7D7(): pass
 
-    label('loc_7A5')
+    label('loc_7D7')
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
 
-    def _loc_7A8(): pass
+    def _loc_7DA(): pass
 
-    label('loc_7A8')
+    label('loc_7DA')
 
     SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_7AE(): pass
+    def _loc_7E0(): pass
 
-    label('loc_7AE')
+    label('loc_7E0')
 
     SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_7B4(): pass
+    def _loc_7E6(): pass
 
-    label('loc_7B4')
+    label('loc_7E6')
 
     SetScenaFlags(ScenaFlag(0x0001, 1, 0x9))
 
-    Jump('loc_7BA')
+    Jump('loc_7EC')
 
-    def _loc_7BA(): pass
+    def _loc_7EC(): pass
 
-    label('loc_7BA')
+    label('loc_7EC')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0000, 6, 0x6)),
             Expr.Return,
         ),
-        'loc_A7F',
+        'loc_AED',
     )
 
     ChrTalk(
@@ -1017,7 +1007,7 @@ def ReInit():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1063,7 +1053,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x00FE, 270, 400)
+    ChrSetDirection(0x00FE, 270, 400)
 
     ChrTalk(
         0x00FE,
@@ -1108,7 +1098,7 @@ def ReInit():
     OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
 
-    SetChrDirection(0x00FE, 90, 400)
+    ChrSetDirection(0x00FE, 90, 400)
     OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
@@ -1168,18 +1158,18 @@ def ReInit():
     OP_28(0x0031, 0x01, 0x0040)
     OP_2B(0x0031, 0x0002)
 
-    Jump('loc_120A')
+    Jump('loc_132C')
 
-    def _loc_A7F(): pass
+    def _loc_AED(): pass
 
-    label('loc_A7F')
+    label('loc_AED')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0000, 7, 0x7)),
             Expr.Return,
         ),
-        'loc_D51',
+        'loc_DFB',
     )
 
     ChrTalk(
@@ -1196,7 +1186,7 @@ def ReInit():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1253,7 +1243,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x00FE, 270, 400)
+    ChrSetDirection(0x00FE, 270, 400)
 
     ChrTalk(
         0x00FE,
@@ -1297,7 +1287,7 @@ def ReInit():
     OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
 
-    SetChrDirection(0x00FE, 90, 400)
+    ChrSetDirection(0x00FE, 90, 400)
     OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
@@ -1347,18 +1337,18 @@ def ReInit():
     OP_28(0x0031, 0x01, 0x0080)
     OP_2B(0x0031, 0x0002)
 
-    Jump('loc_120A')
+    Jump('loc_132C')
 
-    def _loc_D51(): pass
+    def _loc_DFB(): pass
 
-    label('loc_D51')
+    label('loc_DFB')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0001, 0, 0x8)),
             Expr.Return,
         ),
-        'loc_FBF',
+        'loc_10A5',
     )
 
     ChrTalk(
@@ -1375,7 +1365,7 @@ def ReInit():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1522,18 +1512,18 @@ def ReInit():
     OP_28(0x0031, 0x01, 0x0020)
     OP_2B(0x0031, 0x0004)
 
-    Jump('loc_120A')
+    Jump('loc_132C')
 
-    def _loc_FBF(): pass
+    def _loc_10A5(): pass
 
-    label('loc_FBF')
+    label('loc_10A5')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0001, 1, 0x9)),
             Expr.Return,
         ),
-        'loc_FFB',
+        'loc_10E6',
     )
 
     ChrTalk(
@@ -1547,9 +1537,9 @@ def ReInit():
 
     CloseMessageWindow()
 
-    def _loc_FFB(): pass
+    def _loc_10E6(): pass
 
-    label('loc_FFB')
+    label('loc_10E6')
 
     Sleep(400)
 
@@ -1573,7 +1563,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x00FE, 270, 400)
+    ChrSetDirection(0x00FE, 270, 400)
 
     ChrTalk(
         0x00FE,
@@ -1617,7 +1607,7 @@ def ReInit():
     OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
 
-    SetChrDirection(0x00FE, 90, 400)
+    ChrSetDirection(0x00FE, 90, 400)
     OP_62(0x00FE, 0x00000000, 2000, 0x28, 0x2B, 0x00000064, 0x03)
     Sleep(400)
 
@@ -1675,14 +1665,14 @@ def ReInit():
     CloseMessageWindow()
     OP_28(0x0031, 0x01, 0x0100)
 
-    def _loc_120A(): pass
+    def _loc_132C(): pass
 
-    label('loc_120A')
+    label('loc_132C')
 
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (

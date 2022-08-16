@@ -9,42 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T2533   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '乔儿'),
-    TXT(0x02, '汉斯'),
-    TXT(0x03, '拉迪奥老师'),
-    TXT(0x04, '碧欧拉老师'),
-    TXT(0x05, '米丽亚老师'),
-    TXT(0x06, '艾福托老师'),
-    TXT(0x07, '罗迪'),
-    TXT(0x08, '米克'),
-    TXT(0x09, '米克'),
-    TXT(0x0A, '雅莉丝'),
-    TXT(0x0B, '帕布尔'),
-    TXT(0x0C, '黛拉'),
-    TXT(0x0D, '罗基克'),
-    TXT(0x0E, '亚吉鲁'),
-    TXT(0x0F, '罗伊斯'),
-    TXT(0x10, '莫妮卡'),
-    TXT(0x11, '塞尔玛'),
-    TXT(0x12, '莉秋尔'),
-    TXT(0x13, '巴托姆'),
-    TXT(0x14, '基诺奇奥'),
-    TXT(0x15, '德尼斯'),
-    TXT(0x16, '妮吉塔'),
-    TXT(0x17, '芙拉瑟'),
-    TXT(0x18, '蕾娜'),
-    TXT(0x19, '勤务员巴克斯'),
-    TXT(0x1A, '侍女蕾妮'),
-    TXT(0x1B, '侍女玲珐'),
-    TXT(0x1C, '拉多公爵'),
-    TXT(0x1D, '科洛多议长'),
-    TXT(0x1E, '王都的主教'),
-    TXT(0x1F, '暗杀者'),
-    TXT(0x20, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -59,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x38B0
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -95,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -127,11 +86,12 @@ def ChipData():
         ('ED6_DT06/CH20071._CH', 'ED6_DT06/CH20071P._CP'),
     ]
 
-# id: 0x10002 offset: 0x172
+# id: 0x10001 offset: 0x172
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '乔儿',
             x                   = 59640,
             z                   = 1000,
             y                   = 13450,
@@ -146,6 +106,7 @@ def NpcData():
             talkScenaIndex      = 0x0019,
         ),
         ScenaNpcData(
+            name                = '汉斯',
             x                   = 66040,
             z                   = 1000,
             y                   = 16210,
@@ -160,6 +121,7 @@ def NpcData():
             talkScenaIndex      = 0x001A,
         ),
         ScenaNpcData(
+            name                = '拉迪奥老师',
             x                   = -500,
             z                   = 0,
             y                   = 9300,
@@ -174,6 +136,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '碧欧拉老师',
             x                   = -6300,
             z                   = 0,
             y                   = 300,
@@ -188,6 +151,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '米丽亚老师',
             x                   = 5900,
             z                   = 0,
             y                   = 3800,
@@ -202,6 +166,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '艾福托老师',
             x                   = -4100,
             z                   = 0,
             y                   = -4200,
@@ -216,6 +181,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '罗迪',
             x                   = -6300,
             z                   = 0,
             y                   = 6900,
@@ -230,6 +196,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '米克',
             x                   = -4600,
             z                   = 0,
             y                   = 7500,
@@ -244,6 +211,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '米克',
             x                   = -3700,
             z                   = 0,
             y                   = 5900,
@@ -258,6 +226,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '雅莉丝',
             x                   = -5700,
             z                   = 0,
             y                   = 4500,
@@ -272,6 +241,7 @@ def NpcData():
             talkScenaIndex      = 0x000A,
         ),
         ScenaNpcData(
+            name                = '帕布尔',
             x                   = -2000,
             z                   = 0,
             y                   = 7200,
@@ -286,6 +256,7 @@ def NpcData():
             talkScenaIndex      = 0x000B,
         ),
         ScenaNpcData(
+            name                = '黛拉',
             x                   = -500,
             z                   = 0,
             y                   = 6700,
@@ -300,6 +271,7 @@ def NpcData():
             talkScenaIndex      = 0x000C,
         ),
         ScenaNpcData(
+            name                = '罗基克',
             x                   = -4000,
             z                   = 0,
             y                   = 2800,
@@ -314,6 +286,7 @@ def NpcData():
             talkScenaIndex      = 0x000D,
         ),
         ScenaNpcData(
+            name                = '亚吉鲁',
             x                   = -1900,
             z                   = 0,
             y                   = -1700,
@@ -328,6 +301,7 @@ def NpcData():
             talkScenaIndex      = 0x000E,
         ),
         ScenaNpcData(
+            name                = '罗伊斯',
             x                   = -1000,
             z                   = 0,
             y                   = 1200,
@@ -342,6 +316,7 @@ def NpcData():
             talkScenaIndex      = 0x000F,
         ),
         ScenaNpcData(
+            name                = '莫妮卡',
             x                   = -2800,
             z                   = 0,
             y                   = 900,
@@ -356,6 +331,7 @@ def NpcData():
             talkScenaIndex      = 0x0010,
         ),
         ScenaNpcData(
+            name                = '塞尔玛',
             x                   = -5400,
             z                   = 0,
             y                   = -2300,
@@ -370,6 +346,7 @@ def NpcData():
             talkScenaIndex      = 0x0011,
         ),
         ScenaNpcData(
+            name                = '莉秋尔',
             x                   = -1500,
             z                   = 0,
             y                   = 2700,
@@ -384,6 +361,7 @@ def NpcData():
             talkScenaIndex      = 0x0012,
         ),
         ScenaNpcData(
+            name                = '巴托姆',
             x                   = 3400,
             z                   = 0,
             y                   = 3800,
@@ -398,6 +376,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '基诺奇奥',
             x                   = 4400,
             z                   = 0,
             y                   = 200,
@@ -412,6 +391,7 @@ def NpcData():
             talkScenaIndex      = 0x0014,
         ),
         ScenaNpcData(
+            name                = '德尼斯',
             x                   = 3100,
             z                   = 0,
             y                   = 1700,
@@ -426,6 +406,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '妮吉塔',
             x                   = 1900,
             z                   = 0,
             y                   = 200,
@@ -440,6 +421,7 @@ def NpcData():
             talkScenaIndex      = 0x0016,
         ),
         ScenaNpcData(
+            name                = '芙拉瑟',
             x                   = 2000,
             z                   = 0,
             y                   = 6000,
@@ -454,6 +436,7 @@ def NpcData():
             talkScenaIndex      = 0x0017,
         ),
         ScenaNpcData(
+            name                = '蕾娜',
             x                   = 4000,
             z                   = 0,
             y                   = 6000,
@@ -468,6 +451,7 @@ def NpcData():
             talkScenaIndex      = 0x0018,
         ),
         ScenaNpcData(
+            name                = '勤务员巴克斯',
             x                   = 1780,
             z                   = 0,
             y                   = -1860,
@@ -482,6 +466,7 @@ def NpcData():
             talkScenaIndex      = 0x001B,
         ),
         ScenaNpcData(
+            name                = '侍女蕾妮',
             x                   = 61850,
             z                   = 1000,
             y                   = 17310,
@@ -496,6 +481,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '侍女玲珐',
             x                   = 63320,
             z                   = 1000,
             y                   = 15250,
@@ -510,6 +496,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '拉多公爵',
             x                   = 57740,
             z                   = 1000,
             y                   = 16980,
@@ -524,6 +511,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '科洛多议长',
             x                   = 58590,
             z                   = 1000,
             y                   = 17010,
@@ -538,6 +526,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '王都的主教',
             x                   = 59600,
             z                   = 1000,
             y                   = 16379,
@@ -552,6 +541,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '暗杀者',
             x                   = 56830,
             z                   = 1000,
             y                   = 16500,
@@ -567,27 +557,27 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x552
+# id: 0x10002 offset: 0x552
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x552
+# id: 0x10003 offset: 0x552
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x552
+# id: 0x10004 offset: 0x552
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x552
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0087, 5, 0x43D)),
@@ -610,32 +600,32 @@ def PreInit():
         'loc_600',
     )
 
-    ClearChrFlags(0x000A, 0x0080)
-    ClearChrFlags(0x000B, 0x0080)
-    ClearChrFlags(0x000C, 0x0080)
-    ClearChrFlags(0x000D, 0x0080)
-    ClearChrFlags(0x000E, 0x0080)
-    ClearChrFlags(0x000F, 0x0080)
-    ClearChrFlags(0x0010, 0x0080)
-    ClearChrFlags(0x0011, 0x0080)
-    ClearChrFlags(0x0012, 0x0080)
-    ClearChrFlags(0x0013, 0x0080)
-    ClearChrFlags(0x0014, 0x0080)
-    ClearChrFlags(0x0015, 0x0080)
-    ClearChrFlags(0x0016, 0x0080)
-    ClearChrFlags(0x0017, 0x0080)
-    ClearChrFlags(0x0018, 0x0080)
-    ClearChrFlags(0x0019, 0x0080)
-    ClearChrFlags(0x001A, 0x0080)
-    ClearChrFlags(0x001B, 0x0080)
-    ClearChrFlags(0x001C, 0x0080)
-    ClearChrFlags(0x001D, 0x0080)
-    ClearChrFlags(0x001E, 0x0080)
-    ClearChrFlags(0x001F, 0x0080)
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0008, 320, 0, 4890, 0)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrPos(0x0009, -1040, 0, 4970, 0)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrClearFlags(0x000D, 0x0080)
+    ChrClearFlags(0x000E, 0x0080)
+    ChrClearFlags(0x000F, 0x0080)
+    ChrClearFlags(0x0010, 0x0080)
+    ChrClearFlags(0x0011, 0x0080)
+    ChrClearFlags(0x0012, 0x0080)
+    ChrClearFlags(0x0013, 0x0080)
+    ChrClearFlags(0x0014, 0x0080)
+    ChrClearFlags(0x0015, 0x0080)
+    ChrClearFlags(0x0016, 0x0080)
+    ChrClearFlags(0x0017, 0x0080)
+    ChrClearFlags(0x0018, 0x0080)
+    ChrClearFlags(0x0019, 0x0080)
+    ChrClearFlags(0x001A, 0x0080)
+    ChrClearFlags(0x001B, 0x0080)
+    ChrClearFlags(0x001C, 0x0080)
+    ChrClearFlags(0x001D, 0x0080)
+    ChrClearFlags(0x001E, 0x0080)
+    ChrClearFlags(0x001F, 0x0080)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetPos(0x0008, 320, 0, 4890, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetPos(0x0009, -1040, 0, 4970, 0)
 
     Jump('loc_652')
 
@@ -693,7 +683,7 @@ def PreInit():
         'loc_62D',
     )
 
-    ClearChrFlags(0x0020, 0x0080)
+    ChrClearFlags(0x0020, 0x0080)
 
     Jump('loc_652')
 
@@ -764,7 +754,7 @@ def PreInit():
     )
 
     ClearScenaFlags(ScenaFlag(0x007F, 2, 0x3FA))
-    Event(0, 0x001C)
+    Event(0, func_1C_1224)
 
     def _loc_660(): pass
 
@@ -788,7 +778,7 @@ def PreInit():
     )
 
     ClearScenaFlags(ScenaFlag(0x007F, 3, 0x3FB))
-    Event(0, 0x001D)
+    Event(0, func_1D_1BB2)
 
     def _loc_677(): pass
 
@@ -797,8 +787,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x678
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_678')
+def func_01_678():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0086, 4, 0x434)),
@@ -832,8 +822,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x6A3
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_6A3')
+def func_02_6A3():
     ExecExpressionWithReg(
         0x0000,
         (
@@ -1867,7 +1857,7 @@ def func_17_EB3():
     )
 
     CloseMessageWindow()
-    ClearChrFlags(0x001F, 0x0010)
+    ChrClearFlags(0x001F, 0x0010)
 
     Jump('loc_FAE')
 
@@ -1973,7 +1963,7 @@ def func_18_FB2():
     )
 
     CloseMessageWindow()
-    ClearChrFlags(0x001F, 0x0010)
+    ChrClearFlags(0x001F, 0x0010)
 
     Jump('loc_1064')
 
@@ -2010,7 +2000,7 @@ def func_19_1068():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_10EF',
+        'loc_10FE',
     )
 
     SetScenaFlags(ScenaFlag(0x0002, 6, 0x16))
@@ -2033,11 +2023,11 @@ def func_19_1068():
 
     CloseMessageWindow()
 
-    Jump('loc_1145')
+    Jump('loc_115E')
 
-    def _loc_10EF(): pass
+    def _loc_10FE(): pass
 
-    label('loc_10EF')
+    label('loc_10FE')
 
     ChrTalk(
         0x00FE,
@@ -2053,17 +2043,17 @@ def func_19_1068():
 
     CloseMessageWindow()
 
-    def _loc_1145(): pass
+    def _loc_115E(): pass
 
-    label('loc_1145')
+    label('loc_115E')
 
     TalkEnd(0x0008)
 
     Return()
 
-# id: 0x001A offset: 0x1149
-@scena.Code('func_1A_1149')
-def func_1A_1149():
+# id: 0x001A offset: 0x1162
+@scena.Code('func_1A_1162')
+def func_1A_1162():
     TalkBegin(0x0009)
 
     ChrTalk(
@@ -2083,9 +2073,9 @@ def func_1A_1149():
 
     Return()
 
-# id: 0x001B offset: 0x11A2
-@scena.Code('func_1B_11A2')
-def func_1B_11A2():
+# id: 0x001B offset: 0x11C5
+@scena.Code('func_1B_11C5')
+def func_1B_11C5():
     TalkBegin(0x0020)
 
     If(
@@ -2093,7 +2083,7 @@ def func_1B_11A2():
             (Expr.TestScenaFlags, ScenaFlag(0x0086, 1, 0x431)),
             Expr.Return,
         ),
-        'loc_11FD',
+        'loc_1220',
     )
 
     ChrTalk(
@@ -2117,17 +2107,17 @@ def func_1B_11A2():
 
     CloseMessageWindow()
 
-    def _loc_11FD(): pass
+    def _loc_1220(): pass
 
-    label('loc_11FD')
+    label('loc_1220')
 
     TalkEnd(0x0020)
 
     Return()
 
-# id: 0x001C offset: 0x1201
-@scena.Code('func_1C_1201')
-def func_1C_1201():
+# id: 0x001C offset: 0x1224
+@scena.Code('func_1C_1224')
+def func_1C_1224():
     EventBegin(0x00)
     OP_4A(0x0008, 255)
     OP_4A(0x0009, 255)
@@ -2136,14 +2126,14 @@ def func_1C_1201():
     CameraSetDistance(3720, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrPos(0x0101, 850, 1000, 14010, 270)
-    SetChrPos(0x0105, -960, 1000, 14000, 90)
-    SetChrPos(0x0008, -80, 1000, 13250, 0)
-    SetChrChipByIndex(0x0101, 14)
-    SetChrChipByIndex(0x0105, 15)
-    SetChrChipByIndex(0x0102, 16)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetPos(0x0101, 850, 1000, 14010, 270)
+    ChrSetPos(0x0105, -960, 1000, 14000, 90)
+    ChrSetPos(0x0008, -80, 1000, 13250, 0)
+    ChrSetChipByIndex(0x0101, 14)
+    ChrSetChipByIndex(0x0105, 15)
+    ChrSetChipByIndex(0x0102, 16)
     FadeIn(1000, 0)
     OP_13(0x005F)
     CameraMove(910, 2000, 12490, 4000)
@@ -2153,12 +2143,12 @@ def func_1C_1201():
     CameraSetDistance(1400, 0)
     OP_6C(0, 0)
     OP_6E(673, 0)
-    SetChrFlags(0x0009, 0x0040)
-    SetChrPos(0x0101, 61000, 1000, 14250, 225)
-    SetChrPos(0x0105, 59080, 1000, 14210, 135)
-    SetChrPos(0x0008, 60000, 1000, 13140, 45)
-    SetChrPos(0x0102, 67180, 1000, 16860, 270)
-    SetChrPos(0x0009, 67180, 1000, 16860, 270)
+    ChrSetFlags(0x0009, 0x0040)
+    ChrSetPos(0x0101, 61000, 1000, 14250, 225)
+    ChrSetPos(0x0105, 59080, 1000, 14210, 135)
+    ChrSetPos(0x0008, 60000, 1000, 13140, 45)
+    ChrSetPos(0x0102, 67180, 1000, 16860, 270)
+    ChrSetPos(0x0009, 67180, 1000, 16860, 270)
     OP_0D()
 
     ChrTalk(
@@ -2290,84 +2280,84 @@ def func_1C_1201():
     CloseMessageWindow()
     OP_66(0x0000)
 
-    @scena.Lambda('lambda_1656')
-    def lambda_1656():
+    @scena.Lambda('lambda_16C4')
+    def lambda_16C4():
         CameraMove(61500, 2310, 14620, 2500)
 
         ExitThread()
 
-    DispatchAsync(0x0101, 0x0002, lambda_1656)
+    DispatchAsync(0x0101, 0x0002, lambda_16C4)
 
-    @scena.Lambda('lambda_166E')
-    def lambda_166E():
+    @scena.Lambda('lambda_16DC')
+    def lambda_16DC():
         CameraSetDistance(850, 2500)
 
         ExitThread()
 
-    DispatchAsync(0x0102, 0x0002, lambda_166E)
+    DispatchAsync(0x0102, 0x0002, lambda_16DC)
 
-    @scena.Lambda('lambda_167E')
-    def lambda_167E():
+    @scena.Lambda('lambda_16EC')
+    def lambda_16EC():
         ChrTurnDirection(0x00FE, 0x0102, 400)
         Yield()
 
-        Jump('lambda_167E')
+        Jump('lambda_16EC')
 
-    DispatchAsync2(0x0101, 0x0001, lambda_167E)
+    DispatchAsync2(0x0101, 0x0001, lambda_16EC)
 
-    @scena.Lambda('lambda_168F')
-    def lambda_168F():
+    @scena.Lambda('lambda_16FD')
+    def lambda_16FD():
         ChrTurnDirection(0x00FE, 0x0102, 400)
         Yield()
 
-        Jump('lambda_168F')
+        Jump('lambda_16FD')
 
-    DispatchAsync2(0x0105, 0x0001, lambda_168F)
+    DispatchAsync2(0x0105, 0x0001, lambda_16FD)
 
-    @scena.Lambda('lambda_16A0')
-    def lambda_16A0():
+    @scena.Lambda('lambda_170E')
+    def lambda_170E():
         ChrTurnDirection(0x00FE, 0x0102, 400)
         Yield()
 
-        Jump('lambda_16A0')
+        Jump('lambda_170E')
 
-    DispatchAsync2(0x0008, 0x0001, lambda_16A0)
+    DispatchAsync2(0x0008, 0x0001, lambda_170E)
 
-    @scena.Lambda('lambda_16B1')
-    def lambda_16B1():
+    @scena.Lambda('lambda_171F')
+    def lambda_171F():
         ChrTurnDirection(0x00FE, 0x0102, 0)
         Yield()
 
-        Jump('lambda_16B1')
+        Jump('lambda_171F')
 
-    DispatchAsync2(0x0009, 0x0001, lambda_16B1)
+    DispatchAsync2(0x0009, 0x0001, lambda_171F)
 
-    @scena.Lambda('lambda_16C2')
-    def lambda_16C2():
+    @scena.Lambda('lambda_1730')
+    def lambda_1730():
         ChrMoveTo(0x00FE, 62850, 1000, 15120, 1000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0009, 0x0002, lambda_16C2)
+    DispatchAsync(0x0009, 0x0002, lambda_1730)
 
     Sleep(800)
 
-    @scena.Lambda('lambda_16E2')
-    def lambda_16E2():
+    @scena.Lambda('lambda_1750')
+    def lambda_1750():
         ChrMoveTo(0x00FE, 63260, 1000, 15870, 1000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0102, 0x0001, lambda_16E2)
+    DispatchAsync(0x0102, 0x0001, lambda_1750)
 
     WaitForThreadExit(0x0102, 0x0001)
-    SetChrDirection(0x0102, 225, 0)
+    ChrSetDirection(0x0102, 225, 0)
     WaitForThreadExit(0x0009, 0x0002)
     Sleep(200)
 
     ChrMoveTo(0x0009, 63580, 1000, 14220, 2000, 0x00)
     TerminateThread(0x0009, 0xFF)
-    SetChrDirection(0x0009, 315, 0)
+    ChrSetDirection(0x0009, 315, 0)
 
     ChrTalk(
         0x0102,
@@ -2557,9 +2547,9 @@ def func_1C_1201():
 
     Return()
 
-# id: 0x001D offset: 0x1AEF
-@scena.Code('func_1D_1AEF')
-def func_1D_1AEF():
+# id: 0x001D offset: 0x1BB2
+@scena.Code('func_1D_1BB2')
+def func_1D_1BB2():
     EventBegin(0x00)
     FadeOut(0, 0, -1)
 
@@ -2578,21 +2568,21 @@ def func_1D_1AEF():
     CameraSetDistance(1400, 0)
     OP_6C(0, 0)
     OP_6E(673, 0)
-    SetChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0009, 610, 0, -360, 0)
-    SetChrPos(0x0102, -400, 0, 430, 0)
-    SetChrFlags(0x0021, 0x0080)
-    SetChrFlags(0x0022, 0x0080)
-    SetChrFlags(0x0023, 0x0080)
-    SetChrFlags(0x0024, 0x0080)
-    SetChrFlags(0x0025, 0x0080)
-    SetChrFlags(0x0026, 0x0080)
-    SetChrChipByIndex(0x0101, 14)
-    SetChrChipByIndex(0x0105, 15)
-    SetChrSubChip(0x0101, 0)
-    SetChrSubChip(0x0105, 0)
-    SetChrPos(0x0101, 62000, 1000, 14000, 270)
-    SetChrPos(0x0105, 58000, 1000, 14000, 90)
+    ChrSetFlags(0x0008, 0x0080)
+    ChrSetPos(0x0009, 610, 0, -360, 0)
+    ChrSetPos(0x0102, -400, 0, 430, 0)
+    ChrSetFlags(0x0021, 0x0080)
+    ChrSetFlags(0x0022, 0x0080)
+    ChrSetFlags(0x0023, 0x0080)
+    ChrSetFlags(0x0024, 0x0080)
+    ChrSetFlags(0x0025, 0x0080)
+    ChrSetFlags(0x0026, 0x0080)
+    ChrSetChipByIndex(0x0101, 14)
+    ChrSetChipByIndex(0x0105, 15)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetSubChip(0x0105, 0)
+    ChrSetPos(0x0101, 62000, 1000, 14000, 270)
+    ChrSetPos(0x0105, 58000, 1000, 14000, 90)
     OP_77(0xFF, 0xFF, 0xFF, 0x00, 0x00000000)
     FadeIn(2000, 0)
     PlayBGM(97)
@@ -2616,8 +2606,8 @@ def func_1D_1AEF():
     CloseMessageWindow()
     Fade(250)
     PlaySE(505, 0x00, 0x64)
-    SetChrChipByIndex(0x0101, 23)
-    SetChrSubChip(0x0101, 5)
+    ChrSetChipByIndex(0x0101, 23)
+    ChrSetSubChip(0x0101, 5)
     OP_0D()
     Sleep(500)
 
@@ -2685,8 +2675,8 @@ def func_1D_1AEF():
 
     Fade(250)
     PlaySE(505, 0x00, 0x64)
-    SetChrChipByIndex(0x0105, 24)
-    SetChrSubChip(0x0105, 5)
+    ChrSetChipByIndex(0x0105, 24)
+    ChrSetSubChip(0x0105, 5)
     OP_0D()
     Sleep(500)
 
@@ -2762,10 +2752,10 @@ def func_1D_1AEF():
     CloseMessageWindow()
     Fade(250)
     PlaySE(213, 0x00, 0x64)
-    SetChrChipByIndex(0x0101, 14)
-    SetChrChipByIndex(0x0105, 15)
-    SetChrSubChip(0x0101, 0)
-    SetChrSubChip(0x0105, 0)
+    ChrSetChipByIndex(0x0101, 14)
+    ChrSetChipByIndex(0x0105, 15)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetSubChip(0x0105, 0)
     OP_0D()
     PlayBGM(14)
     Sleep(500)
@@ -2852,59 +2842,59 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0105, 180, 400)
+    ChrSetDirection(0x0105, 180, 400)
     Sleep(500)
 
-    @scena.Lambda('lambda_2204')
-    def lambda_2204():
+    @scena.Lambda('lambda_234E')
+    def lambda_234E():
         CameraMove(58730, 2850, 2760, 5000)
 
         ExitThread()
 
-    DispatchAsync(0x0008, 0x0001, lambda_2204)
+    DispatchAsync(0x0008, 0x0001, lambda_234E)
 
-    @scena.Lambda('lambda_221C')
-    def lambda_221C():
+    @scena.Lambda('lambda_2366')
+    def lambda_2366():
         OP_6C(18000, 5000)
 
         ExitThread()
 
-    DispatchAsync(0x0008, 0x0002, lambda_221C)
+    DispatchAsync(0x0008, 0x0002, lambda_2366)
 
-    @scena.Lambda('lambda_222C')
-    def lambda_222C():
+    @scena.Lambda('lambda_2376')
+    def lambda_2376():
         OP_67(0, 2930, -10000, 5000)
 
         ExitThread()
 
-    DispatchAsync(0x0008, 0x0003, lambda_222C)
+    DispatchAsync(0x0008, 0x0003, lambda_2376)
 
     Sleep(1000)
 
-    @scena.Lambda('lambda_2249')
-    def lambda_2249():
+    @scena.Lambda('lambda_2393')
+    def lambda_2393():
         ChrWalkTo(0x00FE, 59350, 1000, 11500, 2000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0105, 0x0001, lambda_2249)
+    DispatchAsync(0x0105, 0x0001, lambda_2393)
 
     Sleep(500)
 
-    SetChrDirection(0x0101, 225, 400)
+    ChrSetDirection(0x0101, 225, 400)
 
-    @scena.Lambda('lambda_2270')
-    def lambda_2270():
+    @scena.Lambda('lambda_23BA')
+    def lambda_23BA():
         ChrWalkTo(0x00FE, 60580, 1000, 11500, 2000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0101, 0x0001, lambda_2270)
+    DispatchAsync(0x0101, 0x0001, lambda_23BA)
 
     WaitForThreadExit(0x0105, 0x0001)
-    SetChrDirection(0x0105, 180, 400)
+    ChrSetDirection(0x0105, 180, 400)
     WaitForThreadExit(0x0101, 0x0001)
-    SetChrDirection(0x0101, 180, 400)
+    ChrSetDirection(0x0101, 180, 400)
     WaitForThreadExit(0x0008, 0x0001)
 
     ChrTalk(
@@ -2920,7 +2910,7 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0101, 225, 400)
+    ChrSetDirection(0x0101, 225, 400)
 
     ChrTalk(
         0x0101,
@@ -2956,7 +2946,7 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0105, 135, 400)
+    ChrSetDirection(0x0105, 135, 400)
 
     ChrTalk(
         0x0105,
@@ -3435,10 +3425,10 @@ def func_1D_1AEF():
 
     CloseMessageWindow()
     OP_4A(0x0009, 255)
-    SetChrPos(0x0009, 65530, 0, 570, 0)
-    SetChrPos(0x0102, 64700, 0, 520, 0)
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x0102, 0x0080)
+    ChrSetPos(0x0009, 65530, 0, 570, 0)
+    ChrSetPos(0x0102, 64700, 0, 520, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x0102, 0x0080)
 
     ChrTalk(
         0x0102,
@@ -3455,62 +3445,62 @@ def func_1D_1AEF():
     PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
-    @scena.Lambda('lambda_30CE')
-    def lambda_30CE():
+    @scena.Lambda('lambda_3385')
+    def lambda_3385():
         ChrTurnDirection(0x00FE, 0x0102, 400)
         Yield()
 
-        Jump('lambda_30CE')
+        Jump('lambda_3385')
 
-    DispatchAsync2(0x0101, 0x0001, lambda_30CE)
+    DispatchAsync2(0x0101, 0x0001, lambda_3385)
 
-    @scena.Lambda('lambda_30DF')
-    def lambda_30DF():
+    @scena.Lambda('lambda_3396')
+    def lambda_3396():
         ChrTurnDirection(0x00FE, 0x0102, 400)
         Yield()
 
-        Jump('lambda_30DF')
+        Jump('lambda_3396')
 
-    DispatchAsync2(0x0105, 0x0001, lambda_30DF)
+    DispatchAsync2(0x0105, 0x0001, lambda_3396)
 
-    @scena.Lambda('lambda_30F0')
-    def lambda_30F0():
+    @scena.Lambda('lambda_33A7')
+    def lambda_33A7():
         CameraMove(62650, 1000, 10120, 3000)
 
         ExitThread()
 
-    DispatchAsync(0x0008, 0x0001, lambda_30F0)
+    DispatchAsync(0x0008, 0x0001, lambda_33A7)
 
-    @scena.Lambda('lambda_3108')
-    def lambda_3108():
+    @scena.Lambda('lambda_33BF')
+    def lambda_33BF():
         OP_67(0, 4550, -10000, 3000)
 
         ExitThread()
 
-    DispatchAsync(0x0008, 0x0003, lambda_3108)
+    DispatchAsync(0x0008, 0x0003, lambda_33BF)
 
-    @scena.Lambda('lambda_3120')
-    def lambda_3120():
+    @scena.Lambda('lambda_33D7')
+    def lambda_33D7():
         ChrWalkTo(0x00FE, 65590, 0, 7320, 3000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0009, 0x0001, lambda_3120)
+    DispatchAsync(0x0009, 0x0001, lambda_33D7)
 
     Sleep(500)
 
-    @scena.Lambda('lambda_3140')
-    def lambda_3140():
+    @scena.Lambda('lambda_33F7')
+    def lambda_33F7():
         ChrWalkTo(0x00FE, 64690, 0, 6430, 3000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0102, 0x0001, lambda_3140)
+    DispatchAsync(0x0102, 0x0001, lambda_33F7)
 
     WaitForThreadExit(0x0009, 0x0001)
-    SetChrDirection(0x0009, 315, 400)
+    ChrSetDirection(0x0009, 315, 400)
     WaitForThreadExit(0x0102, 0x0001)
-    SetChrDirection(0x0102, 315, 400)
+    ChrSetDirection(0x0102, 315, 400)
     TerminateThread(0x0105, 0xFF)
     TerminateThread(0x0101, 0xFF)
 
@@ -3712,22 +3702,22 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0102, 180, 400)
+    ChrSetDirection(0x0102, 180, 400)
 
-    @scena.Lambda('lambda_3531')
-    def lambda_3531():
+    @scena.Lambda('lambda_385B')
+    def lambda_385B():
         ChrWalkTo(0x00FE, 64700, 0, 520, 3000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0102, 0x0001, lambda_3531)
+    DispatchAsync(0x0102, 0x0001, lambda_385B)
 
     Sleep(200)
 
-    SetChrDirection(0x0009, 180, 400)
+    ChrSetDirection(0x0009, 180, 400)
     ChrWalkTo(0x0009, 65530, 0, 570, 3000, 0x00)
-    SetChrFlags(0x0009, 0x0080)
-    SetChrFlags(0x0102, 0x0080)
+    ChrSetFlags(0x0009, 0x0080)
+    ChrSetFlags(0x0102, 0x0080)
     Fade(1000)
     CameraMove(60080, 1000, 14330, 0)
     OP_67(0, 5210, -10000, 0)
@@ -3751,7 +3741,7 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0105, 135, 400)
+    ChrSetDirection(0x0105, 135, 400)
 
     ChrTalk(
         0x0105,
@@ -3762,7 +3752,7 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0101, 225, 400)
+    ChrSetDirection(0x0101, 225, 400)
 
     ChrTalk(
         0x0101,
@@ -3817,10 +3807,10 @@ def func_1D_1AEF():
     OP_6C(45000, 0)
     OP_6E(280, 0)
     FormationDelMember(0x01, 0xFF)
-    SetChrPos(0x0105, -36520, 1000, 8430, 90)
-    SetChrPos(0x0101, -35180, 1000, 8580, 270)
-    SetChrChipByIndex(0x0105, 65535)
-    SetChrChipByIndex(0x0101, 65535)
+    ChrSetPos(0x0105, -36520, 1000, 8430, 90)
+    ChrSetPos(0x0101, -35180, 1000, 8580, 270)
+    ChrSetChipByIndex(0x0105, 65535)
+    ChrSetChipByIndex(0x0101, 65535)
     Sleep(300)
 
     FadeIn(1000, 0)
@@ -3850,29 +3840,29 @@ def func_1D_1AEF():
     )
 
     CloseMessageWindow()
-    SetChrStatus(0x0000, 0xFE, 0)
-    SetChrStatus(0x0001, 0xFE, 0)
-    SetChrStatus(0x0002, 0xFE, 0)
-    SetChrStatus(0x0003, 0xFE, 0)
-    SetChrStatus(0x0004, 0xFE, 0)
-    SetChrStatus(0x0005, 0xFE, 0)
-    SetChrStatus(0x0006, 0xFE, 0)
-    SetChrStatus(0x0007, 0xFE, 0)
-    ClearMapFlags(0x10000000)
+    ChrSetStatus(0x0000, 0xFE, 0)
+    ChrSetStatus(0x0001, 0xFE, 0)
+    ChrSetStatus(0x0002, 0xFE, 0)
+    ChrSetStatus(0x0003, 0xFE, 0)
+    ChrSetStatus(0x0004, 0xFE, 0)
+    ChrSetStatus(0x0005, 0xFE, 0)
+    ChrSetStatus(0x0006, 0xFE, 0)
+    ChrSetStatus(0x0007, 0xFE, 0)
+    MapClearFlags(0x10000000)
 
-    @scena.Lambda('lambda_3855')
-    def lambda_3855():
+    @scena.Lambda('lambda_3BB6')
+    def lambda_3BB6():
         OP_69(0x0000, 1000)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_3855)
+    DispatchAsync(0x0000, 0x0001, lambda_3BB6)
 
     EventEnd(0x02)
-    SetMapFlags(0x00000080)
+    MapSetFlags(0x00000080)
     WaitForThreadExit(0x0000, 0x0001)
-    ClearMapFlags(0x00000080)
-    SetMapFlags(0x00000001)
+    MapClearFlags(0x00000080)
+    MapSetFlags(0x00000001)
 
     Return()
 

@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C1211_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,57 +23,52 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x4F4
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
-    SetMapFlags(0x00400000)
+    MapSetFlags(0x00400000)
     CameraMove(-10, 0, -7120, 0)
-    SetChrPos(0x0101, 280, 0, -20580, 0)
-    SetChrPos(0x0102, 1080, 0, -21780, 0)
-    SetChrPos(0x0103, -780, 0, -21880, 0)
+    ChrSetPos(0x0101, 280, 0, -20580, 0)
+    ChrSetPos(0x0102, 1080, 0, -21780, 0)
+    ChrSetPos(0x0103, -780, 0, -21880, 0)
 
     @scena.Lambda('lambda_00B5')
     def lambda_00B5():
@@ -158,7 +148,7 @@ def PreInit():
     PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
-    SetChrDirection(0x0101, 0, 400)
+    ChrSetDirection(0x0101, 0, 400)
     Sleep(400)
 
     ChrTurnDirection(0x0102, 0x0101, 400)
@@ -183,11 +173,11 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    SetChrPos(0x0008, 19240, 0, 33890, 42)
-    SetChrPos(0x0009, 10000, 0, 25000, 45)
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrDirection(0x0102, 0, 0)
+    ChrSetPos(0x0008, 19240, 0, 33890, 42)
+    ChrSetPos(0x0009, 10000, 0, 25000, 45)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetDirection(0x0102, 0, 0)
     CameraMove(170, 0, -8790, 3000)
 
     ChrTalk(
@@ -226,7 +216,7 @@ def PreInit():
 
     Fade(1000)
     CameraMove(480, 0, -17620, 0)
-    SetChrDirection(0x0102, 0, 0)
+    ChrSetDirection(0x0102, 0, 0)
     OP_0D()
     Sleep(400)
 
@@ -281,14 +271,14 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    SetChrFlags(0x0008, 0x0080)
-    SetChrFlags(0x0009, 0x0080)
+    ChrSetFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0009, 0x0080)
     OP_28(0x000F, 0x04, 0x02)
     OP_28(0x000F, 0x04, 0x04)
     OP_28(0x000F, 0x01, 0x0001)
     OP_28(0x000F, 0x01, 0x0002)
     OP_28(0x000F, 0x01, 0x8000)
-    ClearMapFlags(0x00400000)
+    MapClearFlags(0x00400000)
     EventEnd(0x00)
 
     Return()

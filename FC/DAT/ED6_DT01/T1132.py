@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1132   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '巴雷里奥'),
-    TXT(0x02, '蒂娜'),
-    TXT(0x03, '哈尔德'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xE11
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -77,11 +64,12 @@ def ChipData():
         ('ED6_DT07/CH01120._CH', 'ED6_DT07/CH01120P._CP'),
     ]
 
-# id: 0x10002 offset: 0xC2
+# id: 0x10001 offset: 0xC2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '巴雷里奥',
             x                   = 4500,
             z                   = 0,
             y                   = 190600,
@@ -96,6 +84,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '蒂娜',
             x                   = -130180,
             z                   = 0,
             y                   = 130460,
@@ -110,6 +99,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '哈尔德',
             x                   = -86950,
             z                   = 0,
             y                   = 119700,
@@ -125,19 +115,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x122
+# id: 0x10002 offset: 0x122
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x122
+# id: 0x10003 offset: 0x122
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x122
+# id: 0x10004 offset: 0x122
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -170,8 +160,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x16A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0067, 2, 0x33A)),
@@ -180,7 +170,7 @@ def PreInit():
         'loc_185',
     )
 
-    SetChrPos(0x0009, -49700, 0, 119900, 0)
+    ChrSetPos(0x0009, -49700, 0, 119900, 0)
 
     Jump('loc_209')
 
@@ -196,7 +186,7 @@ def PreInit():
         'loc_1A0',
     )
 
-    SetChrPos(0x0009, -128400, 0, 139800, 0)
+    ChrSetPos(0x0009, -128400, 0, 139800, 0)
 
     Jump('loc_209')
 
@@ -212,7 +202,7 @@ def PreInit():
         'loc_1CC',
     )
 
-    SetChrPos(0x0009, -84700, 0, 152800, 0)
+    ChrSetPos(0x0009, -84700, 0, 152800, 0)
 
     If(
         (
@@ -223,7 +213,7 @@ def PreInit():
         'loc_1C9',
     )
 
-    ClearChrFlags(0x000A, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
 
     def _loc_1C9(): pass
 
@@ -243,7 +233,7 @@ def PreInit():
         'loc_1E7',
     )
 
-    SetChrPos(0x0009, -84300, 0, 119900, 0)
+    ChrSetPos(0x0009, -84300, 0, 119900, 0)
 
     Jump('loc_209')
 
@@ -259,7 +249,7 @@ def PreInit():
         'loc_202',
     )
 
-    SetChrPos(0x0009, -124300, 0, 179000, 0)
+    ChrSetPos(0x0009, -124300, 0, 179000, 0)
 
     Jump('loc_209')
 
@@ -282,13 +272,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x20A
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_20A')
+def func_01_20A():
     Return()
 
 # id: 0x0002 offset: 0x20B
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_20B')
+def func_02_20B():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -299,7 +289,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_20B')
 
     def _loc_220(): pass
 
@@ -591,7 +581,7 @@ def func_04_32D():
     label('loc_39A')
 
     Call(0, 0x0005)
-    SetChrDirection(0x0008, 90, 0)
+    ChrSetDirection(0x0008, 90, 0)
 
     Return()
 
@@ -1466,7 +1456,7 @@ def func_06_98A():
 @scena.Code('func_07_D93')
 def func_07_D93():
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(

@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0001_4 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x43E0
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Talk(
         (
             TxtCtl.ShowAll,
@@ -259,8 +249,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x18D
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_18D')
+def func_01_18D():
     Menu(
         2,
         10,
@@ -301,8 +291,8 @@ def Init():
     FormationDelMember(0x04, 0xFF)
     FormationDelMember(0x05, 0xFF)
     FormationDelMember(0x07, 0xFF)
-    SetChrStatus(0x0000, 0x00, 4)
-    SetChrStatus(0x0001, 0x00, 4)
+    ChrSetStatus(0x0000, 0x00, 4)
+    ChrSetStatus(0x0001, 0x00, 4)
     FormationAddMember(0x00, 0xFF)
     FormationAddMember(0x01, 0xFF)
     SetScenaFlags(ScenaFlag(0x0040, 4, 0x204))
@@ -478,8 +468,8 @@ def Init():
 
     label('loc_39D')
 
-    SetChrStatus(0x0000, 0x00, 5)
-    SetChrStatus(0x0001, 0x00, 5)
+    ChrSetStatus(0x0000, 0x00, 5)
+    ChrSetStatus(0x0001, 0x00, 5)
 
     ExecExpressionWithVar(
         0x04,
@@ -499,8 +489,8 @@ def Init():
 
     label('loc_3BC')
 
-    SetChrStatus(0x0000, 0x00, 6)
-    SetChrStatus(0x0001, 0x00, 6)
+    ChrSetStatus(0x0000, 0x00, 6)
+    ChrSetStatus(0x0001, 0x00, 6)
 
     ExecExpressionWithVar(
         0x04,
@@ -520,8 +510,8 @@ def Init():
 
     label('loc_3DB')
 
-    SetChrStatus(0x0000, 0x00, 7)
-    SetChrStatus(0x0001, 0x00, 7)
+    ChrSetStatus(0x0000, 0x00, 7)
+    ChrSetStatus(0x0001, 0x00, 7)
 
     ExecExpressionWithVar(
         0x04,
@@ -541,9 +531,9 @@ def Init():
 
     label('loc_3FA')
 
-    SetChrStatus(0x0002, 0x00, 10)
-    SetChrStatus(0x0000, 0x00, 9)
-    SetChrStatus(0x0001, 0x00, 9)
+    ChrSetStatus(0x0002, 0x00, 10)
+    ChrSetStatus(0x0000, 0x00, 9)
+    ChrSetStatus(0x0001, 0x00, 9)
 
     ExecExpressionWithVar(
         0x04,
@@ -593,8 +583,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x43B
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_43B')
+def func_02_43B():
     Menu(
         2,
         10,
@@ -840,9 +830,9 @@ def ReInit():
 
     label('loc_6AC')
 
-    SetChrStatus(0x0002, 0x00, 11)
-    SetChrStatus(0x0000, 0x00, 10)
-    SetChrStatus(0x0001, 0x00, 10)
+    ChrSetStatus(0x0002, 0x00, 11)
+    ChrSetStatus(0x0000, 0x00, 10)
+    ChrSetStatus(0x0001, 0x00, 10)
 
     ExecExpressionWithVar(
         0x04,
@@ -863,9 +853,9 @@ def ReInit():
 
     label('loc_6D3')
 
-    SetChrStatus(0x0002, 0x00, 11)
-    SetChrStatus(0x0000, 0x00, 10)
-    SetChrStatus(0x0001, 0x00, 10)
+    ChrSetStatus(0x0002, 0x00, 11)
+    ChrSetStatus(0x0000, 0x00, 10)
+    ChrSetStatus(0x0001, 0x00, 10)
 
     ExecExpressionWithVar(
         0x04,
@@ -886,9 +876,9 @@ def ReInit():
 
     label('loc_6FA')
 
-    SetChrStatus(0x0002, 0x00, 11)
-    SetChrStatus(0x0000, 0x00, 11)
-    SetChrStatus(0x0001, 0x00, 11)
+    ChrSetStatus(0x0002, 0x00, 11)
+    ChrSetStatus(0x0000, 0x00, 11)
+    ChrSetStatus(0x0001, 0x00, 11)
 
     ExecExpressionWithVar(
         0x04,
@@ -909,10 +899,10 @@ def ReInit():
 
     label('loc_721')
 
-    SetChrStatus(0x0003, 0x00, 13)
-    SetChrStatus(0x0002, 0x00, 11)
-    SetChrStatus(0x0000, 0x00, 11)
-    SetChrStatus(0x0001, 0x00, 11)
+    ChrSetStatus(0x0003, 0x00, 13)
+    ChrSetStatus(0x0002, 0x00, 11)
+    ChrSetStatus(0x0000, 0x00, 11)
+    ChrSetStatus(0x0001, 0x00, 11)
 
     ExecExpressionWithVar(
         0x04,
@@ -934,9 +924,9 @@ def ReInit():
 
     label('loc_750')
 
-    SetChrStatus(0x0002, 0x00, 12)
-    SetChrStatus(0x0000, 0x00, 12)
-    SetChrStatus(0x0001, 0x00, 12)
+    ChrSetStatus(0x0002, 0x00, 12)
+    ChrSetStatus(0x0000, 0x00, 12)
+    ChrSetStatus(0x0001, 0x00, 12)
 
     ExecExpressionWithVar(
         0x04,
@@ -957,9 +947,9 @@ def ReInit():
 
     label('loc_777')
 
-    SetChrStatus(0x0002, 0x00, 12)
-    SetChrStatus(0x0000, 0x00, 12)
-    SetChrStatus(0x0001, 0x00, 12)
+    ChrSetStatus(0x0002, 0x00, 12)
+    ChrSetStatus(0x0000, 0x00, 12)
+    ChrSetStatus(0x0001, 0x00, 12)
 
     ExecExpressionWithVar(
         0x04,
@@ -981,10 +971,10 @@ def ReInit():
 
     label('loc_7A1')
 
-    SetChrStatus(0x0003, 0x00, 13)
-    SetChrStatus(0x0002, 0x00, 13)
-    SetChrStatus(0x0000, 0x00, 13)
-    SetChrStatus(0x0001, 0x00, 13)
+    ChrSetStatus(0x0003, 0x00, 13)
+    ChrSetStatus(0x0002, 0x00, 13)
+    ChrSetStatus(0x0000, 0x00, 13)
+    ChrSetStatus(0x0001, 0x00, 13)
 
     ExecExpressionWithVar(
         0x04,
@@ -1006,10 +996,10 @@ def ReInit():
 
     label('loc_7D0')
 
-    SetChrStatus(0x0003, 0x00, 13)
-    SetChrStatus(0x0002, 0x00, 13)
-    SetChrStatus(0x0000, 0x00, 13)
-    SetChrStatus(0x0001, 0x00, 13)
+    ChrSetStatus(0x0003, 0x00, 13)
+    ChrSetStatus(0x0002, 0x00, 13)
+    ChrSetStatus(0x0000, 0x00, 13)
+    ChrSetStatus(0x0001, 0x00, 13)
 
     ExecExpressionWithVar(
         0x04,
@@ -1031,10 +1021,10 @@ def ReInit():
 
     label('loc_7FF')
 
-    SetChrStatus(0x0003, 0x00, 14)
-    SetChrStatus(0x0002, 0x00, 14)
-    SetChrStatus(0x0000, 0x00, 14)
-    SetChrStatus(0x0001, 0x00, 14)
+    ChrSetStatus(0x0003, 0x00, 14)
+    ChrSetStatus(0x0002, 0x00, 14)
+    ChrSetStatus(0x0000, 0x00, 14)
+    ChrSetStatus(0x0001, 0x00, 14)
 
     ExecExpressionWithVar(
         0x04,
@@ -1057,10 +1047,10 @@ def ReInit():
 
     label('loc_831')
 
-    SetChrStatus(0x0003, 0x00, 14)
-    SetChrStatus(0x0002, 0x00, 14)
-    SetChrStatus(0x0000, 0x00, 14)
-    SetChrStatus(0x0001, 0x00, 14)
+    ChrSetStatus(0x0003, 0x00, 14)
+    ChrSetStatus(0x0002, 0x00, 14)
+    ChrSetStatus(0x0000, 0x00, 14)
+    ChrSetStatus(0x0001, 0x00, 14)
 
     ExecExpressionWithVar(
         0x04,
@@ -1082,10 +1072,10 @@ def ReInit():
 
     label('loc_860')
 
-    SetChrStatus(0x0003, 0x00, 14)
-    SetChrStatus(0x0002, 0x00, 14)
-    SetChrStatus(0x0000, 0x00, 14)
-    SetChrStatus(0x0001, 0x00, 14)
+    ChrSetStatus(0x0003, 0x00, 14)
+    ChrSetStatus(0x0002, 0x00, 14)
+    ChrSetStatus(0x0000, 0x00, 14)
+    ChrSetStatus(0x0001, 0x00, 14)
 
     ExecExpressionWithVar(
         0x04,
@@ -1376,8 +1366,8 @@ def func_03_8A3():
 
     label('loc_B32')
 
-    SetChrStatus(0x0000, 0x00, 15)
-    SetChrStatus(0x0001, 0x00, 15)
+    ChrSetStatus(0x0000, 0x00, 15)
+    ChrSetStatus(0x0001, 0x00, 15)
 
     ExecExpressionWithVar(
         0x04,
@@ -1397,8 +1387,8 @@ def func_03_8A3():
 
     label('loc_B51')
 
-    SetChrStatus(0x0000, 0x00, 16)
-    SetChrStatus(0x0001, 0x00, 16)
+    ChrSetStatus(0x0000, 0x00, 16)
+    ChrSetStatus(0x0001, 0x00, 16)
 
     ExecExpressionWithVar(
         0x04,
@@ -1418,8 +1408,8 @@ def func_03_8A3():
 
     label('loc_B70')
 
-    SetChrStatus(0x0000, 0x00, 16)
-    SetChrStatus(0x0001, 0x00, 16)
+    ChrSetStatus(0x0000, 0x00, 16)
+    ChrSetStatus(0x0001, 0x00, 16)
 
     ExecExpressionWithVar(
         0x04,
@@ -1440,8 +1430,8 @@ def func_03_8A3():
 
     label('loc_B92')
 
-    SetChrStatus(0x0000, 0x00, 16)
-    SetChrStatus(0x0001, 0x00, 16)
+    ChrSetStatus(0x0000, 0x00, 16)
+    ChrSetStatus(0x0001, 0x00, 16)
 
     ExecExpressionWithVar(
         0x04,
@@ -1462,8 +1452,8 @@ def func_03_8A3():
 
     label('loc_BB4')
 
-    SetChrStatus(0x0000, 0x00, 18)
-    SetChrStatus(0x0001, 0x00, 18)
+    ChrSetStatus(0x0000, 0x00, 18)
+    ChrSetStatus(0x0001, 0x00, 18)
 
     ExecExpressionWithVar(
         0x04,
@@ -1484,9 +1474,9 @@ def func_03_8A3():
 
     label('loc_BD6')
 
-    SetChrStatus(0x0004, 0x00, 19)
-    SetChrStatus(0x0000, 0x00, 19)
-    SetChrStatus(0x0001, 0x00, 19)
+    ChrSetStatus(0x0004, 0x00, 19)
+    ChrSetStatus(0x0000, 0x00, 19)
+    ChrSetStatus(0x0001, 0x00, 19)
 
     ExecExpressionWithVar(
         0x04,
@@ -1507,9 +1497,9 @@ def func_03_8A3():
 
     label('loc_BFD')
 
-    SetChrStatus(0x0004, 0x00, 19)
-    SetChrStatus(0x0000, 0x00, 19)
-    SetChrStatus(0x0001, 0x00, 19)
+    ChrSetStatus(0x0004, 0x00, 19)
+    ChrSetStatus(0x0000, 0x00, 19)
+    ChrSetStatus(0x0001, 0x00, 19)
 
     ExecExpressionWithVar(
         0x04,
@@ -1530,9 +1520,9 @@ def func_03_8A3():
 
     label('loc_C24')
 
-    SetChrStatus(0x0004, 0x00, 20)
-    SetChrStatus(0x0000, 0x00, 20)
-    SetChrStatus(0x0001, 0x00, 20)
+    ChrSetStatus(0x0004, 0x00, 20)
+    ChrSetStatus(0x0000, 0x00, 20)
+    ChrSetStatus(0x0001, 0x00, 20)
 
     ExecExpressionWithVar(
         0x04,
@@ -1553,9 +1543,9 @@ def func_03_8A3():
 
     label('loc_C4B')
 
-    SetChrStatus(0x0004, 0x00, 20)
-    SetChrStatus(0x0000, 0x00, 20)
-    SetChrStatus(0x0001, 0x00, 20)
+    ChrSetStatus(0x0004, 0x00, 20)
+    ChrSetStatus(0x0000, 0x00, 20)
+    ChrSetStatus(0x0001, 0x00, 20)
 
     ExecExpressionWithVar(
         0x04,
@@ -1576,9 +1566,9 @@ def func_03_8A3():
 
     label('loc_C72')
 
-    SetChrStatus(0x0004, 0x00, 20)
-    SetChrStatus(0x0000, 0x00, 20)
-    SetChrStatus(0x0001, 0x00, 20)
+    ChrSetStatus(0x0004, 0x00, 20)
+    ChrSetStatus(0x0000, 0x00, 20)
+    ChrSetStatus(0x0001, 0x00, 20)
 
     ExecExpressionWithVar(
         0x04,
@@ -1600,9 +1590,9 @@ def func_03_8A3():
 
     label('loc_C9C')
 
-    SetChrStatus(0x0004, 0x00, 20)
-    SetChrStatus(0x0000, 0x00, 20)
-    SetChrStatus(0x0001, 0x00, 20)
+    ChrSetStatus(0x0004, 0x00, 20)
+    ChrSetStatus(0x0000, 0x00, 20)
+    ChrSetStatus(0x0001, 0x00, 20)
 
     ExecExpressionWithVar(
         0x04,
@@ -3821,9 +3811,9 @@ def func_04_CDA():
 
     label('loc_38AE')
 
-    SetChrStatus(0x0004, 0x00, 20)
-    SetChrStatus(0x0000, 0x00, 20)
-    SetChrStatus(0x0001, 0x00, 20)
+    ChrSetStatus(0x0004, 0x00, 20)
+    ChrSetStatus(0x0000, 0x00, 20)
+    ChrSetStatus(0x0001, 0x00, 20)
 
     ExecExpressionWithVar(
         0x04,
@@ -3845,8 +3835,8 @@ def func_04_CDA():
 
     label('loc_38D8')
 
-    SetChrStatus(0x0000, 0x00, 21)
-    SetChrStatus(0x0001, 0x00, 21)
+    ChrSetStatus(0x0000, 0x00, 21)
+    ChrSetStatus(0x0001, 0x00, 21)
 
     ExecExpressionWithVar(
         0x04,
@@ -3867,8 +3857,8 @@ def func_04_CDA():
 
     label('loc_38FA')
 
-    SetChrStatus(0x0000, 0x00, 21)
-    SetChrStatus(0x0001, 0x00, 21)
+    ChrSetStatus(0x0000, 0x00, 21)
+    ChrSetStatus(0x0001, 0x00, 21)
 
     ExecExpressionWithVar(
         0x04,
@@ -3888,9 +3878,9 @@ def func_04_CDA():
 
     label('loc_3919')
 
-    SetChrStatus(0x0006, 0x00, 21)
-    SetChrStatus(0x0000, 0x00, 21)
-    SetChrStatus(0x0001, 0x00, 21)
+    ChrSetStatus(0x0006, 0x00, 21)
+    ChrSetStatus(0x0000, 0x00, 21)
+    ChrSetStatus(0x0001, 0x00, 21)
 
     ExecExpressionWithVar(
         0x04,
@@ -3911,9 +3901,9 @@ def func_04_CDA():
 
     label('loc_3940')
 
-    SetChrStatus(0x0006, 0x00, 22)
-    SetChrStatus(0x0000, 0x00, 22)
-    SetChrStatus(0x0001, 0x00, 22)
+    ChrSetStatus(0x0006, 0x00, 22)
+    ChrSetStatus(0x0000, 0x00, 22)
+    ChrSetStatus(0x0001, 0x00, 22)
 
     ExecExpressionWithVar(
         0x04,
@@ -3935,9 +3925,9 @@ def func_04_CDA():
 
     label('loc_396A')
 
-    SetChrStatus(0x0006, 0x00, 23)
-    SetChrStatus(0x0000, 0x00, 23)
-    SetChrStatus(0x0001, 0x00, 23)
+    ChrSetStatus(0x0006, 0x00, 23)
+    ChrSetStatus(0x0000, 0x00, 23)
+    ChrSetStatus(0x0001, 0x00, 23)
 
     ExecExpressionWithVar(
         0x04,
@@ -3959,10 +3949,10 @@ def func_04_CDA():
 
     label('loc_3994')
 
-    SetChrStatus(0x0005, 0x00, 24)
-    SetChrStatus(0x0006, 0x00, 24)
-    SetChrStatus(0x0000, 0x00, 24)
-    SetChrStatus(0x0001, 0x00, 24)
+    ChrSetStatus(0x0005, 0x00, 24)
+    ChrSetStatus(0x0006, 0x00, 24)
+    ChrSetStatus(0x0000, 0x00, 24)
+    ChrSetStatus(0x0001, 0x00, 24)
 
     ExecExpressionWithVar(
         0x04,
@@ -3984,10 +3974,10 @@ def func_04_CDA():
 
     label('loc_39C3')
 
-    SetChrStatus(0x0007, 0x00, 25)
-    SetChrStatus(0x0006, 0x00, 24)
-    SetChrStatus(0x0000, 0x00, 24)
-    SetChrStatus(0x0001, 0x00, 24)
+    ChrSetStatus(0x0007, 0x00, 25)
+    ChrSetStatus(0x0006, 0x00, 24)
+    ChrSetStatus(0x0000, 0x00, 24)
+    ChrSetStatus(0x0001, 0x00, 24)
 
     ExecExpressionWithVar(
         0x04,
@@ -4009,10 +3999,10 @@ def func_04_CDA():
 
     label('loc_39F2')
 
-    SetChrStatus(0x0005, 0x00, 25)
-    SetChrStatus(0x0006, 0x00, 25)
-    SetChrStatus(0x0000, 0x00, 25)
-    SetChrStatus(0x0001, 0x00, 25)
+    ChrSetStatus(0x0005, 0x00, 25)
+    ChrSetStatus(0x0006, 0x00, 25)
+    ChrSetStatus(0x0000, 0x00, 25)
+    ChrSetStatus(0x0001, 0x00, 25)
 
     ExecExpressionWithVar(
         0x04,
@@ -4034,10 +4024,10 @@ def func_04_CDA():
 
     label('loc_3A21')
 
-    SetChrStatus(0x0005, 0x00, 26)
-    SetChrStatus(0x0006, 0x00, 26)
-    SetChrStatus(0x0000, 0x00, 26)
-    SetChrStatus(0x0001, 0x00, 26)
+    ChrSetStatus(0x0005, 0x00, 26)
+    ChrSetStatus(0x0006, 0x00, 26)
+    ChrSetStatus(0x0000, 0x00, 26)
+    ChrSetStatus(0x0001, 0x00, 26)
 
     ExecExpressionWithVar(
         0x04,
@@ -4060,10 +4050,10 @@ def func_04_CDA():
 
     label('loc_3A53')
 
-    SetChrStatus(0x0005, 0x00, 26)
-    SetChrStatus(0x0006, 0x00, 26)
-    SetChrStatus(0x0000, 0x00, 26)
-    SetChrStatus(0x0001, 0x00, 26)
+    ChrSetStatus(0x0005, 0x00, 26)
+    ChrSetStatus(0x0006, 0x00, 26)
+    ChrSetStatus(0x0000, 0x00, 26)
+    ChrSetStatus(0x0001, 0x00, 26)
 
     ExecExpressionWithVar(
         0x04,
@@ -4620,8 +4610,8 @@ def func_05_3A9F():
 
     label('loc_409E')
 
-    SetChrStatus(0x0000, 0x00, 27)
-    SetChrStatus(0x0001, 0x00, 27)
+    ChrSetStatus(0x0000, 0x00, 27)
+    ChrSetStatus(0x0001, 0x00, 27)
 
     ExecExpressionWithVar(
         0x04,
@@ -4642,8 +4632,8 @@ def func_05_3A9F():
 
     label('loc_40C0')
 
-    SetChrStatus(0x0000, 0x00, 27)
-    SetChrStatus(0x0001, 0x00, 27)
+    ChrSetStatus(0x0000, 0x00, 27)
+    ChrSetStatus(0x0001, 0x00, 27)
 
     ExecExpressionWithVar(
         0x04,
@@ -4664,8 +4654,8 @@ def func_05_3A9F():
 
     label('loc_40E2')
 
-    SetChrStatus(0x0000, 0x00, 27)
-    SetChrStatus(0x0001, 0x00, 27)
+    ChrSetStatus(0x0000, 0x00, 27)
+    ChrSetStatus(0x0001, 0x00, 27)
 
     ExecExpressionWithVar(
         0x04,
@@ -4686,8 +4676,8 @@ def func_05_3A9F():
 
     label('loc_4104')
 
-    SetChrStatus(0x0000, 0x00, 29)
-    SetChrStatus(0x0001, 0x00, 29)
+    ChrSetStatus(0x0000, 0x00, 29)
+    ChrSetStatus(0x0001, 0x00, 29)
 
     ExecExpressionWithVar(
         0x04,
@@ -4708,8 +4698,8 @@ def func_05_3A9F():
 
     label('loc_4126')
 
-    SetChrStatus(0x0000, 0x00, 31)
-    SetChrStatus(0x0001, 0x00, 31)
+    ChrSetStatus(0x0000, 0x00, 31)
+    ChrSetStatus(0x0001, 0x00, 31)
 
     ExecExpressionWithVar(
         0x04,
@@ -4730,8 +4720,8 @@ def func_05_3A9F():
 
     label('loc_4148')
 
-    SetChrStatus(0x0000, 0x00, 32)
-    SetChrStatus(0x0001, 0x00, 32)
+    ChrSetStatus(0x0000, 0x00, 32)
+    ChrSetStatus(0x0001, 0x00, 32)
 
     ExecExpressionWithVar(
         0x04,
@@ -4751,8 +4741,8 @@ def func_05_3A9F():
 
     label('loc_4167')
 
-    SetChrStatus(0x0000, 0x00, 32)
-    SetChrStatus(0x0001, 0x00, 32)
+    ChrSetStatus(0x0000, 0x00, 32)
+    ChrSetStatus(0x0001, 0x00, 32)
 
     ExecExpressionWithVar(
         0x04,
@@ -4773,8 +4763,8 @@ def func_05_3A9F():
 
     label('loc_4189')
 
-    SetChrStatus(0x0000, 0x00, 32)
-    SetChrStatus(0x0001, 0x00, 32)
+    ChrSetStatus(0x0000, 0x00, 32)
+    ChrSetStatus(0x0001, 0x00, 32)
 
     ExecExpressionWithVar(
         0x04,
@@ -4795,9 +4785,9 @@ def func_05_3A9F():
 
     label('loc_41AB')
 
-    SetChrStatus(0x0007, 0x00, 33)
-    SetChrStatus(0x0000, 0x00, 33)
-    SetChrStatus(0x0001, 0x00, 33)
+    ChrSetStatus(0x0007, 0x00, 33)
+    ChrSetStatus(0x0000, 0x00, 33)
+    ChrSetStatus(0x0001, 0x00, 33)
 
     ExecExpressionWithVar(
         0x04,
@@ -4819,9 +4809,9 @@ def func_05_3A9F():
 
     label('loc_41D5')
 
-    SetChrStatus(0x0007, 0x00, 33)
-    SetChrStatus(0x0000, 0x00, 33)
-    SetChrStatus(0x0001, 0x00, 33)
+    ChrSetStatus(0x0007, 0x00, 33)
+    ChrSetStatus(0x0000, 0x00, 33)
+    ChrSetStatus(0x0001, 0x00, 33)
 
     ExecExpressionWithVar(
         0x04,
@@ -4843,8 +4833,8 @@ def func_05_3A9F():
 
     label('loc_41FF')
 
-    SetChrStatus(0x0007, 0x00, 34)
-    SetChrStatus(0x0000, 0x00, 34)
+    ChrSetStatus(0x0007, 0x00, 34)
+    ChrSetStatus(0x0000, 0x00, 34)
 
     ExecExpressionWithVar(
         0x04,
@@ -4867,10 +4857,10 @@ def func_05_3A9F():
 
     FormationAddMember(0x06, 0xFF)
     FormationAddMember(0x05, 0xFF)
-    SetChrStatus(0x0000, 0x00, 34)
-    SetChrStatus(0x0001, 0x00, 34)
-    SetChrStatus(0x0006, 0x00, 34)
-    SetChrStatus(0x0005, 0x00, 34)
+    ChrSetStatus(0x0000, 0x00, 34)
+    ChrSetStatus(0x0001, 0x00, 34)
+    ChrSetStatus(0x0006, 0x00, 34)
+    ChrSetStatus(0x0005, 0x00, 34)
 
     ExecExpressionWithVar(
         0x04,
@@ -4892,10 +4882,10 @@ def func_05_3A9F():
 
     FormationAddMember(0x06, 0xFF)
     FormationAddMember(0x05, 0xFF)
-    SetChrStatus(0x0000, 0x00, 34)
-    SetChrStatus(0x0001, 0x00, 34)
-    SetChrStatus(0x0006, 0x00, 34)
-    SetChrStatus(0x0005, 0x00, 34)
+    ChrSetStatus(0x0000, 0x00, 34)
+    ChrSetStatus(0x0001, 0x00, 34)
+    ChrSetStatus(0x0006, 0x00, 34)
+    ChrSetStatus(0x0005, 0x00, 34)
 
     ExecExpressionWithVar(
         0x04,
@@ -4918,10 +4908,10 @@ def func_05_3A9F():
 
     FormationAddMember(0x06, 0xFF)
     FormationAddMember(0x05, 0xFF)
-    SetChrStatus(0x0000, 0x00, 34)
-    SetChrStatus(0x0001, 0x00, 34)
-    SetChrStatus(0x0006, 0x00, 34)
-    SetChrStatus(0x0005, 0x00, 34)
+    ChrSetStatus(0x0000, 0x00, 34)
+    ChrSetStatus(0x0001, 0x00, 34)
+    ChrSetStatus(0x0006, 0x00, 34)
+    ChrSetStatus(0x0005, 0x00, 34)
 
     ExecExpressionWithVar(
         0x04,
@@ -4950,8 +4940,8 @@ def func_05_3A9F():
 
     label('loc_42BA')
 
-    SetChrStatus(0x0007, 0x00, 34)
-    SetChrStatus(0x0000, 0x00, 34)
+    ChrSetStatus(0x0007, 0x00, 34)
+    ChrSetStatus(0x0000, 0x00, 34)
 
     ExecExpressionWithVar(
         0x04,
@@ -5051,8 +5041,8 @@ def func_06_42F6():
     AddItem(0x01F5, 10)
     AddItem(0x01F6, 2)
     AddItem(0x01FE, 2)
-    SetChrStatus(0x0007, 0x00, 3)
-    SetChrStatus(0x0005, 0x00, 3)
+    ChrSetStatus(0x0007, 0x00, 3)
+    ChrSetStatus(0x0005, 0x00, 3)
     RemoveItem(0x0258, 1)
     RemoveItem(0x0259, 1)
     RemoveItem(0x025E, 1)

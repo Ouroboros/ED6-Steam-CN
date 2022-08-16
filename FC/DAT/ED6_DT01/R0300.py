@@ -9,18 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R0300   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '洛连特方向'),
-    TXT(0x02, '玛鲁加矿山方向'),
-    TXT(0x03, '跳跳猫'),
-    TXT(0x04, '爆种铃兰'),
-    TXT(0x05, '跳跳猫'),
-    TXT(0x06, '爆种铃兰'),
-    TXT(0x07, '爆种铃兰'),
-    TXT(0x08, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -35,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x340
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -71,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -86,11 +69,12 @@ def ChipData():
         ('ED6_DT09/CH10211._CH', 'ED6_DT09/CH10211P._CP'),
     ]
 
-# id: 0x10002 offset: 0xEA
+# id: 0x10001 offset: 0xEA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '洛连特方向',
             x                   = -204120,
             z                   = -20,
             y                   = -168420,
@@ -105,6 +89,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '玛鲁加矿山方向',
             x                   = -205010,
             z                   = 5940,
             y                   = -5850,
@@ -120,11 +105,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x12A
+# id: 0x10002 offset: 0x12A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '跳跳猫',
             x           = -209000,
             z           = 1000,
             y           = -140000,
@@ -138,6 +124,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '爆种铃兰',
             x           = -232000,
             z           = 4000,
             y           = -91000,
@@ -151,6 +138,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '跳跳猫',
             x           = -232000,
             z           = 6000,
             y           = -81000,
@@ -164,6 +152,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '爆种铃兰',
             x           = -211000,
             z           = 6000,
             y           = -78000,
@@ -177,6 +166,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '爆种铃兰',
             x           = -193000,
             z           = 4000,
             y           = -45000,
@@ -191,13 +181,13 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x1B6
+# id: 0x10003 offset: 0x1B6
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1B6
+# id: 0x10004 offset: 0x1B6
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -217,15 +207,15 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1DA
-@scena.Code('PreInit')
-def PreInit():
-    ClearMapFlags(0x08000000)
+@scena.Code('Init')
+def Init():
+    MapClearFlags(0x08000000)
 
     Return()
 
 # id: 0x0001 offset: 0x1E0
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1E0')
+def func_01_1E0():
     OP_16(0x02, 4000, -338000, -220000, 196622)
 
     If(
@@ -254,9 +244,9 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x20C
-@scena.Code('ReInit')
-def ReInit():
-    SetMapFlags(0x08000000)
+@scena.Code('func_02_20C')
+def func_02_20C():
+    MapSetFlags(0x08000000)
 
     If(
         (
@@ -282,7 +272,7 @@ def ReInit():
     FadeOut(300, 0, 100)
     PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -309,7 +299,7 @@ def ReInit():
     label('loc_280')
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -366,7 +356,7 @@ def ReInit():
     Sleep(30)
 
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 

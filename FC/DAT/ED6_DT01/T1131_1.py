@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1131_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,51 +23,46 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xA49
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     ChrTalk(
         0x00FE,
         (
@@ -90,7 +80,7 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_D6',
+        'loc_E5',
     )
 
     ChrTalk(
@@ -107,11 +97,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_173')
+    Jump('loc_196')
 
-    def _loc_D6(): pass
+    def _loc_E5(): pass
 
-    label('loc_D6')
+    label('loc_E5')
 
     If(
         (
@@ -120,7 +110,7 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_126',
+        'loc_13F',
     )
 
     ChrTalk(
@@ -136,11 +126,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_173')
+    Jump('loc_196')
 
-    def _loc_126(): pass
+    def _loc_13F(): pass
 
-    label('loc_126')
+    label('loc_13F')
 
     If(
         (
@@ -149,7 +139,7 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_173',
+        'loc_196',
     )
 
     ChrTalk(
@@ -165,9 +155,9 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_173(): pass
+    def _loc_196(): pass
 
-    label('loc_173')
+    label('loc_196')
 
     PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
@@ -452,7 +442,7 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_6D4',
+        'loc_76F',
     )
 
     If(
@@ -460,14 +450,14 @@ def PreInit():
             (Expr.Eval, "OP_AC(0x000C)"),
             Expr.Return,
         ),
-        'loc_6AC',
+        'loc_747',
     )
 
-    Jump('loc_6D4')
+    Jump('loc_76F')
 
-    def _loc_6AC(): pass
+    def _loc_747(): pass
 
-    label('loc_6AC')
+    label('loc_747')
 
     PlaySE(17, 0x00, 0x64)
 
@@ -486,9 +476,9 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_6D4(): pass
+    def _loc_76F(): pass
 
-    label('loc_6D4')
+    label('loc_76F')
 
     OP_56(0x00)
     FadeIn(300, 0)
@@ -632,7 +622,7 @@ def PreInit():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (

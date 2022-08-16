@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1130_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,52 +23,47 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x1001
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
-    ClearMapFlags(0x00000001)
+@scena.Code('Init')
+def Init():
+    MapClearFlags(0x00000001)
     EventBegin(0x00)
     SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
     OP_28(0x000D, 0x04, 0x10)
@@ -86,7 +76,7 @@ def PreInit():
             Expr.Geq,
             Expr.Return,
         ),
-        'loc_44C',
+        'loc_488',
     )
 
     If(
@@ -96,13 +86,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_1CB',
+        'loc_1E4',
     )
 
     Fade(1000)
-    SetChrPos(0x0101, 60600, 1000, 52500, 270)
-    SetChrPos(0x0102, 60600, 1000, 51300, 315)
-    SetChrPos(0x0103, 61600, 1000, 51500, 270)
+    ChrSetPos(0x0101, 60600, 1000, 52500, 270)
+    ChrSetPos(0x0102, 60600, 1000, 51300, 315)
+    ChrSetPos(0x0103, 61600, 1000, 51500, 270)
 
     If(
         (
@@ -115,7 +105,7 @@ def PreInit():
         'loc_EC',
     )
 
-    SetChrPos(0x0104, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0104, 61600, 1000, 50200, 315)
 
     Jump('loc_10B')
 
@@ -134,7 +124,7 @@ def PreInit():
         'loc_10B',
     )
 
-    SetChrPos(0x0134, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0134, 61600, 1000, 50200, 315)
 
     def _loc_10B(): pass
 
@@ -195,11 +185,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_449')
+    Jump('loc_485')
 
-    def _loc_1CB(): pass
+    def _loc_1E4(): pass
 
-    label('loc_1CB')
+    label('loc_1E4')
 
     If(
         (
@@ -208,13 +198,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_2A2',
+        'loc_2C5',
     )
 
     Fade(1000)
-    SetChrPos(0x0102, 60600, 1000, 52500, 270)
-    SetChrPos(0x0101, 60600, 1000, 51300, 315)
-    SetChrPos(0x0103, 61600, 1000, 51500, 270)
+    ChrSetPos(0x0102, 60600, 1000, 52500, 270)
+    ChrSetPos(0x0101, 60600, 1000, 51300, 315)
+    ChrSetPos(0x0103, 61600, 1000, 51500, 270)
 
     If(
         (
@@ -224,16 +214,16 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_231',
+        'loc_24A',
     )
 
-    SetChrPos(0x0104, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0104, 61600, 1000, 50200, 315)
 
-    Jump('loc_250')
+    Jump('loc_269')
 
-    def _loc_231(): pass
+    def _loc_24A(): pass
 
-    label('loc_231')
+    label('loc_24A')
 
     If(
         (
@@ -243,14 +233,14 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_250',
+        'loc_269',
     )
 
-    SetChrPos(0x0134, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0134, 61600, 1000, 50200, 315)
 
-    def _loc_250(): pass
+    def _loc_269(): pass
 
-    label('loc_250')
+    label('loc_269')
 
     ChrTurnDirection(0x0102, 0x0008, 0)
     OP_69(0x0102, 2000)
@@ -277,11 +267,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_449')
+    Jump('loc_485')
 
-    def _loc_2A2(): pass
+    def _loc_2C5(): pass
 
-    label('loc_2A2')
+    label('loc_2C5')
 
     If(
         (
@@ -290,13 +280,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_379',
+        'loc_3A6',
     )
 
     Fade(1000)
-    SetChrPos(0x0103, 60600, 1000, 52500, 270)
-    SetChrPos(0x0101, 60600, 1000, 51300, 315)
-    SetChrPos(0x0102, 61600, 1000, 51500, 270)
+    ChrSetPos(0x0103, 60600, 1000, 52500, 270)
+    ChrSetPos(0x0101, 60600, 1000, 51300, 315)
+    ChrSetPos(0x0102, 61600, 1000, 51500, 270)
 
     If(
         (
@@ -306,16 +296,16 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_308',
+        'loc_32B',
     )
 
-    SetChrPos(0x0104, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0104, 61600, 1000, 50200, 315)
 
-    Jump('loc_327')
+    Jump('loc_34A')
 
-    def _loc_308(): pass
+    def _loc_32B(): pass
 
-    label('loc_308')
+    label('loc_32B')
 
     If(
         (
@@ -325,14 +315,14 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_327',
+        'loc_34A',
     )
 
-    SetChrPos(0x0134, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0134, 61600, 1000, 50200, 315)
 
-    def _loc_327(): pass
+    def _loc_34A(): pass
 
-    label('loc_327')
+    label('loc_34A')
 
     ChrTurnDirection(0x0103, 0x0008, 0)
     OP_69(0x0103, 2000)
@@ -359,11 +349,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_449')
+    Jump('loc_485')
 
-    def _loc_379(): pass
+    def _loc_3A6(): pass
 
-    label('loc_379')
+    label('loc_3A6')
 
     If(
         (
@@ -372,14 +362,14 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_449',
+        'loc_485',
     )
 
     Fade(1000)
-    SetChrPos(0x0104, 60600, 1000, 52500, 270)
-    SetChrPos(0x0101, 60600, 1000, 51300, 315)
-    SetChrPos(0x0103, 61600, 1000, 50200, 315)
-    SetChrPos(0x0102, 61600, 1000, 51500, 270)
+    ChrSetPos(0x0104, 60600, 1000, 52500, 270)
+    ChrSetPos(0x0101, 60600, 1000, 51300, 315)
+    ChrSetPos(0x0103, 61600, 1000, 50200, 315)
+    ChrSetPos(0x0102, 61600, 1000, 51500, 270)
     ChrTurnDirection(0x0104, 0x0008, 0)
     OP_69(0x0104, 2000)
 
@@ -408,15 +398,15 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_449(): pass
+    def _loc_485(): pass
 
-    label('loc_449')
+    label('loc_485')
 
-    Jump('loc_80F')
+    Jump('loc_887')
 
-    def _loc_44C(): pass
+    def _loc_488(): pass
 
-    label('loc_44C')
+    label('loc_488')
 
     If(
         (
@@ -425,13 +415,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_591',
+        'loc_5E6',
     )
 
     Fade(1000)
-    SetChrPos(0x0101, 57400, 1000, 52500, 90)
-    SetChrPos(0x0102, 57400, 1000, 51300, 45)
-    SetChrPos(0x0103, 56400, 1000, 51500, 90)
+    ChrSetPos(0x0101, 57400, 1000, 52500, 90)
+    ChrSetPos(0x0102, 57400, 1000, 51300, 45)
+    ChrSetPos(0x0103, 56400, 1000, 51500, 90)
 
     If(
         (
@@ -441,16 +431,16 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_4B2',
+        'loc_4EE',
     )
 
-    SetChrPos(0x0104, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0104, 56400, 1000, 50200, 45)
 
-    Jump('loc_4D1')
+    Jump('loc_50D')
 
-    def _loc_4B2(): pass
+    def _loc_4EE(): pass
 
-    label('loc_4B2')
+    label('loc_4EE')
 
     If(
         (
@@ -460,14 +450,14 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_4D1',
+        'loc_50D',
     )
 
-    SetChrPos(0x0134, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0134, 56400, 1000, 50200, 45)
 
-    def _loc_4D1(): pass
+    def _loc_50D(): pass
 
-    label('loc_4D1')
+    label('loc_50D')
 
     ChrTurnDirection(0x0101, 0x0008, 0)
     OP_69(0x0101, 2000)
@@ -524,11 +514,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_80F')
+    Jump('loc_887')
 
-    def _loc_591(): pass
+    def _loc_5E6(): pass
 
-    label('loc_591')
+    label('loc_5E6')
 
     If(
         (
@@ -537,13 +527,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_668',
+        'loc_6C7',
     )
 
     Fade(1000)
-    SetChrPos(0x0102, 57400, 1000, 52500, 90)
-    SetChrPos(0x0101, 57400, 1000, 51300, 45)
-    SetChrPos(0x0103, 56400, 1000, 51500, 90)
+    ChrSetPos(0x0102, 57400, 1000, 52500, 90)
+    ChrSetPos(0x0101, 57400, 1000, 51300, 45)
+    ChrSetPos(0x0103, 56400, 1000, 51500, 90)
 
     If(
         (
@@ -553,16 +543,16 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_5F7',
+        'loc_64C',
     )
 
-    SetChrPos(0x0104, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0104, 56400, 1000, 50200, 45)
 
-    Jump('loc_616')
+    Jump('loc_66B')
 
-    def _loc_5F7(): pass
+    def _loc_64C(): pass
 
-    label('loc_5F7')
+    label('loc_64C')
 
     If(
         (
@@ -572,14 +562,14 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_616',
+        'loc_66B',
     )
 
-    SetChrPos(0x0134, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0134, 56400, 1000, 50200, 45)
 
-    def _loc_616(): pass
+    def _loc_66B(): pass
 
-    label('loc_616')
+    label('loc_66B')
 
     ChrTurnDirection(0x0102, 0x0008, 0)
     OP_69(0x0102, 2000)
@@ -606,11 +596,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_80F')
+    Jump('loc_887')
 
-    def _loc_668(): pass
+    def _loc_6C7(): pass
 
-    label('loc_668')
+    label('loc_6C7')
 
     If(
         (
@@ -619,13 +609,13 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_73F',
+        'loc_7A8',
     )
 
     Fade(1000)
-    SetChrPos(0x0103, 57400, 1000, 52500, 90)
-    SetChrPos(0x0101, 57400, 1000, 51300, 45)
-    SetChrPos(0x0102, 56400, 1000, 51500, 90)
+    ChrSetPos(0x0103, 57400, 1000, 52500, 90)
+    ChrSetPos(0x0101, 57400, 1000, 51300, 45)
+    ChrSetPos(0x0102, 56400, 1000, 51500, 90)
 
     If(
         (
@@ -635,16 +625,16 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_6CE',
+        'loc_72D',
     )
 
-    SetChrPos(0x0104, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0104, 56400, 1000, 50200, 45)
 
-    Jump('loc_6ED')
+    Jump('loc_74C')
 
-    def _loc_6CE(): pass
+    def _loc_72D(): pass
 
-    label('loc_6CE')
+    label('loc_72D')
 
     If(
         (
@@ -654,14 +644,14 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_6ED',
+        'loc_74C',
     )
 
-    SetChrPos(0x0134, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0134, 56400, 1000, 50200, 45)
 
-    def _loc_6ED(): pass
+    def _loc_74C(): pass
 
-    label('loc_6ED')
+    label('loc_74C')
 
     ChrTurnDirection(0x0103, 0x0008, 0)
     OP_69(0x0103, 2000)
@@ -688,11 +678,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_80F')
+    Jump('loc_887')
 
-    def _loc_73F(): pass
+    def _loc_7A8(): pass
 
-    label('loc_73F')
+    label('loc_7A8')
 
     If(
         (
@@ -701,14 +691,14 @@ def PreInit():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_80F',
+        'loc_887',
     )
 
     Fade(1000)
-    SetChrPos(0x0104, 57400, 1000, 52500, 90)
-    SetChrPos(0x0101, 57400, 1000, 51300, 45)
-    SetChrPos(0x0103, 56400, 1000, 50200, 45)
-    SetChrPos(0x0102, 56400, 1000, 51500, 90)
+    ChrSetPos(0x0104, 57400, 1000, 52500, 90)
+    ChrSetPos(0x0101, 57400, 1000, 51300, 45)
+    ChrSetPos(0x0103, 56400, 1000, 50200, 45)
+    ChrSetPos(0x0102, 56400, 1000, 51500, 90)
     ChrTurnDirection(0x0104, 0x0008, 0)
     OP_69(0x0104, 2000)
 
@@ -737,9 +727,9 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_80F(): pass
+    def _loc_887(): pass
 
-    label('loc_80F')
+    label('loc_887')
 
     ChrTalk(
         0x0101,
@@ -757,7 +747,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -782,21 +772,21 @@ def PreInit():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_8C1',
+        'loc_943',
     )
 
     OP_28(0x000D, 0x01, 0x4000)
 
-    def _loc_8C1(): pass
+    def _loc_943(): pass
 
-    label('loc_8C1')
+    label('loc_943')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0065, 3, 0x32B)),
             Expr.Return,
         ),
-        'loc_91B',
+        'loc_9A2',
     )
 
     OP_28(0x000D, 0x01, 0x2000)
@@ -814,17 +804,17 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_921')
+    Jump('loc_9A8')
 
-    def _loc_91B(): pass
+    def _loc_9A2(): pass
 
-    label('loc_91B')
+    label('loc_9A2')
 
     OP_28(0x000D, 0x01, 0x0004)
 
-    def _loc_921(): pass
+    def _loc_9A8(): pass
 
-    label('loc_921')
+    label('loc_9A8')
 
     ChrTurnDirection(0x0008, 0x0101, 400)
 
@@ -961,7 +951,7 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_BF9',
+        'loc_CC6',
     )
 
     ChrTalk(
@@ -980,9 +970,9 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_BF9(): pass
+    def _loc_CC6(): pass
 
-    label('loc_BF9')
+    label('loc_CC6')
 
     ChrTalk(
         0x0101,
@@ -1032,7 +1022,7 @@ def PreInit():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_DDF',
+        'loc_ED9',
     )
 
     ChrTurnDirection(0x0101, 0x0104, 400)
@@ -1078,9 +1068,9 @@ def PreInit():
 
     CloseMessageWindow()
 
-    def _loc_DDF(): pass
+    def _loc_ED9(): pass
 
-    label('loc_DDF')
+    label('loc_ED9')
 
     ChrTalk(
         0x0008,
@@ -1126,13 +1116,13 @@ def PreInit():
 
     CloseMessageWindow()
 
-    @scena.Lambda('lambda_0EA9')
-    def lambda_0EA9():
+    @scena.Lambda('lambda_0FB7')
+    def lambda_0FB7():
         ChrTurnDirection(0x0104, 0x0008, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0104, 0x0001, lambda_0EA9)
+    DispatchAsync(0x0104, 0x0001, lambda_0FB7)
 
     ChrTurnDirection(0x0101, 0x0008, 400)
 
@@ -1193,7 +1183,7 @@ def PreInit():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1209,7 +1199,7 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
-    SetChrDirection(0x0008, 180, 0)
+    ChrSetDirection(0x0008, 180, 0)
     EventEnd(0x00)
     TalkEnd(0x0008)
 

@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R0101   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '多角铁牛'),
-    TXT(0x02, '洛连特方向'),
-    TXT(0x03, '格鲁纳门方向'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x522
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -84,11 +71,12 @@ def ChipData():
         ('ED6_DT09/CH10241._CH', 'ED6_DT09/CH10241P._CP'),
     ]
 
-# id: 0x10002 offset: 0xFA
+# id: 0x10001 offset: 0xFA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '多角铁牛',
             x                   = -87350,
             z                   = 1050,
             y                   = 68590,
@@ -103,6 +91,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '洛连特方向',
             x                   = -35110,
             z                   = 1000,
             y                   = 185500,
@@ -117,6 +106,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '格鲁纳门方向',
             x                   = -122810,
             z                   = 1000,
             y                   = -720,
@@ -132,11 +122,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x15A
+# id: 0x10002 offset: 0x15A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = -32000,
             z           = 1000,
             y           = 154000,
@@ -150,6 +141,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -42000,
             z           = 1400,
             y           = 142000,
@@ -163,6 +155,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -28000,
             z           = 2000,
             y           = 120000,
@@ -176,6 +169,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -47000,
             z           = 1000,
             y           = 122000,
@@ -189,6 +183,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -55000,
             z           = 1000,
             y           = 106000,
@@ -202,6 +197,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -33000,
             z           = 1000,
             y           = 109000,
@@ -215,6 +211,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -83000,
             z           = 2000,
             y           = 84900,
@@ -228,6 +225,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -94000,
             z           = 1000,
             y           = 62000,
@@ -241,6 +239,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -106000,
             z           = 1000,
             y           = 42000,
@@ -254,6 +253,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -125000,
             z           = 1000,
             y           = 34000,
@@ -268,7 +268,7 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x272
+# id: 0x10003 offset: 0x272
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -284,20 +284,20 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x292
+# id: 0x10004 offset: 0x292
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x292
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x293
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_293')
+def func_01_293():
     OP_16(0x02, 4000, -196000, -40000, 196617)
     OP_B2(0x00, 0x00, 0x0080)
 
@@ -324,7 +324,7 @@ def Init():
         'loc_2D3',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0008, 0x0080)
     OP_B2(0x01, 0x00, 0x0080)
 
     def _loc_2D3(): pass
@@ -334,8 +334,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x2D4
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_2D4')
+def func_02_2D4():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -346,7 +346,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_2D4')
 
     def _loc_2E9(): pass
 
@@ -439,15 +439,15 @@ def func_03_2EA():
         ),
     )
 
-    SetChrSubChip(0x0000, 0)
-    SetChrSubChip(0x0001, 0)
-    SetChrSubChip(0x0002, 0)
-    SetChrSubChip(0x0003, 0)
-    SetChrSubChip(0x0004, 0)
-    SetChrSubChip(0x0005, 0)
-    SetChrSubChip(0x0006, 0)
-    SetChrSubChip(0x0007, 0)
-    SetChrName('')
+    ChrSetSubChip(0x0000, 0)
+    ChrSetSubChip(0x0001, 0)
+    ChrSetSubChip(0x0002, 0)
+    ChrSetSubChip(0x0003, 0)
+    ChrSetSubChip(0x0004, 0)
+    ChrSetSubChip(0x0005, 0)
+    ChrSetSubChip(0x0006, 0)
+    ChrSetSubChip(0x0007, 0)
+    TalkSetChrName('')
 
     Talk(
         (
@@ -516,14 +516,14 @@ def func_03_2EA():
     label('loc_3EB')
 
     Battle(0x000003E9, 0x00000000, 0x00, 0x0000, 0xFF)
-    SetChrPos(0x0000, -83530, 1080, 72140, 225)
-    SetChrPos(0x0001, -83530, 1080, 72140, 225)
-    SetChrPos(0x0002, -83530, 1080, 72140, 225)
-    SetChrPos(0x0003, -83530, 1080, 72140, 225)
-    SetChrPos(0x0004, -83530, 1080, 72140, 225)
-    SetChrPos(0x0005, -83530, 1080, 72140, 225)
-    SetChrPos(0x0006, -83530, 1080, 72140, 225)
-    SetChrPos(0x0007, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0000, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0001, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0002, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0003, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0004, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0005, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0006, -83530, 1080, 72140, 225)
+    ChrSetPos(0x0007, -83530, 1080, 72140, 225)
     OP_69(0x0000, 0)
     OP_30(0x00)
 
@@ -558,7 +558,7 @@ def func_03_2EA():
     label('loc_49F')
 
     EventBegin(0x01)
-    SetChrFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0008, 0x0080)
     OP_B2(0x00, 0x00, 0x0080)
     OP_0D()
     Sleep(400)
@@ -566,7 +566,7 @@ def func_03_2EA():
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (

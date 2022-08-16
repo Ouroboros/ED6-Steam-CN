@@ -9,13 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R3300   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '利塔街道方向'),
-    TXT(0x02, '雷斯顿要塞方向'),
-    TXT(0x03, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -30,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x381
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -66,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -89,11 +77,12 @@ def ChipData():
         ('ED6_DT09/CH11211._CH', 'ED6_DT09/CH11211P._CP'),
     ]
 
-# id: 0x10002 offset: 0x12A
+# id: 0x10001 offset: 0x12A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '利塔街道方向',
             x                   = -10,
             z                   = 0,
             y                   = -23480,
@@ -108,6 +97,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '雷斯顿要塞方向',
             x                   = -17950,
             z                   = 0,
             y                   = 129169,
@@ -123,11 +113,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x16A
+# id: 0x10002 offset: 0x16A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = -12930,
             z           = -80,
             y           = 20220,
@@ -141,6 +132,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -70,
             z           = -70,
             y           = 30280,
@@ -154,6 +146,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -22410,
             z           = 30,
             y           = 93770,
@@ -167,6 +160,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -4900,
             z           = -10,
             y           = 75100,
@@ -180,6 +174,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -10260,
             z           = -30,
             y           = 49130,
@@ -194,13 +189,13 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x1F6
+# id: 0x10003 offset: 0x1F6
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1F6
+# id: 0x10004 offset: 0x1F6
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -220,13 +215,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x21A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x21B
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_21B')
+def func_01_21B():
     OP_16(0x02, 4000, -137000, -75000, 196661)
 
     If(
@@ -255,9 +250,9 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x247
-@scena.Code('ReInit')
-def ReInit():
-    SetMapFlags(0x08000000)
+@scena.Code('func_02_247')
+def func_02_247():
+    MapSetFlags(0x08000000)
 
     If(
         (
@@ -283,7 +278,7 @@ def ReInit():
     FadeOut(300, 0, 100)
     PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -310,7 +305,7 @@ def ReInit():
     label('loc_2BD')
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -367,7 +362,7 @@ def ReInit():
     Sleep(30)
 
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 

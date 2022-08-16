@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T2200_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,60 +23,55 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x715
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
     OP_69(0x0101, 0)
-    SetMapFlags(0x00400000)
-    SetChrFlags(0x0101, 0x0080)
-    SetChrFlags(0x0102, 0x0080)
-    SetChrFlags(0x0105, 0x0080)
-    SetChrPos(0x0101, 113000, 2000, 22300, 270)
-    SetChrPos(0x0102, 114500, 2000, 21500, 270)
-    SetChrPos(0x0105, 115000, 2000, 22600, 270)
+    MapSetFlags(0x00400000)
+    ChrSetFlags(0x0101, 0x0080)
+    ChrSetFlags(0x0102, 0x0080)
+    ChrSetFlags(0x0105, 0x0080)
+    ChrSetPos(0x0101, 113000, 2000, 22300, 270)
+    ChrSetPos(0x0102, 114500, 2000, 21500, 270)
+    ChrSetPos(0x0105, 115000, 2000, 22600, 270)
 
     ExecExpressionWithValue(
         0x000A,
@@ -134,9 +124,9 @@ def PreInit():
     )
 
     OP_6F(0x0000, 30)
-    ClearChrFlags(0x0101, 0x0080)
-    ClearChrFlags(0x0102, 0x0080)
-    ClearChrFlags(0x0105, 0x0080)
+    ChrClearFlags(0x0101, 0x0080)
+    ChrClearFlags(0x0102, 0x0080)
+    ChrClearFlags(0x0105, 0x0080)
     FadeIn(2000, 0)
 
     @scena.Lambda('lambda_012D')
@@ -415,7 +405,7 @@ def PreInit():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -433,7 +423,7 @@ def PreInit():
     SetMessageWindowPos(72, 320, 56, 3)
     Sleep(400)
 
-    ClearMapFlags(0x00400000)
+    MapClearFlags(0x00400000)
     EventEnd(0x00)
 
     Return()

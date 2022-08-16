@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0024   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2DE
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -189,52 +179,52 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0x1FC
+# id: 0x10000 offset: 0x1FC
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x1FC
+# id: 0x10001 offset: 0x1FC
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x1FC
+# id: 0x10002 offset: 0x1FC
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x1FC
+# id: 0x10003 offset: 0x1FC
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1FC
+# id: 0x10004 offset: 0x1FC
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x1FC
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x1FD
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x1FD
+@scena.Code('func_01_1FD')
+def func_01_1FD():
+    Return()
+
 # id: 0x0002 offset: 0x1FE
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1FE')
+def func_02_1FE():
     Fade(500)
-    SetChrPos(0x0000, -13500, 0, 47000, 270)
+    ChrSetPos(0x0000, -13500, 0, 47000, 270)
     OP_0D()
 
     Return()
@@ -243,7 +233,7 @@ def ReInit():
 @scena.Code('func_03_216')
 def func_03_216():
     Fade(500)
-    SetChrPos(0x0000, 53000, 0, 50200, 90)
+    ChrSetPos(0x0000, 53000, 0, 50200, 90)
     OP_0D()
 
     Return()
@@ -252,7 +242,7 @@ def func_03_216():
 @scena.Code('func_04_22E')
 def func_04_22E():
     Fade(500)
-    SetChrPos(0x0000, 12000, -250, 45600, 0)
+    ChrSetPos(0x0000, 12000, -250, 45600, 0)
     OP_0D()
 
     Return()
@@ -261,7 +251,7 @@ def func_04_22E():
 @scena.Code('func_05_246')
 def func_05_246():
     Fade(500)
-    SetChrPos(0x0000, -18000, 2850, 46600, 0)
+    ChrSetPos(0x0000, -18000, 2850, 46600, 0)
     OP_0D()
 
     Return()
@@ -270,7 +260,7 @@ def func_05_246():
 @scena.Code('func_06_25E')
 def func_06_25E():
     Fade(500)
-    SetChrPos(0x0000, 52000, 5000, 50500, 7)
+    ChrSetPos(0x0000, 52000, 5000, 50500, 7)
     OP_0D()
 
     Return()
@@ -279,7 +269,7 @@ def func_06_25E():
 @scena.Code('func_07_276')
 def func_07_276():
     Fade(500)
-    SetChrPos(0x0000, 17000, 0, 47000, 0)
+    ChrSetPos(0x0000, 17000, 0, 47000, 0)
     OP_0D()
 
     Return()

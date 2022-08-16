@@ -9,12 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C1410   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '维姆拉'),
-    TXT(0x02, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -29,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x5DD
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -65,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -73,11 +62,12 @@ def ChipData():
         ('ED6_DT07/CH01680._CH', 'ED6_DT07/CH01680P._CP'),
     ]
 
-# id: 0x10002 offset: 0xB2
+# id: 0x10001 offset: 0xB2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '维姆拉',
             x                   = 3200,
             z                   = 0,
             y                   = 33900,
@@ -93,19 +83,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xD2
+# id: 0x10002 offset: 0xD2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xD2
+# id: 0x10003 offset: 0xD2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xD2
+# id: 0x10004 offset: 0xD2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -125,18 +115,18 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0xF6
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xF7
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xF7
+@scena.Code('func_01_F7')
+def func_01_F7():
+    Return()
+
 # id: 0x0002 offset: 0xF8
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_F8')
+def func_02_F8():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -147,7 +137,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_F8')
 
     def _loc_10D(): pass
 
@@ -274,8 +264,8 @@ def func_03_10E():
         'loc_1D2',
     )
 
-    SetChrStatus(0x0003, 0x02, 1)
-    SetChrStatus(0x0003, 0x05, 100)
+    ChrSetStatus(0x0003, 0x02, 1)
+    ChrSetStatus(0x0003, 0x05, 100)
 
     Jump('loc_210')
 
@@ -293,8 +283,8 @@ def func_03_10E():
         'loc_1EC',
     )
 
-    SetChrStatus(0x0002, 0x02, 1)
-    SetChrStatus(0x0002, 0x05, 100)
+    ChrSetStatus(0x0002, 0x02, 1)
+    ChrSetStatus(0x0002, 0x05, 100)
 
     Jump('loc_210')
 
@@ -312,8 +302,8 @@ def func_03_10E():
         'loc_206',
     )
 
-    SetChrStatus(0x0000, 0x02, 1)
-    SetChrStatus(0x0000, 0x05, 100)
+    ChrSetStatus(0x0000, 0x02, 1)
+    ChrSetStatus(0x0000, 0x05, 100)
 
     Jump('loc_210')
 
@@ -321,8 +311,8 @@ def func_03_10E():
 
     label('loc_206')
 
-    SetChrStatus(0x0001, 0x02, 1)
-    SetChrStatus(0x0001, 0x05, 100)
+    ChrSetStatus(0x0001, 0x02, 1)
+    ChrSetStatus(0x0001, 0x05, 100)
 
     def _loc_210(): pass
 
@@ -355,8 +345,8 @@ def func_03_10E():
         'loc_23B',
     )
 
-    SetChrStatus(0x0002, 0x02, 1)
-    SetChrStatus(0x0002, 0x05, 100)
+    ChrSetStatus(0x0002, 0x02, 1)
+    ChrSetStatus(0x0002, 0x05, 100)
 
     Jump('loc_25F')
 
@@ -374,8 +364,8 @@ def func_03_10E():
         'loc_255',
     )
 
-    SetChrStatus(0x0000, 0x02, 1)
-    SetChrStatus(0x0000, 0x05, 100)
+    ChrSetStatus(0x0000, 0x02, 1)
+    ChrSetStatus(0x0000, 0x05, 100)
 
     Jump('loc_25F')
 
@@ -383,8 +373,8 @@ def func_03_10E():
 
     label('loc_255')
 
-    SetChrStatus(0x0001, 0x02, 1)
-    SetChrStatus(0x0001, 0x05, 100)
+    ChrSetStatus(0x0001, 0x02, 1)
+    ChrSetStatus(0x0001, 0x05, 100)
 
     def _loc_25F(): pass
 
@@ -406,8 +396,8 @@ def func_03_10E():
         'loc_27C',
     )
 
-    SetChrStatus(0x0000, 0x02, 1)
-    SetChrStatus(0x0000, 0x05, 100)
+    ChrSetStatus(0x0000, 0x02, 1)
+    ChrSetStatus(0x0000, 0x05, 100)
 
     Jump('loc_286')
 
@@ -415,8 +405,8 @@ def func_03_10E():
 
     label('loc_27C')
 
-    SetChrStatus(0x0001, 0x02, 1)
-    SetChrStatus(0x0001, 0x05, 100)
+    ChrSetStatus(0x0001, 0x02, 1)
+    ChrSetStatus(0x0001, 0x05, 100)
 
     def _loc_286(): pass
 
@@ -775,14 +765,14 @@ def func_04_51F():
 
     PlaySE(13, 0x00, 0x64)
     OP_0D()
-    SetChrStatus(0x0000, 0xFE, 0)
-    SetChrStatus(0x0001, 0xFE, 0)
-    SetChrStatus(0x0002, 0xFE, 0)
-    SetChrStatus(0x0003, 0xFE, 0)
-    SetChrStatus(0x0004, 0xFE, 0)
-    SetChrStatus(0x0005, 0xFE, 0)
-    SetChrStatus(0x0006, 0xFE, 0)
-    SetChrStatus(0x0007, 0xFE, 0)
+    ChrSetStatus(0x0000, 0xFE, 0)
+    ChrSetStatus(0x0001, 0xFE, 0)
+    ChrSetStatus(0x0002, 0xFE, 0)
+    ChrSetStatus(0x0003, 0xFE, 0)
+    ChrSetStatus(0x0004, 0xFE, 0)
+    ChrSetStatus(0x0005, 0xFE, 0)
+    ChrSetStatus(0x0006, 0xFE, 0)
+    ChrSetStatus(0x0007, 0xFE, 0)
     Sleep(3500)
 
     OP_1E()

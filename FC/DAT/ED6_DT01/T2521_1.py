@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T2521_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,51 +23,46 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x10A0
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.Eval, "OP_29(0x0027, 0x01, 0x1000)"),
@@ -122,7 +112,7 @@ def PreInit():
 
     label('loc_E7')
 
-    SetChrFlags(0x0015, 0x0010)
+    ChrSetFlags(0x0015, 0x0010)
     TalkBegin(0x0015)
 
     ChrTalk(
@@ -145,13 +135,13 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    ClearChrFlags(0x0015, 0x0010)
+    ChrClearFlags(0x0015, 0x0010)
 
     def _loc_131(): pass
 
     label('loc_131')
 
-    Jump('loc_A8A')
+    Jump('loc_B48')
 
     def _loc_134(): pass
 
@@ -162,7 +152,7 @@ def PreInit():
             (Expr.TestScenaFlags, ScenaFlag(0x0001, 3, 0xB)),
             Expr.Return,
         ),
-        'loc_19F',
+        'loc_1A9',
     )
 
     TalkBegin(0x0015)
@@ -189,11 +179,11 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_A8A')
+    Jump('loc_B48')
 
-    def _loc_19F(): pass
+    def _loc_1A9(): pass
 
-    label('loc_19F')
+    label('loc_1A9')
 
     If(
         (
@@ -204,7 +194,7 @@ def PreInit():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_42E',
+        'loc_460',
     )
 
     TalkBegin(0x0015)
@@ -241,7 +231,7 @@ def PreInit():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_397',
+        'loc_3B5',
     )
 
     EventBegin(0x00)
@@ -261,7 +251,7 @@ def PreInit():
             (Expr.Eval, "OP_40(0x033D)"),
             Expr.Return,
         ),
-        'loc_2BA',
+        'loc_2D3',
     )
 
     RemoveItem(0x033D, 1)
@@ -269,7 +259,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -287,16 +277,16 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_2BA(): pass
+    def _loc_2D3(): pass
 
-    label('loc_2BA')
+    label('loc_2D3')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033E)"),
             Expr.Return,
         ),
-        'loc_312',
+        'loc_32B',
     )
 
     RemoveItem(0x033E, 1)
@@ -304,7 +294,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -322,16 +312,16 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_312(): pass
+    def _loc_32B(): pass
 
-    label('loc_312')
+    label('loc_32B')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033F)"),
             Expr.Return,
         ),
-        'loc_36A',
+        'loc_383',
     )
 
     RemoveItem(0x033F, 1)
@@ -339,7 +329,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -357,9 +347,9 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_36A(): pass
+    def _loc_383(): pass
 
-    label('loc_36A')
+    label('loc_383')
 
     ChrTurnDirection(0x00FE, 0x0101, 400)
 
@@ -374,11 +364,11 @@ def PreInit():
     CloseMessageWindow()
     Call(1, 0x0001)
 
-    Jump('loc_42B')
+    Jump('loc_45D')
 
-    def _loc_397(): pass
+    def _loc_3B5(): pass
 
-    label('loc_397')
+    label('loc_3B5')
 
     ChrTalk(
         0x0101,
@@ -421,22 +411,22 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    def _loc_42B(): pass
+    def _loc_45D(): pass
 
-    label('loc_42B')
+    label('loc_45D')
 
-    Jump('loc_A8A')
+    Jump('loc_B48')
 
-    def _loc_42E(): pass
+    def _loc_460(): pass
 
-    label('loc_42E')
+    label('loc_460')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0001, 2, 0xA)),
             Expr.Return,
         ),
-        'loc_4F4',
+        'loc_535',
     )
 
     TalkBegin(0x0015)
@@ -475,18 +465,18 @@ def PreInit():
 
     CloseMessageWindow()
 
-    Jump('loc_A8A')
+    Jump('loc_B48')
 
-    def _loc_4F4(): pass
+    def _loc_535(): pass
 
-    label('loc_4F4')
+    label('loc_535')
 
     If(
         (
             (Expr.Eval, "OP_29(0x0027, 0x01, 0x0020)"),
             Expr.Return,
         ),
-        'loc_7EA',
+        'loc_862',
     )
 
     TalkBegin(0x0015)
@@ -523,7 +513,7 @@ def PreInit():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_742',
+        'loc_7A6',
     )
 
     EventBegin(0x00)
@@ -560,7 +550,7 @@ def PreInit():
             (Expr.Eval, "OP_40(0x033D)"),
             Expr.Return,
         ),
-        'loc_65C',
+        'loc_6BB',
     )
 
     RemoveItem(0x033D, 1)
@@ -568,7 +558,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -586,16 +576,16 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_65C(): pass
+    def _loc_6BB(): pass
 
-    label('loc_65C')
+    label('loc_6BB')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033E)"),
             Expr.Return,
         ),
-        'loc_6B4',
+        'loc_713',
     )
 
     RemoveItem(0x033E, 1)
@@ -603,7 +593,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -621,16 +611,16 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_6B4(): pass
+    def _loc_713(): pass
 
-    label('loc_6B4')
+    label('loc_713')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033F)"),
             Expr.Return,
         ),
-        'loc_70C',
+        'loc_76B',
     )
 
     RemoveItem(0x033F, 1)
@@ -638,7 +628,7 @@ def PreInit():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -656,9 +646,9 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_70C(): pass
+    def _loc_76B(): pass
 
-    label('loc_70C')
+    label('loc_76B')
 
     ChrTurnDirection(0x00FE, 0x0105, 400)
 
@@ -674,11 +664,11 @@ def PreInit():
     CloseMessageWindow()
     Call(1, 0x0001)
 
-    Jump('loc_7E7')
+    Jump('loc_85F')
 
-    def _loc_742(): pass
+    def _loc_7A6(): pass
 
-    label('loc_742')
+    label('loc_7A6')
 
     ChrTalk(
         0x0101,
@@ -722,19 +712,19 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    def _loc_7E7(): pass
+    def _loc_85F(): pass
 
-    label('loc_7E7')
+    label('loc_85F')
 
-    Jump('loc_A8A')
+    Jump('loc_B48')
 
-    def _loc_7EA(): pass
+    def _loc_862(): pass
 
-    label('loc_7EA')
+    label('loc_862')
 
     SetScenaFlags(ScenaFlag(0x0001, 2, 0xA))
     OP_28(0x0027, 0x01, 0x0020)
-    ClearChrFlags(0x0015, 0x0010)
+    ChrClearFlags(0x0015, 0x0010)
     TalkBegin(0x0015)
     EventBegin(0x00)
     ChrTurnDirection(0x0015, 0x0105, 0)
@@ -878,21 +868,21 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    ClearChrFlags(0x0015, 0x0010)
+    ChrClearFlags(0x0015, 0x0010)
     EventEnd(0x01)
     OP_4B(0x0015, 255)
 
-    def _loc_A8A(): pass
+    def _loc_B48(): pass
 
-    label('loc_A8A')
+    label('loc_B48')
 
     TalkEnd(0x0015)
 
     Return()
 
-# id: 0x0001 offset: 0xA8E
-@scena.Code('Init')
-def Init():
+# id: 0x0001 offset: 0xB4C
+@scena.Code('func_01_B4C')
+def func_01_B4C():
     If(
         (
             (Expr.Eval, "OP_29(0x0027, 0x01, 0x0200)"),
@@ -902,7 +892,7 @@ def Init():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_D1B',
+        'loc_E0B',
     )
 
     OP_28(0x0027, 0x01, 0x1000)
@@ -1026,7 +1016,7 @@ def Init():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1045,11 +1035,11 @@ def Init():
     FadeIn(300, 0)
     Sleep(100)
 
-    Jump('loc_E2C')
+    Jump('loc_F35')
 
-    def _loc_D1B(): pass
+    def _loc_E0B(): pass
 
-    label('loc_D1B')
+    label('loc_E0B')
 
     If(
         (
@@ -1066,7 +1056,7 @@ def Init():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_DA3',
+        'loc_E9D',
     )
 
     ChrTalk(
@@ -1091,11 +1081,11 @@ def Init():
 
     CloseMessageWindow()
 
-    Jump('loc_E2C')
+    Jump('loc_F35')
 
-    def _loc_DA3(): pass
+    def _loc_E9D(): pass
 
-    label('loc_DA3')
+    label('loc_E9D')
 
     ChrTalk(
         0x00FE,
@@ -1131,25 +1121,25 @@ def Init():
 
     CloseMessageWindow()
 
-    def _loc_E2C(): pass
+    def _loc_F35(): pass
 
-    label('loc_E2C')
+    label('loc_F35')
 
     EventEnd(0x01)
     TalkEnd(0x0015)
 
     Return()
 
-# id: 0x0002 offset: 0xE32
-@scena.Code('ReInit')
-def ReInit():
+# id: 0x0002 offset: 0xF3B
+@scena.Code('func_02_F3B')
+def func_02_F3B():
     ClearScenaFlags(ScenaFlag(0x0001, 2, 0xA))
     ClearScenaFlags(ScenaFlag(0x0001, 3, 0xB))
     PlaySE(17, 0x00, 0x64)
-    SetChrFlags(0x0016, 0x0080)
+    ChrSetFlags(0x0016, 0x0080)
     OP_64(0x01, 0x0001)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1174,9 +1164,9 @@ def ReInit():
 
     Return()
 
-# id: 0x0003 offset: 0xE9E
-@scena.Code('func_03_E9E')
-def func_03_E9E():
+# id: 0x0003 offset: 0xFA7
+@scena.Code('func_03_FA7')
+def func_03_FA7():
     FadeOut(300, 0, 100)
 
     Talk(
@@ -1201,7 +1191,7 @@ def func_03_E9E():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_1075',
+        'loc_117E',
     )
 
     FadeOut(300, 0, 100)
@@ -1255,21 +1245,21 @@ def func_03_E9E():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_F67'),
-        (0x00000001, 'loc_1072'),
-        (-1, 'loc_1075'),
+        (0x00000000, 'loc_1070'),
+        (0x00000001, 'loc_117B'),
+        (-1, 'loc_117E'),
     )
 
-    def _loc_F67(): pass
+    def _loc_1070(): pass
 
-    label('loc_F67')
+    label('loc_1070')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033D)"),
             Expr.Return,
         ),
-        'loc_FBF',
+        'loc_10C8',
     )
 
     RemoveItem(0x033D, 1)
@@ -1277,7 +1267,7 @@ def func_03_E9E():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1295,16 +1285,16 @@ def func_03_E9E():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_FBF(): pass
+    def _loc_10C8(): pass
 
-    label('loc_FBF')
+    label('loc_10C8')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033E)"),
             Expr.Return,
         ),
-        'loc_1017',
+        'loc_1120',
     )
 
     RemoveItem(0x033E, 1)
@@ -1312,7 +1302,7 @@ def func_03_E9E():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1330,16 +1320,16 @@ def func_03_E9E():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_1017(): pass
+    def _loc_1120(): pass
 
-    label('loc_1017')
+    label('loc_1120')
 
     If(
         (
             (Expr.Eval, "OP_40(0x033F)"),
             Expr.Return,
         ),
-        'loc_106F',
+        'loc_1178',
     )
 
     RemoveItem(0x033F, 1)
@@ -1347,7 +1337,7 @@ def func_03_E9E():
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1365,21 +1355,21 @@ def func_03_E9E():
     OP_56(0x00)
     FadeIn(300, 0)
 
-    def _loc_106F(): pass
+    def _loc_1178(): pass
 
-    label('loc_106F')
+    label('loc_1178')
 
-    Jump('loc_1075')
+    Jump('loc_117E')
 
-    def _loc_1072(): pass
+    def _loc_117B(): pass
 
-    label('loc_1072')
+    label('loc_117B')
 
-    Jump('loc_1075')
+    Jump('loc_117E')
 
-    def _loc_1075(): pass
+    def _loc_117E(): pass
 
-    label('loc_1075')
+    label('loc_117E')
 
     If(
         (
@@ -1390,14 +1380,14 @@ def func_03_E9E():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_1094',
+        'loc_119D',
     )
 
     OP_64(0x03, 0x0001)
 
-    def _loc_1094(): pass
+    def _loc_119D(): pass
 
-    label('loc_1094')
+    label('loc_119D')
 
     TalkEnd(0x00FF)
 

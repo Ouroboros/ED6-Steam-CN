@@ -9,12 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4123   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '亚妮拉丝'),
-    TXT(0x02, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -29,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2C1
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -65,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -73,11 +62,12 @@ def ChipData():
         ('ED6_DT07/CH01630._CH', 'ED6_DT07/CH01630P._CP'),
     ]
 
-# id: 0x10002 offset: 0xB2
+# id: 0x10001 offset: 0xB2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '亚妮拉丝',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -93,27 +83,27 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xD2
+# id: 0x10002 offset: 0xD2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xD2
+# id: 0x10003 offset: 0xD2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xD2
+# id: 0x10004 offset: 0xD2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xD2
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00C9, 1, 0x649)),
@@ -125,8 +115,8 @@ def PreInit():
         'loc_F4',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0008, 10500, 0, 5390, 90)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetPos(0x0008, 10500, 0, 5390, 90)
 
     def _loc_F4(): pass
 
@@ -135,13 +125,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xF5
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_F5')
+def func_01_F5():
     Return()
 
 # id: 0x0002 offset: 0xF6
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_F6')
+def func_02_F6():
     TalkBegin(0x0008)
 
     If(
@@ -152,14 +142,14 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_2B7',
+        'loc_2C1',
     )
 
     EventBegin(0x00)
     Fade(1000)
-    SetChrPos(0x0101, 9240, 0, 5790, 90)
-    SetChrPos(0x0102, 9180, 0, 4760, 90)
-    SetChrPos(0x0108, 8280, 0, 5410, 90)
+    ChrSetPos(0x0101, 9240, 0, 5790, 90)
+    ChrSetPos(0x0102, 9180, 0, 4760, 90)
+    ChrSetPos(0x0108, 8280, 0, 5410, 90)
     ChrTurnDirection(0x0008, 0x0108, 0)
     SetScenaFlags(ScenaFlag(0x00C9, 4, 0x64C))
     CameraMove(9900, 0, 5380, 1000)
@@ -256,9 +246,9 @@ def ReInit():
     NewScene('ED6_DT01/T4101._SN', 100, 0, 0)
     IdleLoop()
 
-    def _loc_2B7(): pass
+    def _loc_2C1(): pass
 
-    label('loc_2B7')
+    label('loc_2C1')
 
     TalkEnd(0x0008)
 

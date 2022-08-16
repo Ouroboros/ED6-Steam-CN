@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3114_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2A9
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,50 +54,50 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xA9
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xA9
+@scena.Code('func_01_A9')
+def func_01_A9():
+    Return()
+
 # id: 0x0002 offset: 0xAA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_AA')
+def func_02_AA():
     If(
         (
             (Expr.Eval, "OP_29(0x002C, 0x00, 0x08)"),
@@ -138,14 +128,14 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_2A2',
+        'loc_2C5',
     )
 
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-107170, 0, -700, 0)
-    SetChrPos(0x0101, -107070, 0, -2860, 2)
-    SetChrPos(0x0102, -108010, 0, -2670, 359)
+    ChrSetPos(0x0101, -107070, 0, -2860, 2)
+    ChrSetPos(0x0102, -108010, 0, -2670, 359)
 
     If(
         (
@@ -158,7 +148,7 @@ def ReInit():
         'loc_134',
     )
 
-    SetChrPos(0x0107, -105720, 0, -2270, 332)
+    ChrSetPos(0x0107, -105720, 0, -2270, 332)
 
     def _loc_134(): pass
 
@@ -175,7 +165,7 @@ def ReInit():
         'loc_153',
     )
 
-    SetChrPos(0x0106, -109230, 0, -1920, 56)
+    ChrSetPos(0x0106, -109230, 0, -1920, 56)
 
     def _loc_153(): pass
 
@@ -192,7 +182,7 @@ def ReInit():
         'loc_172',
     )
 
-    SetChrPos(0x013C, -106920, 0, -560, 21)
+    ChrSetPos(0x013C, -106920, 0, -560, 21)
 
     def _loc_172(): pass
 
@@ -283,9 +273,9 @@ def ReInit():
     OP_B2(0x00, 0x03, 0x0080)
     EventEnd(0x00)
 
-    def _loc_2A2(): pass
+    def _loc_2C5(): pass
 
-    label('loc_2A2')
+    label('loc_2C5')
 
     Return()
 

@@ -9,51 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0049   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '10460待机'),
-    TXT(0x02, '10461移动'),
-    TXT(0x03, '10462攻击'),
-    TXT(0x04, '10463挨打'),
-    TXT(0x05, '10464倒下'),
-    TXT(0x06, '10470待机'),
-    TXT(0x07, '10471移动'),
-    TXT(0x08, '10472攻击'),
-    TXT(0x09, '10473挨打'),
-    TXT(0x0A, '10474倒下'),
-    TXT(0x0B, '10480待机'),
-    TXT(0x0C, '10481移动'),
-    TXT(0x0D, '10482攻击'),
-    TXT(0x0E, '10483挨打'),
-    TXT(0x0F, '10484倒下'),
-    TXT(0x10, '10490待机'),
-    TXT(0x11, '10491移动'),
-    TXT(0x12, '10492攻击'),
-    TXT(0x13, '10493挨打'),
-    TXT(0x14, '10494倒下'),
-    TXT(0x15, '10500待机'),
-    TXT(0x16, '10501移动'),
-    TXT(0x17, '10502攻击'),
-    TXT(0x18, '10503挨打'),
-    TXT(0x19, '10504倒下'),
-    TXT(0x1A, '10510待机'),
-    TXT(0x1B, '10511移动'),
-    TXT(0x1C, '10512攻击'),
-    TXT(0x1D, '10513挨打'),
-    TXT(0x1E, '10514倒下'),
-    TXT(0x1F, '10520待机'),
-    TXT(0x20, '10521移动'),
-    TXT(0x21, '10522攻击'),
-    TXT(0x22, '10523挨打'),
-    TXT(0x23, '10524倒下'),
-    TXT(0x24, '10530移动'),
-    TXT(0x25, '10531待机'),
-    TXT(0x26, '10532攻击'),
-    TXT(0x27, '10533挨打'),
-    TXT(0x28, '10534倒下'),
-    TXT(0x29, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -68,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x759
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -104,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -151,11 +101,12 @@ def ChipData():
         ('ED6_DT09/CH10534._CH', 'ED6_DT09/CH10534P._CP'),
     ]
 
-# id: 0x10002 offset: 0x1EA
+# id: 0x10001 offset: 0x1EA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '10460待机',
             x                   = 4000,
             z                   = 0,
             y                   = 2000,
@@ -170,6 +121,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10461移动',
             x                   = 4000,
             z                   = 0,
             y                   = 6000,
@@ -184,6 +136,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10462攻击',
             x                   = 4000,
             z                   = 0,
             y                   = 10000,
@@ -198,6 +151,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10463挨打',
             x                   = 4000,
             z                   = 0,
             y                   = 14000,
@@ -212,6 +166,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10464倒下',
             x                   = 4000,
             z                   = 0,
             y                   = 18000,
@@ -226,6 +181,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10470待机',
             x                   = 8000,
             z                   = 0,
             y                   = 2000,
@@ -240,6 +196,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10471移动',
             x                   = 8000,
             z                   = 0,
             y                   = 6000,
@@ -254,6 +211,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10472攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 10000,
@@ -268,6 +226,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10473挨打',
             x                   = 8000,
             z                   = 0,
             y                   = 14000,
@@ -282,6 +241,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10474倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 18000,
@@ -296,6 +256,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10480待机',
             x                   = 12000,
             z                   = 0,
             y                   = 2000,
@@ -310,6 +271,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10481移动',
             x                   = 12000,
             z                   = 0,
             y                   = 6000,
@@ -324,6 +286,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10482攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 10000,
@@ -338,6 +301,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10483挨打',
             x                   = 12000,
             z                   = 0,
             y                   = 14000,
@@ -352,6 +316,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10484倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 18000,
@@ -366,6 +331,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10490待机',
             x                   = 16000,
             z                   = 0,
             y                   = 2000,
@@ -380,6 +346,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10491移动',
             x                   = 16000,
             z                   = 0,
             y                   = 6000,
@@ -394,6 +361,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10492攻击',
             x                   = 16000,
             z                   = 0,
             y                   = 10000,
@@ -408,6 +376,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10493挨打',
             x                   = 16000,
             z                   = 0,
             y                   = 14000,
@@ -422,6 +391,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10494倒下',
             x                   = 16000,
             z                   = 0,
             y                   = 18000,
@@ -436,6 +406,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10500待机',
             x                   = 20000,
             z                   = 0,
             y                   = 2000,
@@ -450,6 +421,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10501移动',
             x                   = 20000,
             z                   = 0,
             y                   = 6000,
@@ -464,6 +436,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10502攻击',
             x                   = 20000,
             z                   = 0,
             y                   = 10000,
@@ -478,6 +451,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10503挨打',
             x                   = 20000,
             z                   = 0,
             y                   = 14000,
@@ -492,6 +466,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10504倒下',
             x                   = 20000,
             z                   = 0,
             y                   = 18000,
@@ -506,6 +481,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10510待机',
             x                   = 24000,
             z                   = 0,
             y                   = 2000,
@@ -520,6 +496,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10511移动',
             x                   = 24000,
             z                   = 0,
             y                   = 6000,
@@ -534,6 +511,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10512攻击',
             x                   = 24000,
             z                   = 0,
             y                   = 10000,
@@ -548,6 +526,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10513挨打',
             x                   = 24000,
             z                   = 0,
             y                   = 14000,
@@ -562,6 +541,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10514倒下',
             x                   = 24000,
             z                   = 0,
             y                   = 18000,
@@ -576,6 +556,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10520待机',
             x                   = 28000,
             z                   = 0,
             y                   = 2000,
@@ -590,6 +571,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10521移动',
             x                   = 28000,
             z                   = 0,
             y                   = 6000,
@@ -604,6 +586,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10522攻击',
             x                   = 28000,
             z                   = 0,
             y                   = 10000,
@@ -618,6 +601,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10523挨打',
             x                   = 28000,
             z                   = 0,
             y                   = 14000,
@@ -632,6 +616,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10524倒下',
             x                   = 28000,
             z                   = 0,
             y                   = 18000,
@@ -646,6 +631,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10530移动',
             x                   = 32000,
             z                   = 0,
             y                   = 2000,
@@ -660,6 +646,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10531待机',
             x                   = 32000,
             z                   = 0,
             y                   = 6000,
@@ -674,6 +661,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10532攻击',
             x                   = 32000,
             z                   = 0,
             y                   = 10000,
@@ -688,6 +676,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10533挨打',
             x                   = 32000,
             z                   = 0,
             y                   = 14000,
@@ -702,6 +691,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '10534倒下',
             x                   = 32000,
             z                   = 0,
             y                   = 18000,
@@ -717,37 +707,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x6EA
+# id: 0x10002 offset: 0x6EA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x6EA
+# id: 0x10003 offset: 0x6EA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x6EA
+# id: 0x10004 offset: 0x6EA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x6EA
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x6EB
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x6EB
+@scena.Code('func_01_6EB')
+def func_01_6EB():
+    Return()
+
 # id: 0x0002 offset: 0x6EC
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_6EC')
+def func_02_6EC():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -758,7 +748,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_6EC')
 
     def _loc_701(): pass
 

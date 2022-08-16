@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('E0500   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x547
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     ExecExpressionWithVar(
         0x01,
         (
@@ -108,26 +98,26 @@ def PreInit():
     )
 
     OP_A1(0x0000, 0x0000)
-    Event(0, 0x0002)
+    Event(0, func_02_BC)
 
     Return()
 
 # id: 0x0001 offset: 0xBB
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_BB')
+def func_01_BB():
     Return()
 
 # id: 0x0002 offset: 0xBC
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_BC')
+def func_02_BC():
     EventBegin(0x00)
-    SetChrFlags(0x0000, 0x0004)
-    SetChrFlags(0x0000, 0x0080)
-    SetChrFlags(0x0001, 0x0080)
-    SetChrFlags(0x0002, 0x0080)
-    SetChrFlags(0x0003, 0x0080)
-    SetChrPos(0x0000, -33360, 29260, 37770, 155)
-    SetMapFlags(0x00000001)
+    ChrSetFlags(0x0000, 0x0004)
+    ChrSetFlags(0x0000, 0x0080)
+    ChrSetFlags(0x0001, 0x0080)
+    ChrSetFlags(0x0002, 0x0080)
+    ChrSetFlags(0x0003, 0x0080)
+    ChrSetPos(0x0000, -33360, 29260, 37770, 155)
+    MapSetFlags(0x00000001)
     OP_66(0x0000)
     PlaySE(121, 0x00, 0x64)
     OP_24(0x0079, 0x46)
@@ -143,7 +133,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0158')
     def lambda_0158():
-        SetChrDirection(0x00FE, 205, 10)
+        ChrSetDirection(0x00FE, 205, 10)
 
         ExitThread()
 
@@ -257,7 +247,7 @@ def ReInit():
 
     @scena.Lambda('lambda_02B1')
     def lambda_02B1():
-        SetChrDirection(0x00FE, 285, 10)
+        ChrSetDirection(0x00FE, 285, 10)
 
         ExitThread()
 
@@ -275,7 +265,7 @@ def ReInit():
 
     @scena.Lambda('lambda_02DF')
     def lambda_02DF():
-        SetChrDirection(0x00FE, 285, 8)
+        ChrSetDirection(0x00FE, 285, 8)
 
         ExitThread()
 
@@ -293,7 +283,7 @@ def ReInit():
 
     @scena.Lambda('lambda_030D')
     def lambda_030D():
-        SetChrDirection(0x00FE, 285, 6)
+        ChrSetDirection(0x00FE, 285, 6)
 
         ExitThread()
 
@@ -311,7 +301,7 @@ def ReInit():
 
     @scena.Lambda('lambda_033B')
     def lambda_033B():
-        SetChrDirection(0x00FE, 285, 4)
+        ChrSetDirection(0x00FE, 285, 4)
 
         ExitThread()
 
@@ -329,7 +319,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0369')
     def lambda_0369():
-        SetChrDirection(0x00FE, 285, 2)
+        ChrSetDirection(0x00FE, 285, 2)
 
         ExitThread()
 
@@ -339,7 +329,7 @@ def ReInit():
 
     @scena.Lambda('lambda_037C')
     def lambda_037C():
-        SetChrDirection(0x00FE, 285, 10)
+        ChrSetDirection(0x00FE, 285, 10)
 
         ExitThread()
 
@@ -355,7 +345,7 @@ def ReInit():
 
     @scena.Lambda('lambda_03B2')
     def lambda_03B2():
-        SetChrDirection(0x00FE, -19536, 1)
+        ChrSetDirection(0x00FE, -19536, 1)
 
         ExitThread()
 
@@ -481,7 +471,7 @@ def ReInit():
     DispatchAsync(0x0000, 0x0002, lambda_0519)
 
     OP_0D()
-    SetMapFlags(0x00100000)
+    MapSetFlags(0x00100000)
     SetScenaFlags(ScenaFlag(0x007F, 3, 0x3FB))
     NewScene('ED6_DT01/T4201._SN', 100, 0, 0)
     IdleLoop()

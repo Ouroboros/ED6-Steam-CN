@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R2202_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,51 +23,46 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x649
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
     OP_64(0x00, 0x0001)
     Fade(1000)
@@ -163,7 +153,7 @@ def PreInit():
             (Expr.Eval, "OP_29(0x001E, 0x00, 0x04)"),
             Expr.Return,
         ),
-        'loc_3BB',
+        'loc_401',
     )
 
     OP_28(0x001E, 0x01, 0x0010)
@@ -211,7 +201,7 @@ def PreInit():
             Expr.Geq,
             Expr.Return,
         ),
-        'loc_353',
+        'loc_38F',
     )
 
     ChrTurnDirection(0x0105, 0x0102, 400)
@@ -231,11 +221,11 @@ def PreInit():
     CloseMessageWindow()
     ChrTurnDirection(0x0101, 0x0105, 400)
 
-    Jump('loc_3B8')
+    Jump('loc_3FE')
 
-    def _loc_353(): pass
+    def _loc_38F(): pass
 
-    label('loc_353')
+    label('loc_38F')
 
     If(
         (
@@ -244,7 +234,7 @@ def PreInit():
             Expr.Geq,
             Expr.Return,
         ),
-        'loc_3B8',
+        'loc_3FE',
     )
 
     ChrTurnDirection(0x0136, 0x0102, 400)
@@ -264,20 +254,20 @@ def PreInit():
     CloseMessageWindow()
     ChrTurnDirection(0x0101, 0x0136, 400)
 
-    def _loc_3B8(): pass
+    def _loc_3FE(): pass
 
-    label('loc_3B8')
+    label('loc_3FE')
 
-    Jump('loc_3C1')
+    Jump('loc_407')
 
-    def _loc_3BB(): pass
+    def _loc_401(): pass
 
-    label('loc_3BB')
+    label('loc_401')
 
     OP_28(0x001E, 0x01, 0x4000)
-    def _loc_3C1(): pass
+    def _loc_407(): pass
 
-    label('loc_3C1')
+    label('loc_407')
 
     ChrTalk(
         0x0101,
@@ -297,9 +287,9 @@ def PreInit():
 
     Return()
 
-# id: 0x0001 offset: 0x437
-@scena.Code('Init')
-def Init():
+# id: 0x0001 offset: 0x487
+@scena.Code('func_01_487')
+def func_01_487():
     If(
         (
             (Expr.Eval, "OP_29(0x001D, 0x00, 0x08)"),
@@ -307,7 +297,7 @@ def Init():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_59A',
+        'loc_60D',
     )
 
     EventBegin(0x01)
@@ -319,7 +309,7 @@ def Init():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_4ED',
+        'loc_551',
     )
 
     ChrTurnDirection(0x0105, 0x0101, 400)
@@ -353,11 +343,11 @@ def Init():
 
     CloseMessageWindow()
 
-    Jump('loc_57C')
+    Jump('loc_5EF')
 
-    def _loc_4ED(): pass
+    def _loc_551(): pass
 
-    label('loc_4ED')
+    label('loc_551')
 
     ChrTurnDirection(0x0102, 0x0101, 400)
 
@@ -387,20 +377,20 @@ def Init():
 
     CloseMessageWindow()
 
-    def _loc_57C(): pass
+    def _loc_5EF(): pass
 
-    label('loc_57C')
+    label('loc_5EF')
 
     ChrMoveToRelative(0x0000, -1500, 0, 0, 3000, 0x00)
     Sleep(50)
 
     EventEnd(0x04)
 
-    Jump('loc_644')
+    Jump('loc_6C1')
 
-    def _loc_59A(): pass
+    def _loc_60D(): pass
 
-    label('loc_59A')
+    label('loc_60D')
 
     If(
         (
@@ -410,7 +400,7 @@ def Init():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_644',
+        'loc_6C1',
     )
 
     EventBegin(0x01)
@@ -422,22 +412,22 @@ def Init():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_5BE',
+        'loc_631',
     )
 
     ChrTurnDirection(0x0102, 0x0001, 400)
 
-    Jump('loc_5C5')
+    Jump('loc_638')
 
-    def _loc_5BE(): pass
+    def _loc_631(): pass
 
-    label('loc_5BE')
+    label('loc_631')
 
     ChrTurnDirection(0x0102, 0x0000, 400)
 
-    def _loc_5C5(): pass
+    def _loc_638(): pass
 
-    label('loc_5C5')
+    label('loc_638')
 
     ChrTalk(
         0x0102,
@@ -457,9 +447,9 @@ def Init():
 
     EventEnd(0x04)
 
-    def _loc_644(): pass
+    def _loc_6C1(): pass
 
-    label('loc_644')
+    label('loc_6C1')
 
     Return()
 

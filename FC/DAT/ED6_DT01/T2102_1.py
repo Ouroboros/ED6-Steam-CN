@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T2102_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,58 +23,53 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x6AD
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
-    ClearMapFlags(0x00000001)
+@scena.Code('Init')
+def Init():
+    MapClearFlags(0x00000001)
     EventBegin(0x00)
     OP_28(0x0020, 0x01, 0x0010)
     Fade(1000)
-    SetChrPos(0x0102, 113500, 0, 102600, 90)
-    SetChrPos(0x0101, 112500, 0, 102300, 90)
-    SetChrPos(0x0105, 111200, 0, 103100, 90)
+    ChrSetPos(0x0102, 113500, 0, 102600, 90)
+    ChrSetPos(0x0101, 112500, 0, 102300, 90)
+    ChrSetPos(0x0105, 111200, 0, 103100, 90)
 
     ExecExpressionWithValue(
         0x000E,
@@ -224,46 +214,46 @@ def PreInit():
         ),
     )
 
-    @scena.Lambda('lambda_0247')
-    def lambda_0247():
+    @scena.Lambda('lambda_0260')
+    def lambda_0260():
         OP_6C(180000, 3000)
 
         ExitThread()
 
-    DispatchAsync(0x000E, 0x0001, lambda_0247)
+    DispatchAsync(0x000E, 0x0001, lambda_0260)
 
-    @scena.Lambda('lambda_0257')
-    def lambda_0257():
+    @scena.Lambda('lambda_0270')
+    def lambda_0270():
         OP_69(0x000E, 3000)
 
         ExitThread()
 
-    DispatchAsync(0x000E, 0x0002, lambda_0257)
+    DispatchAsync(0x000E, 0x0002, lambda_0270)
 
-    SetChrFlags(0x0102, 0x0040)
-    SetChrDirection(0x0102, 0, 400)
+    ChrSetFlags(0x0102, 0x0040)
+    ChrSetDirection(0x0102, 0, 400)
 
-    @scena.Lambda('lambda_0271')
-    def lambda_0271():
+    @scena.Lambda('lambda_028A')
+    def lambda_028A():
         ChrWalkTo(0x0101, 113500, 0, 102600, 2000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0101, 0x0001, lambda_0271)
+    DispatchAsync(0x0101, 0x0001, lambda_028A)
 
-    @scena.Lambda('lambda_028C')
-    def lambda_028C():
+    @scena.Lambda('lambda_02A5')
+    def lambda_02A5():
         ChrWalkTo(0x0105, 112600, 0, 103200, 2000, 0x00)
 
         ExitThread()
 
-    DispatchAsync(0x0105, 0x0001, lambda_028C)
+    DispatchAsync(0x0105, 0x0001, lambda_02A5)
 
     ChrWalkTo(0x0102, 113500, 0, 104100, 2000, 0x00)
     ChrWalkTo(0x0102, 115110, 0, 104100, 2000, 0x00)
     ChrWalkTo(0x0102, 115500, 0, 102400, 2000, 0x00)
-    SetChrDirection(0x0102, 225, 400)
-    ClearChrFlags(0x0102, 0x0040)
+    ChrSetDirection(0x0102, 225, 400)
+    ChrClearFlags(0x0102, 0x0040)
     Sleep(600)
 
     OP_62(0x0102, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
@@ -292,7 +282,7 @@ def PreInit():
 
     CloseMessageWindow()
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -399,13 +389,13 @@ def PreInit():
     CloseMessageWindow()
     OP_64(0x00, 0x0001)
 
-    @scena.Lambda('lambda_0676')
-    def lambda_0676():
+    @scena.Lambda('lambda_06DA')
+    def lambda_06DA():
         CameraSetDistance(3500, 2000)
 
         ExitThread()
 
-    DispatchAsync(0x000E, 0x0001, lambda_0676)
+    DispatchAsync(0x000E, 0x0001, lambda_06DA)
 
     ChrWalkTo(0x0102, 115110, 0, 104100, 2000, 0x00)
     ChrWalkTo(0x0102, 113500, 0, 104100, 2000, 0x00)

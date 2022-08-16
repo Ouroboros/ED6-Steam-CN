@@ -9,16 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4120   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '卡露娜'),
-    TXT(0x02, '史帕德'),
-    TXT(0x03, '夏伊'),
-    TXT(0x04, '塞森'),
-    TXT(0x05, '多姆'),
-    TXT(0x06, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -33,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x26BE
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -69,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -81,11 +66,12 @@ def ChipData():
         ('ED6_DT07/CH01040._CH', 'ED6_DT07/CH01040P._CP'),
     ]
 
-# id: 0x10002 offset: 0xD2
+# id: 0x10001 offset: 0xD2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '卡露娜',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -100,6 +86,7 @@ def NpcData():
             talkScenaIndex      = 0x000A,
         ),
         ScenaNpcData(
+            name                = '史帕德',
             x                   = -1540,
             z                   = 0,
             y                   = 69240,
@@ -114,6 +101,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '夏伊',
             x                   = 1260,
             z                   = 0,
             y                   = -240,
@@ -128,6 +116,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '塞森',
             x                   = 58580,
             z                   = 0,
             y                   = 360,
@@ -142,6 +131,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '多姆',
             x                   = 120030,
             z                   = 0,
             y                   = -1260,
@@ -157,19 +147,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x172
+# id: 0x10002 offset: 0x172
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x172
+# id: 0x10003 offset: 0x172
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x172
+# id: 0x10004 offset: 0x172
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -215,8 +205,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1DE
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00C9, 1, 0x649)),
@@ -228,8 +218,8 @@ def PreInit():
         'loc_200',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0008, 5480, 4000, -2590, 90)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetPos(0x0008, 5480, 4000, -2590, 90)
 
     def _loc_200(): pass
 
@@ -355,7 +345,7 @@ def PreInit():
         'loc_26B',
     )
 
-    SetChrPos(0x0009, 3310, 0, 129900, 0)
+    ChrSetPos(0x0009, 3310, 0, 129900, 0)
 
     Jump('loc_27C')
 
@@ -392,8 +382,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x27D
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_27D')
+def func_01_27D():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00C5, 7, 0x62F)),
@@ -458,8 +448,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x2CA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_2CA')
+def func_02_2CA():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -470,7 +460,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_2CA')
 
     def _loc_2DF(): pass
 
@@ -3724,15 +3714,15 @@ def func_0A_231A():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_26A4',
+        'loc_26E5',
     )
 
     EventBegin(0x00)
     Fade(1000)
     CameraMove(4690, 4000, -2480, 0)
-    SetChrPos(0x0101, 4350, 4000, -2160, 90)
-    SetChrPos(0x0102, 4390, 4000, -3250, 90)
-    SetChrPos(0x0108, 3200, 4000, -2630, 90)
+    ChrSetPos(0x0101, 4350, 4000, -2160, 90)
+    ChrSetPos(0x0102, 4390, 4000, -3250, 90)
+    ChrSetPos(0x0108, 3200, 4000, -2630, 90)
     ChrTurnDirection(0x0008, 0x0108, 0)
     SetScenaFlags(ScenaFlag(0x00C9, 3, 0x64B))
     OP_28(0x004B, 0x01, 0x0020)
@@ -3758,7 +3748,7 @@ def func_0A_231A():
     label('loc_23AD')
 
     OP_0D()
-    SetChrSubChip(0x00FE, 0)
+    ChrSetSubChip(0x00FE, 0)
 
     ChrTalk(
         0x0101,
@@ -3869,45 +3859,45 @@ def func_0A_231A():
 
     CloseMessageWindow()
 
-    @scena.Lambda('lambda_2628')
-    def lambda_2628():
+    @scena.Lambda('lambda_2669')
+    def lambda_2669():
         ChrTurnDirection(0x00FE, 0x0008, 0)
         Yield()
 
-        Jump('lambda_2628')
+        Jump('lambda_2669')
 
-    DispatchAsync2(0x0101, 0x0001, lambda_2628)
+    DispatchAsync2(0x0101, 0x0001, lambda_2669)
 
-    @scena.Lambda('lambda_2639')
-    def lambda_2639():
+    @scena.Lambda('lambda_267A')
+    def lambda_267A():
         ChrTurnDirection(0x00FE, 0x0008, 0)
         Yield()
 
-        Jump('lambda_2639')
+        Jump('lambda_267A')
 
-    DispatchAsync2(0x0102, 0x0001, lambda_2639)
+    DispatchAsync2(0x0102, 0x0001, lambda_267A)
 
-    @scena.Lambda('lambda_264A')
-    def lambda_264A():
+    @scena.Lambda('lambda_268B')
+    def lambda_268B():
         ChrTurnDirection(0x00FE, 0x0008, 0)
         Yield()
 
-        Jump('lambda_264A')
+        Jump('lambda_268B')
 
-    DispatchAsync2(0x0108, 0x0001, lambda_264A)
+    DispatchAsync2(0x0108, 0x0001, lambda_268B)
 
     ChrWalkTo(0x0008, 5410, 4000, 630, 4000, 0x00)
     ChrWalkTo(0x0008, 3160, 4000, 2550, 4000, 0x00)
     ChrWalkTo(0x0008, -3500, 0, 2550, 4000, 0x00)
-    SetChrFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0008, 0x0080)
     TerminateThread(0x0101, 0xFF)
     TerminateThread(0x0102, 0xFF)
     TerminateThread(0x0108, 0xFF)
     EventEnd(0x00)
 
-    def _loc_26A4(): pass
+    def _loc_26E5(): pass
 
-    label('loc_26A4')
+    label('loc_26E5')
 
     TalkEnd(0x0008)
 

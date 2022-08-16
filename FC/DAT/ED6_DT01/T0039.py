@@ -9,71 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0039   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, 'CH01000村民老爷爷'),
-    TXT(0x02, 'CH01010村民老奶奶'),
-    TXT(0x03, 'CH01020村民中年男子'),
-    TXT(0x04, 'CH01030村民中年女子'),
-    TXT(0x05, 'CH01040村民青年男子'),
-    TXT(0x06, 'CH01050村民青年女子'),
-    TXT(0x07, 'CH01060村民男孩'),
-    TXT(0x08, 'CH01070村民女孩'),
-    TXT(0x09, 'CH01080男学生２'),
-    TXT(0x0A, 'CH01090女学生２'),
-    TXT(0x0B, 'CH01100城市老爷爷'),
-    TXT(0x0C, 'CH01110城市老奶奶'),
-    TXT(0x0D, 'CH01120城市中年男子'),
-    TXT(0x0E, 'CH01130城市中年女子'),
-    TXT(0x0F, 'CH01140城市青年男子'),
-    TXT(0x10, 'CH01150城市青年女子'),
-    TXT(0x11, 'CH01160城市男孩'),
-    TXT(0x12, 'CH01170城市女孩'),
-    TXT(0x13, 'CH01180贵族老奶奶'),
-    TXT(0x14, 'CH01190男性学者２'),
-    TXT(0x15, 'CH01200城市绅士１'),
-    TXT(0x16, 'CH01210城市淑女１'),
-    TXT(0x17, 'CH01220城市绅士２'),
-    TXT(0x18, 'CH01230城市淑女２'),
-    TXT(0x19, 'CH01240女游击士'),
-    TXT(0x1A, 'CH01250工房工作人员'),
-    TXT(0x1B, 'CH01260男游击士'),
-    TXT(0x1C, 'CH01270酒保'),
-    TXT(0x1D, 'CH01280大厨'),
-    TXT(0x1E, 'CH01290前台'),
-    TXT(0x1F, 'CH01300王国军士兵'),
-    TXT(0x20, 'CH01310王国军将校'),
-    TXT(0x21, 'CH01320亲卫队'),
-    TXT(0x22, 'CH01330特务兵'),
-    TXT(0x23, 'CH01340帝国军士兵'),
-    TXT(0x24, 'CH01350女佣'),
-    TXT(0x25, 'CH01360男学生'),
-    TXT(0x26, 'CH01370女学生'),
-    TXT(0x27, 'CH01380空贼团手下'),
-    TXT(0x28, 'CH01390市长手下'),
-    TXT(0x29, 'CH01400神父'),
-    TXT(0x2A, 'CH01410修女'),
-    TXT(0x2B, 'CH01420男性学者'),
-    TXT(0x2C, 'CH01430女性学者'),
-    TXT(0x2D, 'CH01440定期船长'),
-    TXT(0x2E, 'CH01450维修员'),
-    TXT(0x2F, 'CH01460乘务员（劳动者）'),
-    TXT(0x30, 'CH01470贵族男孩'),
-    TXT(0x31, 'CH01480贵族女孩'),
-    TXT(0x32, 'CH01490贵族老爷爷'),
-    TXT(0x33, 'CH01500矿工'),
-    TXT(0x34, 'CH01510结社战斗兵'),
-    TXT(0x35, 'CH01520见习厨师'),
-    TXT(0x36, 'CH01530中年矿工'),
-    TXT(0x37, 'CH01540女性客房服务员'),
-    TXT(0x38, 'CH01550女性维修员'),
-    TXT(0x39, 'CH01560管家'),
-    TXT(0x3A, 'CH01570年轻管家'),
-    TXT(0x3B, 'CH01580男学生３'),
-    TXT(0x3C, 'CH01590女学生３'),
-    TXT(0x3D, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -88,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xA4D
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -124,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -191,11 +121,12 @@ def ChipData():
         ('ED6_DT07/CH01593._CH', 'ED6_DT07/CH01593P._CP'),
     ]
 
-# id: 0x10002 offset: 0x28A
+# id: 0x10001 offset: 0x28A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = 'CH01000村民老爷爷',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -210,6 +141,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01010村民老奶奶',
             x                   = 0,
             z                   = 0,
             y                   = 4000,
@@ -224,6 +156,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01020村民中年男子',
             x                   = 0,
             z                   = 0,
             y                   = 8000,
@@ -238,6 +171,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01030村民中年女子',
             x                   = 0,
             z                   = 0,
             y                   = 12000,
@@ -252,6 +186,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01040村民青年男子',
             x                   = 0,
             z                   = 0,
             y                   = 16000,
@@ -266,6 +201,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01050村民青年女子',
             x                   = 4000,
             z                   = 0,
             y                   = 0,
@@ -280,6 +216,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01060村民男孩',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -294,6 +231,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01070村民女孩',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -308,6 +246,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01080男学生２',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -322,6 +261,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01090女学生２',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -336,6 +276,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01100城市老爷爷',
             x                   = 8000,
             z                   = 0,
             y                   = 0,
@@ -350,6 +291,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01110城市老奶奶',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -364,6 +306,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01120城市中年男子',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -378,6 +321,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01130城市中年女子',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -392,6 +336,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01140城市青年男子',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -406,6 +351,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01150城市青年女子',
             x                   = 12000,
             z                   = 0,
             y                   = 0,
@@ -420,6 +366,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01160城市男孩',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -434,6 +381,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01170城市女孩',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -448,6 +396,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01180贵族老奶奶',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -462,6 +411,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01190男性学者２',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -476,6 +426,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01200城市绅士１',
             x                   = 16000,
             z                   = 0,
             y                   = 0,
@@ -490,6 +441,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01210城市淑女１',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -504,6 +456,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01220城市绅士２',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -518,6 +471,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01230城市淑女２',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -532,6 +486,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01240女游击士',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -546,6 +501,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01250工房工作人员',
             x                   = 20000,
             z                   = 0,
             y                   = 0,
@@ -560,6 +516,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01260男游击士',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -574,6 +531,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01270酒保',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -588,6 +546,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01280大厨',
             x                   = 20000,
             z                   = 0,
             y                   = 12000,
@@ -602,6 +561,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01290前台',
             x                   = 20000,
             z                   = 0,
             y                   = 16000,
@@ -616,6 +576,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01300王国军士兵',
             x                   = 24000,
             z                   = 0,
             y                   = 0,
@@ -630,6 +591,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01310王国军将校',
             x                   = 24000,
             z                   = 0,
             y                   = 4000,
@@ -644,6 +606,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01320亲卫队',
             x                   = 24000,
             z                   = 0,
             y                   = 8000,
@@ -658,6 +621,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01330特务兵',
             x                   = 24000,
             z                   = 0,
             y                   = 12000,
@@ -672,6 +636,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01340帝国军士兵',
             x                   = 24000,
             z                   = 0,
             y                   = 16000,
@@ -686,6 +651,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01350女佣',
             x                   = 28000,
             z                   = 0,
             y                   = 0,
@@ -700,6 +666,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01360男学生',
             x                   = 28000,
             z                   = 0,
             y                   = 4000,
@@ -714,6 +681,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01370女学生',
             x                   = 28000,
             z                   = 0,
             y                   = 8000,
@@ -728,6 +696,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01380空贼团手下',
             x                   = 28000,
             z                   = 0,
             y                   = 12000,
@@ -742,6 +711,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01390市长手下',
             x                   = 28000,
             z                   = 0,
             y                   = 16000,
@@ -756,6 +726,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01400神父',
             x                   = 32000,
             z                   = 0,
             y                   = 0,
@@ -770,6 +741,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01410修女',
             x                   = 32000,
             z                   = 0,
             y                   = 4000,
@@ -784,6 +756,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01420男性学者',
             x                   = 32000,
             z                   = 0,
             y                   = 8000,
@@ -798,6 +771,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01430女性学者',
             x                   = 32000,
             z                   = 0,
             y                   = 12000,
@@ -812,6 +786,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01440定期船长',
             x                   = 32000,
             z                   = 0,
             y                   = 16000,
@@ -826,6 +801,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01450维修员',
             x                   = 36000,
             z                   = 0,
             y                   = 0,
@@ -840,6 +816,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01460乘务员（劳动者）',
             x                   = 36000,
             z                   = 0,
             y                   = 4000,
@@ -854,6 +831,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01470贵族男孩',
             x                   = 36000,
             z                   = 0,
             y                   = 8000,
@@ -868,6 +846,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01480贵族女孩',
             x                   = 36000,
             z                   = 0,
             y                   = 12000,
@@ -882,6 +861,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01490贵族老爷爷',
             x                   = 36000,
             z                   = 0,
             y                   = 16000,
@@ -896,6 +876,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01500矿工',
             x                   = 40000,
             z                   = 0,
             y                   = 0,
@@ -910,6 +891,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01510结社战斗兵',
             x                   = 40000,
             z                   = 0,
             y                   = 4000,
@@ -924,6 +906,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01520见习厨师',
             x                   = 40000,
             z                   = 0,
             y                   = 8000,
@@ -938,6 +921,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01530中年矿工',
             x                   = 40000,
             z                   = 0,
             y                   = 12000,
@@ -952,6 +936,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01540女性客房服务员',
             x                   = 40000,
             z                   = 0,
             y                   = 16000,
@@ -966,6 +951,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01550女性维修员',
             x                   = 44000,
             z                   = 0,
             y                   = 0,
@@ -980,6 +966,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01560管家',
             x                   = 44000,
             z                   = 0,
             y                   = 4000,
@@ -994,6 +981,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01570年轻管家',
             x                   = 44000,
             z                   = 0,
             y                   = 8000,
@@ -1008,6 +996,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01580男学生３',
             x                   = 44000,
             z                   = 0,
             y                   = 12000,
@@ -1022,6 +1011,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'CH01590女学生３',
             x                   = 44000,
             z                   = 0,
             y                   = 16000,
@@ -1037,27 +1027,27 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xA0A
+# id: 0x10002 offset: 0xA0A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA0A
+# id: 0x10003 offset: 0xA0A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA0A
+# id: 0x10004 offset: 0xA0A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA0A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     ExecExpressionWithValue(
         0x000E,
         0x31,
@@ -1071,13 +1061,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xA16
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_A16')
+def func_01_A16():
     Return()
 
 # id: 0x0002 offset: 0xA17
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_A17')
+def func_02_A17():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -1088,7 +1078,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x00, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_A17')
 
     def _loc_A2C(): pass
 

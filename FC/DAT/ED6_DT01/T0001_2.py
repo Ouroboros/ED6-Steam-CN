@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0001_2 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x32F9
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Talk(
         (
             TxtCtl.ShowAll,
@@ -238,8 +228,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x15C
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_15C')
+def func_01_15C():
     If(
         (
             (Expr.PushReg, 0x0),
@@ -385,7 +375,7 @@ def Init():
 
     label('loc_277')
 
-    Jump('Init')
+    Jump('func_01_15C')
 
     def _loc_27A(): pass
 
@@ -405,8 +395,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x288
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_288')
+def func_02_288():
     If(
         (
             (Expr.PushReg, 0x0),
@@ -491,7 +481,7 @@ def ReInit():
 
     label('loc_315')
 
-    Jump('ReInit')
+    Jump('func_02_288')
 
     def _loc_318(): pass
 
@@ -6534,10 +6524,10 @@ def func_2E_2DBB():
 # id: 0x002F offset: 0x2E93
 @scena.Code('func_2F_2E93')
 def func_2F_2E93():
-    SetChrStatus(0x0000, 0xFE, 0)
-    SetChrStatus(0x0001, 0xFE, 0)
-    SetChrStatus(0x0000, 0x05, 0)
-    SetChrStatus(0x0001, 0x05, 0)
+    ChrSetStatus(0x0000, 0xFE, 0)
+    ChrSetStatus(0x0001, 0xFE, 0)
+    ChrSetStatus(0x0000, 0x05, 0)
+    ChrSetStatus(0x0001, 0x05, 0)
 
     Talk(
         (
@@ -6833,22 +6823,22 @@ def func_2F_2E93():
 # id: 0x0030 offset: 0x30F2
 @scena.Code('func_30_30F2')
 def func_30_30F2():
-    SetChrStatus(0x0000, 0x00, 39)
-    SetChrStatus(0x0001, 0x00, 39)
-    SetChrStatus(0x0002, 0x00, 39)
-    SetChrStatus(0x0003, 0x00, 39)
-    SetChrStatus(0x0006, 0x00, 39)
-    SetChrStatus(0x0004, 0x00, 39)
-    SetChrStatus(0x0005, 0x00, 39)
-    SetChrStatus(0x0007, 0x00, 39)
-    SetChrStatus(0x0000, 0x05, 100)
-    SetChrStatus(0x0001, 0x05, 100)
-    SetChrStatus(0x0002, 0x05, 100)
-    SetChrStatus(0x0003, 0x05, 100)
-    SetChrStatus(0x0006, 0x05, 100)
-    SetChrStatus(0x0004, 0x05, 100)
-    SetChrStatus(0x0005, 0x05, 100)
-    SetChrStatus(0x0007, 0x05, 100)
+    ChrSetStatus(0x0000, 0x00, 39)
+    ChrSetStatus(0x0001, 0x00, 39)
+    ChrSetStatus(0x0002, 0x00, 39)
+    ChrSetStatus(0x0003, 0x00, 39)
+    ChrSetStatus(0x0006, 0x00, 39)
+    ChrSetStatus(0x0004, 0x00, 39)
+    ChrSetStatus(0x0005, 0x00, 39)
+    ChrSetStatus(0x0007, 0x00, 39)
+    ChrSetStatus(0x0000, 0x05, 100)
+    ChrSetStatus(0x0001, 0x05, 100)
+    ChrSetStatus(0x0002, 0x05, 100)
+    ChrSetStatus(0x0003, 0x05, 100)
+    ChrSetStatus(0x0006, 0x05, 100)
+    ChrSetStatus(0x0004, 0x05, 100)
+    ChrSetStatus(0x0005, 0x05, 100)
+    ChrSetStatus(0x0007, 0x05, 100)
     AddItem(0x01F5, 99)
     AddItem(0x01F6, 99)
     AddItem(0x01F7, 99)

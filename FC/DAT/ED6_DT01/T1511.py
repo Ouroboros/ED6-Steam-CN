@@ -9,18 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1511   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '雷纳德'),
-    TXT(0x02, '索菲娜'),
-    TXT(0x03, '罗伊德'),
-    TXT(0x04, '艾露凯'),
-    TXT(0x05, '阿妮特'),
-    TXT(0x06, '奥利维尔'),
-    TXT(0x07, '奥利维尔'),
-    TXT(0x08, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -35,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xC00
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -71,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -84,11 +67,12 @@ def ChipData():
         ('ED6_DT06/CH20050._CH', 'ED6_DT06/CH20050P._CP'),
     ]
 
-# id: 0x10002 offset: 0xDA
+# id: 0x10001 offset: 0xDA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '雷纳德',
             x                   = 24400,
             z                   = 0,
             y                   = 9200,
@@ -103,6 +87,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '索菲娜',
             x                   = 14000,
             z                   = 0,
             y                   = 3600,
@@ -117,6 +102,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '罗伊德',
             x                   = 49500,
             z                   = 200,
             y                   = 26230,
@@ -131,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '艾露凯',
             x                   = 54500,
             z                   = 0,
             y                   = 3400,
@@ -145,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '阿妮特',
             x                   = 49900,
             z                   = 0,
             y                   = 5800,
@@ -159,6 +147,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '奥利维尔',
             x                   = 109100,
             z                   = 600,
             y                   = 5100,
@@ -173,6 +162,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '奥利维尔',
             x                   = 110010,
             z                   = -500,
             y                   = 5150,
@@ -188,19 +178,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x1BA
+# id: 0x10002 offset: 0x1BA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x1BA
+# id: 0x10003 offset: 0x1BA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1BA
+# id: 0x10004 offset: 0x1BA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -220,8 +210,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1DE
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x007F, 2, 0x3FA)),
@@ -231,7 +221,7 @@ def PreInit():
     )
 
     ClearScenaFlags(ScenaFlag(0x007F, 2, 0x3FA))
-    Event(0, 0x000A)
+    Event(0, func_0A_54E)
 
     def _loc_1EC(): pass
 
@@ -240,13 +230,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x1ED
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1ED')
+def func_01_1ED():
     Return()
 
 # id: 0x0002 offset: 0x1EE
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1EE')
+def func_02_1EE():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -257,7 +247,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_1EE')
 
     def _loc_203(): pass
 
@@ -546,15 +536,15 @@ def func_09_510():
 
     Return()
 
-# id: 0x000A offset: 0x549
-@scena.Code('func_0A_549')
-def func_0A_549():
-    ClearMapFlags(0x00000001)
+# id: 0x000A offset: 0x54E
+@scena.Code('func_0A_54E')
+def func_0A_54E():
+    MapClearFlags(0x00000001)
     EventBegin(0x00)
     FormationAddMember(0x02, 0xFF)
-    SetChrPos(0x0101, 107680, 0, 5310, 90)
-    SetChrPos(0x0103, 109180, 0, 6400, 180)
-    SetChrPos(0x0102, 107620, 0, 6630, 135)
+    ChrSetPos(0x0101, 107680, 0, 5310, 90)
+    ChrSetPos(0x0103, 109180, 0, 6400, 180)
+    ChrSetPos(0x0102, 107620, 0, 6630, 135)
     CameraMove(107890, 0, 13120, 0)
     SetScenaFlags(ScenaFlag(0x0069, 6, 0x34E))
     OP_28(0x0038, 0x01, 0x0080)
@@ -789,24 +779,24 @@ def func_0A_549():
     CloseMessageWindow()
     FadeOut(1000, 0, -1)
     OP_0D()
-    SetChrPos(0x0101, 107480, 0, 9560, 0)
-    SetChrPos(0x0103, 107480, 0, 9560, 0)
-    SetChrPos(0x0102, 107480, 0, 9560, 0)
+    ChrSetPos(0x0101, 107480, 0, 9560, 0)
+    ChrSetPos(0x0103, 107480, 0, 9560, 0)
+    ChrSetPos(0x0102, 107480, 0, 9560, 0)
     CameraMove(107480, 0, 9560, 0)
     Sleep(500)
 
     FadeIn(1000, 0)
     EventEnd(0x00)
-    ClearMapFlags(0x10000000)
+    MapClearFlags(0x10000000)
 
     Return()
 
-# id: 0x000B offset: 0xB9D
-@scena.Code('func_0B_B9D')
-def func_0B_B9D():
+# id: 0x000B offset: 0xC38
+@scena.Code('func_0B_C38')
+def func_0B_C38():
     FadeOut(300, 0, 100)
     SetMessageWindowPos(72, 320, 56, 3)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (

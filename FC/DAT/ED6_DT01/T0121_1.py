@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0121_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,51 +23,46 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x711
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
     )
 
-# id: 0x10001 offset: 0x64
+# id: 0x10000 offset: 0x64
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0x64
+# id: 0x10001 offset: 0x64
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0x64
+# id: 0x10002 offset: 0x64
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x64
+# id: 0x10003 offset: 0x64
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x64
+# id: 0x10004 offset: 0x64
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x64
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     TalkBegin(0x000E)
 
     If(
@@ -134,8 +124,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x110
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_110')
+def func_01_110():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x004D, 0, 0x268)),
@@ -257,7 +247,7 @@ def Init():
     )
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(72, 320, 56, 3)
 
     Talk(
@@ -279,7 +269,7 @@ def Init():
     label('loc_211')
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(72, 320, 56, 3)
 
     Talk(
@@ -303,8 +293,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x253
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_253')
+def func_02_253():
     OP_0D()
 
     If(
@@ -315,7 +305,7 @@ def ReInit():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_612',
+        'loc_658',
     )
 
     Sleep(100)
@@ -433,18 +423,18 @@ def ReInit():
     OP_0D()
     Call(0, 0x0017)
 
-    Jump('loc_70A')
+    Jump('loc_764')
 
-    def _loc_612(): pass
+    def _loc_658(): pass
 
-    label('loc_612')
+    label('loc_658')
 
     If(
         (
             (Expr.Eval, "OP_A9(0x04)"),
             Expr.Return,
         ),
-        'loc_692',
+        'loc_6E2',
     )
 
     Sleep(200)
@@ -464,11 +454,11 @@ def ReInit():
 
     CloseMessageWindow()
 
-    Jump('loc_70A')
+    Jump('loc_764')
 
-    def _loc_692(): pass
+    def _loc_6E2(): pass
 
-    label('loc_692')
+    label('loc_6E2')
 
     Sleep(200)
 
@@ -487,9 +477,9 @@ def ReInit():
 
     CloseMessageWindow()
 
-    def _loc_70A(): pass
+    def _loc_764(): pass
 
-    label('loc_70A')
+    label('loc_764')
 
     Return()
 

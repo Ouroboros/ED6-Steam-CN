@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('E0002   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x5DD
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x007F, 2, 0x3FA)),
@@ -107,7 +97,7 @@ def PreInit():
     )
 
     ClearScenaFlags(ScenaFlag(0x007F, 2, 0x3FA))
-    Event(0, 0x0002)
+    Event(0, func_02_105)
 
     def _loc_B6(): pass
 
@@ -139,7 +129,7 @@ def PreInit():
         'loc_DA',
     )
 
-    Event(0, 0x0004)
+    Event(0, func_04_231)
 
     def _loc_DA(): pass
 
@@ -154,8 +144,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xDE
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_DE')
+def func_01_DE():
     If(
         (
             (Expr.PushValueByIndex, 0x0),
@@ -198,8 +188,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x105
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_105')
+def func_02_105():
     PlaySE(121, 0x01, 0x14)
     EventBegin(0x00)
     CameraMove(4490, 5000, 36760, 0)
@@ -207,11 +197,11 @@ def ReInit():
     CameraSetDistance(5000, 0)
     OP_6C(189000, 0)
     OP_6E(262, 0)
-    SetChrFlags(0x0000, 0x0080)
-    SetChrFlags(0x0001, 0x0080)
-    SetChrFlags(0x0002, 0x0080)
-    SetChrFlags(0x0003, 0x0080)
-    CreateThread(0x0102, 0x00, 0x00, 0x0003)
+    ChrSetFlags(0x0000, 0x0080)
+    ChrSetFlags(0x0001, 0x0080)
+    ChrSetFlags(0x0002, 0x0080)
+    ChrSetFlags(0x0003, 0x0080)
+    CreateThread(0x0102, 0x00, 0x00, func_03_1DF)
     FadeIn(2000, 0)
 
     @scena.Lambda('lambda_0173')
@@ -311,8 +301,8 @@ def func_04_231():
         ),
     )
 
-    SetChrPos(0x0101, 3150, 5000, -2260, 90)
-    SetChrPos(0x0102, 3160, 5000, -3660, 90)
+    ChrSetPos(0x0101, 3150, 5000, -2260, 90)
+    ChrSetPos(0x0102, 3160, 5000, -3660, 90)
 
     @scena.Lambda('lambda_02AA')
     def lambda_02AA():

@@ -9,19 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4111   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '赫穆特'),
-    TXT(0x02, '诺琪'),
-    TXT(0x03, '马丁'),
-    TXT(0x04, '玛丽安'),
-    TXT(0x05, '海伦娜'),
-    TXT(0x06, '卡特莉娜夫人'),
-    TXT(0x07, '达丽娅'),
-    TXT(0x08, '莉安妮'),
-    TXT(0x09, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -36,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2FBB
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -72,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -88,11 +70,12 @@ def ChipData():
         ('ED6_DT07/CH01023._CH', 'ED6_DT07/CH01023P._CP'),
     ]
 
-# id: 0x10002 offset: 0xF2
+# id: 0x10001 offset: 0xF2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '赫穆特',
             x                   = 60450,
             z                   = 0,
             y                   = 62340,
@@ -107,6 +90,7 @@ def NpcData():
             talkScenaIndex      = 0x0011,
         ),
         ScenaNpcData(
+            name                = '诺琪',
             x                   = 60030,
             z                   = 0,
             y                   = 1650,
@@ -121,6 +105,7 @@ def NpcData():
             talkScenaIndex      = 0x0010,
         ),
         ScenaNpcData(
+            name                = '马丁',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -135,6 +120,7 @@ def NpcData():
             talkScenaIndex      = 0x000D,
         ),
         ScenaNpcData(
+            name                = '玛丽安',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -149,6 +135,7 @@ def NpcData():
             talkScenaIndex      = 0x000E,
         ),
         ScenaNpcData(
+            name                = '海伦娜',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -163,6 +150,7 @@ def NpcData():
             talkScenaIndex      = 0x000F,
         ),
         ScenaNpcData(
+            name                = '卡特莉娜夫人',
             x                   = 6600,
             z                   = 0,
             y                   = -55590,
@@ -177,6 +165,7 @@ def NpcData():
             talkScenaIndex      = 0x000C,
         ),
         ScenaNpcData(
+            name                = '达丽娅',
             x                   = -4760,
             z                   = 0,
             y                   = 1910,
@@ -191,6 +180,7 @@ def NpcData():
             talkScenaIndex      = 0x000B,
         ),
         ScenaNpcData(
+            name                = '莉安妮',
             x                   = -2300,
             z                   = 0,
             y                   = 61070,
@@ -206,27 +196,27 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x1F2
+# id: 0x10002 offset: 0x1F2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x1F2
+# id: 0x10003 offset: 0x1F2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1F2
+# id: 0x10004 offset: 0x1F2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x1F2
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00CD, 3, 0x66B)),
@@ -235,9 +225,9 @@ def PreInit():
         'loc_223',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrPos(0x0009, 60480, 0, 62200, 17)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetPos(0x0009, 60480, 0, 62200, 17)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
 
     Jump('loc_70B')
 
@@ -253,24 +243,24 @@ def PreInit():
         'loc_2D2',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0008, 59640, 0, 2040, 163)
-    CreateThread(0x0008, 0x00, 0x00, 0x0003)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrPos(0x0009, 60480, 0, 62200, 17)
-    SetChrChipByIndex(0x000A, 8)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 122730, 250, 64200, 278)
-    SetChrFlags(0x000A, 0x0010)
-    SetChrFlags(0x000A, 0x0004)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetPos(0x0008, 59640, 0, 2040, 163)
+    CreateThread(0x0008, 0x00, 0x00, func_03_76F)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetPos(0x0009, 60480, 0, 62200, 17)
+    ChrSetChipByIndex(0x000A, 8)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 122730, 250, 64200, 278)
+    ChrSetFlags(0x000A, 0x0010)
+    ChrSetFlags(0x000A, 0x0004)
     TerminateThread(0x000A, 0xFF)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 123540, 0, 68800, 3)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 113680, 0, -55940, 266)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
-    SetChrFlags(0x000F, 0x0080)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 123540, 0, 68800, 3)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 113680, 0, -55940, 266)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
+    ChrSetFlags(0x000F, 0x0080)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
 
     Jump('loc_70B')
 
@@ -286,17 +276,17 @@ def PreInit():
         'loc_347',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115780, 0, 61020, 228)
-    CreateThread(0x000A, 0x00, 0x00, 0x0005)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 123540, 0, 68800, 3)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 113680, 0, -55940, 266)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
-    SetChrFlags(0x000F, 0x0080)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115780, 0, 61020, 228)
+    CreateThread(0x000A, 0x00, 0x00, func_05_7B7)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 123540, 0, 68800, 3)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 113680, 0, -55940, 266)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
+    ChrSetFlags(0x000F, 0x0080)
 
     Jump('loc_70B')
 
@@ -312,19 +302,19 @@ def PreInit():
         'loc_3C6',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115920, 0, 69500, 343)
-    SetChrFlags(0x000A, 0x0010)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115920, 0, 69500, 343)
+    ChrSetFlags(0x000A, 0x0010)
     ChrTurnDirection(0x000B, 0x000A, 0)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 123540, 0, 68800, 3)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 113680, 0, -55940, 266)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
-    SetChrFlags(0x000E, 0x0080)
-    SetChrFlags(0x000F, 0x0080)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 123540, 0, 68800, 3)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 113680, 0, -55940, 266)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
+    ChrSetFlags(0x000E, 0x0080)
+    ChrSetFlags(0x000F, 0x0080)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
 
     Jump('loc_70B')
 
@@ -340,19 +330,19 @@ def PreInit():
         'loc_44F',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrPos(0x0008, 58250, 0, 60130, 270)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115780, 0, 61020, 228)
-    CreateThread(0x000A, 0x00, 0x00, 0x0006)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 126360, 0, 1830, 270)
-    SetChrFlags(0x000B, 0x0010)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000C, 0x0010)
-    SetChrPos(0x000C, 126360, 0, 740, 270)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
-    SetChrFlags(0x000F, 0x0080)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetPos(0x0008, 58250, 0, 60130, 270)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115780, 0, 61020, 228)
+    CreateThread(0x000A, 0x00, 0x00, func_06_7DB)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 126360, 0, 1830, 270)
+    ChrSetFlags(0x000B, 0x0010)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0010)
+    ChrSetPos(0x000C, 126360, 0, 740, 270)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
+    ChrSetFlags(0x000F, 0x0080)
 
     Jump('loc_70B')
 
@@ -368,16 +358,16 @@ def PreInit():
         'loc_4BF',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115780, 0, 61020, 228)
-    CreateThread(0x000A, 0x00, 0x00, 0x0005)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 121030, 0, -58010, 90)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 116840, 0, -55210, 90)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
-    SetChrPos(0x000D, -3010, 0, -54540, 0)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115780, 0, 61020, 228)
+    CreateThread(0x000A, 0x00, 0x00, func_05_7B7)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 121030, 0, -58010, 90)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 116840, 0, -55210, 90)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
+    ChrSetPos(0x000D, -3010, 0, -54540, 0)
 
     Jump('loc_70B')
 
@@ -393,18 +383,18 @@ def PreInit():
         'loc_537',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 123980, 0, 1080, 90)
-    CreateThread(0x000A, 0x00, 0x00, 0x0002)
-    SetChrFlags(0x000A, 0x0010)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 126360, 0, 1830, 270)
-    SetChrFlags(0x000B, 0x0010)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000C, 0x0010)
-    SetChrPos(0x000C, 126360, 0, 740, 270)
-    SetChrPos(0x000D, -960, 0, -55790, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 123980, 0, 1080, 90)
+    CreateThread(0x000A, 0x00, 0x00, func_02_759)
+    ChrSetFlags(0x000A, 0x0010)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 126360, 0, 1830, 270)
+    ChrSetFlags(0x000B, 0x0010)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0010)
+    ChrSetPos(0x000C, 126360, 0, 740, 270)
+    ChrSetPos(0x000D, -960, 0, -55790, 0)
 
     Jump('loc_70B')
 
@@ -420,16 +410,16 @@ def PreInit():
         'loc_59B',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115780, 0, 61020, 228)
-    CreateThread(0x000A, 0x00, 0x00, 0x0005)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 123540, 0, 68800, 3)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 113680, 0, -55940, 266)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115780, 0, 61020, 228)
+    CreateThread(0x000A, 0x00, 0x00, func_05_7B7)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 123540, 0, 68800, 3)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 113680, 0, -55940, 266)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
 
     Jump('loc_70B')
 
@@ -445,18 +435,18 @@ def PreInit():
         'loc_613',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 123980, 0, 1080, 90)
-    CreateThread(0x000A, 0x00, 0x00, 0x0002)
-    SetChrFlags(0x000A, 0x0010)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 126360, 0, 1830, 270)
-    SetChrFlags(0x000B, 0x0010)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000C, 0x0010)
-    SetChrPos(0x000C, 126360, 0, 740, 270)
-    SetChrPos(0x000D, 2380, 0, -55230, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 123980, 0, 1080, 90)
+    CreateThread(0x000A, 0x00, 0x00, func_02_759)
+    ChrSetFlags(0x000A, 0x0010)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 126360, 0, 1830, 270)
+    ChrSetFlags(0x000B, 0x0010)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0010)
+    ChrSetPos(0x000C, 126360, 0, 740, 270)
+    ChrSetPos(0x000D, 2380, 0, -55230, 0)
 
     Jump('loc_70B')
 
@@ -472,21 +462,21 @@ def PreInit():
         'loc_699',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrChipByIndex(0x000A, 8)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 122730, 250, 64200, 278)
-    SetChrFlags(0x000A, 0x0010)
-    SetChrFlags(0x000A, 0x0004)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetChipByIndex(0x000A, 8)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 122730, 250, 64200, 278)
+    ChrSetFlags(0x000A, 0x0010)
+    ChrSetFlags(0x000A, 0x0004)
     TerminateThread(0x000A, 0xFF)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 113680, 0, -55940, 266)
-    CreateThread(0x000B, 0x00, 0x00, 0x0007)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000C, 0x0010)
-    SetChrPos(0x000C, 115850, 0, 60880, 45)
-    SetChrPos(0x000D, -960, 0, -55790, 0)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 113680, 0, -55940, 266)
+    CreateThread(0x000B, 0x00, 0x00, func_07_7FF)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0010)
+    ChrSetPos(0x000C, 115850, 0, 60880, 45)
+    ChrSetPos(0x000D, -960, 0, -55790, 0)
 
     Jump('loc_70B')
 
@@ -502,17 +492,17 @@ def PreInit():
         'loc_70B',
     )
 
-    ClearChrFlags(0x0008, 0x0080)
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    SetChrPos(0x000A, 115780, 0, 61020, 228)
-    CreateThread(0x000A, 0x00, 0x00, 0x0005)
-    ClearChrFlags(0x000B, 0x0080)
-    SetChrPos(0x000B, 123540, 0, 68800, 3)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrPos(0x000C, 113680, 0, -55940, 266)
-    CreateThread(0x000C, 0x00, 0x00, 0x0007)
-    SetChrPos(0x000D, 6320, 0, -55580, 91)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrSetPos(0x000A, 115780, 0, 61020, 228)
+    CreateThread(0x000A, 0x00, 0x00, func_05_7B7)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrSetPos(0x000B, 123540, 0, 68800, 3)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetPos(0x000C, 113680, 0, -55940, 266)
+    CreateThread(0x000C, 0x00, 0x00, func_07_7FF)
+    ChrSetPos(0x000D, 6320, 0, -55580, 91)
 
     def _loc_70B(): pass
 
@@ -521,8 +511,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x70C
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_70C')
+def func_01_70C():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00C5, 7, 0x62F)),
@@ -587,8 +577,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x759
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_759')
+def func_02_759():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -599,7 +589,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_759')
 
     def _loc_76E(): pass
 

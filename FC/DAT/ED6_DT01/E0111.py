@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('E0111   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x351
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,32 +54,32 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -109,21 +99,21 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0xCC
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0xCD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_CD')
+def func_01_CD():
     LoadEffect(0x00, 'map\\\\mp027_00.eff')
     PlayEffect(0x00, 0x00, 0x00FF, 51600, 1000, 74000, 0, 0, 0, 1300, 1300, 1300, 0x00FF, 0, 0, 0, 0)
 
     Return()
 
 # id: 0x0002 offset: 0x117
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_117')
+def func_02_117():
     FadeOut(300, 0, 100)
 
     Talk(
@@ -198,18 +188,18 @@ def ReInit():
 
     PlaySE(13, 0x00, 0x64)
     OP_0D()
-    SetChrStatus(0x0000, 0xFE, 0)
-    SetChrStatus(0x0001, 0xFE, 0)
-    SetChrStatus(0x0002, 0xFE, 0)
-    SetChrStatus(0x0003, 0xFE, 0)
-    SetChrStatus(0x0004, 0xFE, 0)
-    SetChrStatus(0x0005, 0xFE, 0)
-    SetChrStatus(0x0006, 0xFE, 0)
-    SetChrStatus(0x0007, 0xFE, 0)
-    SetChrPos(0x0000, 52220, 0, 75340, 168)
-    SetChrPos(0x0001, 52220, 0, 75340, 168)
-    SetChrPos(0x0002, 52220, 0, 75340, 168)
-    SetChrPos(0x0003, 52220, 0, 75340, 168)
+    ChrSetStatus(0x0000, 0xFE, 0)
+    ChrSetStatus(0x0001, 0xFE, 0)
+    ChrSetStatus(0x0002, 0xFE, 0)
+    ChrSetStatus(0x0003, 0xFE, 0)
+    ChrSetStatus(0x0004, 0xFE, 0)
+    ChrSetStatus(0x0005, 0xFE, 0)
+    ChrSetStatus(0x0006, 0xFE, 0)
+    ChrSetStatus(0x0007, 0xFE, 0)
+    ChrSetPos(0x0000, 52220, 0, 75340, 168)
+    ChrSetPos(0x0001, 52220, 0, 75340, 168)
+    ChrSetPos(0x0002, 52220, 0, 75340, 168)
+    ChrSetPos(0x0003, 52220, 0, 75340, 168)
     OP_69(0x0000, 0)
     OP_30(0x00)
     Sleep(3500)

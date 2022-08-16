@@ -9,26 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0060   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '11050待机'),
-    TXT(0x02, '11060待机'),
-    TXT(0x03, '11070待机'),
-    TXT(0x04, '11080待机'),
-    TXT(0x05, '11090待机'),
-    TXT(0x06, '11100待机'),
-    TXT(0x07, '11110待机'),
-    TXT(0x08, '11120待机'),
-    TXT(0x09, '11130待机'),
-    TXT(0x0A, '11140待机'),
-    TXT(0x0B, '11150待机'),
-    TXT(0x0C, '11160待机'),
-    TXT(0x0D, '11170待机'),
-    TXT(0x0E, '11180待机'),
-    TXT(0x0F, '11190待机'),
-    TXT(0x10, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -43,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x371
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -79,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -101,11 +76,12 @@ def ChipData():
         ('ED6_DT09/CH11190._CH', 'ED6_DT09/CH11190P._CP'),
     ]
 
-# id: 0x10002 offset: 0x122
+# id: 0x10001 offset: 0x122
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '11050待机',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -120,6 +96,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11060待机',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -134,6 +111,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11070待机',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -148,6 +126,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11080待机',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -162,6 +141,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11090待机',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -176,6 +156,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11100待机',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -190,6 +171,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11110待机',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -204,6 +186,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11120待机',
             x                   = 4000,
             z                   = 0,
             y                   = 32000,
@@ -218,6 +201,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11130待机',
             x                   = 4000,
             z                   = 0,
             y                   = 36000,
@@ -232,6 +216,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11140待机',
             x                   = 4000,
             z                   = 0,
             y                   = 40000,
@@ -246,6 +231,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11150待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -260,6 +246,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11160待机',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -274,6 +261,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11170待机',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -288,6 +276,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11180待机',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -302,6 +291,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '11190待机',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -317,37 +307,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x302
+# id: 0x10002 offset: 0x302
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x302
+# id: 0x10003 offset: 0x302
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x302
+# id: 0x10004 offset: 0x302
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x302
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x303
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x303
+@scena.Code('func_01_303')
+def func_01_303():
+    Return()
+
 # id: 0x0002 offset: 0x304
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_304')
+def func_02_304():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -358,7 +348,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_304')
 
     def _loc_319(): pass
 

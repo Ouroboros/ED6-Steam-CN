@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3115_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x4F63
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,55 +54,55 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xA9
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xA9
+@scena.Code('func_01_A9')
+def func_01_A9():
+    Return()
+
 # id: 0x0002 offset: 0xAA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_AA')
+def func_02_AA():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(2300, 0, 2540, 0)
-    SetChrPos(0x0101, 1850, 0, 1780, 0)
-    SetChrPos(0x0102, 3300, 0, 2100, 0)
+    ChrSetPos(0x0101, 1850, 0, 1780, 0)
+    ChrSetPos(0x0102, 3300, 0, 2100, 0)
 
     If(
         (
@@ -125,7 +115,7 @@ def ReInit():
         'loc_103',
     )
 
-    SetChrPos(0x0107, 2650, 0, 1120, 0)
+    ChrSetPos(0x0107, 2650, 0, 1120, 0)
 
     def _loc_103(): pass
 
@@ -142,7 +132,7 @@ def ReInit():
         'loc_122',
     )
 
-    SetChrPos(0x013C, 2530, 0, 3050, 359)
+    ChrSetPos(0x013C, 2530, 0, 3050, 359)
 
     def _loc_122(): pass
 
@@ -321,15 +311,15 @@ def ReInit():
 
     Return()
 
-# id: 0x0003 offset: 0x430
-@scena.Code('func_03_430')
-def func_03_430():
+# id: 0x0003 offset: 0x485
+@scena.Code('func_03_485')
+def func_03_485():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-102680, 0, 106860, 0)
-    SetChrPos(0x0101, -103170, 0, 107210, 90)
-    SetChrPos(0x0102, -102910, 0, 106140, 40)
-    SetChrPos(0x0107, -104120, 0, 106520, 90)
+    ChrSetPos(0x0101, -103170, 0, 107210, 90)
+    ChrSetPos(0x0102, -102910, 0, 106140, 40)
+    ChrSetPos(0x0107, -104120, 0, 106520, 90)
 
     If(
         (
@@ -339,14 +329,14 @@ def func_03_430():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_49A',
+        'loc_4EF',
     )
 
-    SetChrPos(0x013C, -104780, 0, 107680, 90)
+    ChrSetPos(0x013C, -104780, 0, 107680, 90)
 
-    def _loc_49A(): pass
+    def _loc_4EF(): pass
 
-    label('loc_49A')
+    label('loc_4EF')
 
     OP_0D()
     Sleep(400)
@@ -363,9 +353,9 @@ def func_03_430():
     )
 
     CloseMessageWindow()
-    SetChrFlags(0x0013, 0x0010)
+    ChrSetFlags(0x0013, 0x0010)
     TalkBegin(0x0013)
-    ClearChrFlags(0x0013, 0x0010)
+    ChrClearFlags(0x0013, 0x0010)
     OP_62(0x00FE, 0x00000000, 2000, 0x26, 0x26, 0x000000FA, 0x01)
     Sleep(400)
 
@@ -544,19 +534,19 @@ def func_03_430():
     )
 
     CloseMessageWindow()
-    SetChrDirection(0x0013, 360, 400)
+    ChrSetDirection(0x0013, 360, 400)
     OP_4B(0x00FE, 255)
 
-    @scena.Lambda('lambda_0853')
-    def lambda_0853():
+    @scena.Lambda('lambda_0907')
+    def lambda_0907():
         CameraMove(-103770, 0, 106670, 1500)
 
         ExitThread()
 
-    DispatchAsync(0x00FE, 0x0001, lambda_0853)
+    DispatchAsync(0x00FE, 0x0001, lambda_0907)
 
-    SetChrDirection(0x0101, 223, 400)
-    SetChrDirection(0x0102, 286, 400)
+    ChrSetDirection(0x0101, 223, 400)
+    ChrSetDirection(0x0102, 286, 400)
     WaitForThreadExit(0x00FE, 0x0001)
 
     If(
@@ -564,7 +554,7 @@ def func_03_430():
             (Expr.Eval, "OP_29(0x0029, 0x01, 0x0008)"),
             Expr.Return,
         ),
-        'loc_A55',
+        'loc_B3B',
     )
 
     ChrTalk(
@@ -656,11 +646,11 @@ def func_03_430():
 
     CloseMessageWindow()
 
-    Jump('loc_EC0')
+    Jump('loc_1028')
 
-    def _loc_A55(): pass
+    def _loc_B3B(): pass
 
-    label('loc_A55')
+    label('loc_B3B')
 
     ChrTalk(
         0x0101,
@@ -712,7 +702,7 @@ def func_03_430():
             (Expr.Eval, "OP_29(0x0029, 0x01, 0x8000)"),
             Expr.Return,
         ),
-        'loc_DBF',
+        'loc_F04',
     )
 
     OP_62(0x0101, 0x00000000, 2000, 0x0E, 0x0F, 0x000000FA, 0x02)
@@ -735,13 +725,13 @@ def func_03_430():
 
     CloseMessageWindow()
 
-    @scena.Lambda('lambda_0BFA')
-    def lambda_0BFA():
+    @scena.Lambda('lambda_0D12')
+    def lambda_0D12():
         ChrTurnDirection(0x0107, 0x0101, 0)
 
         ExitThread()
 
-    DispatchAsync(0x0107, 0x0001, lambda_0BFA)
+    DispatchAsync(0x0107, 0x0001, lambda_0D12)
 
     ChrTurnDirection(0x0102, 0x0101, 400)
 
@@ -825,11 +815,11 @@ def func_03_430():
     CloseMessageWindow()
     OP_28(0x0029, 0x01, 0x0004)
 
-    Jump('loc_EC0')
+    Jump('loc_1028')
 
-    def _loc_DBF(): pass
+    def _loc_F04(): pass
 
-    label('loc_DBF')
+    label('loc_F04')
 
     ChrTalk(
         0x0101,
@@ -884,9 +874,9 @@ def func_03_430():
 
     CloseMessageWindow()
 
-    def _loc_EC0(): pass
+    def _loc_1028(): pass
 
-    label('loc_EC0')
+    label('loc_1028')
 
     Sleep(400)
 
@@ -897,9 +887,9 @@ def func_03_430():
 
     Return()
 
-# id: 0x0004 offset: 0xED7
-@scena.Code('func_04_ED7')
-def func_04_ED7():
+# id: 0x0004 offset: 0x103F
+@scena.Code('func_04_103F')
+def func_04_103F():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -907,8 +897,8 @@ def func_04_ED7():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -918,14 +908,14 @@ def func_04_ED7():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_F5C',
+        'loc_10C4',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_F5C(): pass
+    def _loc_10C4(): pass
 
-    label('loc_F5C')
+    label('loc_10C4')
 
     If(
         (
@@ -935,14 +925,14 @@ def func_04_ED7():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_F7B',
+        'loc_10E3',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_F7B(): pass
+    def _loc_10E3(): pass
 
-    label('loc_F7B')
+    label('loc_10E3')
 
     If(
         (
@@ -952,14 +942,14 @@ def func_04_ED7():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_F9A',
+        'loc_1102',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_F9A(): pass
+    def _loc_1102(): pass
 
-    label('loc_F9A')
+    label('loc_1102')
 
     If(
         (
@@ -969,14 +959,14 @@ def func_04_ED7():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_FB9',
+        'loc_1121',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_FB9(): pass
+    def _loc_1121(): pass
 
-    label('loc_FB9')
+    label('loc_1121')
 
     If(
         (
@@ -985,20 +975,20 @@ def func_04_ED7():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_FD3',
+        'loc_113B',
     )
 
-    @scena.Lambda('lambda_0FCB')
-    def lambda_0FCB():
+    @scena.Lambda('lambda_1133')
+    def lambda_1133():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_0FCB)
+    DispatchAsync(0x0000, 0x0001, lambda_1133)
 
-    def _loc_FD3(): pass
+    def _loc_113B(): pass
 
-    label('loc_FD3')
+    label('loc_113B')
 
     If(
         (
@@ -1007,20 +997,20 @@ def func_04_ED7():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_FED',
+        'loc_1155',
     )
 
-    @scena.Lambda('lambda_0FE5')
-    def lambda_0FE5():
+    @scena.Lambda('lambda_114D')
+    def lambda_114D():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_0FE5)
+    DispatchAsync(0x0001, 0x0001, lambda_114D)
 
-    def _loc_FED(): pass
+    def _loc_1155(): pass
 
-    label('loc_FED')
+    label('loc_1155')
 
     If(
         (
@@ -1029,20 +1019,20 @@ def func_04_ED7():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_1007',
+        'loc_116F',
     )
 
-    @scena.Lambda('lambda_0FFF')
-    def lambda_0FFF():
+    @scena.Lambda('lambda_1167')
+    def lambda_1167():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_0FFF)
+    DispatchAsync(0x0002, 0x0001, lambda_1167)
 
-    def _loc_1007(): pass
+    def _loc_116F(): pass
 
-    label('loc_1007')
+    label('loc_116F')
 
     If(
         (
@@ -1051,20 +1041,20 @@ def func_04_ED7():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_1021',
+        'loc_1189',
     )
 
-    @scena.Lambda('lambda_1019')
-    def lambda_1019():
+    @scena.Lambda('lambda_1181')
+    def lambda_1181():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_1019)
+    DispatchAsync(0x0003, 0x0001, lambda_1181)
 
-    def _loc_1021(): pass
+    def _loc_1189(): pass
 
-    label('loc_1021')
+    label('loc_1189')
 
     If(
         (
@@ -1073,20 +1063,20 @@ def func_04_ED7():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_103B',
+        'loc_11A3',
     )
 
-    @scena.Lambda('lambda_1033')
-    def lambda_1033():
+    @scena.Lambda('lambda_119B')
+    def lambda_119B():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_1033)
+    DispatchAsync(0x0004, 0x0001, lambda_119B)
 
-    def _loc_103B(): pass
+    def _loc_11A3(): pass
 
-    label('loc_103B')
+    label('loc_11A3')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -1097,7 +1087,7 @@ def func_04_ED7():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1285',
+        'loc_142E',
     )
 
     ChrTalk(
@@ -1119,7 +1109,7 @@ def func_04_ED7():
             (Expr.TestScenaFlags, ScenaFlag(0x00A5, 0, 0x528)),
             Expr.Return,
         ),
-        'loc_1119',
+        'loc_129A',
     )
 
     ChrTalk(
@@ -1154,18 +1144,18 @@ def func_04_ED7():
 
     CloseMessageWindow()
 
-    Jump('loc_1252')
+    Jump('loc_13F6')
 
-    def _loc_1119(): pass
+    def _loc_129A(): pass
 
-    label('loc_1119')
+    label('loc_129A')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00A2, 1, 0x511)),
             Expr.Return,
         ),
-        'loc_11BB',
+        'loc_134B',
     )
 
     ChrTalk(
@@ -1202,11 +1192,11 @@ def func_04_ED7():
 
     CloseMessageWindow()
 
-    Jump('loc_1252')
+    Jump('loc_13F6')
 
-    def _loc_11BB(): pass
+    def _loc_134B(): pass
 
-    label('loc_11BB')
+    label('loc_134B')
 
     ChrTalk(
         0x00FE,
@@ -1244,9 +1234,9 @@ def func_04_ED7():
 
     CloseMessageWindow()
 
-    def _loc_1252(): pass
+    def _loc_13F6(): pass
 
-    label('loc_1252')
+    label('loc_13F6')
 
     ChrTalk(
         0x00FE,
@@ -1259,11 +1249,11 @@ def func_04_ED7():
 
     CloseMessageWindow()
 
-    Jump('loc_12DB')
+    Jump('loc_148E')
 
-    def _loc_1285(): pass
+    def _loc_142E(): pass
 
-    label('loc_1285')
+    label('loc_142E')
 
     ChrTalk(
         0x00FE,
@@ -1286,9 +1276,9 @@ def func_04_ED7():
     )
 
     CloseMessageWindow()
-    def _loc_12DB(): pass
+    def _loc_148E(): pass
 
-    label('loc_12DB')
+    label('loc_148E')
 
     FadeOut(300, 0, 100)
 
@@ -1334,7 +1324,7 @@ def func_04_ED7():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_13D5',
+        'loc_159C',
     )
 
     ChrTalk(
@@ -1380,21 +1370,21 @@ def func_04_ED7():
     CloseMessageWindow()
     OP_28(0x002D, 0x01, 0x4000)
 
-    @scena.Lambda('lambda_13CA')
-    def lambda_13CA():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_1591')
+    def lambda_1591():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_13CA)
+    DispatchAsync(0x0000, 0x0001, lambda_1591)
 
     EventEnd(0x00)
 
     Return()
 
-    def _loc_13D5(): pass
+    def _loc_159C(): pass
 
-    label('loc_13D5')
+    label('loc_159C')
 
     ChrTalk(
         0x0101,
@@ -1618,21 +1608,21 @@ def func_04_ED7():
     OP_28(0x002D, 0x01, 0x0002)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_1750')
-    def lambda_1750():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_1980')
+    def lambda_1980():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_1750)
+    DispatchAsync(0x0000, 0x0001, lambda_1980)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x0005 offset: 0x175B
-@scena.Code('func_05_175B')
-def func_05_175B():
+# id: 0x0005 offset: 0x198B
+@scena.Code('func_05_198B')
+def func_05_198B():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -1640,8 +1630,8 @@ def func_05_175B():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -1651,14 +1641,14 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_17E0',
+        'loc_1A10',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_17E0(): pass
+    def _loc_1A10(): pass
 
-    label('loc_17E0')
+    label('loc_1A10')
 
     If(
         (
@@ -1668,14 +1658,14 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_17FF',
+        'loc_1A2F',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_17FF(): pass
+    def _loc_1A2F(): pass
 
-    label('loc_17FF')
+    label('loc_1A2F')
 
     If(
         (
@@ -1685,14 +1675,14 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_181E',
+        'loc_1A4E',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_181E(): pass
+    def _loc_1A4E(): pass
 
-    label('loc_181E')
+    label('loc_1A4E')
 
     If(
         (
@@ -1702,14 +1692,14 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_183D',
+        'loc_1A6D',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_183D(): pass
+    def _loc_1A6D(): pass
 
-    label('loc_183D')
+    label('loc_1A6D')
 
     If(
         (
@@ -1718,20 +1708,20 @@ def func_05_175B():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_1857',
+        'loc_1A87',
     )
 
-    @scena.Lambda('lambda_184F')
-    def lambda_184F():
+    @scena.Lambda('lambda_1A7F')
+    def lambda_1A7F():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_184F)
+    DispatchAsync(0x0000, 0x0001, lambda_1A7F)
 
-    def _loc_1857(): pass
+    def _loc_1A87(): pass
 
-    label('loc_1857')
+    label('loc_1A87')
 
     If(
         (
@@ -1740,20 +1730,20 @@ def func_05_175B():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_1871',
+        'loc_1AA1',
     )
 
-    @scena.Lambda('lambda_1869')
-    def lambda_1869():
+    @scena.Lambda('lambda_1A99')
+    def lambda_1A99():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_1869)
+    DispatchAsync(0x0001, 0x0001, lambda_1A99)
 
-    def _loc_1871(): pass
+    def _loc_1AA1(): pass
 
-    label('loc_1871')
+    label('loc_1AA1')
 
     If(
         (
@@ -1762,20 +1752,20 @@ def func_05_175B():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_188B',
+        'loc_1ABB',
     )
 
-    @scena.Lambda('lambda_1883')
-    def lambda_1883():
+    @scena.Lambda('lambda_1AB3')
+    def lambda_1AB3():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_1883)
+    DispatchAsync(0x0002, 0x0001, lambda_1AB3)
 
-    def _loc_188B(): pass
+    def _loc_1ABB(): pass
 
-    label('loc_188B')
+    label('loc_1ABB')
 
     If(
         (
@@ -1784,20 +1774,20 @@ def func_05_175B():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_18A5',
+        'loc_1AD5',
     )
 
-    @scena.Lambda('lambda_189D')
-    def lambda_189D():
+    @scena.Lambda('lambda_1ACD')
+    def lambda_1ACD():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_189D)
+    DispatchAsync(0x0003, 0x0001, lambda_1ACD)
 
-    def _loc_18A5(): pass
+    def _loc_1AD5(): pass
 
-    label('loc_18A5')
+    label('loc_1AD5')
 
     If(
         (
@@ -1806,20 +1796,20 @@ def func_05_175B():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_18BF',
+        'loc_1AEF',
     )
 
-    @scena.Lambda('lambda_18B7')
-    def lambda_18B7():
+    @scena.Lambda('lambda_1AE7')
+    def lambda_1AE7():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_18B7)
+    DispatchAsync(0x0004, 0x0001, lambda_1AE7)
 
-    def _loc_18BF(): pass
+    def _loc_1AEF(): pass
 
-    label('loc_18BF')
+    label('loc_1AEF')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -1852,12 +1842,12 @@ def func_05_175B():
             (Expr.Eval, "OP_40(0x0342)"),
             Expr.Return,
         ),
-        'loc_1970',
+        'loc_1BAA',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1878,21 +1868,21 @@ def func_05_175B():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0342, 1)
 
-    def _loc_1970(): pass
+    def _loc_1BAA(): pass
 
-    label('loc_1970')
+    label('loc_1BAA')
 
     If(
         (
             (Expr.Eval, "OP_40(0x0341)"),
             Expr.Return,
         ),
-        'loc_19C5',
+        'loc_1BFF',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1913,21 +1903,21 @@ def func_05_175B():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0341, 1)
 
-    def _loc_19C5(): pass
+    def _loc_1BFF(): pass
 
-    label('loc_19C5')
+    label('loc_1BFF')
 
     If(
         (
             (Expr.Eval, "OP_40(0x0340)"),
             Expr.Return,
         ),
-        'loc_1A22',
+        'loc_1C5C',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -1948,9 +1938,9 @@ def func_05_175B():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0340, 1)
 
-    def _loc_1A22(): pass
+    def _loc_1C5C(): pass
 
-    label('loc_1A22')
+    label('loc_1C5C')
 
     If(
         (
@@ -1961,13 +1951,13 @@ def func_05_175B():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_239F',
+        'loc_26BF',
     )
 
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1981,7 +1971,7 @@ def func_05_175B():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -2151,7 +2141,7 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_1E4D',
+        'loc_20EB',
     )
 
     If(
@@ -2159,7 +2149,7 @@ def func_05_175B():
             (Expr.TestScenaFlags, ScenaFlag(0x00A5, 0, 0x528)),
             Expr.Return,
         ),
-        'loc_1DBD',
+        'loc_204C',
     )
 
     ChrTalk(
@@ -2177,11 +2167,11 @@ def func_05_175B():
 
     CloseMessageWindow()
 
-    Jump('loc_1E22')
+    Jump('loc_20BB')
 
-    def _loc_1DBD(): pass
+    def _loc_204C(): pass
 
-    label('loc_1DBD')
+    label('loc_204C')
 
     ChrTalk(
         0x0107,
@@ -2198,9 +2188,9 @@ def func_05_175B():
 
     CloseMessageWindow()
 
-    def _loc_1E22(): pass
+    def _loc_20BB(): pass
 
-    label('loc_1E22')
+    label('loc_20BB')
 
     ChrTurnDirection(0x0101, 0x0107, 400)
 
@@ -2214,9 +2204,9 @@ def func_05_175B():
 
     CloseMessageWindow()
 
-    def _loc_1E4D(): pass
+    def _loc_20EB(): pass
 
-    label('loc_1E4D')
+    label('loc_20EB')
 
     ChrTurnDirection(0x0102, 0x00FE, 400)
 
@@ -2254,7 +2244,7 @@ def func_05_175B():
 
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -2367,7 +2357,7 @@ def func_05_175B():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_2155',
+        'loc_2439',
     )
 
     OP_62(0x0107, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
@@ -2384,9 +2374,9 @@ def func_05_175B():
 
     CloseMessageWindow()
 
-    def _loc_2155(): pass
+    def _loc_2439(): pass
 
-    label('loc_2155')
+    label('loc_2439')
 
     ChrTalk(
         0x00FE,
@@ -2509,11 +2499,11 @@ def func_05_175B():
 
     CloseMessageWindow()
 
-    Jump('loc_23F5')
+    Jump('loc_271F')
 
-    def _loc_239F(): pass
+    def _loc_26BF(): pass
 
-    label('loc_239F')
+    label('loc_26BF')
 
     ChrTalk(
         0x00FE,
@@ -2537,31 +2527,31 @@ def func_05_175B():
     CloseMessageWindow()
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_23EA')
-    def lambda_23EA():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_2714')
+    def lambda_2714():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_23EA)
+    DispatchAsync(0x0000, 0x0001, lambda_2714)
 
     EventEnd(0x00)
 
     Return()
 
-    def _loc_23F5(): pass
+    def _loc_271F(): pass
 
-    label('loc_23F5')
+    label('loc_271F')
 
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_23FF')
-    def lambda_23FF():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_2729')
+    def lambda_2729():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_23FF)
+    DispatchAsync(0x0000, 0x0001, lambda_2729)
 
     OP_28(0x002D, 0x04, 0x10)
     OP_28(0x002D, 0x01, 0x0020)
@@ -2576,9 +2566,9 @@ def func_05_175B():
 
     Return()
 
-# id: 0x0006 offset: 0x243C
-@scena.Code('func_06_243C')
-def func_06_243C():
+# id: 0x0006 offset: 0x2766
+@scena.Code('func_06_2766')
+def func_06_2766():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -2586,8 +2576,8 @@ def func_06_243C():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -2597,14 +2587,14 @@ def func_06_243C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_24C1',
+        'loc_27EB',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_24C1(): pass
+    def _loc_27EB(): pass
 
-    label('loc_24C1')
+    label('loc_27EB')
 
     If(
         (
@@ -2614,14 +2604,14 @@ def func_06_243C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_24E0',
+        'loc_280A',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_24E0(): pass
+    def _loc_280A(): pass
 
-    label('loc_24E0')
+    label('loc_280A')
 
     If(
         (
@@ -2631,14 +2621,14 @@ def func_06_243C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_24FF',
+        'loc_2829',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_24FF(): pass
+    def _loc_2829(): pass
 
-    label('loc_24FF')
+    label('loc_2829')
 
     If(
         (
@@ -2648,14 +2638,14 @@ def func_06_243C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_251E',
+        'loc_2848',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_251E(): pass
+    def _loc_2848(): pass
 
-    label('loc_251E')
+    label('loc_2848')
 
     If(
         (
@@ -2664,20 +2654,20 @@ def func_06_243C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2538',
+        'loc_2862',
     )
 
-    @scena.Lambda('lambda_2530')
-    def lambda_2530():
+    @scena.Lambda('lambda_285A')
+    def lambda_285A():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_2530)
+    DispatchAsync(0x0000, 0x0001, lambda_285A)
 
-    def _loc_2538(): pass
+    def _loc_2862(): pass
 
-    label('loc_2538')
+    label('loc_2862')
 
     If(
         (
@@ -2686,20 +2676,20 @@ def func_06_243C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2552',
+        'loc_287C',
     )
 
-    @scena.Lambda('lambda_254A')
-    def lambda_254A():
+    @scena.Lambda('lambda_2874')
+    def lambda_2874():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_254A)
+    DispatchAsync(0x0001, 0x0001, lambda_2874)
 
-    def _loc_2552(): pass
+    def _loc_287C(): pass
 
-    label('loc_2552')
+    label('loc_287C')
 
     If(
         (
@@ -2708,20 +2698,20 @@ def func_06_243C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_256C',
+        'loc_2896',
     )
 
-    @scena.Lambda('lambda_2564')
-    def lambda_2564():
+    @scena.Lambda('lambda_288E')
+    def lambda_288E():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_2564)
+    DispatchAsync(0x0002, 0x0001, lambda_288E)
 
-    def _loc_256C(): pass
+    def _loc_2896(): pass
 
-    label('loc_256C')
+    label('loc_2896')
 
     If(
         (
@@ -2730,20 +2720,20 @@ def func_06_243C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2586',
+        'loc_28B0',
     )
 
-    @scena.Lambda('lambda_257E')
-    def lambda_257E():
+    @scena.Lambda('lambda_28A8')
+    def lambda_28A8():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_257E)
+    DispatchAsync(0x0003, 0x0001, lambda_28A8)
 
-    def _loc_2586(): pass
+    def _loc_28B0(): pass
 
-    label('loc_2586')
+    label('loc_28B0')
 
     If(
         (
@@ -2752,20 +2742,20 @@ def func_06_243C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_25A0',
+        'loc_28CA',
     )
 
-    @scena.Lambda('lambda_2598')
-    def lambda_2598():
+    @scena.Lambda('lambda_28C2')
+    def lambda_28C2():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_2598)
+    DispatchAsync(0x0004, 0x0001, lambda_28C2)
 
-    def _loc_25A0(): pass
+    def _loc_28CA(): pass
 
-    label('loc_25A0')
+    label('loc_28CA')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -2806,12 +2796,12 @@ def func_06_243C():
             (Expr.Eval, "OP_40(0x0342)"),
             Expr.Return,
         ),
-        'loc_2662',
+        'loc_299B',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -2832,21 +2822,21 @@ def func_06_243C():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0342, 1)
 
-    def _loc_2662(): pass
+    def _loc_299B(): pass
 
-    label('loc_2662')
+    label('loc_299B')
 
     If(
         (
             (Expr.Eval, "OP_40(0x0341)"),
             Expr.Return,
         ),
-        'loc_26B7',
+        'loc_29F0',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -2867,21 +2857,21 @@ def func_06_243C():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0341, 1)
 
-    def _loc_26B7(): pass
+    def _loc_29F0(): pass
 
-    label('loc_26B7')
+    label('loc_29F0')
 
     If(
         (
             (Expr.Eval, "OP_40(0x0340)"),
             Expr.Return,
         ),
-        'loc_2714',
+        'loc_2A4D',
     )
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -2902,9 +2892,9 @@ def func_06_243C():
     SetMessageWindowPos(72, 320, 56, 3)
     RemoveItem(0x0340, 1)
 
-    def _loc_2714(): pass
+    def _loc_2A4D(): pass
 
-    label('loc_2714')
+    label('loc_2A4D')
 
     If(
         (
@@ -2915,13 +2905,13 @@ def func_06_243C():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_2983',
+        'loc_2CF3',
     )
 
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -2935,7 +2925,7 @@ def func_06_243C():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -3073,11 +3063,11 @@ def func_06_243C():
     OP_28(0x002D, 0x04, 0x10)
     OP_28(0x002D, 0x01, 0x0020)
 
-    Jump('loc_2C4C')
+    Jump('loc_3011')
 
-    def _loc_2983(): pass
+    def _loc_2CF3(): pass
 
-    label('loc_2983')
+    label('loc_2CF3')
 
     ChrTalk(
         0x00FE,
@@ -3251,7 +3241,7 @@ def func_06_243C():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -3271,29 +3261,29 @@ def func_06_243C():
     OP_28(0x002D, 0x01, 0x0040)
     Call(1, 0x000D)
 
-    def _loc_2C4C(): pass
+    def _loc_3011(): pass
 
-    label('loc_2C4C')
+    label('loc_3011')
 
     OP_28(0x002D, 0x04, 0x10)
     OP_28(0x002D, 0x01, 0x4000)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_2C61')
-    def lambda_2C61():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_3026')
+    def lambda_3026():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_2C61)
+    DispatchAsync(0x0000, 0x0001, lambda_3026)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x0007 offset: 0x2C6C
-@scena.Code('func_07_2C6C')
-def func_07_2C6C():
+# id: 0x0007 offset: 0x3031
+@scena.Code('func_07_3031')
+def func_07_3031():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -3301,8 +3291,8 @@ def func_07_2C6C():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -3312,14 +3302,14 @@ def func_07_2C6C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_2CF1',
+        'loc_30B6',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_2CF1(): pass
+    def _loc_30B6(): pass
 
-    label('loc_2CF1')
+    label('loc_30B6')
 
     If(
         (
@@ -3329,14 +3319,14 @@ def func_07_2C6C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_2D10',
+        'loc_30D5',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_2D10(): pass
+    def _loc_30D5(): pass
 
-    label('loc_2D10')
+    label('loc_30D5')
 
     If(
         (
@@ -3346,14 +3336,14 @@ def func_07_2C6C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_2D2F',
+        'loc_30F4',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_2D2F(): pass
+    def _loc_30F4(): pass
 
-    label('loc_2D2F')
+    label('loc_30F4')
 
     If(
         (
@@ -3363,14 +3353,14 @@ def func_07_2C6C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_2D4E',
+        'loc_3113',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_2D4E(): pass
+    def _loc_3113(): pass
 
-    label('loc_2D4E')
+    label('loc_3113')
 
     If(
         (
@@ -3379,20 +3369,20 @@ def func_07_2C6C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2D68',
+        'loc_312D',
     )
 
-    @scena.Lambda('lambda_2D60')
-    def lambda_2D60():
+    @scena.Lambda('lambda_3125')
+    def lambda_3125():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_2D60)
+    DispatchAsync(0x0000, 0x0001, lambda_3125)
 
-    def _loc_2D68(): pass
+    def _loc_312D(): pass
 
-    label('loc_2D68')
+    label('loc_312D')
 
     If(
         (
@@ -3401,20 +3391,20 @@ def func_07_2C6C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2D82',
+        'loc_3147',
     )
 
-    @scena.Lambda('lambda_2D7A')
-    def lambda_2D7A():
+    @scena.Lambda('lambda_313F')
+    def lambda_313F():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_2D7A)
+    DispatchAsync(0x0001, 0x0001, lambda_313F)
 
-    def _loc_2D82(): pass
+    def _loc_3147(): pass
 
-    label('loc_2D82')
+    label('loc_3147')
 
     If(
         (
@@ -3423,20 +3413,20 @@ def func_07_2C6C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2D9C',
+        'loc_3161',
     )
 
-    @scena.Lambda('lambda_2D94')
-    def lambda_2D94():
+    @scena.Lambda('lambda_3159')
+    def lambda_3159():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_2D94)
+    DispatchAsync(0x0002, 0x0001, lambda_3159)
 
-    def _loc_2D9C(): pass
+    def _loc_3161(): pass
 
-    label('loc_2D9C')
+    label('loc_3161')
 
     If(
         (
@@ -3445,20 +3435,20 @@ def func_07_2C6C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2DB6',
+        'loc_317B',
     )
 
-    @scena.Lambda('lambda_2DAE')
-    def lambda_2DAE():
+    @scena.Lambda('lambda_3173')
+    def lambda_3173():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_2DAE)
+    DispatchAsync(0x0003, 0x0001, lambda_3173)
 
-    def _loc_2DB6(): pass
+    def _loc_317B(): pass
 
-    label('loc_2DB6')
+    label('loc_317B')
 
     If(
         (
@@ -3467,20 +3457,20 @@ def func_07_2C6C():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_2DD0',
+        'loc_3195',
     )
 
-    @scena.Lambda('lambda_2DC8')
-    def lambda_2DC8():
+    @scena.Lambda('lambda_318D')
+    def lambda_318D():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_2DC8)
+    DispatchAsync(0x0004, 0x0001, lambda_318D)
 
-    def _loc_2DD0(): pass
+    def _loc_3195(): pass
 
-    label('loc_2DD0')
+    label('loc_3195')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -3522,7 +3512,7 @@ def func_07_2C6C():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -3542,7 +3532,7 @@ def func_07_2C6C():
     PlaySE(23, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -3748,7 +3738,7 @@ def func_07_2C6C():
             (Expr.Eval, "OP_29(0x0020, 0x00, 0x04)"),
             Expr.Return,
         ),
-        'loc_3298',
+        'loc_36D0',
     )
 
     ChrTalk(
@@ -3762,9 +3752,9 @@ def func_07_2C6C():
 
     CloseMessageWindow()
 
-    def _loc_3298(): pass
+    def _loc_36D0(): pass
 
-    label('loc_3298')
+    label('loc_36D0')
 
     ChrTalk(
         0x00FE,
@@ -3809,7 +3799,7 @@ def func_07_2C6C():
 
     CloseMessageWindow()
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -3863,7 +3853,7 @@ def func_07_2C6C():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_34CA',
+        'loc_3939',
     )
 
     If(
@@ -3871,7 +3861,7 @@ def func_07_2C6C():
             (Expr.TestScenaFlags, ScenaFlag(0x00A5, 0, 0x528)),
             Expr.Return,
         ),
-        'loc_3478',
+        'loc_38DD',
     )
 
     ChrTalk(
@@ -3888,11 +3878,11 @@ def func_07_2C6C():
 
     CloseMessageWindow()
 
-    Jump('loc_34CA')
+    Jump('loc_3939')
 
-    def _loc_3478(): pass
+    def _loc_38DD(): pass
 
-    label('loc_3478')
+    label('loc_38DD')
 
     ChrTalk(
         0x0107,
@@ -3908,9 +3898,9 @@ def func_07_2C6C():
 
     CloseMessageWindow()
 
-    def _loc_34CA(): pass
+    def _loc_3939(): pass
 
-    label('loc_34CA')
+    label('loc_3939')
 
     ChrTalk(
         0x00FE,
@@ -4033,21 +4023,21 @@ def func_07_2C6C():
     OP_28(0x002F, 0x01, 0x0004)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_3723')
-    def lambda_3723():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_3BC9')
+    def lambda_3BC9():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_3723)
+    DispatchAsync(0x0000, 0x0001, lambda_3BC9)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x0008 offset: 0x372E
-@scena.Code('func_08_372E')
-def func_08_372E():
+# id: 0x0008 offset: 0x3BD4
+@scena.Code('func_08_3BD4')
+def func_08_3BD4():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -4055,8 +4045,8 @@ def func_08_372E():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -4066,14 +4056,14 @@ def func_08_372E():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_37B3',
+        'loc_3C59',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_37B3(): pass
+    def _loc_3C59(): pass
 
-    label('loc_37B3')
+    label('loc_3C59')
 
     If(
         (
@@ -4083,14 +4073,14 @@ def func_08_372E():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_37D2',
+        'loc_3C78',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_37D2(): pass
+    def _loc_3C78(): pass
 
-    label('loc_37D2')
+    label('loc_3C78')
 
     If(
         (
@@ -4100,14 +4090,14 @@ def func_08_372E():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_37F1',
+        'loc_3C97',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_37F1(): pass
+    def _loc_3C97(): pass
 
-    label('loc_37F1')
+    label('loc_3C97')
 
     If(
         (
@@ -4117,14 +4107,14 @@ def func_08_372E():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_3810',
+        'loc_3CB6',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_3810(): pass
+    def _loc_3CB6(): pass
 
-    label('loc_3810')
+    label('loc_3CB6')
 
     If(
         (
@@ -4133,20 +4123,20 @@ def func_08_372E():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_382A',
+        'loc_3CD0',
     )
 
-    @scena.Lambda('lambda_3822')
-    def lambda_3822():
+    @scena.Lambda('lambda_3CC8')
+    def lambda_3CC8():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_3822)
+    DispatchAsync(0x0000, 0x0001, lambda_3CC8)
 
-    def _loc_382A(): pass
+    def _loc_3CD0(): pass
 
-    label('loc_382A')
+    label('loc_3CD0')
 
     If(
         (
@@ -4155,20 +4145,20 @@ def func_08_372E():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3844',
+        'loc_3CEA',
     )
 
-    @scena.Lambda('lambda_383C')
-    def lambda_383C():
+    @scena.Lambda('lambda_3CE2')
+    def lambda_3CE2():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_383C)
+    DispatchAsync(0x0001, 0x0001, lambda_3CE2)
 
-    def _loc_3844(): pass
+    def _loc_3CEA(): pass
 
-    label('loc_3844')
+    label('loc_3CEA')
 
     If(
         (
@@ -4177,20 +4167,20 @@ def func_08_372E():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_385E',
+        'loc_3D04',
     )
 
-    @scena.Lambda('lambda_3856')
-    def lambda_3856():
+    @scena.Lambda('lambda_3CFC')
+    def lambda_3CFC():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_3856)
+    DispatchAsync(0x0002, 0x0001, lambda_3CFC)
 
-    def _loc_385E(): pass
+    def _loc_3D04(): pass
 
-    label('loc_385E')
+    label('loc_3D04')
 
     If(
         (
@@ -4199,20 +4189,20 @@ def func_08_372E():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3878',
+        'loc_3D1E',
     )
 
-    @scena.Lambda('lambda_3870')
-    def lambda_3870():
+    @scena.Lambda('lambda_3D16')
+    def lambda_3D16():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_3870)
+    DispatchAsync(0x0003, 0x0001, lambda_3D16)
 
-    def _loc_3878(): pass
+    def _loc_3D1E(): pass
 
-    label('loc_3878')
+    label('loc_3D1E')
 
     If(
         (
@@ -4221,20 +4211,20 @@ def func_08_372E():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3892',
+        'loc_3D38',
     )
 
-    @scena.Lambda('lambda_388A')
-    def lambda_388A():
+    @scena.Lambda('lambda_3D30')
+    def lambda_3D30():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_388A)
+    DispatchAsync(0x0004, 0x0001, lambda_3D30)
 
-    def _loc_3892(): pass
+    def _loc_3D38(): pass
 
-    label('loc_3892')
+    label('loc_3D38')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -4273,7 +4263,7 @@ def func_08_372E():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -4292,7 +4282,7 @@ def func_08_372E():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -4423,21 +4413,21 @@ def func_08_372E():
     OP_28(0x002D, 0x01, 0x4000)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_3B46')
-    def lambda_3B46():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_402D')
+    def lambda_402D():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_3B46)
+    DispatchAsync(0x0000, 0x0001, lambda_402D)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x0009 offset: 0x3B51
-@scena.Code('func_09_3B51')
-def func_09_3B51():
+# id: 0x0009 offset: 0x4038
+@scena.Code('func_09_4038')
+def func_09_4038():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -4445,8 +4435,8 @@ def func_09_3B51():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -4456,14 +4446,14 @@ def func_09_3B51():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_3BD6',
+        'loc_40BD',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_3BD6(): pass
+    def _loc_40BD(): pass
 
-    label('loc_3BD6')
+    label('loc_40BD')
 
     If(
         (
@@ -4473,14 +4463,14 @@ def func_09_3B51():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_3BF5',
+        'loc_40DC',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_3BF5(): pass
+    def _loc_40DC(): pass
 
-    label('loc_3BF5')
+    label('loc_40DC')
 
     If(
         (
@@ -4490,14 +4480,14 @@ def func_09_3B51():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_3C14',
+        'loc_40FB',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_3C14(): pass
+    def _loc_40FB(): pass
 
-    label('loc_3C14')
+    label('loc_40FB')
 
     If(
         (
@@ -4507,14 +4497,14 @@ def func_09_3B51():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_3C33',
+        'loc_411A',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_3C33(): pass
+    def _loc_411A(): pass
 
-    label('loc_3C33')
+    label('loc_411A')
 
     If(
         (
@@ -4523,20 +4513,20 @@ def func_09_3B51():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3C4D',
+        'loc_4134',
     )
 
-    @scena.Lambda('lambda_3C45')
-    def lambda_3C45():
+    @scena.Lambda('lambda_412C')
+    def lambda_412C():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_3C45)
+    DispatchAsync(0x0000, 0x0001, lambda_412C)
 
-    def _loc_3C4D(): pass
+    def _loc_4134(): pass
 
-    label('loc_3C4D')
+    label('loc_4134')
 
     If(
         (
@@ -4545,20 +4535,20 @@ def func_09_3B51():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3C67',
+        'loc_414E',
     )
 
-    @scena.Lambda('lambda_3C5F')
-    def lambda_3C5F():
+    @scena.Lambda('lambda_4146')
+    def lambda_4146():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_3C5F)
+    DispatchAsync(0x0001, 0x0001, lambda_4146)
 
-    def _loc_3C67(): pass
+    def _loc_414E(): pass
 
-    label('loc_3C67')
+    label('loc_414E')
 
     If(
         (
@@ -4567,20 +4557,20 @@ def func_09_3B51():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3C81',
+        'loc_4168',
     )
 
-    @scena.Lambda('lambda_3C79')
-    def lambda_3C79():
+    @scena.Lambda('lambda_4160')
+    def lambda_4160():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_3C79)
+    DispatchAsync(0x0002, 0x0001, lambda_4160)
 
-    def _loc_3C81(): pass
+    def _loc_4168(): pass
 
-    label('loc_3C81')
+    label('loc_4168')
 
     If(
         (
@@ -4589,20 +4579,20 @@ def func_09_3B51():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3C9B',
+        'loc_4182',
     )
 
-    @scena.Lambda('lambda_3C93')
-    def lambda_3C93():
+    @scena.Lambda('lambda_417A')
+    def lambda_417A():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_3C93)
+    DispatchAsync(0x0003, 0x0001, lambda_417A)
 
-    def _loc_3C9B(): pass
+    def _loc_4182(): pass
 
-    label('loc_3C9B')
+    label('loc_4182')
 
     If(
         (
@@ -4611,20 +4601,20 @@ def func_09_3B51():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_3CB5',
+        'loc_419C',
     )
 
-    @scena.Lambda('lambda_3CAD')
-    def lambda_3CAD():
+    @scena.Lambda('lambda_4194')
+    def lambda_4194():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_3CAD)
+    DispatchAsync(0x0004, 0x0001, lambda_4194)
 
-    def _loc_3CB5(): pass
+    def _loc_419C(): pass
 
-    label('loc_3CB5')
+    label('loc_419C')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -4673,7 +4663,7 @@ def func_09_3B51():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -4692,7 +4682,7 @@ def func_09_3B51():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -4781,7 +4771,7 @@ def func_09_3B51():
     CloseMessageWindow()
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -4837,7 +4827,7 @@ def func_09_3B51():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_40C3',
+        'loc_45FF',
     )
 
     If(
@@ -4845,7 +4835,7 @@ def func_09_3B51():
             (Expr.TestScenaFlags, ScenaFlag(0x00A5, 0, 0x528)),
             Expr.Return,
         ),
-        'loc_40A5',
+        'loc_45DC',
     )
 
     ChrTalk(
@@ -4858,11 +4848,11 @@ def func_09_3B51():
 
     CloseMessageWindow()
 
-    Jump('loc_40C3')
+    Jump('loc_45FF')
 
-    def _loc_40A5(): pass
+    def _loc_45DC(): pass
 
-    label('loc_40A5')
+    label('loc_45DC')
 
     ChrTalk(
         0x0107,
@@ -4874,9 +4864,9 @@ def func_09_3B51():
 
     CloseMessageWindow()
 
-    def _loc_40C3(): pass
+    def _loc_45FF(): pass
 
-    label('loc_40C3')
+    label('loc_45FF')
 
     ChrTalk(
         0x00FE,
@@ -4939,21 +4929,21 @@ def func_09_3B51():
     OP_28(0x0030, 0x01, 0x0002)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_41B1')
-    def lambda_41B1():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_4706')
+    def lambda_4706():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_41B1)
+    DispatchAsync(0x0000, 0x0001, lambda_4706)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x000A offset: 0x41BC
-@scena.Code('func_0A_41BC')
-def func_0A_41BC():
+# id: 0x000A offset: 0x4711
+@scena.Code('func_0A_4711')
+def func_0A_4711():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -4961,8 +4951,8 @@ def func_0A_41BC():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -4972,14 +4962,14 @@ def func_0A_41BC():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_4241',
+        'loc_4796',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_4241(): pass
+    def _loc_4796(): pass
 
-    label('loc_4241')
+    label('loc_4796')
 
     If(
         (
@@ -4989,14 +4979,14 @@ def func_0A_41BC():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_4260',
+        'loc_47B5',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_4260(): pass
+    def _loc_47B5(): pass
 
-    label('loc_4260')
+    label('loc_47B5')
 
     If(
         (
@@ -5006,14 +4996,14 @@ def func_0A_41BC():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_427F',
+        'loc_47D4',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_427F(): pass
+    def _loc_47D4(): pass
 
-    label('loc_427F')
+    label('loc_47D4')
 
     If(
         (
@@ -5023,14 +5013,14 @@ def func_0A_41BC():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_429E',
+        'loc_47F3',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_429E(): pass
+    def _loc_47F3(): pass
 
-    label('loc_429E')
+    label('loc_47F3')
 
     If(
         (
@@ -5039,20 +5029,20 @@ def func_0A_41BC():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_42B8',
+        'loc_480D',
     )
 
-    @scena.Lambda('lambda_42B0')
-    def lambda_42B0():
+    @scena.Lambda('lambda_4805')
+    def lambda_4805():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_42B0)
+    DispatchAsync(0x0000, 0x0001, lambda_4805)
 
-    def _loc_42B8(): pass
+    def _loc_480D(): pass
 
-    label('loc_42B8')
+    label('loc_480D')
 
     If(
         (
@@ -5061,20 +5051,20 @@ def func_0A_41BC():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_42D2',
+        'loc_4827',
     )
 
-    @scena.Lambda('lambda_42CA')
-    def lambda_42CA():
+    @scena.Lambda('lambda_481F')
+    def lambda_481F():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_42CA)
+    DispatchAsync(0x0001, 0x0001, lambda_481F)
 
-    def _loc_42D2(): pass
+    def _loc_4827(): pass
 
-    label('loc_42D2')
+    label('loc_4827')
 
     If(
         (
@@ -5083,20 +5073,20 @@ def func_0A_41BC():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_42EC',
+        'loc_4841',
     )
 
-    @scena.Lambda('lambda_42E4')
-    def lambda_42E4():
+    @scena.Lambda('lambda_4839')
+    def lambda_4839():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_42E4)
+    DispatchAsync(0x0002, 0x0001, lambda_4839)
 
-    def _loc_42EC(): pass
+    def _loc_4841(): pass
 
-    label('loc_42EC')
+    label('loc_4841')
 
     If(
         (
@@ -5105,20 +5095,20 @@ def func_0A_41BC():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_4306',
+        'loc_485B',
     )
 
-    @scena.Lambda('lambda_42FE')
-    def lambda_42FE():
+    @scena.Lambda('lambda_4853')
+    def lambda_4853():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_42FE)
+    DispatchAsync(0x0003, 0x0001, lambda_4853)
 
-    def _loc_4306(): pass
+    def _loc_485B(): pass
 
-    label('loc_4306')
+    label('loc_485B')
 
     If(
         (
@@ -5127,20 +5117,20 @@ def func_0A_41BC():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_4320',
+        'loc_4875',
     )
 
-    @scena.Lambda('lambda_4318')
-    def lambda_4318():
+    @scena.Lambda('lambda_486D')
+    def lambda_486D():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_4318)
+    DispatchAsync(0x0004, 0x0001, lambda_486D)
 
-    def _loc_4320(): pass
+    def _loc_4875(): pass
 
-    label('loc_4320')
+    label('loc_4875')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -5188,7 +5178,7 @@ def func_0A_41BC():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -5207,7 +5197,7 @@ def func_0A_41BC():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -5410,21 +5400,21 @@ def func_0A_41BC():
     OP_28(0x002D, 0x01, 0x4000)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_473E')
-    def lambda_473E():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_4D01')
+    def lambda_4D01():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_473E)
+    DispatchAsync(0x0000, 0x0001, lambda_4D01)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x000B offset: 0x4749
-@scena.Code('func_0B_4749')
-def func_0B_4749():
+# id: 0x000B offset: 0x4D0C
+@scena.Code('func_0B_4D0C')
+def func_0B_4D0C():
     EventBegin(0x00)
     Fade(1000)
     CameraMove(-101090, 0, 5020, 0)
@@ -5432,8 +5422,8 @@ def func_0B_4749():
     CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
     OP_6E(280, 0)
-    SetChrPos(0x0101, -102420, 0, 3650, 45)
-    SetChrPos(0x0102, -101580, 0, 3120, 41)
+    ChrSetPos(0x0101, -102420, 0, 3650, 45)
+    ChrSetPos(0x0102, -101580, 0, 3120, 41)
 
     If(
         (
@@ -5443,14 +5433,14 @@ def func_0B_4749():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_47CE',
+        'loc_4D91',
     )
 
-    SetChrPos(0x0107, -102560, 0, 2630, 45)
+    ChrSetPos(0x0107, -102560, 0, 2630, 45)
 
-    def _loc_47CE(): pass
+    def _loc_4D91(): pass
 
-    label('loc_47CE')
+    label('loc_4D91')
 
     If(
         (
@@ -5460,14 +5450,14 @@ def func_0B_4749():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_47ED',
+        'loc_4DB0',
     )
 
-    SetChrPos(0x0106, -103730, 0, 3450, 45)
+    ChrSetPos(0x0106, -103730, 0, 3450, 45)
 
-    def _loc_47ED(): pass
+    def _loc_4DB0(): pass
 
-    label('loc_47ED')
+    label('loc_4DB0')
 
     If(
         (
@@ -5477,14 +5467,14 @@ def func_0B_4749():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_480C',
+        'loc_4DCF',
     )
 
-    SetChrPos(0x013C, -103730, 0, 3450, 45)
+    ChrSetPos(0x013C, -103730, 0, 3450, 45)
 
-    def _loc_480C(): pass
+    def _loc_4DCF(): pass
 
-    label('loc_480C')
+    label('loc_4DCF')
 
     If(
         (
@@ -5494,14 +5484,14 @@ def func_0B_4749():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_482B',
+        'loc_4DEE',
     )
 
-    SetChrPos(0x0110, -103380, 0, 2360, 45)
+    ChrSetPos(0x0110, -103380, 0, 2360, 45)
 
-    def _loc_482B(): pass
+    def _loc_4DEE(): pass
 
-    label('loc_482B')
+    label('loc_4DEE')
 
     If(
         (
@@ -5510,20 +5500,20 @@ def func_0B_4749():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_4845',
+        'loc_4E08',
     )
 
-    @scena.Lambda('lambda_483D')
-    def lambda_483D():
+    @scena.Lambda('lambda_4E00')
+    def lambda_4E00():
         ChrTurnDirection(0x0000, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_483D)
+    DispatchAsync(0x0000, 0x0001, lambda_4E00)
 
-    def _loc_4845(): pass
+    def _loc_4E08(): pass
 
-    label('loc_4845')
+    label('loc_4E08')
 
     If(
         (
@@ -5532,20 +5522,20 @@ def func_0B_4749():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_485F',
+        'loc_4E22',
     )
 
-    @scena.Lambda('lambda_4857')
-    def lambda_4857():
+    @scena.Lambda('lambda_4E1A')
+    def lambda_4E1A():
         ChrTurnDirection(0x0001, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0001, 0x0001, lambda_4857)
+    DispatchAsync(0x0001, 0x0001, lambda_4E1A)
 
-    def _loc_485F(): pass
+    def _loc_4E22(): pass
 
-    label('loc_485F')
+    label('loc_4E22')
 
     If(
         (
@@ -5554,20 +5544,20 @@ def func_0B_4749():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_4879',
+        'loc_4E3C',
     )
 
-    @scena.Lambda('lambda_4871')
-    def lambda_4871():
+    @scena.Lambda('lambda_4E34')
+    def lambda_4E34():
         ChrTurnDirection(0x0002, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0002, 0x0001, lambda_4871)
+    DispatchAsync(0x0002, 0x0001, lambda_4E34)
 
-    def _loc_4879(): pass
+    def _loc_4E3C(): pass
 
-    label('loc_4879')
+    label('loc_4E3C')
 
     If(
         (
@@ -5576,20 +5566,20 @@ def func_0B_4749():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_4893',
+        'loc_4E56',
     )
 
-    @scena.Lambda('lambda_488B')
-    def lambda_488B():
+    @scena.Lambda('lambda_4E4E')
+    def lambda_4E4E():
         ChrTurnDirection(0x0003, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0003, 0x0001, lambda_488B)
+    DispatchAsync(0x0003, 0x0001, lambda_4E4E)
 
-    def _loc_4893(): pass
+    def _loc_4E56(): pass
 
-    label('loc_4893')
+    label('loc_4E56')
 
     If(
         (
@@ -5598,20 +5588,20 @@ def func_0B_4749():
             Expr.Gtr,
             Expr.Return,
         ),
-        'loc_48AD',
+        'loc_4E70',
     )
 
-    @scena.Lambda('lambda_48A5')
-    def lambda_48A5():
+    @scena.Lambda('lambda_4E68')
+    def lambda_4E68():
         ChrTurnDirection(0x0004, 0x0010, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0004, 0x0001, lambda_48A5)
+    DispatchAsync(0x0004, 0x0001, lambda_4E68)
 
-    def _loc_48AD(): pass
+    def _loc_4E70(): pass
 
-    label('loc_48AD')
+    label('loc_4E70')
 
     ChrTurnDirection(0x0010, 0x0101, 400)
     OP_0D()
@@ -5661,7 +5651,7 @@ def func_0B_4749():
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -5680,7 +5670,7 @@ def func_0B_4749():
     OP_56(0x00)
     PlaySE(23, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -5864,7 +5854,7 @@ def func_0B_4749():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_4CEC',
+        'loc_530E',
     )
 
     ChrTalk(
@@ -5877,9 +5867,9 @@ def func_0B_4749():
 
     CloseMessageWindow()
 
-    def _loc_4CEC(): pass
+    def _loc_530E(): pass
 
-    label('loc_4CEC')
+    label('loc_530E')
 
     ChrTurnDirection(0x00FE, 0x0101, 400)
 
@@ -5973,26 +5963,26 @@ def func_0B_4749():
     OP_28(0x0030, 0x01, 0x0008)
     Call(1, 0x000D)
 
-    @scena.Lambda('lambda_4E66')
-    def lambda_4E66():
-        SetChrDirection(0x0010, 0, 400)
+    @scena.Lambda('lambda_54B0')
+    def lambda_54B0():
+        ChrSetDirection(0x0010, 0, 400)
 
         ExitThread()
 
-    DispatchAsync(0x0000, 0x0001, lambda_4E66)
+    DispatchAsync(0x0000, 0x0001, lambda_54B0)
 
     EventEnd(0x00)
 
     Return()
 
-# id: 0x000C offset: 0x4E71
-@scena.Code('func_0C_4E71')
-def func_0C_4E71():
+# id: 0x000C offset: 0x54BB
+@scena.Code('func_0C_54BB')
+def func_0C_54BB():
     Sleep(100)
 
     PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -6012,57 +6002,57 @@ def func_0C_4E71():
     FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
     AddItem(0x0342, 1)
-    SetChrFlags(0x0018, 0x0080)
+    ChrSetFlags(0x0018, 0x0080)
     OP_64(0x07, 0x0001)
     OP_28(0x002D, 0x01, 0x0004)
     TalkEnd(0x00FF)
 
     Return()
 
-# id: 0x000D offset: 0x4EDA
-@scena.Code('func_0D_4EDA')
-def func_0D_4EDA():
+# id: 0x000D offset: 0x5524
+@scena.Code('func_0D_5524')
+def func_0D_5524():
     If(
         (
             (Expr.Eval, "OP_29(0x002E, 0x01, 0x0020)"),
             Expr.Return,
         ),
-        'loc_4EE9',
+        'loc_5533',
     )
 
     OP_65(0x0D, 0x0001)
 
-    def _loc_4EE9(): pass
+    def _loc_5533(): pass
 
-    label('loc_4EE9')
+    label('loc_5533')
 
     If(
         (
             (Expr.Eval, "OP_29(0x002F, 0x01, 0x0010)"),
             Expr.Return,
         ),
-        'loc_4EF8',
+        'loc_5542',
     )
 
     OP_65(0x09, 0x0001)
 
-    def _loc_4EF8(): pass
+    def _loc_5542(): pass
 
-    label('loc_4EF8')
+    label('loc_5542')
 
     If(
         (
             (Expr.Eval, "OP_29(0x0030, 0x01, 0x0008)"),
             Expr.Return,
         ),
-        'loc_4F07',
+        'loc_5551',
     )
 
     OP_65(0x0E, 0x0001)
 
-    def _loc_4F07(): pass
+    def _loc_5551(): pass
 
-    label('loc_4F07')
+    label('loc_5551')
 
     If(
         (
@@ -6072,14 +6062,14 @@ def func_0D_4EDA():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_4F1C',
+        'loc_5566',
     )
 
     OP_65(0x0A, 0x0001)
 
-    def _loc_4F1C(): pass
+    def _loc_5566(): pass
 
-    label('loc_4F1C')
+    label('loc_5566')
 
     If(
         (
@@ -6089,14 +6079,14 @@ def func_0D_4EDA():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_4F31',
+        'loc_557B',
     )
 
     OP_65(0x0B, 0x0001)
 
-    def _loc_4F31(): pass
+    def _loc_557B(): pass
 
-    label('loc_4F31')
+    label('loc_557B')
 
     If(
         (
@@ -6106,14 +6096,14 @@ def func_0D_4EDA():
             Expr.Nez64,
             Expr.Return,
         ),
-        'loc_4F46',
+        'loc_5590',
     )
 
     OP_65(0x0C, 0x0001)
 
-    def _loc_4F46(): pass
+    def _loc_5590(): pass
 
-    label('loc_4F46')
+    label('loc_5590')
 
     Return()
 

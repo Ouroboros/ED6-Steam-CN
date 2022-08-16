@@ -9,18 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0600   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '士兵舒托尔'),
-    TXT(0x02, '士兵巴兰克'),
-    TXT(0x03, '士兵托马斯'),
-    TXT(0x04, '士兵亚多罗瓦'),
-    TXT(0x05, '士兵洛克思'),
-    TXT(0x06, '艾利兹街道方向'),
-    TXT(0x07, '庭园大道方向'),
-    TXT(0x08, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -35,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x15F1
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -71,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -81,11 +64,12 @@ def ChipData():
         ('ED6_DT07/CH01300P._CP', 'ED6_DT07/CH01300P._CP'),
     ]
 
-# id: 0x10002 offset: 0xC2
+# id: 0x10001 offset: 0xC2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '士兵舒托尔',
             x                   = -35300,
             z                   = 0,
             y                   = 3650,
@@ -100,6 +84,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '士兵巴兰克',
             x                   = -35300,
             z                   = 0,
             y                   = -3560,
@@ -114,6 +99,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '士兵托马斯',
             x                   = -21590,
             z                   = 11750,
             y                   = 150,
@@ -128,6 +114,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '士兵亚多罗瓦',
             x                   = -10690,
             z                   = 0,
             y                   = -3640,
@@ -142,6 +129,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '士兵洛克思',
             x                   = -10660,
             z                   = 0,
             y                   = 3600,
@@ -156,6 +144,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '艾利兹街道方向',
             x                   = 37180,
             z                   = 0,
             y                   = -1450,
@@ -170,6 +159,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '庭园大道方向',
             x                   = -83430,
             z                   = 0,
             y                   = -1170,
@@ -185,32 +175,32 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x1A2
+# id: 0x10002 offset: 0x1A2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x1A2
+# id: 0x10003 offset: 0x1A2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1A2
+# id: 0x10004 offset: 0x1A2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x1A2
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x1A3
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1A3')
+def func_01_1A3():
     OP_16(0x02, 4000, -150000, -130000, 196614)
     OP_6F(0x0000, 160)
     OP_6F(0x0001, 160)
@@ -305,8 +295,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x216
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_216')
+def func_02_216():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -317,7 +307,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_216')
 
     def _loc_22B(): pass
 

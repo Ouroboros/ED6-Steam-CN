@@ -9,27 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C0401   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '波波'),
-    TXT(0x02, '波波'),
-    TXT(0x03, '波波'),
-    TXT(0x04, '岩溶捕猎手'),
-    TXT(0x05, '竹刀飞鱼'),
-    TXT(0x06, '食人鲨'),
-    TXT(0x07, '食人鲨'),
-    TXT(0x08, '食人鲨'),
-    TXT(0x09, '波波'),
-    TXT(0x0A, '波波'),
-    TXT(0x0B, '食人鲨'),
-    TXT(0x0C, '食人鲨'),
-    TXT(0x0D, '竹刀飞鱼'),
-    TXT(0x0E, '竹刀飞鱼'),
-    TXT(0x0F, '竹刀飞鱼'),
-    TXT(0x10, '竹刀飞鱼'),
-    TXT(0x11, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -44,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x358
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -80,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -95,17 +69,18 @@ def ChipData():
         ('ED6_DT09/CH10191._CH', 'ED6_DT09/CH10191P._CP'),
     ]
 
-# id: 0x10002 offset: 0xEA
+# id: 0x10001 offset: 0xEA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xEA
+# id: 0x10002 offset: 0xEA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '波波',
             x           = 0,
             z           = 0,
             y           = 11000,
@@ -119,6 +94,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '波波',
             x           = 8000,
             z           = 0,
             y           = 19000,
@@ -132,6 +108,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '波波',
             x           = -8000,
             z           = 0,
             y           = 19000,
@@ -145,6 +122,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '岩溶捕猎手',
             x           = 0,
             z           = 0,
             y           = 27000,
@@ -158,6 +136,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '竹刀飞鱼',
             x           = 0,
             z           = 0,
             y           = 19000,
@@ -171,6 +150,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '食人鲨',
             x           = -8000,
             z           = 0,
             y           = 0,
@@ -184,6 +164,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '食人鲨',
             x           = -20000,
             z           = 0,
             y           = 27000,
@@ -197,6 +178,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '食人鲨',
             x           = 19000,
             z           = 0,
             y           = 13000,
@@ -210,6 +192,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '波波',
             x           = 63000,
             z           = 0,
             y           = 7000,
@@ -223,6 +206,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '波波',
             x           = 55000,
             z           = 0,
             y           = 7000,
@@ -236,6 +220,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '食人鲨',
             x           = 46000,
             z           = 0,
             y           = -10000,
@@ -249,6 +234,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '食人鲨',
             x           = 73000,
             z           = 0,
             y           = -9000,
@@ -262,6 +248,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '竹刀飞鱼',
             x           = 71000,
             z           = 0,
             y           = 7000,
@@ -275,6 +262,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '竹刀飞鱼',
             x           = 47000,
             z           = 0,
             y           = 2000,
@@ -288,6 +276,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '竹刀飞鱼',
             x           = 65000,
             z           = 0,
             y           = 18000,
@@ -301,6 +290,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '竹刀飞鱼',
             x           = 52000,
             z           = 0,
             y           = 18000,
@@ -315,7 +305,7 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x2AA
+# id: 0x10003 offset: 0x2AA
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -361,25 +351,25 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x32A
+# id: 0x10004 offset: 0x32A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x32A
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x32B
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x32B
+@scena.Code('func_01_32B')
+def func_01_32B():
+    Return()
+
 # id: 0x0002 offset: 0x32C
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_32C')
+def func_02_32C():
     OP_70(0x0004, 60)
 
     Return()

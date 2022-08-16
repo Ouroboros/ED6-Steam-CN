@@ -9,19 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0111   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '菲特'),
-    TXT(0x02, '尤妮'),
-    TXT(0x03, '拉欧老人'),
-    TXT(0x04, '亚尔丽'),
-    TXT(0x05, '芙莉莎'),
-    TXT(0x06, '阿妮娅'),
-    TXT(0x07, '胡里奥'),
-    TXT(0x08, '加通老大'),
-    TXT(0x09, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -36,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x29C7
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -172,7 +154,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0x1B8
+# id: 0x10000 offset: 0x1B8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -187,11 +169,12 @@ def ChipData():
         ('ED6_DT07/CH01530._CH', 'ED6_DT07/CH01530P._CP'),
     ]
 
-# id: 0x10002 offset: 0x1FA
+# id: 0x10001 offset: 0x1FA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '菲特',
             x                   = 37069,
             z                   = 0,
             y                   = 33566,
@@ -206,6 +189,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '尤妮',
             x                   = 38800,
             z                   = 0,
             y                   = 30060,
@@ -220,6 +204,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '拉欧老人',
             x                   = -35400,
             z                   = 0,
             y                   = 36030,
@@ -234,6 +219,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '亚尔丽',
             x                   = -39940,
             z                   = 0,
             y                   = 33130,
@@ -248,6 +234,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '芙莉莎',
             x                   = -4547,
             z                   = 0,
             y                   = 37480,
@@ -262,6 +249,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '阿妮娅',
             x                   = 3137,
             z                   = 0,
             y                   = 32103,
@@ -276,6 +264,7 @@ def NpcData():
             talkScenaIndex      = 0x000A,
         ),
         ScenaNpcData(
+            name                = '胡里奥',
             x                   = -35634,
             z                   = 0,
             y                   = 31939,
@@ -290,6 +279,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '加通老大',
             x                   = 4600,
             z                   = 0,
             y                   = 31530,
@@ -305,27 +295,27 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x2FA
+# id: 0x10002 offset: 0x2FA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x2FA
+# id: 0x10003 offset: 0x2FA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x2FA
+# id: 0x10004 offset: 0x2FA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x2FA
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0049, 7, 0x24F)),
@@ -334,7 +324,7 @@ def PreInit():
         'loc_309',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
 
     Jump('loc_322')
 
@@ -353,8 +343,8 @@ def PreInit():
         'loc_322',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000E, 0x0080)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000E, 0x0080)
 
     Jump('loc_322')
 
@@ -370,7 +360,7 @@ def PreInit():
         'loc_32E',
     )
 
-    ClearChrFlags(0x000F, 0x0080)
+    ChrClearFlags(0x000F, 0x0080)
 
     def _loc_32E(): pass
 
@@ -384,8 +374,8 @@ def PreInit():
         'loc_342',
     )
 
-    SetChrFlags(0x000A, 0x0080)
-    SetChrFlags(0x000A, 0x0008)
+    ChrSetFlags(0x000A, 0x0080)
+    ChrSetFlags(0x000A, 0x0008)
 
     Jump('loc_3A0')
 
@@ -415,8 +405,8 @@ def PreInit():
         'loc_360',
     )
 
-    SetChrFlags(0x000A, 0x0080)
-    SetChrFlags(0x000A, 0x0008)
+    ChrSetFlags(0x000A, 0x0080)
+    ChrSetFlags(0x000A, 0x0008)
 
     Jump('loc_3A0')
 
@@ -432,8 +422,8 @@ def PreInit():
         'loc_38C',
     )
 
-    SetChrPos(0x000A, -35860, 0, 32500, 172)
-    SetChrPos(0x000E, -35860, 0, 31320, 357)
+    ChrSetPos(0x000A, -35860, 0, 32500, 172)
+    ChrSetPos(0x000E, -35860, 0, 31320, 357)
 
     Jump('loc_3A0')
 
@@ -449,8 +439,8 @@ def PreInit():
         'loc_3A0',
     )
 
-    SetChrFlags(0x000A, 0x0080)
-    SetChrFlags(0x000A, 0x0008)
+    ChrSetFlags(0x000A, 0x0080)
+    ChrSetFlags(0x000A, 0x0008)
 
     Jump('loc_3A0')
 
@@ -461,8 +451,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x3A1
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_3A1')
+def func_01_3A1():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 3, 0x213)),
@@ -491,8 +481,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x3C3
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_3C3')
+def func_02_3C3():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -503,7 +493,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_3C3')
 
     def _loc_3D8(): pass
 
@@ -611,7 +601,7 @@ def func_04_3FD():
 
     label('loc_4C2')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_4C5(): pass
 
@@ -812,7 +802,7 @@ def func_04_3FD():
 
     label('loc_711')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_714(): pass
 
@@ -890,7 +880,7 @@ def func_04_3FD():
 
     label('loc_7D2')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_7D5(): pass
 
@@ -983,7 +973,7 @@ def func_04_3FD():
 
     label('loc_929')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_92C(): pass
 
@@ -1128,7 +1118,7 @@ def func_04_3FD():
 
     label('loc_AFB')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_AFE(): pass
 
@@ -1271,7 +1261,7 @@ def func_04_3FD():
 
     label('loc_CD5')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
     def _loc_CD8(): pass
 
@@ -1282,7 +1272,7 @@ def func_04_3FD():
             (Expr.TestScenaFlags, ScenaFlag(0x0040, 5, 0x205)),
             Expr.Return,
         ),
-        'loc_E9A',
+        'loc_E9F',
     )
 
     If(
@@ -1341,7 +1331,7 @@ def func_04_3FD():
 
     CloseMessageWindow()
 
-    Jump('loc_E97')
+    Jump('loc_E9C')
 
     def _loc_DB6(): pass
 
@@ -1353,7 +1343,7 @@ def func_04_3FD():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_E4D',
+        'loc_E52',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
@@ -1401,11 +1391,11 @@ def func_04_3FD():
 
     CloseMessageWindow()
 
-    Jump('loc_E97')
+    Jump('loc_E9C')
 
-    def _loc_E4D(): pass
+    def _loc_E52(): pass
 
-    label('loc_E4D')
+    label('loc_E52')
 
     ChrTalk(
         0x0008,
@@ -1419,15 +1409,15 @@ def func_04_3FD():
 
     CloseMessageWindow()
 
-    def _loc_E97(): pass
+    def _loc_E9C(): pass
 
-    label('loc_E97')
+    label('loc_E9C')
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
-    def _loc_E9A(): pass
+    def _loc_E9F(): pass
 
-    label('loc_E9A')
+    label('loc_E9F')
 
     If(
         (
@@ -1435,7 +1425,7 @@ def func_04_3FD():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1103',
+        'loc_1108',
     )
 
     SetScenaFlags(ScenaFlag(0x0054, 3, 0x2A3))
@@ -1599,11 +1589,11 @@ def func_04_3FD():
 
     CloseMessageWindow()
 
-    Jump('loc_1164')
+    Jump('loc_1169')
 
-    def _loc_1103(): pass
+    def _loc_1108(): pass
 
-    label('loc_1103')
+    label('loc_1108')
 
     ChrTalk(
         0x0008,
@@ -1628,17 +1618,17 @@ def func_04_3FD():
 
     CloseMessageWindow()
 
-    def _loc_1164(): pass
+    def _loc_1169(): pass
 
-    label('loc_1164')
+    label('loc_1169')
 
     TalkEnd(0x0008)
 
     Return()
 
-# id: 0x0005 offset: 0x1168
-@scena.Code('func_05_1168')
-def func_05_1168():
+# id: 0x0005 offset: 0x116D
+@scena.Code('func_05_116D')
+def func_05_116D():
     TalkBegin(0x0009)
 
     If(
@@ -1646,7 +1636,7 @@ def func_05_1168():
             (Expr.TestScenaFlags, ScenaFlag(0x004D, 0, 0x268)),
             Expr.Return,
         ),
-        'loc_119D',
+        'loc_11A2',
     )
 
     ChrTalk(
@@ -1669,18 +1659,18 @@ def func_05_1168():
 
     CloseMessageWindow()
 
-    Jump('loc_1373')
+    Jump('loc_1378')
 
-    def _loc_119D(): pass
+    def _loc_11A2(): pass
 
-    label('loc_119D')
+    label('loc_11A2')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x004B, 1, 0x259)),
             Expr.Return,
         ),
-        'loc_11E9',
+        'loc_11EE',
     )
 
     ChrTalk(
@@ -1705,18 +1695,18 @@ def func_05_1168():
 
     CloseMessageWindow()
 
-    Jump('loc_1373')
+    Jump('loc_1378')
 
-    def _loc_11E9(): pass
+    def _loc_11EE(): pass
 
-    label('loc_11E9')
+    label('loc_11EE')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0049, 7, 0x24F)),
             Expr.Return,
         ),
-        'loc_124B',
+        'loc_1250',
     )
 
     ChrTalk(
@@ -1741,18 +1731,18 @@ def func_05_1168():
 
     CloseMessageWindow()
 
-    Jump('loc_1373')
+    Jump('loc_1378')
 
-    def _loc_124B(): pass
+    def _loc_1250(): pass
 
-    label('loc_124B')
+    label('loc_1250')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_1373',
+        'loc_1378',
     )
 
     If(
@@ -1761,7 +1751,7 @@ def func_05_1168():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1310',
+        'loc_1315',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 2, 0x2))
@@ -1811,11 +1801,11 @@ def func_05_1168():
 
     CloseMessageWindow()
 
-    Jump('loc_1373')
+    Jump('loc_1378')
 
-    def _loc_1310(): pass
+    def _loc_1315(): pass
 
-    label('loc_1310')
+    label('loc_1315')
 
     ChrTalk(
         0x0009,
@@ -1840,17 +1830,17 @@ def func_05_1168():
 
     CloseMessageWindow()
 
-    def _loc_1373(): pass
+    def _loc_1378(): pass
 
-    label('loc_1373')
+    label('loc_1378')
 
     TalkEnd(0x0009)
 
     Return()
 
-# id: 0x0006 offset: 0x1377
-@scena.Code('func_06_1377')
-def func_06_1377():
+# id: 0x0006 offset: 0x137C
+@scena.Code('func_06_137C')
+def func_06_137C():
     TalkBegin(0x000A)
 
     If(
@@ -1858,7 +1848,7 @@ def func_06_1377():
             (Expr.TestScenaFlags, ScenaFlag(0x004B, 1, 0x259)),
             Expr.Return,
         ),
-        'loc_14A7',
+        'loc_14AC',
     )
 
     If(
@@ -1867,7 +1857,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_142D',
+        'loc_1432',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -1906,11 +1896,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_14A4')
+    Jump('loc_14A9')
 
-    def _loc_142D(): pass
+    def _loc_1432(): pass
 
-    label('loc_142D')
+    label('loc_1432')
 
     ChrTalk(
         0x00FE,
@@ -1935,22 +1925,22 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_14A4(): pass
+    def _loc_14A9(): pass
 
-    label('loc_14A4')
+    label('loc_14A9')
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_14A7(): pass
+    def _loc_14AC(): pass
 
-    label('loc_14A7')
+    label('loc_14AC')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0047, 1, 0x239)),
             Expr.Return,
         ),
-        'loc_15D5',
+        'loc_15DA',
     )
 
     If(
@@ -1959,7 +1949,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1570',
+        'loc_1575',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -2008,11 +1998,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_15D2')
+    Jump('loc_15D7')
 
-    def _loc_1570(): pass
+    def _loc_1575(): pass
 
-    label('loc_1570')
+    label('loc_1575')
 
     ChrTalk(
         0x00FE,
@@ -2036,22 +2026,22 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_15D2(): pass
+    def _loc_15D7(): pass
 
-    label('loc_15D2')
+    label('loc_15D7')
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_15D5(): pass
+    def _loc_15DA(): pass
 
-    label('loc_15D5')
+    label('loc_15DA')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 3, 0x213)),
             Expr.Return,
         ),
-        'loc_16DC',
+        'loc_16E1',
     )
 
     If(
@@ -2060,7 +2050,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_167E',
+        'loc_1683',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -2097,11 +2087,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_16D9')
+    Jump('loc_16DE')
 
-    def _loc_167E(): pass
+    def _loc_1683(): pass
 
-    label('loc_167E')
+    label('loc_1683')
 
     ChrTalk(
         0x00FE,
@@ -2124,22 +2114,22 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_16D9(): pass
+    def _loc_16DE(): pass
 
-    label('loc_16D9')
+    label('loc_16DE')
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_16DC(): pass
+    def _loc_16E1(): pass
 
-    label('loc_16DC')
+    label('loc_16E1')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_17E2',
+        'loc_17E7',
     )
 
     If(
@@ -2148,7 +2138,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1785',
+        'loc_178A',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -2187,11 +2177,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_17DF')
+    Jump('loc_17E4')
 
-    def _loc_1785(): pass
+    def _loc_178A(): pass
 
-    label('loc_1785')
+    label('loc_178A')
 
     ChrTalk(
         0x000A,
@@ -2215,22 +2205,22 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_17DF(): pass
+    def _loc_17E4(): pass
 
-    label('loc_17DF')
+    label('loc_17E4')
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_17E2(): pass
+    def _loc_17E7(): pass
 
-    label('loc_17E2')
+    label('loc_17E7')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0040, 5, 0x205)),
             Expr.Return,
         ),
-        'loc_18A6',
+        'loc_18AB',
     )
 
     If(
@@ -2239,7 +2229,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_186C',
+        'loc_1871',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -2277,11 +2267,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_18A3')
+    Jump('loc_18A8')
 
-    def _loc_186C(): pass
+    def _loc_1871(): pass
 
-    label('loc_186C')
+    label('loc_1871')
 
     ChrTalk(
         0x000A,
@@ -2304,15 +2294,15 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_18A3(): pass
+    def _loc_18A8(): pass
 
-    label('loc_18A3')
+    label('loc_18A8')
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_18A6(): pass
+    def _loc_18AB(): pass
 
-    label('loc_18A6')
+    label('loc_18AB')
 
     If(
         (
@@ -2320,7 +2310,7 @@ def func_06_1377():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1963',
+        'loc_1968',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 3, 0x3))
@@ -2360,11 +2350,11 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    Jump('loc_19BA')
+    Jump('loc_19BF')
 
-    def _loc_1963(): pass
+    def _loc_1968(): pass
 
-    label('loc_1963')
+    label('loc_1968')
 
     ChrTalk(
         0x000A,
@@ -2387,17 +2377,17 @@ def func_06_1377():
 
     CloseMessageWindow()
 
-    def _loc_19BA(): pass
+    def _loc_19BF(): pass
 
-    label('loc_19BA')
+    label('loc_19BF')
 
     TalkEnd(0x000A)
 
     Return()
 
-# id: 0x0007 offset: 0x19BE
-@scena.Code('func_07_19BE')
-def func_07_19BE():
+# id: 0x0007 offset: 0x19C3
+@scena.Code('func_07_19C3')
+def func_07_19C3():
     TalkBegin(0x000B)
 
     If(
@@ -2405,7 +2395,7 @@ def func_07_19BE():
             (Expr.TestScenaFlags, ScenaFlag(0x004D, 0, 0x268)),
             Expr.Return,
         ),
-        'loc_1A5A',
+        'loc_1A5F',
     )
 
     If(
@@ -2414,7 +2404,7 @@ def func_07_19BE():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1A2E',
+        'loc_1A33',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 4, 0x4))
@@ -2441,11 +2431,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1A57')
+    Jump('loc_1A5C')
 
-    def _loc_1A2E(): pass
+    def _loc_1A33(): pass
 
-    label('loc_1A2E')
+    label('loc_1A33')
 
     ChrTalk(
         0x00FE,
@@ -2458,22 +2448,22 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    def _loc_1A57(): pass
+    def _loc_1A5C(): pass
 
-    label('loc_1A57')
+    label('loc_1A5C')
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1A5A(): pass
+    def _loc_1A5F(): pass
 
-    label('loc_1A5A')
+    label('loc_1A5F')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x004B, 1, 0x259)),
             Expr.Return,
         ),
-        'loc_1B29',
+        'loc_1B2E',
     )
 
     If(
@@ -2482,7 +2472,7 @@ def func_07_19BE():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1ADA',
+        'loc_1ADF',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 4, 0x4))
@@ -2520,11 +2510,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1B26')
+    Jump('loc_1B2B')
 
-    def _loc_1ADA(): pass
+    def _loc_1ADF(): pass
 
-    label('loc_1ADA')
+    label('loc_1ADF')
 
     ChrTalk(
         0x00FE,
@@ -2548,22 +2538,22 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    def _loc_1B26(): pass
+    def _loc_1B2B(): pass
 
-    label('loc_1B26')
+    label('loc_1B2B')
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1B29(): pass
+    def _loc_1B2E(): pass
 
-    label('loc_1B29')
+    label('loc_1B2E')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0049, 7, 0x24F)),
             Expr.Return,
         ),
-        'loc_1B78',
+        'loc_1B7D',
     )
 
     ChrTalk(
@@ -2587,18 +2577,18 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1B78(): pass
+    def _loc_1B7D(): pass
 
-    label('loc_1B78')
+    label('loc_1B7D')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0047, 1, 0x239)),
             Expr.Return,
         ),
-        'loc_1BCC',
+        'loc_1BD1',
     )
 
     ChrTalk(
@@ -2623,18 +2613,18 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1BCC(): pass
+    def _loc_1BD1(): pass
 
-    label('loc_1BCC')
+    label('loc_1BD1')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 3, 0x213)),
             Expr.Return,
         ),
-        'loc_1C82',
+        'loc_1C87',
     )
 
     If(
@@ -2643,7 +2633,7 @@ def func_07_19BE():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1C3B',
+        'loc_1C40',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 4, 0x4))
@@ -2680,11 +2670,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1C7F')
+    Jump('loc_1C84')
 
-    def _loc_1C3B(): pass
+    def _loc_1C40(): pass
 
-    label('loc_1C3B')
+    label('loc_1C40')
 
     ChrTalk(
         0x00FE,
@@ -2708,22 +2698,22 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    def _loc_1C7F(): pass
+    def _loc_1C84(): pass
 
-    label('loc_1C7F')
+    label('loc_1C84')
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1C82(): pass
+    def _loc_1C87(): pass
 
-    label('loc_1C82')
+    label('loc_1C87')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_1D6A',
+        'loc_1D6F',
     )
 
     If(
@@ -2732,7 +2722,7 @@ def func_07_19BE():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1D09',
+        'loc_1D0E',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 4, 0x4))
@@ -2769,11 +2759,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1D67')
+    Jump('loc_1D6C')
 
-    def _loc_1D09(): pass
+    def _loc_1D0E(): pass
 
-    label('loc_1D09')
+    label('loc_1D0E')
 
     ChrTalk(
         0x000B,
@@ -2797,22 +2787,22 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    def _loc_1D67(): pass
+    def _loc_1D6C(): pass
 
-    label('loc_1D67')
+    label('loc_1D6C')
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1D6A(): pass
+    def _loc_1D6F(): pass
 
-    label('loc_1D6A')
+    label('loc_1D6F')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0040, 5, 0x205)),
             Expr.Return,
         ),
-        'loc_1DAF',
+        'loc_1DB4',
     )
 
     ChrTalk(
@@ -2836,11 +2826,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1DAF(): pass
+    def _loc_1DB4(): pass
 
-    label('loc_1DAF')
+    label('loc_1DB4')
 
     If(
         (
@@ -2848,7 +2838,7 @@ def func_07_19BE():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1E14',
+        'loc_1E19',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 4, 0x4))
@@ -2876,11 +2866,11 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    Jump('loc_1E48')
+    Jump('loc_1E4D')
 
-    def _loc_1E14(): pass
+    def _loc_1E19(): pass
 
-    label('loc_1E14')
+    label('loc_1E19')
 
     ChrTalk(
         0x000B,
@@ -2894,17 +2884,17 @@ def func_07_19BE():
 
     CloseMessageWindow()
 
-    def _loc_1E48(): pass
+    def _loc_1E4D(): pass
 
-    label('loc_1E48')
+    label('loc_1E4D')
 
     TalkEnd(0x000B)
 
     Return()
 
-# id: 0x0008 offset: 0x1E4C
-@scena.Code('func_08_1E4C')
-def func_08_1E4C():
+# id: 0x0008 offset: 0x1E51
+@scena.Code('func_08_1E51')
+def func_08_1E51():
     TalkBegin(0x000E)
 
     If(
@@ -2912,7 +2902,7 @@ def func_08_1E4C():
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_1F46',
+        'loc_1F4B',
     )
 
     If(
@@ -2921,7 +2911,7 @@ def func_08_1E4C():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1EE6',
+        'loc_1EEB',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 7, 0x7))
@@ -2968,11 +2958,11 @@ def func_08_1E4C():
 
     CloseMessageWindow()
 
-    Jump('loc_1F46')
+    Jump('loc_1F4B')
 
-    def _loc_1EE6(): pass
+    def _loc_1EEB(): pass
 
-    label('loc_1EE6')
+    label('loc_1EEB')
 
     ChrTalk(
         0x000E,
@@ -2996,17 +2986,17 @@ def func_08_1E4C():
 
     CloseMessageWindow()
 
-    def _loc_1F46(): pass
+    def _loc_1F4B(): pass
 
-    label('loc_1F46')
+    label('loc_1F4B')
 
     TalkEnd(0x000E)
 
     Return()
 
-# id: 0x0009 offset: 0x1F4A
-@scena.Code('func_09_1F4A')
-def func_09_1F4A():
+# id: 0x0009 offset: 0x1F4F
+@scena.Code('func_09_1F4F')
+def func_09_1F4F():
     TalkBegin(0x000C)
 
     If(
@@ -3014,7 +3004,7 @@ def func_09_1F4A():
             (Expr.TestScenaFlags, ScenaFlag(0x004D, 0, 0x268)),
             Expr.Return,
         ),
-        'loc_2035',
+        'loc_203A',
     )
 
     If(
@@ -3023,7 +3013,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1FFD',
+        'loc_2002',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3061,11 +3051,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_2032')
+    Jump('loc_2037')
 
-    def _loc_1FFD(): pass
+    def _loc_2002(): pass
 
-    label('loc_1FFD')
+    label('loc_2002')
 
     ChrTalk(
         0x00FE,
@@ -3078,22 +3068,22 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_2032(): pass
+    def _loc_2037(): pass
 
-    label('loc_2032')
+    label('loc_2037')
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_2035(): pass
+    def _loc_203A(): pass
 
-    label('loc_2035')
+    label('loc_203A')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x004B, 1, 0x259)),
             Expr.Return,
         ),
-        'loc_213D',
+        'loc_2142',
     )
 
     If(
@@ -3102,7 +3092,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_20E0',
+        'loc_20E5',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3141,11 +3131,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_213A')
+    Jump('loc_213F')
 
-    def _loc_20E0(): pass
+    def _loc_20E5(): pass
 
-    label('loc_20E0')
+    label('loc_20E5')
 
     ChrTalk(
         0x00FE,
@@ -3169,22 +3159,22 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_213A(): pass
+    def _loc_213F(): pass
 
-    label('loc_213A')
+    label('loc_213F')
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_213D(): pass
+    def _loc_2142(): pass
 
-    label('loc_213D')
+    label('loc_2142')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0049, 7, 0x24F)),
             Expr.Return,
         ),
-        'loc_217E',
+        'loc_2183',
     )
 
     ChrTalk(
@@ -3208,18 +3198,18 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_217E(): pass
+    def _loc_2183(): pass
 
-    label('loc_217E')
+    label('loc_2183')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0047, 1, 0x239)),
             Expr.Return,
         ),
-        'loc_2275',
+        'loc_227A',
     )
 
     If(
@@ -3228,7 +3218,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_2218',
+        'loc_221D',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3266,11 +3256,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_2272')
+    Jump('loc_2277')
 
-    def _loc_2218(): pass
+    def _loc_221D(): pass
 
-    label('loc_2218')
+    label('loc_221D')
 
     ChrTalk(
         0x00FE,
@@ -3294,22 +3284,22 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_2272(): pass
+    def _loc_2277(): pass
 
-    label('loc_2272')
+    label('loc_2277')
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_2275(): pass
+    def _loc_227A(): pass
 
-    label('loc_2275')
+    label('loc_227A')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 3, 0x213)),
             Expr.Return,
         ),
-        'loc_2350',
+        'loc_2355',
     )
 
     If(
@@ -3318,7 +3308,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_231D',
+        'loc_2322',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3358,11 +3348,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_234D')
+    Jump('loc_2352')
 
-    def _loc_231D(): pass
+    def _loc_2322(): pass
 
-    label('loc_231D')
+    label('loc_2322')
 
     ChrTalk(
         0x00FE,
@@ -3376,22 +3366,22 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_234D(): pass
+    def _loc_2352(): pass
 
-    label('loc_234D')
+    label('loc_2352')
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_2350(): pass
+    def _loc_2355(): pass
 
-    label('loc_2350')
+    label('loc_2355')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_23BB',
+        'loc_23C0',
     )
 
     ChrTalk(
@@ -3417,18 +3407,18 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_23BB(): pass
+    def _loc_23C0(): pass
 
-    label('loc_23BB')
+    label('loc_23C0')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0040, 5, 0x205)),
             Expr.Return,
         ),
-        'loc_24A4',
+        'loc_24A9',
     )
 
     If(
@@ -3437,7 +3427,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_2452',
+        'loc_2457',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3476,11 +3466,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_24A1')
+    Jump('loc_24A6')
 
-    def _loc_2452(): pass
+    def _loc_2457(): pass
 
-    label('loc_2452')
+    label('loc_2457')
 
     ChrTalk(
         0x000C,
@@ -3505,15 +3495,15 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_24A1(): pass
+    def _loc_24A6(): pass
 
-    label('loc_24A1')
+    label('loc_24A6')
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_24A4(): pass
+    def _loc_24A9(): pass
 
-    label('loc_24A4')
+    label('loc_24A9')
 
     If(
         (
@@ -3521,7 +3511,7 @@ def func_09_1F4A():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_2521',
+        'loc_2526',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 6, 0x6))
@@ -3559,11 +3549,11 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    Jump('loc_2562')
+    Jump('loc_2567')
 
-    def _loc_2521(): pass
+    def _loc_2526(): pass
 
-    label('loc_2521')
+    label('loc_2526')
 
     ChrTalk(
         0x000C,
@@ -3586,17 +3576,17 @@ def func_09_1F4A():
 
     CloseMessageWindow()
 
-    def _loc_2562(): pass
+    def _loc_2567(): pass
 
-    label('loc_2562')
+    label('loc_2567')
 
     TalkEnd(0x000C)
 
     Return()
 
-# id: 0x000A offset: 0x2566
-@scena.Code('func_0A_2566')
-def func_0A_2566():
+# id: 0x000A offset: 0x256B
+@scena.Code('func_0A_256B')
+def func_0A_256B():
     TalkBegin(0x000D)
 
     If(
@@ -3604,7 +3594,7 @@ def func_0A_2566():
             (Expr.TestScenaFlags, ScenaFlag(0x004D, 0, 0x268)),
             Expr.Return,
         ),
-        'loc_25E8',
+        'loc_25ED',
     )
 
     If(
@@ -3613,7 +3603,7 @@ def func_0A_2566():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_25C9',
+        'loc_25CE',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 5, 0x5))
@@ -3649,11 +3639,11 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_25E5')
+    Jump('loc_25EA')
 
-    def _loc_25C9(): pass
+    def _loc_25CE(): pass
 
-    label('loc_25C9')
+    label('loc_25CE')
 
     ChrTalk(
         0x00FE,
@@ -3665,22 +3655,22 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    def _loc_25E5(): pass
+    def _loc_25EA(): pass
 
-    label('loc_25E5')
+    label('loc_25EA')
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_25E8(): pass
+    def _loc_25ED(): pass
 
-    label('loc_25E8')
+    label('loc_25ED')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x004B, 1, 0x259)),
             Expr.Return,
         ),
-        'loc_269D',
+        'loc_26A2',
     )
 
     If(
@@ -3689,7 +3679,7 @@ def func_0A_2566():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_2669',
+        'loc_266E',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 5, 0x5))
@@ -3736,11 +3726,11 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_269A')
+    Jump('loc_269F')
 
-    def _loc_2669(): pass
+    def _loc_266E(): pass
 
-    label('loc_2669')
+    label('loc_266E')
 
     ChrTalk(
         0x00FE,
@@ -3753,22 +3743,22 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    def _loc_269A(): pass
+    def _loc_269F(): pass
 
-    label('loc_269A')
+    label('loc_269F')
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_269D(): pass
+    def _loc_26A2(): pass
 
-    label('loc_269D')
+    label('loc_26A2')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0049, 7, 0x24F)),
             Expr.Return,
         ),
-        'loc_26D9',
+        'loc_26DE',
     )
 
     ChrTalk(
@@ -3791,18 +3781,18 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_26D9(): pass
+    def _loc_26DE(): pass
 
-    label('loc_26D9')
+    label('loc_26DE')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0047, 1, 0x239)),
             Expr.Return,
         ),
-        'loc_273D',
+        'loc_2742',
     )
 
     ChrTalk(
@@ -3837,18 +3827,18 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_273D(): pass
+    def _loc_2742(): pass
 
-    label('loc_273D')
+    label('loc_2742')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 3, 0x213)),
             Expr.Return,
         ),
-        'loc_278C',
+        'loc_2791',
     )
 
     ChrTalk(
@@ -3872,18 +3862,18 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_278C(): pass
+    def _loc_2791(): pass
 
-    label('loc_278C')
+    label('loc_2791')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0042, 2, 0x212)),
             Expr.Return,
         ),
-        'loc_27C7',
+        'loc_27CC',
     )
 
     ChrTalk(
@@ -3907,18 +3897,18 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_27C7(): pass
+    def _loc_27CC(): pass
 
-    label('loc_27C7')
+    label('loc_27CC')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0040, 5, 0x205)),
             Expr.Return,
         ),
-        'loc_280D',
+        'loc_2812',
     )
 
     ChrTalk(
@@ -3943,11 +3933,11 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_280D(): pass
+    def _loc_2812(): pass
 
-    label('loc_280D')
+    label('loc_2812')
 
     If(
         (
@@ -3955,7 +3945,7 @@ def func_0A_2566():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_2884',
+        'loc_2889',
     )
 
     SetScenaFlags(ScenaFlag(0x0000, 5, 0x5))
@@ -3993,11 +3983,11 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    Jump('loc_28A5')
+    Jump('loc_28AA')
 
-    def _loc_2884(): pass
+    def _loc_2889(): pass
 
-    label('loc_2884')
+    label('loc_2889')
 
     ChrTalk(
         0x000D,
@@ -4010,17 +4000,17 @@ def func_0A_2566():
 
     CloseMessageWindow()
 
-    def _loc_28A5(): pass
+    def _loc_28AA(): pass
 
-    label('loc_28A5')
+    label('loc_28AA')
 
     TalkEnd(0x000D)
 
     Return()
 
-# id: 0x000B offset: 0x28A9
-@scena.Code('func_0B_28A9')
-def func_0B_28A9():
+# id: 0x000B offset: 0x28AE
+@scena.Code('func_0B_28AE')
+def func_0B_28AE():
     TalkBegin(0x000F)
 
     If(
@@ -4029,7 +4019,7 @@ def func_0B_28A9():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_298A',
+        'loc_298F',
     )
 
     SetScenaFlags(ScenaFlag(0x0001, 0, 0x8))
@@ -4089,11 +4079,11 @@ def func_0B_28A9():
 
     CloseMessageWindow()
 
-    Jump('loc_29AB')
+    Jump('loc_29B0')
 
-    def _loc_298A(): pass
+    def _loc_298F(): pass
 
-    label('loc_298A')
+    label('loc_298F')
 
     ChrTalk(
         0x00FE,
@@ -4106,9 +4096,9 @@ def func_0B_28A9():
 
     CloseMessageWindow()
 
-    def _loc_29AB(): pass
+    def _loc_29B0(): pass
 
-    label('loc_29AB')
+    label('loc_29B0')
 
     TalkEnd(0x000F)
 

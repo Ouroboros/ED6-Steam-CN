@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3113   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x3BE
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Switch(
         (
             (Expr.PushValueByIndex, 0x0),
@@ -120,7 +110,7 @@ def PreInit():
         'loc_C0',
     )
 
-    Event(0, 0x0002)
+    Event(0, func_02_192)
 
     def _loc_C0(): pass
 
@@ -135,8 +125,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xC4
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_C4')
+def func_01_C4():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x00A7, 2, 0x53A)),
@@ -282,13 +272,13 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x192
-@scena.Code('ReInit')
-def ReInit():
-    ClearMapFlags(0x00000001)
+@scena.Code('func_02_192')
+def func_02_192():
+    MapClearFlags(0x00000001)
     EventBegin(0x00)
-    SetChrPos(0x0101, 300, 0, -3400, 0)
-    SetChrPos(0x0102, -700, 0, -4300, 0)
-    SetChrPos(0x0107, 600, 0, -4400, 0)
+    ChrSetPos(0x0101, 300, 0, -3400, 0)
+    ChrSetPos(0x0102, -700, 0, -4300, 0)
+    ChrSetPos(0x0107, 600, 0, -4400, 0)
 
     If(
         (
@@ -296,7 +286,7 @@ def ReInit():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_342',
+        'loc_36A',
     )
 
     CameraMove(-200, 0, 1200, 0)
@@ -370,11 +360,11 @@ def ReInit():
 
     CloseMessageWindow()
 
-    Jump('loc_3AE')
+    Jump('loc_3E5')
 
-    def _loc_342(): pass
+    def _loc_36A(): pass
 
-    label('loc_342')
+    label('loc_36A')
 
     ChrTalk(
         0x0102,
@@ -400,9 +390,9 @@ def ReInit():
 
     CloseMessageWindow()
 
-    def _loc_3AE(): pass
+    def _loc_3E5(): pass
 
-    label('loc_3AE')
+    label('loc_3E5')
 
     NewScene('ED6_DT01/T3111._SN', 111, 1, 0)
     IdleLoop()

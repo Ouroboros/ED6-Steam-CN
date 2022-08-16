@@ -9,18 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1130   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '豪尔斯教区长'),
-    TXT(0x02, '修女萝萨'),
-    TXT(0x03, '西加罗'),
-    TXT(0x04, '艾德尔'),
-    TXT(0x05, '莉拉'),
-    TXT(0x06, '萨拉'),
-    TXT(0x07, '目标用摄像机'),
-    TXT(0x08, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -35,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x15A8
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -71,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -84,11 +67,12 @@ def ChipData():
         ('ED6_DT07/CH02370._CH', 'ED6_DT07/CH02370P._CP'),
     ]
 
-# id: 0x10002 offset: 0xDA
+# id: 0x10001 offset: 0xDA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '豪尔斯教区长',
             x                   = 59100,
             z                   = 1000,
             y                   = 52100,
@@ -103,6 +87,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '修女萝萨',
             x                   = 15690,
             z                   = 4000,
             y                   = 43180,
@@ -117,6 +102,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '西加罗',
             x                   = 63600,
             z                   = 90,
             y                   = 46000,
@@ -131,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '艾德尔',
             x                   = 62600,
             z                   = 90,
             y                   = 46000,
@@ -145,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '莉拉',
             x                   = 58950,
             z                   = 0,
             y                   = 48260,
@@ -159,6 +147,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '萨拉',
             x                   = 58920,
             z                   = 0,
             y                   = 48170,
@@ -173,6 +162,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '目标用摄像机',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -188,19 +178,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x1BA
+# id: 0x10002 offset: 0x1BA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x1BA
+# id: 0x10003 offset: 0x1BA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1BA
+# id: 0x10004 offset: 0x1BA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -220,8 +210,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1DE
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x006B, 6, 0x35E)),
@@ -244,7 +234,7 @@ def PreInit():
         'loc_1F7',
     )
 
-    ClearChrFlags(0x000C, 0x0080)
+    ChrClearFlags(0x000C, 0x0080)
 
     Jump('loc_235')
 
@@ -260,7 +250,7 @@ def PreInit():
         'loc_206',
     )
 
-    ClearChrFlags(0x000D, 0x0080)
+    ChrClearFlags(0x000D, 0x0080)
 
     Jump('loc_235')
 
@@ -318,8 +308,8 @@ def PreInit():
         'loc_235',
     )
 
-    ClearChrFlags(0x000A, 0x0080)
-    ClearChrFlags(0x000B, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrClearFlags(0x000B, 0x0080)
 
     def _loc_235(): pass
 
@@ -336,7 +326,7 @@ def PreInit():
         'loc_246',
     )
 
-    ClearChrFlags(0x000C, 0x0080)
+    ChrClearFlags(0x000C, 0x0080)
 
     def _loc_246(): pass
 
@@ -345,13 +335,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x247
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_247')
+def func_01_247():
     Return()
 
 # id: 0x0002 offset: 0x248
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_248')
+def func_02_248():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -362,7 +352,7 @@ def ReInit():
 
     OP_99(0x00FE, 0x00, 0x07, 1500)
 
-    Jump('ReInit')
+    Jump('func_02_248')
 
     def _loc_25D(): pass
 
@@ -1599,7 +1589,7 @@ def func_09_FA9():
             (Expr.TestScenaFlags, ScenaFlag(0x0067, 2, 0x33A)),
             Expr.Return,
         ),
-        'loc_1038',
+        'loc_1042',
     )
 
     ChrTalk(
@@ -1618,18 +1608,18 @@ def func_09_FA9():
 
     CloseMessageWindow()
 
-    Jump('loc_1590')
+    Jump('loc_1612')
 
-    def _loc_1038(): pass
+    def _loc_1042(): pass
 
-    label('loc_1038')
+    label('loc_1042')
 
     EventBegin(0x00)
     SetScenaFlags(ScenaFlag(0x0061, 2, 0x30A))
     Fade(1000)
-    SetChrPos(0x0101, 58910, 0, 46930, 0)
-    SetChrPos(0x0102, 58250, 0, 46000, 0)
-    SetChrPos(0x0103, 59540, 0, 46030, 0)
+    ChrSetPos(0x0101, 58910, 0, 46930, 0)
+    ChrSetPos(0x0102, 58250, 0, 46000, 0)
+    ChrSetPos(0x0103, 59540, 0, 46030, 0)
     ChrTurnDirection(0x00FE, 0x0101, 0)
     OP_69(0x000C, 1000)
 
@@ -1822,16 +1812,16 @@ def func_09_FA9():
 
     CloseMessageWindow()
     OP_28(0x0035, 0x01, 0x0010)
-    SetChrFlags(0x000C, 0x0040)
+    ChrSetFlags(0x000C, 0x0040)
     OP_92(0x000C, 0x0000, 0, 3000, 0x00)
-    SetChrFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0080)
     EventEnd(0x00)
     FormationAddMember(0x33, 0xFF)
-    SetMapFlags(0x00000001)
+    MapSetFlags(0x00000001)
 
-    def _loc_1590(): pass
+    def _loc_1612(): pass
 
-    label('loc_1590')
+    label('loc_1612')
 
     TalkEnd(0x000C)
 
