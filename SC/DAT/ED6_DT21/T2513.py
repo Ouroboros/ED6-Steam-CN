@@ -1132,18 +1132,22 @@ def func_02_16A():
     ChrTalk(
         0x0101,
         (
-            '#0010211111V#1016F#5P#1K扑哧……',
+            '#0010211111V#1016F#3P扑哧……',
             TxtCtl.Enter,
         ),
     )
 
+    CloseMessageWindow()
+
     ChrTalk(
         0x0105,
         (
-            '#0060211112V#045F#1K哈哈哈……',
+            '#0060211112V#045F#4P哈哈哈……',
             TxtCtl.Enter,
         ),
     )
+
+    CloseMessageWindow()
 
     Jump('loc_15F1')
 
@@ -1154,18 +1158,22 @@ def func_02_16A():
     ChrTalk(
         0x0101,
         (
-            '#0010211111V#1016F#5P#1K扑哧……',
+            '#0010211111V#1016F#3P扑哧……',
             TxtCtl.Enter,
         ),
     )
 
+    CloseMessageWindow()
+
     ChrTalk(
         0x0105,
         (
-            '#0060211112V#045F#1K哈哈哈……',
+            '#0060211112V#045F#4P哈哈哈……',
             TxtCtl.Enter,
         ),
     )
+
+    CloseMessageWindow()
 
     Jump('loc_15F1')
 
