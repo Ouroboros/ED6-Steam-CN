@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3114   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2C3
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,26 +54,26 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -149,20 +139,20 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x168
+# id: 0x10004 offset: 0x168
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x168
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x169
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_169')
+def func_01_169():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -237,44 +227,44 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x29B
-@scena.Code('ReInit')
-def ReInit():
-    SetPlaceName(0x0094)
+@scena.Code('func_02_29B')
+def func_02_29B():
+    OP_13(0x0094)
 
     Return()
 
 # id: 0x0003 offset: 0x29F
 @scena.Code('func_03_29F')
 def func_03_29F():
-    SetPlaceName(0x0093)
+    OP_13(0x0093)
 
     Return()
 
 # id: 0x0004 offset: 0x2A3
 @scena.Code('func_04_2A3')
 def func_04_2A3():
-    SetPlaceName(0x0096)
+    OP_13(0x0096)
 
     Return()
 
 # id: 0x0005 offset: 0x2A7
 @scena.Code('func_05_2A7')
 def func_05_2A7():
-    SetPlaceName(0x0095)
+    OP_13(0x0095)
 
     Return()
 
 # id: 0x0006 offset: 0x2AB
 @scena.Code('func_06_2AB')
 def func_06_2AB():
-    SetPlaceName(0x0098)
+    OP_13(0x0098)
 
     Return()
 
 # id: 0x0007 offset: 0x2AF
 @scena.Code('func_07_2AF')
 def func_07_2AF():
-    SetPlaceName(0x0097)
+    OP_13(0x0097)
 
     Return()
 

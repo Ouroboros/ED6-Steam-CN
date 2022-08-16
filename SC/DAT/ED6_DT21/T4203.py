@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4203   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, 'Private Dan'),
-    TXT(0x02, 'Private Aluts'),
-    TXT(0x03, 'Grancel - North Block'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x164
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -85,11 +72,12 @@ def ChipData():
         (None, 'ED6_DT07/CH02000P._CP'),
     ]
 
-# id: 0x10002 offset: 0xDA
+# id: 0x10001 offset: 0xDA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = 'Private Dan',
             x                   = -790,
             z                   = 0,
             y                   = 41980,
@@ -104,6 +92,7 @@ def NpcData():
             talkScenaIndex      = 0x0002,
         ),
         ScenaNpcData(
+            name                = 'Private Aluts',
             x                   = 950,
             z                   = 0,
             y                   = 41980,
@@ -118,6 +107,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = 'Grancel - North Block',
             x                   = 0,
             z                   = 0,
             y                   = -22550,
@@ -133,39 +123,39 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x13A
+# id: 0x10002 offset: 0x13A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x13A
+# id: 0x10003 offset: 0x13A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x13A
+# id: 0x10004 offset: 0x13A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x13A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x13B
-@scena.Code('Init')
-def Init():
-    OP_16(0x02, 0x00000FA0, 0xFFFE0C00, 0xFFFE4A80, 0x00230060)
+@scena.Code('func_01_13B')
+def func_01_13B():
+    OP_16(0x02, 4000, -128000, -112000, 2293856)
 
     Return()
 
 # id: 0x0002 offset: 0x14E
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_14E')
+def func_02_14E():
     TalkBegin(0x00FE)
     TalkEnd(0x00FE)
 

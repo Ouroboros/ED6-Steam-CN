@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5319   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-    TXT(0x02, ''),
-    TXT(0x03, ''),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x11E
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -76,17 +63,18 @@ def ChipData():
         ('ED6_DT29/CH12421._CH', 'ED6_DT29/CH12421P._CP'),
     ]
 
-# id: 0x10002 offset: 0xBA
+# id: 0x10001 offset: 0xBA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xBA
+# id: 0x10002 offset: 0xBA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = 49990,
             z           = 100,
             y           = -30,
@@ -100,6 +88,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = 89710,
             z           = 100,
             y           = -330,
@@ -113,6 +102,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = 130530,
             z           = 100,
             y           = -80,
@@ -127,27 +117,27 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x10E
+# id: 0x10003 offset: 0x10E
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x10E
+# id: 0x10004 offset: 0x10E
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x10E
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x10F
-@scena.Code('Init')
-def Init():
-    SetMapFlags(0x02000000)
+@scena.Code('func_01_10F')
+def func_01_10F():
+    MapSetFlags(0x02000000)
     OP_E8(0xE8, 0x03, 0x00, 0x00)
 
     Return()

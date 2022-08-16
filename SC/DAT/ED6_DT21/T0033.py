@@ -9,51 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0033   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '00100艾丝蒂尔待机'),
-    TXT(0x02, '00101艾丝蒂尔移动'),
-    TXT(0x03, '00102艾丝蒂尔攻击'),
-    TXT(0x04, '00103艾丝蒂尔被弹开'),
-    TXT(0x05, '00104艾丝蒂尔倒下'),
-    TXT(0x06, '00105艾丝蒂尔魔法咏唱'),
-    TXT(0x07, '00106艾丝蒂尔魔法发射'),
-    TXT(0x08, '00107艾丝蒂尔胜利'),
-    TXT(0x09, '00110约修亚待机'),
-    TXT(0x0A, '00111约修亚移动'),
-    TXT(0x0B, '00112约修亚攻击'),
-    TXT(0x0C, '00113约修亚被弹开'),
-    TXT(0x0D, '00114约修亚倒下'),
-    TXT(0x0E, '00115约修亚魔法咏唱'),
-    TXT(0x0F, '00116约修亚魔法发射'),
-    TXT(0x10, '00117约修亚胜利'),
-    TXT(0x11, '00170金待机'),
-    TXT(0x12, '00171金移动'),
-    TXT(0x13, '00172金攻击'),
-    TXT(0x14, '00173金被弹开'),
-    TXT(0x15, '00174金倒下'),
-    TXT(0x16, '00175金魔法咏唱'),
-    TXT(0x17, '00176金魔法发射'),
-    TXT(0x18, '00177金胜利'),
-    TXT(0x19, '00150阿加特待机'),
-    TXT(0x1A, '00151阿加特移动'),
-    TXT(0x1B, '00152阿加特攻击'),
-    TXT(0x1C, '00153阿加特被弹开'),
-    TXT(0x1D, '00154阿加特倒下'),
-    TXT(0x1E, '00155阿加特魔法咏唱'),
-    TXT(0x1F, '00156阿加特魔法发射'),
-    TXT(0x20, '00157阿加特胜利'),
-    TXT(0x21, '00130奥利维尔待机'),
-    TXT(0x22, '00131奥利维尔移动'),
-    TXT(0x23, '00132奥利维尔攻击'),
-    TXT(0x24, '00133奥利维尔被弹开'),
-    TXT(0x25, '00134奥利维尔倒下'),
-    TXT(0x26, '00135奥利维尔魔法咏唱'),
-    TXT(0x27, '00136奥利维尔魔法发射'),
-    TXT(0x28, '00137奥利维尔胜利'),
-    TXT(0x29, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -68,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xB09
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -104,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -171,11 +121,12 @@ def ChipData():
         ('ED6_DT07/CH00134._CH', 'ED6_DT07/CH00130P._CP'),
     ]
 
-# id: 0x10002 offset: 0x28A
+# id: 0x10001 offset: 0x28A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '00100艾丝蒂尔待机',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -190,6 +141,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00101艾丝蒂尔移动',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -204,6 +156,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00102艾丝蒂尔攻击',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -218,6 +171,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00103艾丝蒂尔被弹开',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -232,6 +186,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00104艾丝蒂尔倒下',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -246,6 +201,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00105艾丝蒂尔魔法咏唱',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -260,6 +216,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00106艾丝蒂尔魔法发射',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -274,6 +231,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00107艾丝蒂尔胜利',
             x                   = 4000,
             z                   = 0,
             y                   = 32000,
@@ -288,6 +246,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00110约修亚待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -302,6 +261,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00111约修亚移动',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -316,6 +276,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00112约修亚攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -330,6 +291,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00113约修亚被弹开',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -344,6 +306,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00114约修亚倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -358,6 +321,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00115约修亚魔法咏唱',
             x                   = 8000,
             z                   = 0,
             y                   = 24000,
@@ -372,6 +336,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00116约修亚魔法发射',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -386,6 +351,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00117约修亚胜利',
             x                   = 8000,
             z                   = 0,
             y                   = 32000,
@@ -400,6 +366,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00170金待机',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -414,6 +381,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00171金移动',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -428,6 +396,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00172金攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -442,6 +411,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00173金被弹开',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -456,6 +426,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00174金倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -470,6 +441,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00175金魔法咏唱',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -484,6 +456,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00176金魔法发射',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -498,6 +471,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00177金胜利',
             x                   = 12000,
             z                   = 0,
             y                   = 32000,
@@ -512,6 +486,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00150阿加特待机',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -526,6 +501,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00151阿加特移动',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -540,6 +516,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00152阿加特攻击',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -554,6 +531,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00153阿加特被弹开',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -568,6 +546,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00154阿加特倒下',
             x                   = 16000,
             z                   = 0,
             y                   = 20000,
@@ -582,6 +561,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00155阿加特魔法咏唱',
             x                   = 16000,
             z                   = 0,
             y                   = 24000,
@@ -596,6 +576,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00156阿加特魔法发射',
             x                   = 16000,
             z                   = 0,
             y                   = 28000,
@@ -610,6 +591,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00157阿加特胜利',
             x                   = 16000,
             z                   = 0,
             y                   = 32000,
@@ -624,6 +606,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00130奥利维尔待机',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -638,6 +621,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00131奥利维尔移动',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -652,6 +636,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00132奥利维尔攻击',
             x                   = 20000,
             z                   = 0,
             y                   = 12000,
@@ -666,6 +651,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00133奥利维尔被弹开',
             x                   = 20000,
             z                   = 0,
             y                   = 16000,
@@ -680,6 +666,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00134奥利维尔倒下',
             x                   = 20000,
             z                   = 0,
             y                   = 20000,
@@ -694,6 +681,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00135奥利维尔魔法咏唱',
             x                   = 20000,
             z                   = 0,
             y                   = 24000,
@@ -708,6 +696,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00136奥利维尔魔法发射',
             x                   = 20000,
             z                   = 0,
             y                   = 28000,
@@ -722,6 +711,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00137奥利维尔胜利',
             x                   = 20000,
             z                   = 0,
             y                   = 32000,
@@ -737,37 +727,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x78A
+# id: 0x10002 offset: 0x78A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x78A
+# id: 0x10003 offset: 0x78A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x78A
+# id: 0x10004 offset: 0x78A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x78A
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x78B
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x78B
+@scena.Code('func_01_78B')
+def func_01_78B():
+    Return()
+
 # id: 0x0002 offset: 0x78C
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_78C')
+def func_02_78C():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -776,9 +766,9 @@ def ReInit():
         'loc_7A1',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000708)
+    OP_99(0x00FE, 0x00, 0x07, 1800)
 
-    Jump('ReInit')
+    Jump('func_02_78C')
 
     def _loc_7A1(): pass
 
@@ -797,7 +787,7 @@ def func_03_7A2():
         'loc_7B7',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
 
     Jump('func_03_7A2')
 
@@ -818,7 +808,7 @@ def func_04_7B8():
         'loc_7D2',
     )
 
-    OP_99(0x00FE, 0x00, 0x00, 0x000005DC)
+    OP_99(0x00FE, 0x00, 0x00, 1500)
     Sleep(500)
 
     Jump('func_04_7B8')
@@ -840,7 +830,7 @@ def func_05_7D3():
         'loc_7ED',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x03, 2000)
     Sleep(500)
 
     Jump('func_05_7D3')
@@ -862,7 +852,7 @@ def func_06_7EE():
         'loc_808',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_06_7EE')
@@ -905,7 +895,7 @@ def func_08_82D():
         'loc_847',
     )
 
-    OP_99(0x00FE, 0x00, 0x0C, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0C, 2000)
     Sleep(500)
 
     Jump('func_08_82D')
@@ -927,7 +917,7 @@ def func_09_848():
         'loc_85D',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_09_848')
 
@@ -948,11 +938,11 @@ def func_0A_85E():
         'loc_894',
     )
 
-    SetChrChipByIndex(0x00FE, 5)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 6)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 5)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 6)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_0A_85E')
@@ -974,7 +964,7 @@ def func_0B_895():
         'loc_8AF',
     )
 
-    OP_99(0x00FE, 0x00, 0x13, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x13, 2000)
     Sleep(500)
 
     Jump('func_0B_895')
@@ -996,7 +986,7 @@ def func_0C_8B0():
         'loc_8CA',
     )
 
-    OP_99(0x00FE, 0x00, 0x0C, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0C, 2000)
     Sleep(500)
 
     Jump('func_0C_8B0')
@@ -1018,7 +1008,7 @@ def func_0D_8CB():
         'loc_8E0',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_0D_8CB')
 
@@ -1039,11 +1029,11 @@ def func_0E_8E1():
         'loc_917',
     )
 
-    SetChrChipByIndex(0x00FE, 17)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 18)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 17)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 18)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_0E_8E1')
@@ -1065,7 +1055,7 @@ def func_0F_918():
         'loc_932',
     )
 
-    OP_99(0x00FE, 0x00, 0x21, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x21, 2000)
     Sleep(500)
 
     Jump('func_0F_918')
@@ -1087,7 +1077,7 @@ def func_10_933():
         'loc_94D',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
+    OP_99(0x00FE, 0x00, 0x07, 2500)
     Sleep(500)
 
     Jump('func_10_933')
@@ -1109,7 +1099,7 @@ def func_11_94E():
         'loc_963',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_11_94E')
 
@@ -1130,11 +1120,11 @@ def func_12_964():
         'loc_99A',
     )
 
-    SetChrChipByIndex(0x00FE, 29)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 30)
-    OP_99(0x00FE, 0x00, 0x00, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 29)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 30)
+    OP_99(0x00FE, 0x00, 0x00, 1000)
     Sleep(1000)
 
     Jump('func_12_964')
@@ -1156,7 +1146,7 @@ def func_13_99B():
         'loc_9B5',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_13_99B')
@@ -1178,7 +1168,7 @@ def func_14_9B6():
         'loc_9D0',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
+    OP_99(0x00FE, 0x00, 0x07, 2500)
     Sleep(500)
 
     Jump('func_14_9B6')
@@ -1200,7 +1190,7 @@ def func_15_9D1():
         'loc_9E6',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_15_9D1')
 
@@ -1221,11 +1211,11 @@ def func_16_9E7():
         'loc_A1D',
     )
 
-    SetChrChipByIndex(0x00FE, 41)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 42)
-    OP_99(0x00FE, 0x00, 0x00, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 41)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 42)
+    OP_99(0x00FE, 0x00, 0x00, 1000)
     Sleep(1000)
 
     Jump('func_16_9E7')
@@ -1247,7 +1237,7 @@ def func_17_A1E():
         'loc_A38',
     )
 
-    OP_99(0x00FE, 0x00, 0x0A, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0A, 2000)
     Sleep(500)
 
     Jump('func_17_A1E')
@@ -1269,7 +1259,7 @@ def func_18_A39():
         'loc_A53',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_18_A39')
@@ -1291,7 +1281,7 @@ def func_19_A54():
         'loc_A69',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_19_A54')
 
@@ -1312,11 +1302,11 @@ def func_1A_A6A():
         'loc_AA0',
     )
 
-    SetChrChipByIndex(0x00FE, 53)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 54)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 53)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 54)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_1A_A6A')
@@ -1338,7 +1328,7 @@ def func_1B_AA1():
         'loc_ABB',
     )
 
-    OP_99(0x00FE, 0x00, 0x0E, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0E, 2000)
     Sleep(500)
 
     Jump('func_1B_AA1')

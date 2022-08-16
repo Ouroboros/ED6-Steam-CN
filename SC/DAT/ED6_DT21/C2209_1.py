@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C2209_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x196
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     FadeOut(0, 0, -1)
     EventBegin(0x00)
     OP_72(0x0004, 0x0004)
@@ -105,9 +95,9 @@ def PreInit():
     OP_71(0x0004, 0x0020)
     OP_71(0x0002, 0x0008)
     OP_71(0x0004, 0x0008)
-    OP_6D(3340, 13200, 3070, 0)
+    CameraMove(3340, 13200, 3070, 0)
     OP_67(0, 10720, -10000, 0)
-    OP_6B(4800, 0)
+    CameraSetDistance(4800, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
     FadeIn(2000, 0)
@@ -122,22 +112,22 @@ def PreInit():
     OP_56(0x00)
     FadeOut(2000, 0, -1)
     OP_0D()
-    OP_A2(0x10F0)
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/C2219._SN', 100, 0, 0)
     IdleLoop()
 
     Return()
 
 # id: 0x0001 offset: 0x154
-@scena.Code('Init')
-def Init():
-    OP_6D(90, 28750, 5270, 12000)
+@scena.Code('func_01_154')
+def func_01_154():
+    CameraMove(90, 28750, 5270, 12000)
 
     Return()
 
 # id: 0x0002 offset: 0x166
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_166')
+def func_02_166():
     OP_67(0, 7310, -10000, 12000)
 
     Return()
@@ -145,7 +135,7 @@ def ReInit():
 # id: 0x0003 offset: 0x178
 @scena.Code('func_03_178')
 def func_03_178():
-    OP_6B(3560, 12000)
+    CameraSetDistance(3560, 12000)
 
     Return()
 

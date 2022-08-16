@@ -9,27 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5412   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '亡命守护者'),
-    TXT(0x02, '目标探索者'),
-    TXT(0x03, '目标探索者'),
-    TXT(0x04, '哨兵570（蓝）'),
-    TXT(0x05, '哨兵570（蓝）'),
-    TXT(0x06, '目标探索者'),
-    TXT(0x07, '哨兵235（红）'),
-    TXT(0x08, '哨兵235（红）'),
-    TXT(0x09, '亡命守护者'),
-    TXT(0x0A, '目标探索者'),
-    TXT(0x0B, '目标探索者'),
-    TXT(0x0C, '哨兵570（蓝）'),
-    TXT(0x0D, '哨兵570（蓝）'),
-    TXT(0x0E, '目标探索者'),
-    TXT(0x0F, '哨兵235（红）'),
-    TXT(0x10, '哨兵235（红）'),
-    TXT(0x11, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -44,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x5BC
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -80,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -95,17 +69,18 @@ def ChipData():
         ('ED6_DT29/CH12321._CH', 'ED6_DT29/CH12321P._CP'),
     ]
 
-# id: 0x10002 offset: 0xEA
+# id: 0x10001 offset: 0xEA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xEA
+# id: 0x10002 offset: 0xEA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '亡命守护者',
             x           = 980,
             z           = -1000,
             y           = 16570,
@@ -119,6 +94,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = 16140,
             z           = -1000,
             y           = 43740,
@@ -132,6 +108,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = -14260,
             z           = -1000,
             y           = 43870,
@@ -145,6 +122,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵570（蓝）',
             x           = 17850,
             z           = -1000,
             y           = 145970,
@@ -158,6 +136,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵570（蓝）',
             x           = -12070,
             z           = -1000,
             y           = 145960,
@@ -171,6 +150,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = 2860,
             z           = -1000,
             y           = 174250,
@@ -184,6 +164,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵235（红）',
             x           = 17920,
             z           = -1000,
             y           = 202020,
@@ -197,6 +178,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵235（红）',
             x           = -12050,
             z           = -1000,
             y           = 201850,
@@ -210,6 +192,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '亡命守护者',
             x           = 980,
             z           = -1000,
             y           = 16570,
@@ -223,6 +206,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = 16140,
             z           = -1000,
             y           = 43740,
@@ -236,6 +220,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = -14260,
             z           = -1000,
             y           = 43870,
@@ -249,6 +234,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵570（蓝）',
             x           = 17850,
             z           = -1000,
             y           = 145970,
@@ -262,6 +248,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵570（蓝）',
             x           = -12070,
             z           = -1000,
             y           = 145960,
@@ -275,6 +262,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '目标探索者',
             x           = 2860,
             z           = -1000,
             y           = 174250,
@@ -288,6 +276,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵235（红）',
             x           = 17920,
             z           = -1000,
             y           = 202020,
@@ -301,6 +290,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '哨兵235（红）',
             x           = -12050,
             z           = -1000,
             y           = 201850,
@@ -315,21 +305,21 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x2AA
+# id: 0x10003 offset: 0x2AA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x2AA
+# id: 0x10004 offset: 0x2AA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x2AA
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0385, 0, 0x1C28)),
@@ -349,7 +339,7 @@ def PreInit():
         'loc_2C2',
     )
 
-    Event(0, 0x0002)
+    Event(0, func_02_357)
 
     def _loc_2C2(): pass
 
@@ -358,8 +348,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x2C3
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_2C3')
+def func_01_2C3():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -422,14 +412,14 @@ def Init():
         'loc_32E',
     )
 
-    SetChrFlags(0x0008, 0x0080)
-    SetChrFlags(0x0009, 0x0080)
-    SetChrFlags(0x000A, 0x0080)
-    SetChrFlags(0x000B, 0x0080)
-    SetChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000D, 0x0080)
-    SetChrFlags(0x000E, 0x0080)
-    SetChrFlags(0x000F, 0x0080)
+    ChrSetFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0009, 0x0080)
+    ChrSetFlags(0x000A, 0x0080)
+    ChrSetFlags(0x000B, 0x0080)
+    ChrSetFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000D, 0x0080)
+    ChrSetFlags(0x000E, 0x0080)
+    ChrSetFlags(0x000F, 0x0080)
 
     Jump('loc_356')
 
@@ -437,14 +427,14 @@ def Init():
 
     label('loc_32E')
 
-    SetChrFlags(0x0010, 0x0080)
-    SetChrFlags(0x0011, 0x0080)
-    SetChrFlags(0x0012, 0x0080)
-    SetChrFlags(0x0013, 0x0080)
-    SetChrFlags(0x0014, 0x0080)
-    SetChrFlags(0x0015, 0x0080)
-    SetChrFlags(0x0016, 0x0080)
-    SetChrFlags(0x0017, 0x0080)
+    ChrSetFlags(0x0010, 0x0080)
+    ChrSetFlags(0x0011, 0x0080)
+    ChrSetFlags(0x0012, 0x0080)
+    ChrSetFlags(0x0013, 0x0080)
+    ChrSetFlags(0x0014, 0x0080)
+    ChrSetFlags(0x0015, 0x0080)
+    ChrSetFlags(0x0016, 0x0080)
+    ChrSetFlags(0x0017, 0x0080)
 
     def _loc_356(): pass
 
@@ -453,26 +443,26 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x357
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_357')
+def func_02_357():
     EventBegin(0x00)
-    OP_6D(1030, -1000, -14910, 0)
+    CameraMove(1030, -1000, -14910, 0)
     OP_67(0, 9500, -10000, 0)
-    OP_6B(4000, 0)
+    CameraSetDistance(4000, 0)
     OP_6C(45000, 0)
     OP_6E(234, 0)
-    SetChrPos(0x0101, 1630, -1000, -15000, 0)
-    SetChrPos(0x0102, 480, -1000, -15000, 0)
+    ChrSetPos(0x0101, 1630, -1000, -15000, 0)
+    ChrSetPos(0x0102, 480, -1000, -15000, 0)
     FadeIn(1000, 0)
     OP_0D()
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     Fade(1000)
-    OP_6D(580, -1000, 13910, 0)
+    CameraMove(580, -1000, 13910, 0)
     OP_67(0, 9110, -10000, 0)
-    OP_6B(4000, 0)
+    CameraSetDistance(4000, 0)
     OP_6C(27000, 0)
     OP_6E(642, 0)
     OP_0D()
@@ -480,7 +470,7 @@ def ReInit():
 
     @scena.Lambda('lambda_042C')
     def lambda_042C():
-        OP_6D(1030, -1000, -14910, 8000)
+        CameraMove(1030, -1000, -14910, 8000)
 
         ExitThread()
 
@@ -570,7 +560,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x1C28)
+    SetScenaFlags(ScenaFlag(0x0385, 0, 0x1C28))
     OP_28(0x0099, 0x01, 0x0400)
     EventEnd(0x00)
 

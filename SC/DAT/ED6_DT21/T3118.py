@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3118   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '米妮亚姆医生'),
-    TXT(0x02, '安东尼'),
-    TXT(0x03, '安东尼'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x10D3
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -76,11 +63,12 @@ def ChipData():
         ('ED6_DT07/CH01700._CH', 'ED6_DT07/CH01700P._CP'),
     ]
 
-# id: 0x10002 offset: 0xBA
+# id: 0x10001 offset: 0xBA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '米妮亚姆医生',
             x                   = -1410,
             z                   = 0,
             y                   = 6690,
@@ -95,6 +83,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '安东尼',
             x                   = -5510,
             z                   = 0,
             y                   = -3140,
@@ -109,6 +98,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '安东尼',
             x                   = -5510,
             z                   = 0,
             y                   = -3140,
@@ -124,19 +114,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x11A
+# id: 0x10002 offset: 0x11A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x11A
+# id: 0x10003 offset: 0x11A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x11A
+# id: 0x10004 offset: 0x11A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -156,8 +146,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x13E
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0400, 0, 0x2000)),
@@ -174,8 +164,8 @@ def PreInit():
         'loc_158',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    CreateThread(0x0009, 0x00, 0x00, 0x0002)
+    ChrClearFlags(0x0009, 0x0080)
+    CreateThread(0x0009, 0x00, 0x00, func_02_19F)
 
     def _loc_158(): pass
 
@@ -195,8 +185,8 @@ def PreInit():
         'loc_16E',
     )
 
-    ClearChrFlags(0x0009, 0x0080)
-    CreateThread(0x0009, 0x00, 0x00, 0x0002)
+    ChrClearFlags(0x0009, 0x0080)
+    CreateThread(0x0009, 0x00, 0x00, func_02_19F)
 
     def _loc_16E(): pass
 
@@ -205,8 +195,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x16F
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_16F')
+def func_01_16F():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -234,8 +224,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x19F
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_19F')
+def func_02_19F():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -275,7 +265,7 @@ def ReInit():
 
     label('loc_1FC')
 
-    Jump('ReInit')
+    Jump('func_02_19F')
 
     def _loc_1FF(): pass
 
@@ -307,7 +297,7 @@ def func_03_200():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -485,7 +475,7 @@ def func_03_200():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -547,8 +537,8 @@ def func_03_200():
 
     label('loc_4A9')
 
-    OP_A2(0x0000)
-    OP_A2(0x20D3)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
+    SetScenaFlags(ScenaFlag(0x041A, 3, 0x20D3))
 
     Jump('loc_596')
 
@@ -778,7 +768,7 @@ def func_03_200():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_70B(): pass
 
@@ -866,7 +856,7 @@ def func_03_200():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_825(): pass
 
@@ -976,7 +966,7 @@ def func_03_200():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_977(): pass
 
@@ -1053,7 +1043,7 @@ def func_03_200():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_A22(): pass
 
@@ -1209,7 +1199,7 @@ def func_03_200():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1338,7 +1328,7 @@ def func_03_200():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1438,7 +1428,7 @@ def func_03_200():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1555,8 +1545,8 @@ def func_03_200():
 
     label('loc_1089')
 
-    OP_A2(0x142E)
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0285, 6, 0x142E))
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
     def _loc_108F(): pass
 
     label('loc_108F')
@@ -1586,7 +1576,7 @@ def func_04_1093():
         'loc_10B3',
     )
 
-    OP_22(0x0192, 0x00, 0x64)
+    PlaySE(402, 0x00, 0x64)
 
     ChrTalk(
         0x00FE,
@@ -1608,7 +1598,7 @@ def func_04_1093():
 
     label('loc_10B6')
 
-    OP_22(0x0192, 0x00, 0x64)
+    PlaySE(402, 0x00, 0x64)
 
     ChrTalk(
         0x00FE,

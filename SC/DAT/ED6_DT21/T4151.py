@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4151   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '王都格兰赛尔·北街区'),
-    TXT(0x02, '王都格兰赛尔·南街区'),
-    TXT(0x03, '王都格兰赛尔·空港'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2E8
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,18 +54,19 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '王都格兰赛尔·北街区',
             x                   = 17760,
             z                   = 0,
             y                   = 63880,
@@ -93,6 +81,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '王都格兰赛尔·南街区',
             x                   = 29270,
             z                   = 0,
             y                   = -950,
@@ -107,6 +96,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '王都格兰赛尔·空港',
             x                   = 51010,
             z                   = 0,
             y                   = 102170,
@@ -122,13 +112,13 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x108
+# id: 0x10002 offset: 0x108
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x108
+# id: 0x10003 offset: 0x108
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -214,7 +204,7 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x208
+# id: 0x10004 offset: 0x208
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -234,14 +224,14 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x22C
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x22D
-@scena.Code('Init')
-def Init():
-    OP_16(0x02, 0x00000FA0, 0xFFFF4C50, 0xFFFEA070, 0x0023005C)
+@scena.Code('func_01_22D')
+def func_01_22D():
+    OP_16(0x02, 4000, -46000, -90000, 2293852)
     OP_72(0x0009, 0x0010)
     OP_72(0x000A, 0x0010)
     OP_71(0x0000, 0x0010)
@@ -252,10 +242,10 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x25E
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_25E')
+def func_02_25E():
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -278,35 +268,35 @@ def ReInit():
 # id: 0x0003 offset: 0x2C4
 @scena.Code('func_03_2C4')
 def func_03_2C4():
-    SetPlaceName(0x00BA)
+    OP_13(0x00BA)
 
     Return()
 
 # id: 0x0004 offset: 0x2C8
 @scena.Code('func_04_2C8')
 def func_04_2C8():
-    SetPlaceName(0x00B1)
+    OP_13(0x00B1)
 
     Return()
 
 # id: 0x0005 offset: 0x2CC
 @scena.Code('func_05_2CC')
 def func_05_2CC():
-    SetPlaceName(0x00BB)
+    OP_13(0x00BB)
 
     Return()
 
 # id: 0x0006 offset: 0x2D0
 @scena.Code('func_06_2D0')
 def func_06_2D0():
-    SetPlaceName(0x00BC)
+    OP_13(0x00BC)
 
     Return()
 
 # id: 0x0007 offset: 0x2D4
 @scena.Code('func_07_2D4')
 def func_07_2D4():
-    SetPlaceName(0x00BD)
+    OP_13(0x00BD)
 
     Return()
 

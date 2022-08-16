@@ -9,16 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0001   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '居民１'),
-    TXT(0x02, '呜喵'),
-    TXT(0x03, '宝箱'),
-    TXT(0x04, '宝箱'),
-    TXT(0x05, ''),
-    TXT(0x06, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -33,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x1D6F
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -69,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -79,11 +64,12 @@ def ChipData():
         ('ED6_DT09/CH10001._CH', 'ED6_DT09/CH10001P._CP'),
     ]
 
-# id: 0x10002 offset: 0xC2
+# id: 0x10001 offset: 0xC2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '居民１',
             x                   = 4000,
             z                   = 0,
             y                   = -4000,
@@ -98,6 +84,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '呜喵',
             x                   = -4000,
             z                   = 0,
             y                   = -2000,
@@ -112,6 +99,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '宝箱',
             x                   = -4000,
             z                   = 0,
             y                   = -4000,
@@ -126,6 +114,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '宝箱',
             x                   = -5000,
             z                   = 0,
             y                   = -6000,
@@ -141,11 +130,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x142
+# id: 0x10002 offset: 0x142
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = 10000,
             z           = 0,
             y           = -4000,
@@ -160,7 +150,7 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x15E
+# id: 0x10003 offset: 0x15E
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -176,7 +166,7 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x17E
+# id: 0x10004 offset: 0x17E
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -209,16 +199,16 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1C6
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x1C7
-@scena.Code('Init')
-def Init():
-    Event(0, 0x000B)
+@scena.Code('func_01_1C7')
+def func_01_1C7():
+    Event(0, func_0B_CE5)
     OP_62(0x0009, 0xFFFFFDA8, 300, 0x80, 0x21, 0x000000FA, 0x00)
-    SetChrFlags(0x0009, 0x0006)
+    ChrSetFlags(0x0009, 0x0006)
 
     ExecExpressionWithValue(
         0x0009,
@@ -230,7 +220,7 @@ def Init():
         ),
     )
 
-    SetChrPos(0x0009, -4000, 1000, -2000, 0)
+    ChrSetPos(0x0009, -4000, 1000, -2000, 0)
 
     ExecExpressionWithValue(
         0x0009,
@@ -298,20 +288,20 @@ def Init():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_44F',
+        'loc_8B5',
     )
 
-    OP_A2(0x1000)
+    SetScenaFlags(ScenaFlag(0x0200, 0, 0x1000))
     FormationDelMember(0x00, 0xFF)
     FormationAddMember(ChrTable['亚妮拉丝'], 0xF6, 0x00)
     FormationAddMember(ChrTable['克鲁茨'], 0xF7, 0x01)
     FormationAddMember(ChrTable['凯文神父'], 0xF8, 0x02)
     FormationAddMember(ChrTable['尤莉亚上尉'], 0xF9, 0x03)
     Call(2, 0x003A)
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0x07, 4)
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0x00, 3)
-    SetChrStatus(ChrTable['约修亚'], 0x07, 3)
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0x07, 3)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x07, 4)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x00, 3)
+    ChrSetStatus(ChrTable['约修亚'], 0x07, 3)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x07, 3)
     AddCraft(ChrTable['艾丝蒂尔'], CraftTable['助威'])
     AddCraft(ChrTable['艾丝蒂尔'], CraftTable['绞丝棍'])
     AddCraft(ChrTable['艾丝蒂尔'], CraftTable['金刚击'])
@@ -374,8 +364,8 @@ def Init():
     AddItem(ItemTable['ＨＰ２'], 1)
     AddItem(ItemTable['攻击１'], 1)
     AddItem(ItemTable['回复药'], 50)
-    SetChrStatus(ChrTable['尤莉亚上尉'], 0x00, 85)
-    SetChrStatus(ChrTable['尤莉亚上尉'], 0xFE, 0)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0x00, 85)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0xFE, 0)
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['天琴'], 0xFF)
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['反射大衣Ⅱ'], 0xFF)
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['合成防护靴Ⅱ'], 0xFF)
@@ -394,8 +384,8 @@ def Init():
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['ＨＰ４'], 0x04)
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['防御４'], 0x05)
     EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['回避４'], 0x06)
-    SetChrStatus(ChrTable['穆拉'], 0x00, 86)
-    SetChrStatus(ChrTable['穆拉'], 0xFE, 0)
+    ChrSetStatus(ChrTable['穆拉'], 0x00, 86)
+    ChrSetStatus(ChrTable['穆拉'], 0xFE, 0)
     EquipCmd(ChrTable['穆拉'], ItemTable['耀晶破坏者'], 0xFF)
     EquipCmd(ChrTable['穆拉'], ItemTable['反射大衣Ⅱ'], 0xFF)
     EquipCmd(ChrTable['穆拉'], ItemTable['合成防护靴Ⅱ'], 0xFF)
@@ -414,43 +404,231 @@ def Init():
     EquipCmd(ChrTable['穆拉'], ItemTable['阴阳'], 0x03)
     EquipCmd(ChrTable['穆拉'], ItemTable['移动３'], 0x04)
     EquipCmd(ChrTable['穆拉'], ItemTable['防御４'], 0x05)
-    SetChrStatus(ChrTable['理查德'], 0x00, 85)
-    SetChrStatus(ChrTable['理查德'], 0xFE, 0)
+    ChrSetStatus(ChrTable['理查德'], 0x00, 85)
+    ChrSetStatus(ChrTable['理查德'], 0xFE, 0)
     AddCraft(ChrTable['理查德'], 0x0000)
-    SetChrStatus(ChrTable['凯诺娜'], 0x00, 85)
-    SetChrStatus(ChrTable['凯诺娜'], 0xFE, 0)
+    ChrSetStatus(ChrTable['凯诺娜'], 0x00, 85)
+    ChrSetStatus(ChrTable['凯诺娜'], 0xFE, 0)
     AddCraft(ChrTable['凯诺娜'], 0x0000)
-    SetMapFlags(0x01000000)
-
+    MapSetFlags(0x01000000)
     FormationReset()
     FormationAddMember(ChrTable['艾丝蒂尔'], 0xF6, 0x00)
     FormationAddMember(ChrTable['约修亚'], 0xF7, 0x01)
     FormationAddMember(ChrTable['金'], 0xF8, 0x02)
     FormationAddMember(ChrTable['阿加特'], 0xF9, 0x03)
-
     AddItem(ItemTable['还魂胶囊'], 99)
     AddItem(ItemTable['还魂粉'], 99)
-
     OP_BB(0x00, 0x01, 0x00000000)
     OP_BB(0x01, 0x01, 0x00000001)
-
-    for id in range(0x10):
-        SetChrStatus(id, 0, 99)     # lv
-        SetChrStatus(id, 5, 200)    # cp
-        EquipCmd(id, ItemTable['黑耀珠'], 0x00)
-        EquipCmd(id, ItemTable['黑耀珠'], 0x01)
-        EquipCmd(id, ItemTable['黑耀珠'], 0x02)
-        EquipCmd(id, ItemTable['移动３'], 0x03)
-        EquipCmd(id, ItemTable['红耀珠'], 0x04)
-        EquipCmd(id, ItemTable['红耀珠'], 0x05)
-        EquipCmd(id, ItemTable['红耀珠'], 0x06)
-        EquipCmd(id, ItemTable['能量宝珠'], 3)
-        EquipCmd(id, ItemTable['斗魂腰带'], 4)
-        EquipCmd(id, ItemTable['大地女神之服'], 0xFF)
-        EquipCmd(id, ItemTable['普罗米修斯神靴'], 0xFF)
-
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x00, 99)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x05, 200)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['约修亚'], 0x00, 99)
+    ChrSetStatus(ChrTable['约修亚'], 0x05, 200)
+    EquipCmd(ChrTable['约修亚'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['约修亚'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['约修亚'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['约修亚'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['约修亚'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['约修亚'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['约修亚'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['约修亚'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['约修亚'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['约修亚'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['约修亚'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0x00, 99)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0x05, 200)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['雪拉扎德'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['奥利维尔'], 0x00, 99)
+    ChrSetStatus(ChrTable['奥利维尔'], 0x05, 200)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['奥利维尔'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['科洛丝'], 0x00, 99)
+    ChrSetStatus(ChrTable['科洛丝'], 0x05, 200)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['科洛丝'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['阿加特'], 0x00, 99)
+    ChrSetStatus(ChrTable['阿加特'], 0x05, 200)
+    EquipCmd(ChrTable['阿加特'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['阿加特'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['阿加特'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['阿加特'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['阿加特'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['阿加特'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['阿加特'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['阿加特'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['阿加特'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['阿加特'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['阿加特'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['提妲'], 0x00, 99)
+    ChrSetStatus(ChrTable['提妲'], 0x05, 200)
+    EquipCmd(ChrTable['提妲'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['提妲'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['提妲'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['提妲'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['提妲'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['提妲'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['提妲'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['提妲'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['提妲'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['提妲'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['提妲'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['金'], 0x00, 99)
+    ChrSetStatus(ChrTable['金'], 0x05, 200)
+    EquipCmd(ChrTable['金'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['金'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['金'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['金'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['金'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['金'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['金'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['金'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['金'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['金'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['金'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['凯文神父'], 0x00, 99)
+    ChrSetStatus(ChrTable['凯文神父'], 0x05, 200)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['凯文神父'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['亚妮拉丝'], 0x00, 99)
+    ChrSetStatus(ChrTable['亚妮拉丝'], 0x05, 200)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['亚妮拉丝'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['乔丝特'], 0x00, 99)
+    ChrSetStatus(ChrTable['乔丝特'], 0x05, 200)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['乔丝特'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['理查德'], 0x00, 99)
+    ChrSetStatus(ChrTable['理查德'], 0x05, 200)
+    EquipCmd(ChrTable['理查德'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['理查德'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['理查德'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['理查德'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['理查德'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['理查德'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['理查德'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['理查德'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['理查德'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['理查德'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['理查德'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['凯诺娜'], 0x00, 99)
+    ChrSetStatus(ChrTable['凯诺娜'], 0x05, 200)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['凯诺娜'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['克鲁茨'], 0x00, 99)
+    ChrSetStatus(ChrTable['克鲁茨'], 0x05, 200)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['克鲁茨'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0x00, 99)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0x05, 200)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['尤莉亚上尉'], ItemTable['普罗米修斯神靴'], 0xFF)
+    ChrSetStatus(ChrTable['穆拉'], 0x00, 99)
+    ChrSetStatus(ChrTable['穆拉'], 0x05, 200)
+    EquipCmd(ChrTable['穆拉'], ItemTable['黑耀珠'], 0x00)
+    EquipCmd(ChrTable['穆拉'], ItemTable['黑耀珠'], 0x01)
+    EquipCmd(ChrTable['穆拉'], ItemTable['黑耀珠'], 0x02)
+    EquipCmd(ChrTable['穆拉'], ItemTable['移动３'], 0x03)
+    EquipCmd(ChrTable['穆拉'], ItemTable['红耀珠'], 0x04)
+    EquipCmd(ChrTable['穆拉'], ItemTable['红耀珠'], 0x05)
+    EquipCmd(ChrTable['穆拉'], ItemTable['红耀珠'], 0x06)
+    EquipCmd(ChrTable['穆拉'], ItemTable['能量宝珠'], 0x03)
+    EquipCmd(ChrTable['穆拉'], ItemTable['斗魂腰带'], 0x04)
+    EquipCmd(ChrTable['穆拉'], ItemTable['大地女神之服'], 0xFF)
+    EquipCmd(ChrTable['穆拉'], ItemTable['普罗米修斯神靴'], 0xFF)
     EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['叶隐'], 0x00)
-
     EquipCmd(ChrTable['艾丝蒂尔'], ItemTable['麒麟具'], 0xFF)
     EquipCmd(ChrTable['约修亚'], ItemTable['凤凰剑（凤·凰）'], 0xFF)
     EquipCmd(ChrTable['雪拉扎德'], ItemTable['天狼鞭'], 0xFF)
@@ -460,38 +638,38 @@ def Init():
     EquipCmd(ChrTable['提妲'], ItemTable['九龙炮'], 0xFF)
     EquipCmd(ChrTable['金'], ItemTable['千手观音'], 0xFF)
 
-    def _loc_44F(): pass
+    def _loc_8B5(): pass
 
-    label('loc_44F')
+    label('loc_8B5')
 
-    SetMapFlags(0x00000001)
-    ClearMapFlags(0x00000020)
-    ClearMapFlags(0x00400000)
+    MapSetFlags(0x00000001)
+    MapClearFlags(0x00000020)
+    MapClearFlags(0x00400000)
 
     Return()
 
-# id: 0x0002 offset: 0x45F
-@scena.Code('ReInit')
-def ReInit():
+# id: 0x0002 offset: 0x8C5
+@scena.Code('func_02_8C5')
+def func_02_8C5():
     OP_D7(0x01, 50000, 0)
 
     Return()
 
-# id: 0x0003 offset: 0x468
-@scena.Code('func_03_468')
-def func_03_468():
+# id: 0x0003 offset: 0x8CE
+@scena.Code('func_03_8CE')
+def func_03_8CE():
     Return()
 
-# id: 0x0004 offset: 0x469
-@scena.Code('func_04_469')
-def func_04_469():
+# id: 0x0004 offset: 0x8CF
+@scena.Code('func_04_8CF')
+def func_04_8CF():
     Call(0, 0x000B)
 
     Return()
 
-# id: 0x0005 offset: 0x46E
-@scena.Code('func_05_46E')
-def func_05_46E():
+# id: 0x0005 offset: 0x8D4
+@scena.Code('func_05_8D4')
+def func_05_8D4():
     TalkBegin(0x00FE)
 
     If(
@@ -499,7 +677,7 @@ def func_05_46E():
             (Expr.TestScenaFlags, ScenaFlag(0x0002, 2, 0x12)),
             Expr.Return,
         ),
-        'loc_48E',
+        'loc_8F4',
     )
 
     ChrTalk(
@@ -512,11 +690,11 @@ def func_05_46E():
 
     CloseMessageWindow()
 
-    def _loc_48E(): pass
+    def _loc_8F4(): pass
 
-    label('loc_48E')
+    label('loc_8F4')
 
-    OP_A2(0x0012)
+    SetScenaFlags(ScenaFlag(0x0002, 2, 0x12))
     SetMessageWindowPos(100, 100, 15, 2)
 
     Talk(
@@ -658,7 +836,7 @@ def func_05_46E():
     )
 
     CloseMessageWindow()
-    SetChrName('约修亚')
+    TalkSetChrName('约修亚')
 
     Talk(
         (
@@ -690,132 +868,132 @@ def func_05_46E():
 
     Return()
 
-# id: 0x0006 offset: 0x71B
-@scena.Code('func_06_71B')
-def func_06_71B():
+# id: 0x0006 offset: 0xB81
+@scena.Code('func_06_B81')
+def func_06_B81():
     If(
         (
             (Expr.PushLong, 0x1),
             Expr.Return,
         ),
-        'loc_73F',
+        'loc_BA5',
     )
 
     OP_8D(0x00FE, 5000, -5000, 15000, 9000, 2000)
     Yield()
 
-    Jump('func_06_71B')
+    Jump('func_06_B81')
 
-    def _loc_73F(): pass
+    def _loc_BA5(): pass
 
-    label('loc_73F')
+    label('loc_BA5')
 
     Return()
 
-# id: 0x0007 offset: 0x740
-@scena.Code('func_07_740')
-def func_07_740():
+# id: 0x0007 offset: 0xBA6
+@scena.Code('func_07_BA6')
+def func_07_BA6():
     If(
         (
             (Expr.PushLong, 0x1),
             Expr.Return,
         ),
-        'loc_77B',
+        'loc_BE1',
     )
 
-    OP_70(0x0001, 0x00000032)
+    OP_70(0x0001, 50)
     OP_8D(0x00FE, -10000, -10000, 1000, 1000, 2000)
     OP_6F(0x0001, 0)
     OP_72(0x0001, 0x0008)
     Sleep(2000)
 
-    Jump('func_07_740')
+    Jump('func_07_BA6')
 
-    def _loc_77B(): pass
+    def _loc_BE1(): pass
 
-    label('loc_77B')
+    label('loc_BE1')
 
     Return()
 
-# id: 0x0008 offset: 0x77C
-@scena.Code('func_08_77C')
-def func_08_77C():
+# id: 0x0008 offset: 0xBE2
+@scena.Code('func_08_BE2')
+def func_08_BE2():
     If(
         (
             (Expr.PushLong, 0x1),
             Expr.Return,
         ),
-        'loc_790',
+        'loc_BF6',
     )
 
-    OP_8C(0x00FE, 180, 5000)
+    ChrSetDirection(0x00FE, 180, 5000)
     Yield()
 
-    Jump('func_08_77C')
+    Jump('func_08_BE2')
 
-    def _loc_790(): pass
+    def _loc_BF6(): pass
 
-    label('loc_790')
+    label('loc_BF6')
 
     Return()
 
-# id: 0x0009 offset: 0x791
-@scena.Code('func_09_791')
-def func_09_791():
+# id: 0x0009 offset: 0xBF7
+@scena.Code('func_09_BF7')
+def func_09_BF7():
     If(
         (
             (Expr.PushLong, 0x1),
             Expr.Return,
         ),
-        'loc_7B4',
+        'loc_C1A',
     )
 
     OP_8D(0x0000, 10000, 10000, -10000, -10000, 2000)
 
-    Jump('func_09_791')
+    Jump('func_09_BF7')
 
-    def _loc_7B4(): pass
+    def _loc_C1A(): pass
 
-    label('loc_7B4')
+    label('loc_C1A')
 
     Return()
 
-# id: 0x000A offset: 0x7B5
-@scena.Code('func_0A_7B5')
-def func_0A_7B5():
+# id: 0x000A offset: 0xC1B
+@scena.Code('func_0A_C1B')
+def func_0A_C1B():
     OP_A1(0x000A, 0x0004)
-    SetChrFlags(0x000A, 0x0004)
-    ClearChrFlags(0x000A, 0x0100)
-    SetChrPos(0x000A, 0, 0, 0, 0)
+    ChrSetFlags(0x000A, 0x0004)
+    ChrClearFlags(0x000A, 0x0100)
+    ChrSetPos(0x000A, 0, 0, 0, 0)
     OP_98(0x00, 0x000A)
-    OP_98(0x01, 0x00002710, 0x000007D0, 0x00002710)
-    OP_98(0x01, 0x00001388, 0x00001770, 0x00004E20)
+    OP_98(0x01, 10000, 2000, 10000)
+    OP_98(0x01, 5000, 6000, 20000)
 
-    @scena.Lambda('lambda_07FB')
-    def lambda_07FB():
-        OP_98(0x02, 0x000A, 0x000007D0, 0x06)
+    @scena.Lambda('lambda_0C61')
+    def lambda_0C61():
+        OP_98(0x02, 0x000A, 2000, 0x06)
 
         ExitThread()
 
-    DispatchAsync(0x000A, 0x0002, lambda_07FB)
+    DispatchAsync(0x000A, 0x0002, lambda_0C61)
 
     WaitForThreadExit(0x000A, 0x0002)
-    OP_8E(0x000A, -3000, 0, 0, 2000, 0x00)
+    ChrWalkTo(0x000A, -3000, 0, 0, 2000, 0x00)
     OP_98(0x00, 0x000A)
-    OP_98(0x01, 0x00001B58, 0x00000000, 0x00001388)
-    OP_98(0x01, 0x00002710, 0x000007D0, 0x00001F40)
-    OP_98(0x01, 0x00003A98, 0x00001388, 0x00001B58)
-    OP_98(0x02, 0x000A, 0x000007D0, 0x02)
+    OP_98(0x01, 7000, 0, 5000)
+    OP_98(0x01, 10000, 2000, 8000)
+    OP_98(0x01, 15000, 5000, 7000)
+    OP_98(0x02, 0x000A, 2000, 0x02)
     OP_98(0x00, 0x000A)
-    OP_98(0x01, 0x00002710, 0xFFFFEC78, 0x000007D0)
-    OP_98(0x01, 0x00002710, 0x00002710, 0xFFFFEC78)
-    OP_98(0x02, 0x000A, 0x000007D0, 0x02)
+    OP_98(0x01, 10000, -5000, 2000)
+    OP_98(0x01, 10000, 10000, -5000)
+    OP_98(0x02, 0x000A, 2000, 0x02)
 
     Return()
 
-# id: 0x000B offset: 0x87F
-@scena.Code('func_0B_87F')
-def func_0B_87F():
+# id: 0x000B offset: 0xCE5
+@scena.Code('func_0B_CE5')
+def func_0B_CE5():
     OP_16(0x01)
     EventBegin(0x00)
 
@@ -846,9 +1024,9 @@ def func_0B_87F():
         ),
     )
 
-    def _loc_8B2(): pass
+    def _loc_D18(): pass
 
-    label('loc_8B2')
+    label('loc_D18')
 
     If(
         (
@@ -857,7 +1035,7 @@ def func_0B_87F():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_11EB',
+        'loc_165D',
     )
 
     Menu(
@@ -904,121 +1082,124 @@ def func_0B_87F():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_A82'),
-        (0x00000001, 'loc_A89'),
-        (0x00000002, 'loc_A90'),
-        (0x00000003, 'loc_A97'),
-        (0x00000004, 'loc_A9E'),
-        (0x00000005, 'loc_AA5'),
-        (0x00000006, 'loc_AAC'),
-        (0x00000007, 'loc_AB3'),
-        (0x00000008, 'loc_ABA'),
-        (0x00000009, 'loc_AC4'),
-        (0x0000000A, 'loc_AD0'),
-        (0x0000000B, 'loc_B7E'),
-        (0x0000000C, 'loc_B8A'),
-        (0x0000000D, 'loc_D89'),
-        (0x0000000E, 'loc_E27'),
-        (0x0000000F, 'loc_E62'),
-        (0x00000010, 'loc_E69'),
-        (0x00000011, 'loc_E6D'),
-        (0x00000012, 'loc_E74'),
-        (0x00000013, 'loc_E7B'),
-        (0x00000014, 'loc_E97'),
-        (0x00000015, 'loc_10EA'),
-        (0x00000016, 'loc_1117'),
-        (0x00000017, 'loc_112B'),
-        (0x00000018, 'loc_11CD'),
-        (0x00000019, 'loc_11D4'),
-        (-1, 'loc_11DB'),
+        (0x00000000, 'loc_EE8'),
+        (0x00000001, 'loc_EFB'),
+        (0x00000002, 'loc_F02'),
+        (0x00000003, 'loc_F09'),
+        (0x00000004, 'loc_F10'),
+        (0x00000005, 'loc_F17'),
+        (0x00000006, 'loc_F1E'),
+        (0x00000007, 'loc_F25'),
+        (0x00000008, 'loc_F2C'),
+        (0x00000009, 'loc_F36'),
+        (0x0000000A, 'loc_F42'),
+        (0x0000000B, 'loc_FF0'),
+        (0x0000000C, 'loc_FFC'),
+        (0x0000000D, 'loc_11FB'),
+        (0x0000000E, 'loc_1299'),
+        (0x0000000F, 'loc_12D4'),
+        (0x00000010, 'loc_12DB'),
+        (0x00000011, 'loc_12DF'),
+        (0x00000012, 'loc_12E6'),
+        (0x00000013, 'loc_12ED'),
+        (0x00000014, 'loc_1309'),
+        (0x00000015, 'loc_155C'),
+        (0x00000016, 'loc_1589'),
+        (0x00000017, 'loc_159D'),
+        (0x00000018, 'loc_163F'),
+        (0x00000019, 'loc_1646'),
+        (-1, 'loc_164D'),
     )
 
-    def _loc_A82(): pass
+    def _loc_EE8(): pass
 
-    label('loc_A82')
+    label('loc_EE8')
 
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
+    NewScene('ED6_DT21/C5313._SN', 100, 0, 0)
+    IdleLoop()
     Call(0, 0x000F)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_A89(): pass
+    def _loc_EFB(): pass
 
-    label('loc_A89')
+    label('loc_EFB')
 
     Call(3, 0x0006)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_A90(): pass
+    def _loc_F02(): pass
 
-    label('loc_A90')
+    label('loc_F02')
 
     Call(3, 0x0000)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_A97(): pass
+    def _loc_F09(): pass
 
-    label('loc_A97')
+    label('loc_F09')
 
     Call(3, 0x0003)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_A9E(): pass
+    def _loc_F10(): pass
 
-    label('loc_A9E')
+    label('loc_F10')
 
     Call(2, 0x0000)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_AA5(): pass
+    def _loc_F17(): pass
 
-    label('loc_AA5')
+    label('loc_F17')
 
     Call(1, 0x0000)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_AAC(): pass
+    def _loc_F1E(): pass
 
-    label('loc_AAC')
+    label('loc_F1E')
 
     Call(2, 0x0001)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_AB3(): pass
+    def _loc_F25(): pass
 
-    label('loc_AB3')
+    label('loc_F25')
 
     Call(2, 0x003B)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_ABA(): pass
+    def _loc_F2C(): pass
 
-    label('loc_ABA')
+    label('loc_F2C')
 
     OP_66(0x0001)
     Call(4, 0x0000)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_AC4(): pass
+    def _loc_F36(): pass
 
-    label('loc_AC4')
+    label('loc_F36')
 
     OP_5F(0x0000)
     OP_56(0x00)
     Call(0, 0x0015)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_AD0(): pass
+    def _loc_F42(): pass
 
-    label('loc_AD0')
+    label('loc_F42')
 
     Menu(
         1,
@@ -1039,42 +1220,42 @@ def func_0B_87F():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_B3A'),
-        (0x00000001, 'loc_B4B'),
-        (0x00000002, 'loc_B5C'),
-        (-1, 'loc_B6D'),
+        (0x00000000, 'loc_FAC'),
+        (0x00000001, 'loc_FBD'),
+        (0x00000002, 'loc_FCE'),
+        (-1, 'loc_FDF'),
     )
 
-    def _loc_B3A(): pass
+    def _loc_FAC(): pass
 
-    label('loc_B3A')
+    label('loc_FAC')
 
     OP_BB(0x00, 0x01, 0x00000000)
     OP_BB(0x01, 0x01, 0x00000001)
 
-    Jump('loc_B6D')
+    Jump('loc_FDF')
 
-    def _loc_B4B(): pass
+    def _loc_FBD(): pass
 
-    label('loc_B4B')
+    label('loc_FBD')
 
     OP_BB(0x00, 0x01, 0x0000001E)
     OP_BB(0x01, 0x01, 0x0000001F)
 
-    Jump('loc_B6D')
+    Jump('loc_FDF')
 
-    def _loc_B5C(): pass
+    def _loc_FCE(): pass
 
-    label('loc_B5C')
+    label('loc_FCE')
 
     OP_BB(0x04, 0x01, 0x0000001D)
     OP_BB(0x01, 0x01, 0x0000001C)
 
-    Jump('loc_B6D')
+    Jump('loc_FDF')
 
-    def _loc_B6D(): pass
+    def _loc_FDF(): pass
 
-    label('loc_B6D')
+    label('loc_FDF')
 
     OP_5F(0x0001)
 
@@ -1089,20 +1270,20 @@ def func_0B_87F():
 
     OP_BD()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_B7E(): pass
+    def _loc_FF0(): pass
 
-    label('loc_B7E')
+    label('loc_FF0')
 
     NewScene('ED6_DT21/A0019._SN', 0, 0, 0)
     IdleLoop()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_B8A(): pass
+    def _loc_FFC(): pass
 
-    label('loc_B8A')
+    label('loc_FFC')
 
     OP_5F(0x0000)
     OP_56(0x00)
@@ -1112,23 +1293,23 @@ def func_0B_87F():
     Sleep(2000)
 
     OP_D9(0x01)
-    OP_C5(0x00, 0x0000, 0x0000, 0x0200, 0x0200, 0x0000, 0x0000, 0x0300, 0x0200, 0x0000, 0x0000, 0x01FF, 0x01FF, 0x00FFFFFF, 0x00, 'C_VIS000._CH')
+    OP_C5(0x00, 0, 0, 512, 512, 0, 0, 768, 512, 0, 0, 511, 511, 0x00FFFFFF, 0x00, 'C_VIS000._CH')
     OP_C6(0x00, 0x03, -1, 1000, 0)
     Sleep(2000)
 
-    OP_C5(0x01, 0xFF9C, 0xFF9C, 0x0064, 0x0064, 0x0154, 0x00FA, 0x0300, 0x0200, 0x0000, 0x0000, 0x00FF, 0x00FF, 0x00FFFFFF, 0x00, 'C_VIS001._CH')
+    OP_C5(0x01, -100, -100, 100, 100, 340, 250, 768, 512, 0, 0, 255, 255, 0x00FFFFFF, 0x00, 'C_VIS001._CH')
     OP_C6(0x01, 0x03, -1, 1000, 0)
     Sleep(2000)
 
-    OP_C5(0x00, 0xFF9C, 0xFF9C, 0x0064, 0x0064, 0x0168, 0x0104, 0x0300, 0x0200, 0x0000, 0x0000, 0x00FF, 0x00FF, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
+    OP_C5(0x00, -100, -100, 100, 100, 360, 260, 768, 512, 0, 0, 255, 255, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
     OP_C6(0x00, 0x03, -1, 1000, 0)
     Sleep(2000)
 
-    OP_C5(0x02, 0xFF9C, 0xFF9C, 0x0064, 0x0064, 0x017C, 0x0104, 0x0300, 0x0200, 0x0000, 0x0000, 0x00FF, 0x00FF, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
+    OP_C5(0x02, -100, -100, 100, 100, 380, 260, 768, 512, 0, 0, 255, 255, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
     OP_C6(0x02, 0x03, -1, 1000, 0)
     Sleep(2000)
 
-    OP_C5(0x03, 0xFF9C, 0xFF9C, 0x0064, 0x0064, 0x0190, 0x0104, 0x0300, 0x0200, 0x0000, 0x0000, 0x00FF, 0x00FF, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
+    OP_C5(0x03, -100, -100, 100, 100, 400, 260, 768, 512, 0, 0, 255, 255, 0x00FFFFFF, 0x00, 'C_VIS002._CH')
     OP_C6(0x03, 0x03, -1, 1000, 0)
     OP_C6(0x00, 0x00, 0, 0, 1000)
     OP_C6(0x00, 0x02, 90000, 2000, 0)
@@ -1157,11 +1338,11 @@ def func_0B_87F():
     OP_C7(0x00, 0xFF, 0x03)
     OP_C7(0x01, 0xFF, 0x00)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_D89(): pass
+    def _loc_11FB(): pass
 
-    label('loc_D89')
+    label('loc_11FB')
 
     OP_5F(0x0000)
     OP_56(0x00)
@@ -1169,27 +1350,27 @@ def func_0B_87F():
     OP_C9(
         0x00,
         (
-            0x0000,
+            ChrTable['艾丝蒂尔'],
             0x00FF,
             0x00FF,
             0x00FF,
         ),
         (
-            0x0001,
-            0x0002,
-            0x0003,
-            0x0004,
-            0x0005,
-            0x0006,
-            0x0007,
-            0x0008,
-            0x0009,
-            0x000D,
-            0x000A,
-            0x000F,
-            0x000E,
-            0x000B,
-            0x000C,
+            ChrTable['约修亚'],
+            ChrTable['雪拉扎德'],
+            ChrTable['奥利维尔'],
+            ChrTable['科洛丝'],
+            ChrTable['阿加特'],
+            ChrTable['提妲'],
+            ChrTable['金'],
+            ChrTable['凯文神父'],
+            ChrTable['亚妮拉丝'],
+            ChrTable['克鲁茨'],
+            ChrTable['乔丝特'],
+            ChrTable['穆拉'],
+            ChrTable['尤莉亚上尉'],
+            ChrTable['理查德'],
+            ChrTable['凯诺娜'],
             0xFFFF,
         ),
     )
@@ -1211,7 +1392,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_DE4',
+        'loc_1256',
     )
 
     ChrTalk(
@@ -1222,11 +1403,11 @@ def func_0B_87F():
         ),
     )
 
-    Jump('loc_E23')
+    Jump('loc_1295')
 
-    def _loc_DE4(): pass
+    def _loc_1256(): pass
 
-    label('loc_DE4')
+    label('loc_1256')
 
     If(
         (
@@ -1235,7 +1416,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_E05',
+        'loc_1277',
     )
 
     ChrTalk(
@@ -1246,11 +1427,11 @@ def func_0B_87F():
         ),
     )
 
-    Jump('loc_E23')
+    Jump('loc_1295')
 
-    def _loc_E05(): pass
+    def _loc_1277(): pass
 
-    label('loc_E05')
+    label('loc_1277')
 
     If(
         (
@@ -1259,7 +1440,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_E23',
+        'loc_1295',
     )
 
     ChrTalk(
@@ -1270,19 +1451,19 @@ def func_0B_87F():
         ),
     )
 
-    def _loc_E23(): pass
+    def _loc_1295(): pass
 
-    label('loc_E23')
+    label('loc_1295')
 
     CloseMessageWindow()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E27(): pass
+    def _loc_1299(): pass
 
-    label('loc_E27')
+    label('loc_1299')
 
-    OP_14(0x000003E8, 0xBBFFFFFF, 0x00000000, 0x00, 0x00000000)
+    Blur(1000, 0xBBFFFFFF, 0, 0x00, 0)
 
     ChrTalk(
         0x00F6,
@@ -1306,43 +1487,43 @@ def func_0B_87F():
 
     CloseMessageWindow()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E62(): pass
+    def _loc_12D4(): pass
 
-    label('loc_E62')
+    label('loc_12D4')
 
     OP_18(0x00, 0x00, 0x00)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E69(): pass
+    def _loc_12DB(): pass
 
-    label('loc_E69')
+    label('loc_12DB')
 
     ShowSaveMenu()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E6D(): pass
+    def _loc_12DF(): pass
 
-    label('loc_E6D')
+    label('loc_12DF')
 
     Call(5, 0x0000)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E74(): pass
+    def _loc_12E6(): pass
 
-    label('loc_E74')
+    label('loc_12E6')
 
     Call(5, 0x0001)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E7B(): pass
+    def _loc_12ED(): pass
 
-    label('loc_E7B')
+    label('loc_12ED')
 
     ExecExpressionWithVar(
         0x31,
@@ -1353,31 +1534,31 @@ def func_0B_87F():
         ),
     )
 
-    OP_A2(0x22AE)
+    SetScenaFlags(ScenaFlag(0x0455, 6, 0x22AE))
     FadeOut(500, 0, -1)
     ShowSaveMenu()
     OP_B4(0x01)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_E97(): pass
+    def _loc_1309(): pass
 
-    label('loc_E97')
+    label('loc_1309')
 
     EventBegin(0x00)
     OP_5F(0x0000)
     OP_56(0x00)
-    OP_A3(0x0016)
-    def _loc_EA1(): pass
+    ClearScenaFlags(ScenaFlag(0x0002, 6, 0x16))
+    def _loc_1313(): pass
 
-    label('loc_EA1')
+    label('loc_1313')
 
     If(
         (
             (Expr.PushLong, 0x1),
             Expr.Return,
         ),
-        'loc_10D4',
+        'loc_1546',
     )
 
     FadeOut(1000, 0, -1)
@@ -1437,11 +1618,11 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_FCC',
+        'loc_143E',
     )
 
-    OP_A2(0x0016)
-    SetChrName('')
+    SetScenaFlags(ScenaFlag(0x0002, 6, 0x16))
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1460,27 +1641,27 @@ def func_0B_87F():
     OP_C9(
         0x00,
         (
-            0x0000,
-            0x0008,
+            ChrTable['艾丝蒂尔'],
+            ChrTable['凯文神父'],
             0x00FF,
             0x00FF,
         ),
         (
-            0x0005,
-            0x0002,
-            0x0006,
-            0x0003,
-            0x0004,
-            0x0007,
+            ChrTable['阿加特'],
+            ChrTable['雪拉扎德'],
+            ChrTable['提妲'],
+            ChrTable['奥利维尔'],
+            ChrTable['科洛丝'],
+            ChrTable['金'],
             0xFFFF,
         ),
     )
 
-    Jump('loc_10D1')
+    Jump('loc_1543')
 
-    def _loc_FCC(): pass
+    def _loc_143E(): pass
 
-    label('loc_FCC')
+    label('loc_143E')
 
     If(
         (
@@ -1489,7 +1670,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_1037',
+        'loc_14A9',
     )
 
     If(
@@ -1497,16 +1678,16 @@ def func_0B_87F():
             (Expr.TestScenaFlags, ScenaFlag(0x0002, 6, 0x16)),
             Expr.Return,
         ),
-        'loc_1005',
+        'loc_1477',
     )
 
     OP_C0(0x13, 0x00000078, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000)
 
-    Jump('loc_1034')
+    Jump('loc_14A6')
 
-    def _loc_1005(): pass
+    def _loc_1477(): pass
 
-    label('loc_1005')
+    label('loc_1477')
 
     Talk(
         (
@@ -1521,17 +1702,17 @@ def func_0B_87F():
     OP_56(0x00)
     Sleep(100)
 
-    def _loc_1034(): pass
+    def _loc_14A6(): pass
 
-    label('loc_1034')
+    label('loc_14A6')
 
-    Jump('loc_10D1')
+    Jump('loc_1543')
 
-    def _loc_1037(): pass
+    def _loc_14A9(): pass
 
-    label('loc_1037')
+    label('loc_14A9')
 
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1584,10 +1765,10 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_10B5',
+        'loc_1527',
     )
 
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1603,13 +1784,13 @@ def func_0B_87F():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_10D4')
+    Jump('loc_1546')
 
-    def _loc_10B5(): pass
+    def _loc_1527(): pass
 
-    label('loc_10B5')
+    label('loc_1527')
 
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -1625,15 +1806,15 @@ def func_0B_87F():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_10D1(): pass
+    def _loc_1543(): pass
 
-    label('loc_10D1')
+    label('loc_1543')
 
-    Jump('loc_EA1')
+    Jump('loc_1313')
 
-    def _loc_10D4(): pass
+    def _loc_1546(): pass
 
-    label('loc_10D4')
+    label('loc_1546')
 
     ExecExpressionWithVar(
         0x28,
@@ -1647,51 +1828,51 @@ def func_0B_87F():
     FadeIn(0, 0)
     OP_0D()
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_10EA(): pass
+    def _loc_155C(): pass
 
-    label('loc_10EA')
+    label('loc_155C')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0002, 5, 0x15)),
             Expr.Return,
         ),
-        'loc_10FE',
+        'loc_1570',
     )
 
     PlayMovie(0x01, '', 0x0000, 0x0000)
-    OP_A3(0x0015)
+    ClearScenaFlags(ScenaFlag(0x0002, 5, 0x15))
 
-    Jump('loc_1114')
+    Jump('loc_1586')
 
-    def _loc_10FE(): pass
+    def _loc_1570(): pass
 
-    label('loc_10FE')
+    label('loc_1570')
 
     PlayMovie(0x00, 'ED6_DT41.dat', 0x0000, 0x0000)
-    OP_A2(0x0015)
+    SetScenaFlags(ScenaFlag(0x0002, 5, 0x15))
 
-    def _loc_1114(): pass
+    def _loc_1586(): pass
 
-    label('loc_1114')
+    label('loc_1586')
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_1117(): pass
+    def _loc_1589(): pass
 
-    label('loc_1117')
+    label('loc_1589')
 
     Call(0, 0x001B)
     FadeIn(0, 0)
     Call(0, 0x001C)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_112B(): pass
+    def _loc_159D(): pass
 
-    label('loc_112B')
+    label('loc_159D')
 
     OP_5F(0x0000)
 
@@ -1712,7 +1893,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_115D',
+        'loc_15CF',
     )
 
     Talk(
@@ -1725,9 +1906,9 @@ def func_0B_87F():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_115D(): pass
+    def _loc_15CF(): pass
 
-    label('loc_115D')
+    label('loc_15CF')
 
     Talk(
         (
@@ -1746,22 +1927,22 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_1184',
+        'loc_15F6',
     )
 
     OP_E6(0x02)
 
-    Jump('loc_1186')
+    Jump('loc_15F8')
 
-    def _loc_1184(): pass
+    def _loc_15F6(): pass
 
-    label('loc_1184')
+    label('loc_15F6')
 
     OP_E6(0x01)
 
-    def _loc_1186(): pass
+    def _loc_15F8(): pass
 
-    label('loc_1186')
+    label('loc_15F8')
 
     If(
         (
@@ -1770,7 +1951,7 @@ def func_0B_87F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_11AD',
+        'loc_161F',
     )
 
     Talk(
@@ -1785,9 +1966,9 @@ def func_0B_87F():
     OP_56(0x00)
     OP_E9(0x02)
 
-    def _loc_11AD(): pass
+    def _loc_161F(): pass
 
-    label('loc_11AD')
+    label('loc_161F')
 
     Talk(
         (
@@ -1801,27 +1982,27 @@ def func_0B_87F():
     OP_56(0x00)
     OP_E9(0x00)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_11CD(): pass
+    def _loc_163F(): pass
 
-    label('loc_11CD')
+    label('loc_163F')
 
     Call(0, 0x000C)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_11D4(): pass
+    def _loc_1646(): pass
 
-    label('loc_11D4')
+    label('loc_1646')
 
     Call(0, 0x000D)
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_11DB(): pass
+    def _loc_164D(): pass
 
-    label('loc_11DB')
+    label('loc_164D')
 
     ExecExpressionWithReg(
         0x0000,
@@ -1832,17 +2013,17 @@ def func_0B_87F():
         ),
     )
 
-    Jump('loc_11E8')
+    Jump('loc_165A')
 
-    def _loc_11E8(): pass
+    def _loc_165A(): pass
 
-    label('loc_11E8')
+    label('loc_165A')
 
-    Jump('loc_8B2')
+    Jump('loc_D18')
 
-    def _loc_11EB(): pass
+    def _loc_165D(): pass
 
-    label('loc_11EB')
+    label('loc_165D')
 
     OP_5F(0x0000)
     OP_56(0x00)
@@ -1853,9 +2034,9 @@ def func_0B_87F():
 
     Return()
 
-# id: 0x000C offset: 0x11F9
-@scena.Code('func_0C_11F9')
-def func_0C_11F9():
+# id: 0x000C offset: 0x166B
+@scena.Code('func_0C_166B')
+def func_0C_166B():
     EventBegin(0x00)
     OP_5F(0x0000)
     OP_5F(0x0001)
@@ -1865,7 +2046,7 @@ def func_0C_11F9():
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 2, 0x1042)),
             Expr.Return,
         ),
-        'loc_1231',
+        'loc_16A3',
     )
 
     Talk(
@@ -1879,11 +2060,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_1252')
+    Jump('loc_16C4')
 
-    def _loc_1231(): pass
+    def _loc_16A3(): pass
 
-    label('loc_1231')
+    label('loc_16A3')
 
     Talk(
         (
@@ -1896,16 +2077,16 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_1252(): pass
+    def _loc_16C4(): pass
 
-    label('loc_1252')
+    label('loc_16C4')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 3, 0x1043)),
             Expr.Return,
         ),
-        'loc_127F',
+        'loc_16F1',
     )
 
     Talk(
@@ -1919,11 +2100,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_129C')
+    Jump('loc_170E')
 
-    def _loc_127F(): pass
+    def _loc_16F1(): pass
 
-    label('loc_127F')
+    label('loc_16F1')
 
     Talk(
         (
@@ -1936,16 +2117,16 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_129C(): pass
+    def _loc_170E(): pass
 
-    label('loc_129C')
+    label('loc_170E')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 5, 0x1045)),
             Expr.Return,
         ),
-        'loc_12C9',
+        'loc_173B',
     )
 
     Talk(
@@ -1959,11 +2140,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_12E7')
+    Jump('loc_1759')
 
-    def _loc_12C9(): pass
+    def _loc_173B(): pass
 
-    label('loc_12C9')
+    label('loc_173B')
 
     Talk(
         (
@@ -1976,16 +2157,16 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_12E7(): pass
+    def _loc_1759(): pass
 
-    label('loc_12E7')
+    label('loc_1759')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 6, 0x1046)),
             Expr.Return,
         ),
-        'loc_1312',
+        'loc_1784',
     )
 
     Talk(
@@ -1999,11 +2180,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_132E')
+    Jump('loc_17A0')
 
-    def _loc_1312(): pass
+    def _loc_1784(): pass
 
-    label('loc_1312')
+    label('loc_1784')
 
     Talk(
         (
@@ -2016,16 +2197,16 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_132E(): pass
+    def _loc_17A0(): pass
 
-    label('loc_132E')
+    label('loc_17A0')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 4, 0x1044)),
             Expr.Return,
         ),
-        'loc_135D',
+        'loc_17CF',
     )
 
     Talk(
@@ -2039,11 +2220,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_137D')
+    Jump('loc_17EF')
 
-    def _loc_135D(): pass
+    def _loc_17CF(): pass
 
-    label('loc_135D')
+    label('loc_17CF')
 
     Talk(
         (
@@ -2056,9 +2237,9 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_137D(): pass
+    def _loc_17EF(): pass
 
-    label('loc_137D')
+    label('loc_17EF')
 
     If(
         (
@@ -2071,7 +2252,7 @@ def func_0C_11F9():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_13C5',
+        'loc_1837',
     )
 
     Talk(
@@ -2085,11 +2266,11 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_13EA')
+    Jump('loc_185C')
 
-    def _loc_13C5(): pass
+    def _loc_1837(): pass
 
-    label('loc_13C5')
+    label('loc_1837')
 
     Talk(
         (
@@ -2102,15 +2283,15 @@ def func_0C_11F9():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_13EA(): pass
+    def _loc_185C(): pass
 
-    label('loc_13EA')
+    label('loc_185C')
 
     Return()
 
-# id: 0x000D offset: 0x13EB
-@scena.Code('func_0D_13EB')
-def func_0D_13EB():
+# id: 0x000D offset: 0x185D
+@scena.Code('func_0D_185D')
+def func_0D_185D():
     EventBegin(0x00)
     OP_5F(0x0000)
     OP_5F(0x0001)
@@ -2122,7 +2303,7 @@ def func_0D_13EB():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_14D4',
+        'loc_1946',
     )
 
     If(
@@ -2131,7 +2312,7 @@ def func_0D_13EB():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_146B',
+        'loc_18DD',
     )
 
     Talk(
@@ -2157,11 +2338,11 @@ def func_0D_13EB():
     OP_56(0x00)
     OP_A9(0x6C)
 
-    Jump('loc_14D1')
+    Jump('loc_1943')
 
-    def _loc_146B(): pass
+    def _loc_18DD(): pass
 
-    label('loc_146B')
+    label('loc_18DD')
 
     Talk(
         (
@@ -2186,15 +2367,15 @@ def func_0D_13EB():
     OP_56(0x00)
     OP_A9(0x80)
 
-    def _loc_14D1(): pass
+    def _loc_1943(): pass
 
-    label('loc_14D1')
+    label('loc_1943')
 
-    Jump('loc_15AE')
+    Jump('loc_1A20')
 
-    def _loc_14D4(): pass
+    def _loc_1946(): pass
 
-    label('loc_14D4')
+    label('loc_1946')
 
     If(
         (
@@ -2202,7 +2383,7 @@ def func_0D_13EB():
             Expr.Ez,
             Expr.Return,
         ),
-        'loc_1544',
+        'loc_19B6',
     )
 
     Talk(
@@ -2228,11 +2409,11 @@ def func_0D_13EB():
     OP_56(0x00)
     OP_A9(0x69)
 
-    Jump('loc_15AE')
+    Jump('loc_1A20')
 
-    def _loc_1544(): pass
+    def _loc_19B6(): pass
 
-    label('loc_1544')
+    label('loc_19B6')
 
     Talk(
         (
@@ -2257,15 +2438,15 @@ def func_0D_13EB():
     OP_56(0x00)
     OP_A9(0x7D)
 
-    def _loc_15AE(): pass
+    def _loc_1A20(): pass
 
-    label('loc_15AE')
+    label('loc_1A20')
 
     Return()
 
-# id: 0x000E offset: 0x15AF
-@scena.Code('func_0E_15AF')
-def func_0E_15AF():
+# id: 0x000E offset: 0x1A21
+@scena.Code('func_0E_1A21')
+def func_0E_1A21():
     If(
         (
             (Expr.PushReg, 0x0),
@@ -2273,7 +2454,7 @@ def func_0E_15AF():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_1870',
+        'loc_1CE2',
     )
 
     Menu(
@@ -2301,25 +2482,25 @@ def func_0E_15AF():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_1629'),
-        (0x00000001, 'loc_1687'),
-        (0x00000002, 'loc_16DE'),
-        (0x00000003, 'loc_1736'),
-        (0x00000004, 'loc_178A'),
-        (0x00000005, 'loc_17E6'),
-        (-1, 'loc_1860'),
+        (0x00000000, 'loc_1A9B'),
+        (0x00000001, 'loc_1AF9'),
+        (0x00000002, 'loc_1B50'),
+        (0x00000003, 'loc_1BA8'),
+        (0x00000004, 'loc_1BFC'),
+        (0x00000005, 'loc_1C58'),
+        (-1, 'loc_1CD2'),
     )
 
-    def _loc_1629(): pass
+    def _loc_1A9B(): pass
 
-    label('loc_1629')
+    label('loc_1A9B')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 2, 0x1042)),
             Expr.Return,
         ),
-        'loc_1659',
+        'loc_1ACB',
     )
 
     Talk(
@@ -2333,11 +2514,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_167A')
+    Jump('loc_1AEC')
 
-    def _loc_1659(): pass
+    def _loc_1ACB(): pass
 
-    label('loc_1659')
+    label('loc_1ACB')
 
     Talk(
         (
@@ -2350,9 +2531,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_167A(): pass
+    def _loc_1AEC(): pass
 
-    label('loc_167A')
+    label('loc_1AEC')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2363,18 +2544,18 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_1687(): pass
+    def _loc_1AF9(): pass
 
-    label('loc_1687')
+    label('loc_1AF9')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 3, 0x1043)),
             Expr.Return,
         ),
-        'loc_16B4',
+        'loc_1B26',
     )
 
     Talk(
@@ -2388,11 +2569,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_16D1')
+    Jump('loc_1B43')
 
-    def _loc_16B4(): pass
+    def _loc_1B26(): pass
 
-    label('loc_16B4')
+    label('loc_1B26')
 
     Talk(
         (
@@ -2405,9 +2586,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_16D1(): pass
+    def _loc_1B43(): pass
 
-    label('loc_16D1')
+    label('loc_1B43')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2418,18 +2599,18 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_16DE(): pass
+    def _loc_1B50(): pass
 
-    label('loc_16DE')
+    label('loc_1B50')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 5, 0x1045)),
             Expr.Return,
         ),
-        'loc_170B',
+        'loc_1B7D',
     )
 
     Talk(
@@ -2443,11 +2624,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_1729')
+    Jump('loc_1B9B')
 
-    def _loc_170B(): pass
+    def _loc_1B7D(): pass
 
-    label('loc_170B')
+    label('loc_1B7D')
 
     Talk(
         (
@@ -2460,9 +2641,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_1729(): pass
+    def _loc_1B9B(): pass
 
-    label('loc_1729')
+    label('loc_1B9B')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2473,18 +2654,18 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_1736(): pass
+    def _loc_1BA8(): pass
 
-    label('loc_1736')
+    label('loc_1BA8')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 6, 0x1046)),
             Expr.Return,
         ),
-        'loc_1761',
+        'loc_1BD3',
     )
 
     Talk(
@@ -2498,11 +2679,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_177D')
+    Jump('loc_1BEF')
 
-    def _loc_1761(): pass
+    def _loc_1BD3(): pass
 
-    label('loc_1761')
+    label('loc_1BD3')
 
     Talk(
         (
@@ -2515,9 +2696,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_177D(): pass
+    def _loc_1BEF(): pass
 
-    label('loc_177D')
+    label('loc_1BEF')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2528,18 +2709,18 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_178A(): pass
+    def _loc_1BFC(): pass
 
-    label('loc_178A')
+    label('loc_1BFC')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0208, 4, 0x1044)),
             Expr.Return,
         ),
-        'loc_17B9',
+        'loc_1C2B',
     )
 
     Talk(
@@ -2553,11 +2734,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_17D9')
+    Jump('loc_1C4B')
 
-    def _loc_17B9(): pass
+    def _loc_1C2B(): pass
 
-    label('loc_17B9')
+    label('loc_1C2B')
 
     Talk(
         (
@@ -2570,9 +2751,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_17D9(): pass
+    def _loc_1C4B(): pass
 
-    label('loc_17D9')
+    label('loc_1C4B')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2583,11 +2764,11 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_17E6(): pass
+    def _loc_1C58(): pass
 
-    label('loc_17E6')
+    label('loc_1C58')
 
     If(
         (
@@ -2600,7 +2781,7 @@ def func_0E_15AF():
             Expr.Or,
             Expr.Return,
         ),
-        'loc_182E',
+        'loc_1CA0',
     )
 
     Talk(
@@ -2614,11 +2795,11 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    Jump('loc_1853')
+    Jump('loc_1CC5')
 
-    def _loc_182E(): pass
+    def _loc_1CA0(): pass
 
-    label('loc_182E')
+    label('loc_1CA0')
 
     Talk(
         (
@@ -2631,24 +2812,9 @@ def func_0E_15AF():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_1853(): pass
+    def _loc_1CC5(): pass
 
-    label('loc_1853')
-
-    ExecExpressionWithReg(
-        0x0000,
-        (
-            (Expr.PushLong, 0xFF),
-            Expr.Nop,
-            Expr.Return,
-        ),
-    )
-
-    Jump('loc_186D')
-
-    def _loc_1860(): pass
-
-    label('loc_1860')
+    label('loc_1CC5')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2659,23 +2825,38 @@ def func_0E_15AF():
         ),
     )
 
-    Jump('loc_186D')
+    Jump('loc_1CDF')
 
-    def _loc_186D(): pass
+    def _loc_1CD2(): pass
 
-    label('loc_186D')
+    label('loc_1CD2')
 
-    Jump('func_0E_15AF')
+    ExecExpressionWithReg(
+        0x0000,
+        (
+            (Expr.PushLong, 0xFF),
+            Expr.Nop,
+            Expr.Return,
+        ),
+    )
 
-    def _loc_1870(): pass
+    Jump('loc_1CDF')
 
-    label('loc_1870')
+    def _loc_1CDF(): pass
+
+    label('loc_1CDF')
+
+    Jump('func_0E_1A21')
+
+    def _loc_1CE2(): pass
+
+    label('loc_1CE2')
 
     Return()
 
-# id: 0x000F offset: 0x1871
-@scena.Code('func_0F_1871')
-def func_0F_1871():
+# id: 0x000F offset: 0x1CE3
+@scena.Code('func_0F_1CE3')
+def func_0F_1CE3():
     Talk(
         (
             TxtCtl.ShowAll,
@@ -2684,9 +2865,9 @@ def func_0F_1871():
         ),
     )
 
-    def _loc_1887(): pass
+    def _loc_1CF9(): pass
 
-    label('loc_1887')
+    label('loc_1CF9')
 
     If(
         (
@@ -2695,7 +2876,7 @@ def func_0F_1871():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_19AB',
+        'loc_1E1D',
     )
 
     Menu(
@@ -2725,92 +2906,92 @@ def func_0F_1871():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_1944'),
-        (0x00000001, 'loc_194D'),
-        (0x00000002, 'loc_1956'),
-        (0x00000003, 'loc_195F'),
-        (0x00000004, 'loc_1968'),
-        (0x00000005, 'loc_1971'),
-        (0x00000006, 'loc_197A'),
-        (0x00000007, 'loc_1983'),
-        (0x00000008, 'loc_198C'),
-        (0x00000009, 'loc_1995'),
-        (-1, 'loc_199E'),
+        (0x00000000, 'loc_1DB6'),
+        (0x00000001, 'loc_1DBF'),
+        (0x00000002, 'loc_1DC8'),
+        (0x00000003, 'loc_1DD1'),
+        (0x00000004, 'loc_1DDA'),
+        (0x00000005, 'loc_1DE3'),
+        (0x00000006, 'loc_1DEC'),
+        (0x00000007, 'loc_1DF5'),
+        (0x00000008, 'loc_1DFE'),
+        (0x00000009, 'loc_1E07'),
+        (-1, 'loc_1E10'),
     )
 
-    def _loc_1944(): pass
+    def _loc_1DB6(): pass
 
-    label('loc_1944')
+    label('loc_1DB6')
 
     NewScene('ED6_DT21/T0020._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_194D(): pass
+    def _loc_1DBF(): pass
 
-    label('loc_194D')
+    label('loc_1DBF')
 
     NewScene('ED6_DT21/T0021._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1956(): pass
+    def _loc_1DC8(): pass
 
-    label('loc_1956')
+    label('loc_1DC8')
 
     NewScene('ED6_DT21/T0022._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_195F(): pass
+    def _loc_1DD1(): pass
 
-    label('loc_195F')
+    label('loc_1DD1')
 
     NewScene('ED6_DT21/T0023._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1968(): pass
+    def _loc_1DDA(): pass
 
-    label('loc_1968')
+    label('loc_1DDA')
 
     NewScene('ED6_DT21/T0024._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1971(): pass
+    def _loc_1DE3(): pass
 
-    label('loc_1971')
+    label('loc_1DE3')
 
     NewScene('ED6_DT21/T0025._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_197A(): pass
+    def _loc_1DEC(): pass
 
-    label('loc_197A')
+    label('loc_1DEC')
 
     NewScene('ED6_DT21/T0026._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1983(): pass
+    def _loc_1DF5(): pass
 
-    label('loc_1983')
+    label('loc_1DF5')
 
     NewScene('ED6_DT21/T0027._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_198C(): pass
+    def _loc_1DFE(): pass
 
-    label('loc_198C')
+    label('loc_1DFE')
 
     NewScene('ED6_DT21/T0028._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1995(): pass
+    def _loc_1E07(): pass
 
-    label('loc_1995')
+    label('loc_1E07')
 
     NewScene('ED6_DT21/T0029._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_199E(): pass
+    def _loc_1E10(): pass
 
-    label('loc_199E')
+    label('loc_1E10')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2821,11 +3002,11 @@ def func_0F_1871():
         ),
     )
 
-    Jump('loc_1887')
+    Jump('loc_1CF9')
 
-    def _loc_19AB(): pass
+    def _loc_1E1D(): pass
 
-    label('loc_19AB')
+    label('loc_1E1D')
 
     OP_5F(0x0001)
     OP_56(0x00)
@@ -2841,9 +3022,9 @@ def func_0F_1871():
 
     Return()
 
-# id: 0x0010 offset: 0x19BB
-@scena.Code('func_10_19BB')
-def func_10_19BB():
+# id: 0x0010 offset: 0x1E2D
+@scena.Code('func_10_1E2D')
+def func_10_1E2D():
     Talk(
         (
             TxtCtl.ShowAll,
@@ -2852,9 +3033,9 @@ def func_10_19BB():
         ),
     )
 
-    def _loc_19C5(): pass
+    def _loc_1E37(): pass
 
-    label('loc_19C5')
+    label('loc_1E37')
 
     If(
         (
@@ -2863,7 +3044,7 @@ def func_10_19BB():
             Expr.Neq,
             Expr.Return,
         ),
-        'loc_1A27',
+        'loc_1E99',
     )
 
     Menu(
@@ -2885,28 +3066,28 @@ def func_10_19BB():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_1A08'),
-        (0x00000001, 'loc_1A11'),
-        (-1, 'loc_1A1A'),
+        (0x00000000, 'loc_1E7A'),
+        (0x00000001, 'loc_1E83'),
+        (-1, 'loc_1E8C'),
     )
 
-    def _loc_1A08(): pass
+    def _loc_1E7A(): pass
 
-    label('loc_1A08')
+    label('loc_1E7A')
 
     NewScene('ED6_DT21/T0070._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1A11(): pass
+    def _loc_1E83(): pass
 
-    label('loc_1A11')
+    label('loc_1E83')
 
     NewScene('ED6_DT21/T0071._SN', 0, 0, 0)
     IdleLoop()
 
-    def _loc_1A1A(): pass
+    def _loc_1E8C(): pass
 
-    label('loc_1A1A')
+    label('loc_1E8C')
 
     ExecExpressionWithReg(
         0x0000,
@@ -2917,11 +3098,11 @@ def func_10_19BB():
         ),
     )
 
-    Jump('loc_19C5')
+    Jump('loc_1E37')
 
-    def _loc_1A27(): pass
+    def _loc_1E99(): pass
 
-    label('loc_1A27')
+    label('loc_1E99')
 
     OP_5F(0x0001)
     OP_56(0x00)
@@ -2937,24 +3118,24 @@ def func_10_19BB():
 
     Return()
 
-# id: 0x0011 offset: 0x1A37
-@scena.Code('func_11_1A37')
-def func_11_1A37():
-    OP_6B(5000, 3000)
+# id: 0x0011 offset: 0x1EA9
+@scena.Code('func_11_1EA9')
+def func_11_1EA9():
+    CameraSetDistance(5000, 3000)
     Call(0, 0x0012)
 
     Return()
 
-# id: 0x0012 offset: 0x1A45
-@scena.Code('func_12_1A45')
-def func_12_1A45():
+# id: 0x0012 offset: 0x1EB7
+@scena.Code('func_12_1EB7')
+def func_12_1EB7():
     OP_6C(0, 20000)
 
     Return()
 
-# id: 0x0013 offset: 0x1A4F
-@scena.Code('func_13_1A4F')
-def func_13_1A4F():
+# id: 0x0013 offset: 0x1EC1
+@scena.Code('func_13_1EC1')
+def func_13_1EC1():
     If(
         (
             (Expr.PushValueByIndex, 0x13),
@@ -2962,7 +3143,7 @@ def func_13_1A4F():
             Expr.Equ,
             Expr.Return,
         ),
-        'loc_1A98',
+        'loc_1F0A',
     )
 
     EventBegin(0x00)
@@ -2973,19 +3154,19 @@ def func_13_1A4F():
             (Expr.Eval, "OP_CD(0x0009)"),
             Expr.Return,
         ),
-        'loc_1A85',
+        'loc_1EF7',
     )
 
     Sleep(1000)
 
     OP_62(0x0000, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
-    OP_22(0x0026, 0x00, 0x64)
+    PlaySE(38, 0x00, 0x64)
 
-    Jump('loc_1A93')
+    Jump('loc_1F05')
 
-    def _loc_1A85(): pass
+    def _loc_1EF7(): pass
 
-    label('loc_1A85')
+    label('loc_1EF7')
 
     Talk(
         (
@@ -2997,17 +3178,17 @@ def func_13_1A4F():
     CloseMessageWindow()
     OP_56(0x00)
 
-    def _loc_1A93(): pass
+    def _loc_1F05(): pass
 
-    label('loc_1A93')
+    label('loc_1F05')
 
     EventEnd(0x00)
 
-    Jump('loc_1AB6')
+    Jump('loc_1F28')
 
-    def _loc_1A98(): pass
+    def _loc_1F0A(): pass
 
-    label('loc_1A98')
+    label('loc_1F0A')
 
     Talk(
         (
@@ -3018,15 +3199,15 @@ def func_13_1A4F():
 
     CloseMessageWindow()
     OP_56(0x00)
-    def _loc_1AB6(): pass
+    def _loc_1F28(): pass
 
-    label('loc_1AB6')
+    label('loc_1F28')
 
     Return()
 
-# id: 0x0014 offset: 0x1AB7
-@scena.Code('func_14_1AB7')
-def func_14_1AB7():
+# id: 0x0014 offset: 0x1F29
+@scena.Code('func_14_1F29')
+def func_14_1F29():
     ChrTalk(
         0x0000,
         (
@@ -3041,10 +3222,10 @@ def func_14_1AB7():
 
     Return()
 
-# id: 0x0015 offset: 0x1AC6
-@scena.Code('func_15_1AC6')
-def func_15_1AC6():
-    SetChrName('Sara')
+# id: 0x0015 offset: 0x1F38
+@scena.Code('func_15_1F38')
+def func_15_1F38():
+    TalkSetChrName('Sara')
 
     Talk(
         (
@@ -3081,81 +3262,81 @@ def func_15_1AC6():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_1B55'),
-        (0x00000001, 'loc_1B5C'),
-        (0x00000002, 'loc_1B63'),
-        (0x00000003, 'loc_1B6A'),
-        (0x00000004, 'loc_1B71'),
-        (0x00000005, 'loc_1B78'),
-        (0x00000006, 'loc_1B80'),
-        (-1, 'loc_1B87'),
+        (0x00000000, 'loc_1FC7'),
+        (0x00000001, 'loc_1FCE'),
+        (0x00000002, 'loc_1FD5'),
+        (0x00000003, 'loc_1FDC'),
+        (0x00000004, 'loc_1FE3'),
+        (0x00000005, 'loc_1FEA'),
+        (0x00000006, 'loc_1FF2'),
+        (-1, 'loc_1FF9'),
     )
 
-    def _loc_1B55(): pass
+    def _loc_1FC7(): pass
 
-    label('loc_1B55')
+    label('loc_1FC7')
 
     Call(0, 0x0014)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B5C(): pass
+    def _loc_1FCE(): pass
 
-    label('loc_1B5C')
+    label('loc_1FCE')
 
     Call(0, 0x0016)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B63(): pass
+    def _loc_1FD5(): pass
 
-    label('loc_1B63')
+    label('loc_1FD5')
 
     Call(0, 0x0017)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B6A(): pass
+    def _loc_1FDC(): pass
 
-    label('loc_1B6A')
+    label('loc_1FDC')
 
     Call(0, 0x0018)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B71(): pass
+    def _loc_1FE3(): pass
 
-    label('loc_1B71')
+    label('loc_1FE3')
 
     Call(0, 0x0019)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B78(): pass
+    def _loc_1FEA(): pass
 
-    label('loc_1B78')
+    label('loc_1FEA')
 
     OP_B8(0x0347, 0x0000)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B80(): pass
+    def _loc_1FF2(): pass
 
-    label('loc_1B80')
+    label('loc_1FF2')
 
     Call(0, 0x001A)
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B87(): pass
+    def _loc_1FF9(): pass
 
-    label('loc_1B87')
+    label('loc_1FF9')
 
-    Jump('loc_1B8A')
+    Jump('loc_1FFC')
 
-    def _loc_1B8A(): pass
+    def _loc_1FFC(): pass
 
-    label('loc_1B8A')
+    label('loc_1FFC')
 
     ExecExpressionWithReg(
         0x0000,
@@ -3168,9 +3349,9 @@ def func_15_1AC6():
 
     Return()
 
-# id: 0x0016 offset: 0x1B95
-@scena.Code('func_16_1B95')
-def func_16_1B95():
+# id: 0x0016 offset: 0x2007
+@scena.Code('func_16_2007')
+def func_16_2007():
     ChrTalk(
         0x0000,
         (
@@ -3185,9 +3366,9 @@ def func_16_1B95():
 
     Return()
 
-# id: 0x0017 offset: 0x1BB0
-@scena.Code('func_17_1BB0')
-def func_17_1BB0():
+# id: 0x0017 offset: 0x2022
+@scena.Code('func_17_2022')
+def func_17_2022():
     ChrTalk(
         0x0000,
         (
@@ -3202,9 +3383,9 @@ def func_17_1BB0():
 
     Return()
 
-# id: 0x0018 offset: 0x1BCB
-@scena.Code('func_18_1BCB')
-def func_18_1BCB():
+# id: 0x0018 offset: 0x203D
+@scena.Code('func_18_203D')
+def func_18_203D():
     ChrTalk(
         0x0000,
         (
@@ -3219,9 +3400,9 @@ def func_18_1BCB():
 
     Return()
 
-# id: 0x0019 offset: 0x1BE4
-@scena.Code('func_19_1BE4')
-def func_19_1BE4():
+# id: 0x0019 offset: 0x2056
+@scena.Code('func_19_2056')
+def func_19_2056():
     ChrTalk(
         0x0000,
         (
@@ -3236,9 +3417,9 @@ def func_19_1BE4():
 
     Return()
 
-# id: 0x001A offset: 0x1C0A
-@scena.Code('func_1A_1C0A')
-def func_1A_1C0A():
+# id: 0x001A offset: 0x207C
+@scena.Code('func_1A_207C')
+def func_1A_207C():
     ChrTalk(
         0x0000,
         (
@@ -3253,13 +3434,13 @@ def func_1A_1C0A():
 
     Return()
 
-# id: 0x001B offset: 0x1C23
-@scena.Code('func_1B_1C23')
-def func_1B_1C23():
+# id: 0x001B offset: 0x2095
+@scena.Code('func_1B_2095')
+def func_1B_2095():
     FadeOut(0, 0, -1)
     FormationReset()
-    OP_A3(0x1200)
-    OP_A3(0x1201)
+    ClearScenaFlags(ScenaFlag(0x0240, 0, 0x1200))
+    ClearScenaFlags(ScenaFlag(0x0240, 1, 0x1201))
     FormationDelMember(0x02, 0xFF)
     FormationDelMember(0x05, 0xFF)
     FormationDelMember(0x09, 0xFF)
@@ -3303,37 +3484,37 @@ def func_1B_1C23():
             (Expr.PushReg, 0x0),
             Expr.Return,
         ),
-        (0x00000000, 'loc_1CA0'),
-        (0x00000001, 'loc_1CA6'),
-        (-1, 'loc_1CAC'),
+        (0x00000000, 'loc_2112'),
+        (0x00000001, 'loc_2118'),
+        (-1, 'loc_211E'),
     )
 
-    def _loc_1CA0(): pass
+    def _loc_2112(): pass
 
-    label('loc_1CA0')
+    label('loc_2112')
 
-    OP_A2(0x1200)
+    SetScenaFlags(ScenaFlag(0x0240, 0, 0x1200))
 
-    Jump('loc_1CAC')
+    Jump('loc_211E')
 
-    def _loc_1CA6(): pass
+    def _loc_2118(): pass
 
-    label('loc_1CA6')
+    label('loc_2118')
 
-    OP_A2(0x1201)
+    SetScenaFlags(ScenaFlag(0x0240, 1, 0x1201))
 
-    Jump('loc_1CAC')
+    Jump('loc_211E')
 
-    def _loc_1CAC(): pass
+    def _loc_211E(): pass
 
-    label('loc_1CAC')
+    label('loc_211E')
 
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0240, 0, 0x1200)),
             Expr.Return,
         ),
-        'loc_1CCA',
+        'loc_213C',
     )
 
     Talk(
@@ -3347,51 +3528,51 @@ def func_1B_1C23():
     OP_56(0x00)
     FormationAddMember(ChrTable['雪拉扎德'], 0xF7, 0xFF)
 
-    Jump('loc_1CCE')
+    Jump('loc_2140')
 
-    def _loc_1CCA(): pass
+    def _loc_213C(): pass
 
-    label('loc_1CCA')
+    label('loc_213C')
 
     FormationAddMember(ChrTable['阿加特'], 0xF7, 0xFF)
 
-    def _loc_1CCE(): pass
+    def _loc_2140(): pass
 
-    label('loc_1CCE')
+    label('loc_2140')
 
     Return()
 
-# id: 0x001C offset: 0x1CCF
-@scena.Code('func_1C_1CCF')
-def func_1C_1CCF():
-    ClearMapFlags(0x00000001)
-    OP_6D(106730, -1920, 53920, 0)
+# id: 0x001C offset: 0x2141
+@scena.Code('func_1C_2141')
+def func_1C_2141():
+    MapClearFlags(0x00000001)
+    CameraMove(106730, -1920, 53920, 0)
     Sleep(100)
 
     OP_C9(
         0x00,
         (
-            0x0000,
+            ChrTable['艾丝蒂尔'],
             0x00FF,
             0x00FF,
             0x00FF,
         ),
         (
-            0x0001,
-            0x0002,
-            0x0003,
-            0x0004,
-            0x0005,
-            0x0006,
-            0x0007,
-            0x0008,
-            0x0009,
-            0x000D,
-            0x000A,
-            0x000F,
-            0x000E,
-            0x000B,
-            0x000C,
+            ChrTable['约修亚'],
+            ChrTable['雪拉扎德'],
+            ChrTable['奥利维尔'],
+            ChrTable['科洛丝'],
+            ChrTable['阿加特'],
+            ChrTable['提妲'],
+            ChrTable['金'],
+            ChrTable['凯文神父'],
+            ChrTable['亚妮拉丝'],
+            ChrTable['克鲁茨'],
+            ChrTable['乔丝特'],
+            ChrTable['穆拉'],
+            ChrTable['尤莉亚上尉'],
+            ChrTable['理查德'],
+            ChrTable['凯诺娜'],
             0xFFFF,
         ),
     )
@@ -3406,7 +3587,7 @@ def func_1C_1CCF():
     )
 
     FadeOut(0, 0, -1)
-    OP_69(0x0000, 0x00000000)
+    OP_69(0x0000, 0)
     Sleep(1000)
 
     Return()

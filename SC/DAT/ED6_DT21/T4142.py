@@ -9,17 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4142   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '巴拉尔'),
-    TXT(0x02, '科蕾蒂'),
-    TXT(0x03, '彭萨'),
-    TXT(0x04, '奈尔'),
-    TXT(0x05, '诺蒂亚'),
-    TXT(0x06, '法尔茨'),
-    TXT(0x07, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -34,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xA46
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -70,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -83,11 +67,12 @@ def ChipData():
         ('ED6_DT07/CH01143._CH', 'ED6_DT07/CH01143P._CP'),
     ]
 
-# id: 0x10002 offset: 0xDA
+# id: 0x10001 offset: 0xDA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '巴拉尔',
             x                   = 61020,
             z                   = 0,
             y                   = 2490,
@@ -102,6 +87,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '科蕾蒂',
             x                   = 4560,
             z                   = 0,
             y                   = 2500,
@@ -116,6 +102,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '彭萨',
             x                   = 4500,
             z                   = 100,
             y                   = -3850,
@@ -130,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '奈尔',
             x                   = -64450,
             z                   = 0,
             y                   = 60580,
@@ -144,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '诺蒂亚',
             x                   = -53860,
             z                   = 250,
             y                   = 121340,
@@ -158,6 +147,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '法尔茨',
             x                   = -59030,
             z                   = 100,
             y                   = 59540,
@@ -173,19 +163,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x19A
+# id: 0x10002 offset: 0x19A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x19A
+# id: 0x10003 offset: 0x19A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x19A
+# id: 0x10004 offset: 0x19A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -218,13 +208,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1E2
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x1E3
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1E3')
+def func_01_1E3():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x02C7, 2, 0x163A)),
@@ -250,8 +240,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x1F5
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1F5')
+def func_02_1F5():
     Call(0, 0x0003)
 
     Return()
@@ -339,11 +329,11 @@ def func_03_1FA():
         'loc_34B',
     )
 
-    SubMira(900)
+    RemoveMira(900)
     FadeOut(1000, 0, -1)
     OP_0D()
     SetMessageWindowPos(-1, -1, -1, -1)
-    OP_22(0x000B, 0x00, 0x64)
+    PlaySE(11, 0x00, 0x64)
 
     Talk(
         (
@@ -357,15 +347,15 @@ def func_03_1FA():
     )
 
     CloseMessageWindow()
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0xFD, 1600)
-    SetChrStatus(ChrTable['约修亚'], 0xFD, 1600)
-    SetChrStatus(ChrTable['雪拉扎德'], 0xFD, 1600)
-    SetChrStatus(ChrTable['奥利维尔'], 0xFD, 1600)
-    SetChrStatus(ChrTable['科洛丝'], 0xFD, 1600)
-    SetChrStatus(ChrTable['阿加特'], 0xFD, 1600)
-    SetChrStatus(ChrTable['提妲'], 0xFD, 1600)
-    SetChrStatus(ChrTable['金'], 0xFD, 1600)
-    SetChrStatus(ChrTable['凯文神父'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['约修亚'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['奥利维尔'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['科洛丝'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['阿加特'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['提妲'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['金'], 0xFD, 1600)
+    ChrSetStatus(ChrTable['凯文神父'], 0xFD, 1600)
 
     If(
         (
@@ -391,7 +381,7 @@ def func_03_1FA():
 
     label('loc_313')
 
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
 
     Talk(
         (
@@ -558,11 +548,11 @@ def func_05_3AC():
         'loc_4F2',
     )
 
-    SubMira(1200)
+    RemoveMira(1200)
     FadeOut(1000, 0, -1)
     OP_0D()
     SetMessageWindowPos(-1, -1, -1, -1)
-    OP_22(0x000B, 0x00, 0x64)
+    PlaySE(11, 0x00, 0x64)
 
     Talk(
         (
@@ -576,15 +566,15 @@ def func_05_3AC():
     )
 
     CloseMessageWindow()
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0xFD, 2500)
-    SetChrStatus(ChrTable['约修亚'], 0xFD, 2500)
-    SetChrStatus(ChrTable['雪拉扎德'], 0xFD, 2500)
-    SetChrStatus(ChrTable['奥利维尔'], 0xFD, 2500)
-    SetChrStatus(ChrTable['科洛丝'], 0xFD, 2500)
-    SetChrStatus(ChrTable['阿加特'], 0xFD, 2500)
-    SetChrStatus(ChrTable['提妲'], 0xFD, 2500)
-    SetChrStatus(ChrTable['金'], 0xFD, 2500)
-    SetChrStatus(ChrTable['凯文神父'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['约修亚'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['奥利维尔'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['科洛丝'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['阿加特'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['提妲'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['金'], 0xFD, 2500)
+    ChrSetStatus(ChrTable['凯文神父'], 0xFD, 2500)
 
     If(
         (
@@ -610,7 +600,7 @@ def func_05_3AC():
 
     label('loc_4BE')
 
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
 
     Talk(
         (
@@ -989,7 +979,7 @@ def func_07_6B0():
     )
 
     CloseMessageWindow()
-    OP_A2(0x164A)
+    SetScenaFlags(ScenaFlag(0x02C9, 2, 0x164A))
 
     Jump('loc_9B7')
 

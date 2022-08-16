@@ -9,17 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T1124   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '卢格兰老人'),
-    TXT(0x02, '梅贝尔市长'),
-    TXT(0x03, '雪拉扎德'),
-    TXT(0x04, '奥利维尔'),
-    TXT(0x05, '科洛丝'),
-    TXT(0x06, '金'),
-    TXT(0x07, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -34,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x176B
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -70,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -83,11 +67,12 @@ def ChipData():
         ('ED6_DT07/CH00070._CH', 'ED6_DT07/CH00070P._CP'),
     ]
 
-# id: 0x10002 offset: 0xDA
+# id: 0x10001 offset: 0xDA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '卢格兰老人',
             x                   = 180,
             z                   = 0,
             y                   = 4400,
@@ -102,6 +87,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '梅贝尔市长',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -116,6 +102,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '雪拉扎德',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -130,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '奥利维尔',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -144,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '科洛丝',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -158,6 +147,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '金',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -173,32 +163,32 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x19A
+# id: 0x10002 offset: 0x19A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x19A
+# id: 0x10003 offset: 0x19A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x19A
+# id: 0x10004 offset: 0x19A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x19A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x19B
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_19B')
+def func_01_19B():
     OP_B1('T1121_2')
 
     If(
@@ -209,8 +199,8 @@ def Init():
         'loc_1C0',
     )
 
-    OP_A3(0x10F0)
-    SetMapFlags(0x10000000)
+    ClearScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
+    MapSetFlags(0x10000000)
 
     ExecExpressionWithVar(
         0x01,
@@ -221,7 +211,7 @@ def Init():
         ),
     )
 
-    Event(0, 0x0002)
+    Event(0, func_02_1C1)
 
     def _loc_1C0(): pass
 
@@ -230,27 +220,27 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x1C1
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1C1')
+def func_02_1C1():
     EventBegin(0x00)
-    SetChrFlags(0x00F7, 0x0080)
-    SetChrFlags(0x00F8, 0x0080)
-    OP_6D(480, 0, 2930, 0)
+    ChrSetFlags(0x00F7, 0x0080)
+    ChrSetFlags(0x00F8, 0x0080)
+    CameraMove(480, 0, 2930, 0)
     OP_67(0, 7230, -10000, 0)
-    OP_6B(2700, 0)
+    CameraSetDistance(2700, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    SetChrPos(0x0101, -70, 0, 2350, 0)
-    SetChrPos(0x000A, -1140, 0, 2340, 0)
-    SetChrPos(0x000D, -50, 0, 250, 0)
-    SetChrPos(0x000C, -320, 0, 1350, 0)
-    SetChrPos(0x000B, -1360, 0, 970, 0)
-    SetChrPos(0x0009, 970, 0, 1880, 0)
-    ClearChrFlags(0x0009, 0x0080)
-    ClearChrFlags(0x000A, 0x0080)
-    ClearChrFlags(0x000C, 0x0080)
-    ClearChrFlags(0x000B, 0x0080)
-    ClearChrFlags(0x000D, 0x0080)
+    ChrSetPos(0x0101, -70, 0, 2350, 0)
+    ChrSetPos(0x000A, -1140, 0, 2340, 0)
+    ChrSetPos(0x000D, -50, 0, 250, 0)
+    ChrSetPos(0x000C, -320, 0, 1350, 0)
+    ChrSetPos(0x000B, -1360, 0, 970, 0)
+    ChrSetPos(0x0009, 970, 0, 1880, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrClearFlags(0x000D, 0x0080)
     FadeIn(1000, 0)
     OP_0D()
     Sleep(500)
@@ -290,7 +280,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0389')
     def lambda_0389():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -300,7 +290,7 @@ def ReInit():
 
     @scena.Lambda('lambda_039C')
     def lambda_039C():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -310,7 +300,7 @@ def ReInit():
 
     @scena.Lambda('lambda_03AF')
     def lambda_03AF():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -320,7 +310,7 @@ def ReInit():
 
     @scena.Lambda('lambda_03C2')
     def lambda_03C2():
-        OP_8C(0x00FE, 45, 400)
+        ChrSetDirection(0x00FE, 45, 400)
 
         ExitThread()
 
@@ -328,7 +318,7 @@ def ReInit():
 
     Sleep(50)
 
-    OP_8C(0x000B, 90, 400)
+    ChrSetDirection(0x000B, 90, 400)
 
     ChrTalk(
         0x0101,
@@ -339,7 +329,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    OP_8C(0x0009, 270, 400)
+    ChrSetDirection(0x0009, 270, 400)
     Sleep(500)
 
     ChrTalk(
@@ -658,16 +648,16 @@ def ReInit():
 
     LoadEffect(0x00, 'map\\\\mp001_00.eff')
     PlayEffect(0x00, 0x00, 0x00FF, 1880, 2000, 5270, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_22(0x00C3, 0x01, 0x64)
+    PlaySE(195, 0x01, 0x64)
     Sleep(500)
 
     OP_62(0x0008, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     @scena.Lambda('lambda_0CDA')
     def lambda_0CDA():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -743,17 +733,17 @@ def ReInit():
 
     @scena.Lambda('lambda_0D71')
     def lambda_0D71():
-        OP_6D(760, 0, 3570, 1500)
+        CameraMove(760, 0, 3570, 1500)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_0D71)
 
-    OP_8E(0x0008, 1940, 0, 4690, 1500, 0x00)
-    OP_8C(0x0008, 0, 400)
+    ChrWalkTo(0x0008, 1940, 0, 4690, 1500, 0x00)
+    ChrSetDirection(0x0008, 0, 400)
     OP_23(0x00C3)
-    OP_22(0x0083, 0x00, 0x64)
-    OP_82(0x00, 0x00)
+    PlaySE(131, 0x00, 0x64)
+    StopEffect(0x00, 0x00)
     LoadEffect(0x01, 'map\\\\mp001_01.eff')
     PlayEffect(0x01, 0x01, 0x00FF, 1880, 2000, 5270, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
     Sleep(1000)
@@ -818,21 +808,21 @@ def ReInit():
     CloseMessageWindow()
     Sleep(300)
 
-    OP_22(0x0083, 0x00, 0x64)
-    OP_82(0x01, 0x00)
+    PlaySE(131, 0x00, 0x64)
+    StopEffect(0x01, 0x00)
     Sleep(500)
 
-    OP_8C(0x0008, 270, 400)
+    ChrSetDirection(0x0008, 270, 400)
 
     @scena.Lambda('lambda_0F9A')
     def lambda_0F9A():
-        OP_6D(480, 0, 2930, 1500)
+        CameraMove(480, 0, 2930, 1500)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_0F9A)
 
-    OP_8E(0x0008, 180, 0, 4400, 1500, 0x00)
+    ChrWalkTo(0x0008, 180, 0, 4400, 1500, 0x00)
     TerminateThread(0x0101, 0x03)
     TerminateThread(0x000A, 0x03)
     TerminateThread(0x000D, 0x03)
@@ -842,7 +832,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0FDE')
     def lambda_0FDE():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -850,7 +840,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0FEC')
     def lambda_0FEC():
-        OP_8C(0x00FE, 0, 400)
+        ChrSetDirection(0x00FE, 0, 400)
 
         ExitThread()
 
@@ -858,7 +848,7 @@ def ReInit():
 
     @scena.Lambda('lambda_0FFA')
     def lambda_0FFA():
-        OP_8C(0x00FE, 0, 400)
+        ChrSetDirection(0x00FE, 0, 400)
 
         ExitThread()
 
@@ -866,7 +856,7 @@ def ReInit():
 
     @scena.Lambda('lambda_1008')
     def lambda_1008():
-        OP_8C(0x00FE, 0, 400)
+        ChrSetDirection(0x00FE, 0, 400)
 
         ExitThread()
 
@@ -874,13 +864,13 @@ def ReInit():
 
     @scena.Lambda('lambda_1016')
     def lambda_1016():
-        OP_8C(0x00FE, 0, 400)
+        ChrSetDirection(0x00FE, 0, 400)
 
         ExitThread()
 
     DispatchAsync(0x000C, 0x0001, lambda_1016)
 
-    OP_8C(0x000B, 0, 400)
+    ChrSetDirection(0x000B, 0, 400)
     WaitForThreadExit(0x0101, 0x0000)
 
     ChrTalk(
@@ -968,7 +958,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    OP_8C(0x0009, 270, 400)
+    ChrSetDirection(0x0009, 270, 400)
     Sleep(500)
 
     ChrTalk(
@@ -988,7 +978,7 @@ def ReInit():
 
     @scena.Lambda('lambda_12B8')
     def lambda_12B8():
-        OP_6D(530, 0, 2880, 400)
+        CameraMove(530, 0, 2880, 400)
 
         ExitThread()
 
@@ -998,7 +988,7 @@ def ReInit():
 
     @scena.Lambda('lambda_12D5')
     def lambda_12D5():
-        OP_6D(480, 0, 2930, 400)
+        CameraMove(480, 0, 2930, 400)
 
         ExitThread()
 
@@ -1011,7 +1001,7 @@ def ReInit():
 
     @scena.Lambda('lambda_12F8')
     def lambda_12F8():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -1021,7 +1011,7 @@ def ReInit():
 
     @scena.Lambda('lambda_130B')
     def lambda_130B():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -1031,7 +1021,7 @@ def ReInit():
 
     @scena.Lambda('lambda_131E')
     def lambda_131E():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -1041,7 +1031,7 @@ def ReInit():
 
     @scena.Lambda('lambda_1331')
     def lambda_1331():
-        OP_8C(0x00FE, 45, 400)
+        ChrSetDirection(0x00FE, 45, 400)
 
         ExitThread()
 
@@ -1049,7 +1039,7 @@ def ReInit():
 
     Sleep(50)
 
-    OP_8C(0x000B, 90, 400)
+    ChrSetDirection(0x000B, 90, 400)
 
     ChrTalk(
         0x000C,
@@ -1183,7 +1173,7 @@ def ReInit():
     OP_20(0x000007D0)
     FadeOut(1500, 0, -1)
     OP_0D()
-    OP_A2(0x10F0)
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/T1211._SN', 103, 0, 0)
     IdleLoop()
 
@@ -1193,13 +1183,13 @@ def ReInit():
 @scena.Code('func_03_1668')
 def func_03_1668():
     FadeOut(0, 0, -1)
-    OP_6D(-18870, 0, -1650, 0)
+    CameraMove(-18870, 0, -1650, 0)
     OP_67(0, 8000, -10000, 0)
-    OP_6B(2600, 0)
+    CameraSetDistance(2600, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_A3(0x1200)
-    OP_A3(0x1201)
+    ClearScenaFlags(ScenaFlag(0x0240, 0, 0x1200))
+    ClearScenaFlags(ScenaFlag(0x0240, 1, 0x1201))
     FormationDelMember(0x02, 0xFF)
     FormationDelMember(0x05, 0xFF)
 
@@ -1251,7 +1241,7 @@ def func_03_1668():
 
     label('loc_171F')
 
-    OP_A2(0x1200)
+    SetScenaFlags(ScenaFlag(0x0240, 0, 0x1200))
 
     Jump('loc_172B')
 
@@ -1259,7 +1249,7 @@ def func_03_1668():
 
     label('loc_1725')
 
-    OP_A2(0x1201)
+    SetScenaFlags(ScenaFlag(0x0240, 1, 0x1201))
 
     Jump('loc_172B')
 
@@ -1273,15 +1263,15 @@ def func_03_1668():
     OP_C9(
         0x00,
         (
-            0x0000,
+            ChrTable['艾丝蒂尔'],
             0x00FF,
             0x00FF,
         ),
         (
-            0x0002,
-            0x0003,
-            0x0004,
-            0x0007,
+            ChrTable['雪拉扎德'],
+            ChrTable['奥利维尔'],
+            ChrTable['科洛丝'],
+            ChrTable['金'],
             0xFFFF,
         ),
     )
@@ -1296,7 +1286,7 @@ def func_03_1668():
     )
 
     FadeOut(0, 0, -1)
-    OP_69(0x0000, 0x00000000)
+    OP_69(0x0000, 0)
 
     Return()
 

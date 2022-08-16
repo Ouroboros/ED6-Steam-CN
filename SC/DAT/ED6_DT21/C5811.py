@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5811   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x8C7
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,32 +54,32 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -148,13 +138,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x138
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x139
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_139')
+def func_01_139():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0474, 0, 0x23A0)),
@@ -227,10 +217,10 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x185
-@scena.Code('ReInit')
-def ReInit():
-    UnlockAchievement(0x02, 0xBA, 0x01, 0x00)
-    SetMapFlags(0x08000000)
+@scena.Code('func_02_185')
+def func_02_185():
+    UnlockAchievement(0x02, 0x01BA, 0x00)
+    MapSetFlags(0x08000000)
     FadeOut(300, 0, 100)
 
     If(
@@ -242,8 +232,8 @@ def ReInit():
         'loc_286',
     )
 
-    OP_22(0x002B, 0x00, 0x64)
-    OP_70(0x0002, 0x0000001E)
+    PlaySE(43, 0x00, 0x64)
+    OP_70(0x0002, 30)
     OP_73(0x0002)
     OP_6F(0x0002, 30)
     AddItem(ItemTable['魔兽羽翼'], 10)
@@ -251,7 +241,7 @@ def ReInit():
     AddItem(ItemTable['魔兽鸟肉'], 10)
     AddItem(ItemTable['魔兽鸟蛋'], 10)
     AddItem(ItemTable['魔兽之种'], 10)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -277,7 +267,7 @@ def ReInit():
     CloseMessageWindow()
     OP_56(0x00)
     SetMessageWindowPos(72, 320, 56, 3)
-    OP_A2(0x23A0)
+    SetScenaFlags(ScenaFlag(0x0474, 0, 0x23A0))
 
     Jump('loc_2A0')
 
@@ -302,15 +292,15 @@ def ReInit():
 
     FadeIn(300, 0)
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 
 # id: 0x0003 offset: 0x2B2
 @scena.Code('func_03_2B2')
 def func_03_2B2():
-    UnlockAchievement(0x02, 0xBB, 0x01, 0x00)
-    SetMapFlags(0x08000000)
+    UnlockAchievement(0x02, 0x01BB, 0x00)
+    MapSetFlags(0x08000000)
     FadeOut(300, 0, 100)
 
     If(
@@ -322,8 +312,8 @@ def func_03_2B2():
         'loc_3B3',
     )
 
-    OP_22(0x002B, 0x00, 0x64)
-    OP_70(0x0003, 0x0000001E)
+    PlaySE(43, 0x00, 0x64)
+    OP_70(0x0003, 30)
     OP_73(0x0003)
     OP_6F(0x0003, 30)
     AddItem(ItemTable['魔兽之角'], 10)
@@ -331,7 +321,7 @@ def func_03_2B2():
     AddItem(ItemTable['魔兽之牙'], 10)
     AddItem(ItemTable['魔兽甲壳'], 10)
     AddItem(ItemTable['魔兽之肉'], 10)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -357,7 +347,7 @@ def func_03_2B2():
     CloseMessageWindow()
     OP_56(0x00)
     SetMessageWindowPos(72, 320, 56, 3)
-    OP_A2(0x23A1)
+    SetScenaFlags(ScenaFlag(0x0474, 1, 0x23A1))
 
     Jump('loc_3CD')
 
@@ -382,15 +372,15 @@ def func_03_2B2():
 
     FadeIn(300, 0)
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 
 # id: 0x0004 offset: 0x3DF
 @scena.Code('func_04_3DF')
 def func_04_3DF():
-    UnlockAchievement(0x02, 0xBC, 0x01, 0x00)
-    SetMapFlags(0x08000000)
+    UnlockAchievement(0x02, 0x01BC, 0x00)
+    MapSetFlags(0x08000000)
     FadeOut(300, 0, 100)
 
     If(
@@ -402,15 +392,15 @@ def func_04_3DF():
         'loc_4C0',
     )
 
-    OP_22(0x002B, 0x00, 0x64)
-    OP_70(0x0004, 0x0000001E)
+    PlaySE(43, 0x00, 0x64)
+    OP_70(0x0004, 30)
     OP_73(0x0004)
     OP_6F(0x0004, 30)
     AddItem(ItemTable['魔兽眼珠'], 10)
     AddItem(ItemTable['魔兽鱼肉'], 10)
     AddItem(ItemTable['魔兽明胶'], 10)
     AddItem(ItemTable['魔兽鱼卵'], 10)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -434,7 +424,7 @@ def func_04_3DF():
     CloseMessageWindow()
     OP_56(0x00)
     SetMessageWindowPos(72, 320, 56, 3)
-    OP_A2(0x23A2)
+    SetScenaFlags(ScenaFlag(0x0474, 2, 0x23A2))
 
     Jump('loc_4DA')
 
@@ -459,7 +449,7 @@ def func_04_3DF():
 
     FadeIn(300, 0)
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 
@@ -468,7 +458,7 @@ def func_04_3DF():
 def func_05_4EC():
     FadeOut(300, 0, 100)
     SetMessageWindowPos(330, 68, 34, 12)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -679,8 +669,8 @@ def func_05_4EC():
     Sleep(200)
 
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
-    OP_22(0x0011, 0x00, 0x64)
+    TalkSetChrName('')
+    PlaySE(17, 0x00, 0x64)
 
     Talk(
         (
@@ -728,7 +718,7 @@ def func_05_4EC():
     )
 
     CloseMessageWindow()
-    OP_A2(0x22B0)
+    SetScenaFlags(ScenaFlag(0x0456, 0, 0x22B0))
 
     def _loc_890(): pass
 

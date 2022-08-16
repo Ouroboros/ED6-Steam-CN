@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('E0312_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x4F28
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,44 +54,44 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
     FadeOut(300, 0, 100)
-    OP_22(0x009D, 0x00, 0x64)
-    SetChrName('CAPEL')
+    PlaySE(157, 0x00, 0x64)
+    TalkSetChrName('CAPEL')
     SetMessageWindowPos(250, 78, 36, 12)
 
     Talk(
@@ -1980,7 +1970,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2280)
+    SetScenaFlags(ScenaFlag(0x0450, 0, 0x2280))
 
     Jump('loc_2135')
 
@@ -2083,7 +2073,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2281)
+    SetScenaFlags(ScenaFlag(0x0450, 1, 0x2281))
 
     Jump('loc_23E4')
 
@@ -2179,7 +2169,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2282)
+    SetScenaFlags(ScenaFlag(0x0450, 2, 0x2282))
 
     Jump('loc_2697')
 
@@ -2278,7 +2268,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2283)
+    SetScenaFlags(ScenaFlag(0x0450, 3, 0x2283))
 
     Jump('loc_2A2C')
 
@@ -2388,7 +2378,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2284)
+    SetScenaFlags(ScenaFlag(0x0450, 4, 0x2284))
 
     Jump('loc_2D8F')
 
@@ -2495,7 +2485,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2285)
+    SetScenaFlags(ScenaFlag(0x0450, 5, 0x2285))
 
     Jump('loc_30AF')
 
@@ -2591,7 +2581,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2286)
+    SetScenaFlags(ScenaFlag(0x0450, 6, 0x2286))
 
     Jump('loc_3354')
 
@@ -2687,7 +2677,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2287)
+    SetScenaFlags(ScenaFlag(0x0450, 7, 0x2287))
 
     Jump('loc_3647')
 
@@ -2784,7 +2774,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2288)
+    SetScenaFlags(ScenaFlag(0x0451, 0, 0x2288))
 
     Jump('loc_393A')
 
@@ -2897,7 +2887,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2289)
+    SetScenaFlags(ScenaFlag(0x0451, 1, 0x2289))
 
     Jump('loc_3C98')
 
@@ -3015,7 +3005,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x228A)
+    SetScenaFlags(ScenaFlag(0x0451, 2, 0x228A))
 
     Jump('loc_408A')
 
@@ -3124,7 +3114,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x228B)
+    SetScenaFlags(ScenaFlag(0x0451, 3, 0x228B))
 
     Jump('loc_4495')
 
@@ -3225,7 +3215,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2276)
+    SetScenaFlags(ScenaFlag(0x044E, 6, 0x2276))
 
     Jump('loc_46BC')
 
@@ -3317,7 +3307,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2277)
+    SetScenaFlags(ScenaFlag(0x044E, 7, 0x2277))
 
     Jump('loc_4916')
 
@@ -3411,7 +3401,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2278)
+    SetScenaFlags(ScenaFlag(0x044F, 0, 0x2278))
 
     Jump('loc_4B8F')
 
@@ -3511,7 +3501,7 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_A2(0x2279)
+    SetScenaFlags(ScenaFlag(0x044F, 1, 0x2279))
 
     Jump('loc_4ED8')
 

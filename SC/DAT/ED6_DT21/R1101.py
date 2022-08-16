@@ -9,19 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R1101   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, 'Verte Bridge - Checkpoint'),
-    TXT(0x02, 'Bose'),
-    TXT(0x03, ''),
-    TXT(0x04, ''),
-    TXT(0x05, ''),
-    TXT(0x06, ''),
-    TXT(0x07, ''),
-    TXT(0x08, ''),
-    TXT(0x09, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -36,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2A4
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -72,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -97,11 +79,12 @@ def ChipData():
         ('ED6_DT09/CH10901._CH', 'ED6_DT09/CH10901P._CP'),
     ]
 
-# id: 0x10002 offset: 0x13A
+# id: 0x10001 offset: 0x13A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = 'Verte Bridge - Checkpoint',
             x                   = -10250,
             z                   = 0,
             y                   = -8450,
@@ -116,6 +99,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = 'Bose',
             x                   = -106260,
             z                   = 0,
             y                   = -32340,
@@ -131,11 +115,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x17A
+# id: 0x10002 offset: 0x17A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = -46450,
             z           = 30,
             y           = 2310,
@@ -149,6 +134,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -72920,
             z           = -30,
             y           = 51450,
@@ -162,6 +148,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -97850,
             z           = -30,
             y           = 45380,
@@ -175,6 +162,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -90070,
             z           = 1040,
             y           = 27970,
@@ -188,6 +176,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -114180,
             z           = 80,
             y           = -40,
@@ -201,6 +190,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -57540,
             z           = 60,
             y           = 34670,
@@ -215,13 +205,13 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x222
+# id: 0x10003 offset: 0x222
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x222
+# id: 0x10004 offset: 0x222
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -254,14 +244,14 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x26A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x26B
-@scena.Code('Init')
-def Init():
-    OP_16(0x02, 0x00000FA0, 0xFFFCE708, 0xFFFE4698, 0x00230016)
+@scena.Code('func_01_26B')
+def func_01_26B():
+    OP_16(0x02, 4000, -203000, -113000, 2293782)
     OP_64(0x00, 0x0001)
     OP_71(0x0000, 0x0000)
     OP_71(0x0000, 0x0004)
@@ -272,8 +262,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x29A
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_29A')
+def func_02_29A():
     Return()
 
 # id: 0x0003 offset: 0x29B

@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C6010   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x7A6
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x021E, 0, 0x10F0)),
@@ -106,8 +96,8 @@ def PreInit():
         'loc_B6',
     )
 
-    OP_A3(0x10F0)
-    Event(0, 0x0002)
+    ClearScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
+    Event(0, func_02_1CC)
 
     def _loc_B6(): pass
 
@@ -116,8 +106,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xB7
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_B7')
+def func_01_B7():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0442, 0, 0x2210)),
@@ -352,15 +342,15 @@ def Init():
 
     label('loc_1B4')
 
-    OP_22(0x013E, 0x00, 0x64)
-    OP_22(0x01C3, 0x01, 0x64)
+    PlaySE(318, 0x00, 0x64)
+    PlaySE(451, 0x01, 0x64)
     OP_12(0x000124F8, 0x000493E0, 0x00000000)
 
     Return()
 
 # id: 0x0002 offset: 0x1CC
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1CC')
+def func_02_1CC():
     EventBegin(0x00)
 
     If(
@@ -379,14 +369,14 @@ def ReInit():
         'loc_241',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     Jump('loc_316')
 
@@ -402,14 +392,14 @@ def ReInit():
         'loc_2AD',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     Jump('loc_316')
 
@@ -425,14 +415,14 @@ def ReInit():
         'loc_316',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     def _loc_316(): pass
 
@@ -460,14 +450,14 @@ def ReInit():
         'loc_38C',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     Jump('loc_461')
 
@@ -483,14 +473,14 @@ def ReInit():
         'loc_3F8',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     Jump('loc_461')
 
@@ -506,14 +496,14 @@ def ReInit():
         'loc_461',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     def _loc_461(): pass
 
@@ -541,14 +531,14 @@ def ReInit():
         'loc_4D7',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     Jump('loc_5AC')
 
@@ -564,14 +554,14 @@ def ReInit():
         'loc_543',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     Jump('loc_5AC')
 
@@ -587,14 +577,14 @@ def ReInit():
         'loc_5AC',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     def _loc_5AC(): pass
 
@@ -622,14 +612,14 @@ def ReInit():
         'loc_622',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     Jump('loc_6F7')
 
@@ -645,14 +635,14 @@ def ReInit():
         'loc_68E',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0xFFFFFFE7, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, -25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 300)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     Jump('loc_6F7')
 
@@ -668,14 +658,14 @@ def ReInit():
         'loc_6F7',
     )
 
-    OP_6D(1000, 0, -360, 0)
+    CameraMove(1000, 0, -360, 0)
     OP_67(0, 2300, -10000, 0)
-    OP_6B(6250, 0)
+    CameraSetDistance(6250, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
-    OP_76(0x0001, 0x00000000, 0x0001, 0x00000019, 0x00000000, 0x00000000, 0x00, 0x00)
+    OP_76(0x0001, 0x00000000, 0x0001, 25, 0, 0, 0x00, 0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000012C)
+    OP_70(0x0000, 300)
 
     def _loc_6F7(): pass
 
@@ -683,7 +673,7 @@ def ReInit():
 
     @scena.Lambda('lambda_06FD')
     def lambda_06FD():
-        OP_6B(8570, 6000)
+        CameraSetDistance(8570, 6000)
 
         ExitThread()
 
@@ -702,7 +692,7 @@ def ReInit():
     WaitForThreadExit(0x0101, 0x0002)
     FadeOut(1000, 0, -1)
     OP_0D()
-    SetMapFlags(0x00100000)
+    MapSetFlags(0x00100000)
 
     If(
         (
@@ -712,8 +702,8 @@ def ReInit():
         'loc_757',
     )
 
-    OP_A3(0x2214)
-    OP_A2(0x10F1)
+    ClearScenaFlags(ScenaFlag(0x0442, 4, 0x2214))
+    SetScenaFlags(ScenaFlag(0x021E, 1, 0x10F1))
     NewScene('ED6_DT21/C6000._SN', 101, 0, 0)
     IdleLoop()
 
@@ -731,8 +721,8 @@ def ReInit():
         'loc_770',
     )
 
-    OP_A3(0x2215)
-    OP_A2(0x10F0)
+    ClearScenaFlags(ScenaFlag(0x0442, 5, 0x2215))
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/C6001._SN', 101, 0, 0)
     IdleLoop()
 
@@ -750,8 +740,8 @@ def ReInit():
         'loc_789',
     )
 
-    OP_A3(0x2216)
-    OP_A2(0x10F0)
+    ClearScenaFlags(ScenaFlag(0x0442, 6, 0x2216))
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/C6002._SN', 101, 0, 0)
     IdleLoop()
 
@@ -769,8 +759,8 @@ def ReInit():
         'loc_79F',
     )
 
-    OP_A3(0x2217)
-    OP_A2(0x10F0)
+    ClearScenaFlags(ScenaFlag(0x0442, 7, 0x2217))
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/C6003._SN', 101, 0, 0)
     IdleLoop()
 

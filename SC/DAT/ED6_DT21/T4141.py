@@ -9,14 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4141   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '莉莉'),
-    TXT(0x02, '丹顿'),
-    TXT(0x03, '蜜蒂'),
-    TXT(0x04, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -31,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x28D
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -67,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -79,11 +66,12 @@ def ChipData():
         ('ED6_DT07/CH01770._CH', 'ED6_DT07/CH01770P._CP'),
     ]
 
-# id: 0x10002 offset: 0xD2
+# id: 0x10001 offset: 0xD2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '莉莉',
             x                   = 8790,
             z                   = 0,
             y                   = 10500,
@@ -98,6 +86,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '丹顿',
             x                   = 12170,
             z                   = 0,
             y                   = -4050,
@@ -112,6 +101,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '蜜蒂',
             x                   = -4540,
             z                   = 0,
             y                   = 9850,
@@ -127,19 +117,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x132
+# id: 0x10002 offset: 0x132
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x132
+# id: 0x10003 offset: 0x132
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x132
+# id: 0x10004 offset: 0x132
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -185,18 +175,18 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x19E
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x19F
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x19F
+@scena.Code('func_01_19F')
+def func_01_19F():
+    Return()
+
 # id: 0x0002 offset: 0x1A0
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_1A0')
+def func_02_1A0():
     Call(0, 0x0003)
 
     Return()

@@ -9,16 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C2102   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, 'Targeting Camera'),
-    TXT(0x02, '左の柱覆域判定用'),
-    TXT(0x03, '右の柱覆域判定用'),
-    TXT(0x04, '中央の台座判定'),
-    TXT(0x05, ''),
-    TXT(0x06, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -33,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x274
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -69,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -97,11 +82,12 @@ def ChipData():
         ('ED6_DT29/CH12141._CH', 'ED6_DT29/CH12141P._CP'),
     ]
 
-# id: 0x10002 offset: 0x152
+# id: 0x10001 offset: 0x152
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = 'Targeting Camera',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -116,6 +102,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '左の柱覆域判定用',
             x                   = -3200,
             z                   = 250,
             y                   = 8710,
@@ -130,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '右の柱覆域判定用',
             x                   = 3200,
             z                   = 250,
             y                   = 8710,
@@ -144,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '中央の台座判定',
             x                   = 0,
             z                   = 950,
             y                   = 13850,
@@ -159,11 +148,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x1D2
+# id: 0x10002 offset: 0x1D2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = -9050,
             z           = 250,
             y           = 12430,
@@ -178,21 +168,21 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x1EE
+# id: 0x10003 offset: 0x1EE
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1EE
+# id: 0x10004 offset: 0x1EE
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x1EE
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0420, 3, 0x2103)),
@@ -201,7 +191,7 @@ def PreInit():
         'loc_1FA',
     )
 
-    SetChrFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000C, 0x0080)
 
     def _loc_1FA(): pass
 
@@ -233,7 +223,7 @@ def PreInit():
         'loc_22F',
     )
 
-    SetMapFlags(0x10000000)
+    MapSetFlags(0x10000000)
     Event(1, 0x0001)
 
     Jump('loc_24C')
@@ -254,7 +244,7 @@ def PreInit():
         'loc_24C',
     )
 
-    SetMapFlags(0x10000000)
+    MapSetFlags(0x10000000)
     Event(1, 0x0000)
 
     def _loc_24C(): pass
@@ -264,8 +254,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x24D
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_24D')
+def func_01_24D():
     ExecExpressionWithValue(
         0x000C,
         0x24,
@@ -286,14 +276,14 @@ def Init():
         'loc_26A',
     )
 
-    OP_82(0x80, 0x00)
-    OP_82(0x81, 0x00)
+    StopEffect(0x80, 0x00)
+    StopEffect(0x81, 0x00)
 
     def _loc_26A(): pass
 
     label('loc_26A')
 
-    OP_22(0x01C3, 0x01, 0x64)
+    PlaySE(451, 0x01, 0x64)
 
     Return()
 

@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0100_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x7A9
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,49 +54,49 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
     Fade(1000)
-    SetChrPos(0x0101, 62320, 250, 19870, 239)
-    SetChrPos(0x00F7, 64480, 0, 19260, 270)
-    SetChrPos(0x00F8, 65420, 0, 20030, 270)
-    SetChrPos(0x00F9, 65940, 0, 18510, 269)
-    OP_6D(62620, 250, 19470, 0)
+    ChrSetPos(0x0101, 62320, 250, 19870, 239)
+    ChrSetPos(0x00F7, 64480, 0, 19260, 270)
+    ChrSetPos(0x00F8, 65420, 0, 20030, 270)
+    ChrSetPos(0x00F9, 65940, 0, 18510, 269)
+    CameraMove(62620, 250, 19470, 0)
     OP_67(0, 7170, -10000, 0)
-    OP_6B(2940, 0)
+    CameraSetDistance(2940, 0)
     OP_6C(300000, 0)
     OP_6E(262, 0)
     OP_0D()
@@ -154,10 +144,10 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    SetChrFlags(0x0101, 0x0040)
-    OP_8C(0x0101, 239, 400)
-    OP_8E(0x0101, 61890, 250, 19380, 1000, 0x00)
-    OP_8C(0x0101, 270, 400)
+    ChrSetFlags(0x0101, 0x0040)
+    ChrSetDirection(0x0101, 239, 400)
+    ChrWalkTo(0x0101, 61890, 250, 19380, 1000, 0x00)
+    ChrSetDirection(0x0101, 270, 400)
     Sleep(400)
 
     OP_62(0x0101, 0x00000000, 2000, 0x18, 0x1B, 0x000000FA, 0x00)
@@ -180,7 +170,7 @@ def PreInit():
     OP_56(0x00)
     FadeIn(300, 0)
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
@@ -192,9 +182,9 @@ def PreInit():
     )
 
     CloseMessageWindow()
-    OP_8C(0x0101, 90, 400)
+    ChrSetDirection(0x0101, 90, 400)
     Fade(1000)
-    SetChrChipByIndex(0x0101, 38)
+    ChrSetChipByIndex(0x0101, 38)
     OP_0D()
 
     ChrTalk(
@@ -209,7 +199,7 @@ def PreInit():
     Sleep(1000)
 
     FadeOut(300, 0, 100)
-    OP_AD(0x00240093, 0x00BE, 0x0064, 0x000001F4)
+    OP_AD('ED6_DT24/C_VIS124._CH', 0x00BE, 0x0064, 0x000001F4)
     Sleep(1000)
 
     SetMessageWindowPos(-1, 300, -1, 3)
@@ -231,7 +221,7 @@ def PreInit():
     OP_AE(0x000001F4)
     Sleep(550)
 
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -253,9 +243,9 @@ def PreInit():
     Sleep(400)
 
     Fade(1000)
-    SetChrChipByIndex(0x0101, 65535)
+    ChrSetChipByIndex(0x0101, 65535)
     OP_0D()
-    OP_8C(0x0101, 90, 400)
+    ChrSetDirection(0x0101, 90, 400)
 
     ChrTalk(
         0x0101,
@@ -287,7 +277,7 @@ def PreInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -315,7 +305,7 @@ def PreInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -345,7 +335,7 @@ def PreInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -372,7 +362,7 @@ def PreInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -411,14 +401,14 @@ def PreInit():
     OP_59()
     OP_28(0x0077, 0x01, 0x0040)
     OP_64(0x03, 0x0001)
-    ClearChrFlags(0x0101, 0x0040)
+    ChrClearFlags(0x0101, 0x0040)
     EventEnd(0x04)
 
     Return()
 
 # id: 0x0001 offset: 0x68B
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_68B')
+def func_01_68B():
     FadeOut(300, 0, 100)
 
     ExecExpressionWithVar(
@@ -491,24 +481,24 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x6FA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_6FA')
+def func_02_6FA():
     FadeOut(0, 0, -1)
     OP_0D()
-    OP_6D(75350, 0, 18760, 0)
+    CameraMove(75350, 0, 18760, 0)
     OP_67(0, 9500, -10000, 0)
-    OP_6B(2800, 0)
+    CameraSetDistance(2800, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    SetChrPos(0x0000, 75350, 0, 18760, 270)
-    SetChrPos(0x0001, 75350, 0, 18760, 270)
-    SetChrPos(0x0002, 75350, 0, 18760, 270)
-    SetChrPos(0x0003, 75350, 0, 18760, 270)
+    ChrSetPos(0x0000, 75350, 0, 18760, 270)
+    ChrSetPos(0x0001, 75350, 0, 18760, 270)
+    ChrSetPos(0x0002, 75350, 0, 18760, 270)
+    ChrSetPos(0x0003, 75350, 0, 18760, 270)
     OP_30(0x00)
-    SetMapFlags(0x00000001)
-    OP_69(0x0000, 0x00000000)
+    MapSetFlags(0x00000001)
+    OP_69(0x0000, 0)
     FadeIn(1000, 0)
-    ClearMapFlags(0x00000080)
+    MapClearFlags(0x00000080)
 
     Return()
 

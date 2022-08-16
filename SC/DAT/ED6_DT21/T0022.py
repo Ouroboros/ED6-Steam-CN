@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0022   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x100
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -89,50 +79,50 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xEC
+# id: 0x10000 offset: 0xEC
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xEC
+# id: 0x10001 offset: 0xEC
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xEC
+# id: 0x10002 offset: 0xEC
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xEC
+# id: 0x10003 offset: 0xEC
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xEC
+# id: 0x10004 offset: 0xEC
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xEC
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xED
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xED
+@scena.Code('func_01_ED')
+def func_01_ED():
+    Return()
+
 # id: 0x0002 offset: 0xEE
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_EE')
+def func_02_EE():
     EventBegin(0x00)
     NewScene('ED6_DT21/T0024._SN', 5, 0, 0)
     IdleLoop()

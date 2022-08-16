@@ -9,43 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0034   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '00130雪拉待机'),
-    TXT(0x02, '00131雪拉移动'),
-    TXT(0x03, '00132雪拉攻击'),
-    TXT(0x04, '00133雪拉被弹开'),
-    TXT(0x05, '00134雪拉倒下'),
-    TXT(0x06, '00135雪拉魔法咏唱'),
-    TXT(0x07, '00136雪拉魔法发射'),
-    TXT(0x08, '00137雪拉胜利'),
-    TXT(0x09, '00160提妲待机'),
-    TXT(0x0A, '00161提妲移动'),
-    TXT(0x0B, '00162提妲攻击'),
-    TXT(0x0C, '00163提妲被弹开'),
-    TXT(0x0D, '00164提妲倒下'),
-    TXT(0x0E, '00165提妲魔法咏唱'),
-    TXT(0x0F, '00166提妲魔法发射'),
-    TXT(0x10, '00167提妲胜利'),
-    TXT(0x11, '00140科洛丝待机'),
-    TXT(0x12, '00141科洛丝移动'),
-    TXT(0x13, '00142科洛丝攻击'),
-    TXT(0x14, '00143科洛丝被弹开'),
-    TXT(0x15, '00144科洛丝倒下'),
-    TXT(0x16, '00145科洛丝魔法咏唱'),
-    TXT(0x17, '00146科洛丝魔法发射'),
-    TXT(0x18, '00147科洛丝胜利'),
-    TXT(0x19, '00110约修亚待机'),
-    TXT(0x1A, '00111约修亚移动'),
-    TXT(0x1B, '00112约修亚攻击'),
-    TXT(0x1C, '00113约修亚被弹开'),
-    TXT(0x1D, '00114约修亚倒下'),
-    TXT(0x1E, '00115约修亚魔法咏唱'),
-    TXT(0x1F, '00116约修亚魔法发射'),
-    TXT(0x20, '00117约修亚胜利'),
-    TXT(0x21, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -60,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xA2B
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -96,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -151,11 +109,12 @@ def ChipData():
         ('ED6_DT07/CH00143._CH', 'ED6_DT07/CH00143P._CP'),
     ]
 
-# id: 0x10002 offset: 0x22A
+# id: 0x10001 offset: 0x22A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '00130雪拉待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -170,6 +129,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00131雪拉移动',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -184,6 +144,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00132雪拉攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -198,6 +159,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00133雪拉被弹开',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -212,6 +174,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00134雪拉倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -226,6 +189,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00135雪拉魔法咏唱',
             x                   = 8000,
             z                   = 0,
             y                   = 24000,
@@ -240,6 +204,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00136雪拉魔法发射',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -254,6 +219,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00137雪拉胜利',
             x                   = 8000,
             z                   = 0,
             y                   = 32000,
@@ -268,6 +234,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00160提妲待机',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -282,6 +249,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00161提妲移动',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -296,6 +264,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00162提妲攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -310,6 +279,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00163提妲被弹开',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -324,6 +294,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00164提妲倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -338,6 +309,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00165提妲魔法咏唱',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -352,6 +324,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00166提妲魔法发射',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -366,6 +339,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00167提妲胜利',
             x                   = 12000,
             z                   = 0,
             y                   = 32000,
@@ -380,6 +354,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00140科洛丝待机',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -394,6 +369,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00141科洛丝移动',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -408,6 +384,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00142科洛丝攻击',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -422,6 +399,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00143科洛丝被弹开',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -436,6 +414,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00144科洛丝倒下',
             x                   = 16000,
             z                   = 0,
             y                   = 20000,
@@ -450,6 +429,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00145科洛丝魔法咏唱',
             x                   = 16000,
             z                   = 0,
             y                   = 24000,
@@ -464,6 +444,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00146科洛丝魔法发射',
             x                   = 16000,
             z                   = 0,
             y                   = 28000,
@@ -478,6 +459,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00147科洛丝胜利',
             x                   = 16000,
             z                   = 0,
             y                   = 32000,
@@ -492,6 +474,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00110约修亚待机',
             x                   = 24000,
             z                   = 0,
             y                   = 4000,
@@ -506,6 +489,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00111约修亚移动',
             x                   = 24000,
             z                   = 0,
             y                   = 8000,
@@ -520,6 +504,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00112约修亚攻击',
             x                   = 24000,
             z                   = 0,
             y                   = 12000,
@@ -534,6 +519,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00113约修亚被弹开',
             x                   = 24000,
             z                   = 0,
             y                   = 16000,
@@ -548,6 +534,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00114约修亚倒下',
             x                   = 24000,
             z                   = 0,
             y                   = 20000,
@@ -562,6 +549,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00115约修亚魔法咏唱',
             x                   = 24000,
             z                   = 0,
             y                   = 24000,
@@ -576,6 +564,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00116约修亚魔法发射',
             x                   = 24000,
             z                   = 0,
             y                   = 28000,
@@ -590,6 +579,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '00117约修亚胜利',
             x                   = 24000,
             z                   = 0,
             y                   = 32000,
@@ -605,37 +595,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x62A
+# id: 0x10002 offset: 0x62A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x62A
+# id: 0x10003 offset: 0x62A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x62A
+# id: 0x10004 offset: 0x62A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x62A
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x62B
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x62B
+@scena.Code('func_01_62B')
+def func_01_62B():
+    Return()
+
 # id: 0x0002 offset: 0x62C
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_62C')
+def func_02_62C():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -644,9 +634,9 @@ def ReInit():
         'loc_641',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000708)
+    OP_99(0x00FE, 0x00, 0x07, 1800)
 
-    Jump('ReInit')
+    Jump('func_02_62C')
 
     def _loc_641(): pass
 
@@ -665,7 +655,7 @@ def func_03_642():
         'loc_657',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
 
     Jump('func_03_642')
 
@@ -686,7 +676,7 @@ def func_04_658():
         'loc_672',
     )
 
-    OP_99(0x00FE, 0x00, 0x00, 0x000005DC)
+    OP_99(0x00FE, 0x00, 0x00, 1500)
     Sleep(500)
 
     Jump('func_04_658')
@@ -708,7 +698,7 @@ def func_05_673():
         'loc_68D',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x03, 2000)
     Sleep(500)
 
     Jump('func_05_673')
@@ -730,7 +720,7 @@ def func_06_68E():
         'loc_6A8',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x03, 2000)
     Sleep(500)
 
     Jump('func_06_68E')
@@ -752,7 +742,7 @@ def func_07_6A9():
         'loc_6C3',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_07_6A9')
@@ -774,7 +764,7 @@ def func_08_6C4():
         'loc_6D9',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_08_6C4')
 
@@ -795,11 +785,11 @@ def func_09_6DA():
         'loc_710',
     )
 
-    SetChrChipByIndex(0x00FE, 5)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 6)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 5)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 6)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_09_6DA')
@@ -821,7 +811,7 @@ def func_0A_711():
         'loc_72B',
     )
 
-    OP_99(0x00FE, 0x00, 0x0E, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0E, 2000)
     Sleep(500)
 
     Jump('func_0A_711')
@@ -843,7 +833,7 @@ def func_0B_72C():
         'loc_746',
     )
 
-    OP_99(0x00FE, 0x00, 0x09, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x09, 2000)
     Sleep(500)
 
     Jump('func_0B_72C')
@@ -865,7 +855,7 @@ def func_0C_747():
         'loc_75C',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_0C_747')
 
@@ -886,11 +876,11 @@ def func_0D_75D():
         'loc_793',
     )
 
-    SetChrChipByIndex(0x00FE, 17)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 18)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 17)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 18)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_0D_75D')
@@ -912,7 +902,7 @@ def func_0E_794():
         'loc_7AE',
     )
 
-    OP_99(0x00FE, 0x00, 0x0D, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0D, 2000)
     Sleep(500)
 
     Jump('func_0E_794')
@@ -934,7 +924,7 @@ def func_0F_7AF():
         'loc_7C9',
     )
 
-    OP_99(0x00FE, 0x00, 0x0D, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0D, 2000)
     Sleep(500)
 
     Jump('func_0F_7AF')
@@ -956,7 +946,7 @@ def func_10_7CA():
         'loc_7DF',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_10_7CA')
 
@@ -977,11 +967,11 @@ def func_11_7E0():
         'loc_816',
     )
 
-    SetChrChipByIndex(0x00FE, 29)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 30)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 29)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 30)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_11_7E0')
@@ -1003,7 +993,7 @@ def func_12_817():
         'loc_831',
     )
 
-    OP_99(0x00FE, 0x00, 0x0E, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x0E, 1000)
     Sleep(1000)
 
     Jump('func_12_817')
@@ -1025,7 +1015,7 @@ def func_13_832():
         'loc_84C',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_13_832')
@@ -1047,7 +1037,7 @@ def func_14_84D():
         'loc_862',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_14_84D')
 
@@ -1068,11 +1058,11 @@ def func_15_863():
         'loc_899',
     )
 
-    SetChrChipByIndex(0x00FE, 41)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 42)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 41)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 42)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_15_863')
@@ -1094,7 +1084,7 @@ def func_16_89A():
         'loc_8B4',
     )
 
-    OP_99(0x00FE, 0x00, 0x14, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x14, 2000)
     Sleep(500)
 
     Jump('func_16_89A')
@@ -1116,7 +1106,7 @@ def func_17_8B5():
         'loc_8CF',
     )
 
-    OP_99(0x00FE, 0x00, 0x0C, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0C, 2000)
     Sleep(500)
 
     Jump('func_17_8B5')
@@ -1138,7 +1128,7 @@ def func_18_8D0():
         'loc_8E5',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_18_8D0')
 
@@ -1159,11 +1149,11 @@ def func_19_8E6():
         'loc_91C',
     )
 
-    SetChrChipByIndex(0x00FE, 53)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 54)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 53)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 54)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_19_8E6')
@@ -1185,7 +1175,7 @@ def func_1A_91D():
         'loc_937',
     )
 
-    OP_99(0x00FE, 0x00, 0x13, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x13, 2000)
     Sleep(500)
 
     Jump('func_1A_91D')
@@ -1207,7 +1197,7 @@ def func_1B_938():
         'loc_952',
     )
 
-    OP_99(0x00FE, 0x00, 0x0C, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0C, 2000)
     Sleep(500)
 
     Jump('func_1B_938')
@@ -1229,7 +1219,7 @@ def func_1C_953():
         'loc_968',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
 
     Jump('func_1C_953')
 
@@ -1250,11 +1240,11 @@ def func_1D_969():
         'loc_99F',
     )
 
-    SetChrChipByIndex(0x00FE, 5)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    OP_99(0x00FE, 0x00, 0x03, 0x000004B0)
-    SetChrChipByIndex(0x00FE, 6)
-    OP_99(0x00FE, 0x00, 0x01, 0x000004B0)
+    ChrSetChipByIndex(0x00FE, 5)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    OP_99(0x00FE, 0x00, 0x03, 1200)
+    ChrSetChipByIndex(0x00FE, 6)
+    OP_99(0x00FE, 0x00, 0x01, 1200)
     Sleep(1000)
 
     Jump('func_1D_969')
@@ -1276,7 +1266,7 @@ def func_1E_9A0():
         'loc_9BA',
     )
 
-    OP_99(0x00FE, 0x00, 0x21, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x21, 2000)
     Sleep(500)
 
     Jump('func_1E_9A0')
@@ -1298,7 +1288,7 @@ def func_1F_9BB():
         'loc_9D5',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_1F_9BB')

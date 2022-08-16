@@ -9,63 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('A0020   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '03000 艾丝蒂尔'),
-    TXT(0x02, '03010 约修亚'),
-    TXT(0x03, '03020 雪拉'),
-    TXT(0x04, '03030 奥利维尔'),
-    TXT(0x05, '03040 科洛丝'),
-    TXT(0x06, '03050 阿加特'),
-    TXT(0x07, '03060 提妲'),
-    TXT(0x08, '03070 金'),
-    TXT(0x09, '03080 凯文'),
-    TXT(0x0A, '03090 亚妮拉丝'),
-    TXT(0x0B, '03100 乔丝特'),
-    TXT(0x0C, '03110 理查德'),
-    TXT(0x0D, '03120 凯诺娜'),
-    TXT(0x0E, '03130 克鲁茨'),
-    TXT(0x0F, '03180 库拉茨'),
-    TXT(0x10, '03190 卡露娜'),
-    TXT(0x11, '03200 没有纹章的约修亚'),
-    TXT(0x12, '03210 礼服科洛丝'),
-    TXT(0x13, '03500 瘦狼瓦鲁特'),
-    TXT(0x14, '03510 歼灭天使玲'),
-    TXT(0x15, '03520 幻惑之铃露茜奥拉'),
-    TXT(0x16, '03530 布卢布兰伯爵'),
-    TXT(0x17, '03540 剑帝莱恩哈特'),
-    TXT(0x18, '03550 研究服怀斯曼'),
-    TXT(0x19, '03560 机器约修亚'),
-    TXT(0x1A, '03570 穆拉'),
-    TXT(0x1B, '03580 尤莉亚上尉'),
-    TXT(0x1C, '03590 希德中校'),
-    TXT(0x1D, '03600 小丑肯帕雷拉'),
-    TXT(0x1E, '03610 强化猎兵A'),
-    TXT(0x1F, '03620 强化猎兵B'),
-    TXT(0x20, '03630 猎兵克鲁茨'),
-    TXT(0x21, '03640 猎兵卡露娜'),
-    TXT(0x22, '03650 强化猎兵约修亚'),
-    TXT(0x23, '03670 军服卡西乌斯'),
-    TXT(0x24, '03680 军服奥利维尔'),
-    TXT(0x25, '03690 投狱版理查德'),
-    TXT(0x26, '03700 赛克斯中将'),
-    TXT(0x27, '03710 达维尔帝国大使'),
-    TXT(0x28, '03720 鲁伊泽共和国大使'),
-    TXT(0x29, '03730 帝国兵'),
-    TXT(0x2A, '03740 莱娜·布莱特'),
-    TXT(0x2B, '03750 猎兵基尔巴特'),
-    TXT(0x2C, '03760 多伦'),
-    TXT(0x2D, '03770 吉尔'),
-    TXT(0x2E, '03780 １３岁雪拉'),
-    TXT(0x2F, '03790 斯丁克'),
-    TXT(0x30, '03800 帝国兵有武器Ａ'),
-    TXT(0x31, '03810 帝国兵有武器Ｂ'),
-    TXT(0x32, '03820 猎兵库拉茨'),
-    TXT(0x33, 'CH00000前篇艾丝蒂尔'),
-    TXT(0x34, 'CH00010前篇约修亚'),
-    TXT(0x35, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -80,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x2443
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -116,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -176,11 +114,12 @@ def ChipData():
         ('ED6_DT27/CH03820._CH', 'ED6_DT27/CH03820P._CP'),
     ]
 
-# id: 0x10002 offset: 0x252
+# id: 0x10001 offset: 0x252
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '03000 艾丝蒂尔',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -195,6 +134,7 @@ def NpcData():
             talkScenaIndex      = 0x0003,
         ),
         ScenaNpcData(
+            name                = '03010 约修亚',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -209,6 +149,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '03020 雪拉',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -223,6 +164,7 @@ def NpcData():
             talkScenaIndex      = 0x0005,
         ),
         ScenaNpcData(
+            name                = '03030 奥利维尔',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -237,6 +179,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '03040 科洛丝',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -251,6 +194,7 @@ def NpcData():
             talkScenaIndex      = 0x0007,
         ),
         ScenaNpcData(
+            name                = '03050 阿加特',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -265,6 +209,7 @@ def NpcData():
             talkScenaIndex      = 0x0008,
         ),
         ScenaNpcData(
+            name                = '03060 提妲',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -279,6 +224,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '03070 金',
             x                   = 4000,
             z                   = 0,
             y                   = 32000,
@@ -293,6 +239,7 @@ def NpcData():
             talkScenaIndex      = 0x000A,
         ),
         ScenaNpcData(
+            name                = '03080 凯文',
             x                   = 4000,
             z                   = 0,
             y                   = 36000,
@@ -307,6 +254,7 @@ def NpcData():
             talkScenaIndex      = 0x000B,
         ),
         ScenaNpcData(
+            name                = '03090 亚妮拉丝',
             x                   = 4000,
             z                   = 0,
             y                   = 40000,
@@ -321,6 +269,7 @@ def NpcData():
             talkScenaIndex      = 0x000C,
         ),
         ScenaNpcData(
+            name                = '03100 乔丝特',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -335,6 +284,7 @@ def NpcData():
             talkScenaIndex      = 0x000D,
         ),
         ScenaNpcData(
+            name                = '03110 理查德',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -349,6 +299,7 @@ def NpcData():
             talkScenaIndex      = 0x000E,
         ),
         ScenaNpcData(
+            name                = '03120 凯诺娜',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -363,6 +314,7 @@ def NpcData():
             talkScenaIndex      = 0x000F,
         ),
         ScenaNpcData(
+            name                = '03130 克鲁茨',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -377,6 +329,7 @@ def NpcData():
             talkScenaIndex      = 0x0010,
         ),
         ScenaNpcData(
+            name                = '03180 库拉茨',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -391,6 +344,7 @@ def NpcData():
             talkScenaIndex      = 0x0012,
         ),
         ScenaNpcData(
+            name                = '03190 卡露娜',
             x                   = 8000,
             z                   = 0,
             y                   = 32000,
@@ -405,6 +359,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '03200 没有纹章的约修亚',
             x                   = 8000,
             z                   = 0,
             y                   = 36000,
@@ -419,6 +374,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '03210 礼服科洛丝',
             x                   = 8000,
             z                   = 0,
             y                   = 40000,
@@ -433,6 +389,7 @@ def NpcData():
             talkScenaIndex      = 0x0011,
         ),
         ScenaNpcData(
+            name                = '03500 瘦狼瓦鲁特',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -447,6 +404,7 @@ def NpcData():
             talkScenaIndex      = 0x0014,
         ),
         ScenaNpcData(
+            name                = '03510 歼灭天使玲',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -461,6 +419,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '03520 幻惑之铃露茜奥拉',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -475,6 +434,7 @@ def NpcData():
             talkScenaIndex      = 0x0016,
         ),
         ScenaNpcData(
+            name                = '03530 布卢布兰伯爵',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -489,6 +449,7 @@ def NpcData():
             talkScenaIndex      = 0x0017,
         ),
         ScenaNpcData(
+            name                = '03540 剑帝莱恩哈特',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -503,6 +464,7 @@ def NpcData():
             talkScenaIndex      = 0x0018,
         ),
         ScenaNpcData(
+            name                = '03550 研究服怀斯曼',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -517,6 +479,7 @@ def NpcData():
             talkScenaIndex      = 0x0019,
         ),
         ScenaNpcData(
+            name                = '03560 机器约修亚',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -531,6 +494,7 @@ def NpcData():
             talkScenaIndex      = 0x001A,
         ),
         ScenaNpcData(
+            name                = '03570 穆拉',
             x                   = 12000,
             z                   = 0,
             y                   = 32000,
@@ -545,6 +509,7 @@ def NpcData():
             talkScenaIndex      = 0x001B,
         ),
         ScenaNpcData(
+            name                = '03580 尤莉亚上尉',
             x                   = 12000,
             z                   = 0,
             y                   = 36000,
@@ -559,6 +524,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '03590 希德中校',
             x                   = 12000,
             z                   = 0,
             y                   = 40000,
@@ -573,6 +539,7 @@ def NpcData():
             talkScenaIndex      = 0x001D,
         ),
         ScenaNpcData(
+            name                = '03600 小丑肯帕雷拉',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -587,6 +554,7 @@ def NpcData():
             talkScenaIndex      = 0x001E,
         ),
         ScenaNpcData(
+            name                = '03610 强化猎兵A',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -601,6 +569,7 @@ def NpcData():
             talkScenaIndex      = 0x001F,
         ),
         ScenaNpcData(
+            name                = '03620 强化猎兵B',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -615,6 +584,7 @@ def NpcData():
             talkScenaIndex      = 0x0020,
         ),
         ScenaNpcData(
+            name                = '03630 猎兵克鲁茨',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -629,6 +599,7 @@ def NpcData():
             talkScenaIndex      = 0x0021,
         ),
         ScenaNpcData(
+            name                = '03640 猎兵卡露娜',
             x                   = 16000,
             z                   = 0,
             y                   = 20000,
@@ -643,6 +614,7 @@ def NpcData():
             talkScenaIndex      = 0x0022,
         ),
         ScenaNpcData(
+            name                = '03650 强化猎兵约修亚',
             x                   = 16000,
             z                   = 0,
             y                   = 24000,
@@ -657,6 +629,7 @@ def NpcData():
             talkScenaIndex      = 0x0023,
         ),
         ScenaNpcData(
+            name                = '03670 军服卡西乌斯',
             x                   = 16000,
             z                   = 0,
             y                   = 32000,
@@ -671,6 +644,7 @@ def NpcData():
             talkScenaIndex      = 0x0025,
         ),
         ScenaNpcData(
+            name                = '03680 军服奥利维尔',
             x                   = 16000,
             z                   = 0,
             y                   = 36000,
@@ -685,6 +659,7 @@ def NpcData():
             talkScenaIndex      = 0x0026,
         ),
         ScenaNpcData(
+            name                = '03690 投狱版理查德',
             x                   = 16000,
             z                   = 0,
             y                   = 40000,
@@ -699,6 +674,7 @@ def NpcData():
             talkScenaIndex      = 0x0027,
         ),
         ScenaNpcData(
+            name                = '03700 赛克斯中将',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -713,6 +689,7 @@ def NpcData():
             talkScenaIndex      = 0x0028,
         ),
         ScenaNpcData(
+            name                = '03710 达维尔帝国大使',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -727,6 +704,7 @@ def NpcData():
             talkScenaIndex      = 0x0029,
         ),
         ScenaNpcData(
+            name                = '03720 鲁伊泽共和国大使',
             x                   = 20000,
             z                   = 0,
             y                   = 12000,
@@ -741,6 +719,7 @@ def NpcData():
             talkScenaIndex      = 0x002A,
         ),
         ScenaNpcData(
+            name                = '03730 帝国兵',
             x                   = 20000,
             z                   = 0,
             y                   = 16000,
@@ -755,6 +734,7 @@ def NpcData():
             talkScenaIndex      = 0x002B,
         ),
         ScenaNpcData(
+            name                = '03740 莱娜·布莱特',
             x                   = 20000,
             z                   = 0,
             y                   = 20000,
@@ -769,6 +749,7 @@ def NpcData():
             talkScenaIndex      = 0x002C,
         ),
         ScenaNpcData(
+            name                = '03750 猎兵基尔巴特',
             x                   = 20000,
             z                   = 0,
             y                   = 24000,
@@ -783,6 +764,7 @@ def NpcData():
             talkScenaIndex      = 0x002D,
         ),
         ScenaNpcData(
+            name                = '03760 多伦',
             x                   = 20000,
             z                   = 0,
             y                   = 28000,
@@ -797,6 +779,7 @@ def NpcData():
             talkScenaIndex      = 0x002E,
         ),
         ScenaNpcData(
+            name                = '03770 吉尔',
             x                   = 20000,
             z                   = 0,
             y                   = 32000,
@@ -811,6 +794,7 @@ def NpcData():
             talkScenaIndex      = 0x002F,
         ),
         ScenaNpcData(
+            name                = '03780 １３岁雪拉',
             x                   = 20000,
             z                   = 0,
             y                   = 36000,
@@ -825,6 +809,7 @@ def NpcData():
             talkScenaIndex      = 0x0030,
         ),
         ScenaNpcData(
+            name                = '03790 斯丁克',
             x                   = 20000,
             z                   = 0,
             y                   = 40000,
@@ -839,6 +824,7 @@ def NpcData():
             talkScenaIndex      = 0x0002,
         ),
         ScenaNpcData(
+            name                = '03800 帝国兵有武器Ａ',
             x                   = 24000,
             z                   = 0,
             y                   = 4000,
@@ -853,6 +839,7 @@ def NpcData():
             talkScenaIndex      = 0x0031,
         ),
         ScenaNpcData(
+            name                = '03810 帝国兵有武器Ｂ',
             x                   = 24000,
             z                   = 0,
             y                   = 8000,
@@ -867,6 +854,7 @@ def NpcData():
             talkScenaIndex      = 0x0032,
         ),
         ScenaNpcData(
+            name                = '03820 猎兵库拉茨',
             x                   = 24000,
             z                   = 0,
             y                   = 12000,
@@ -881,6 +869,7 @@ def NpcData():
             talkScenaIndex      = 0x0033,
         ),
         ScenaNpcData(
+            name                = 'CH00000前篇艾丝蒂尔',
             x                   = 2000,
             z                   = 0,
             y                   = 4000,
@@ -895,6 +884,7 @@ def NpcData():
             talkScenaIndex      = 0x0034,
         ),
         ScenaNpcData(
+            name                = 'CH00010前篇约修亚',
             x                   = 2000,
             z                   = 0,
             y                   = 8000,
@@ -910,39 +900,39 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x8D2
+# id: 0x10002 offset: 0x8D2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x8D2
+# id: 0x10003 offset: 0x8D2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x8D2
+# id: 0x10004 offset: 0x8D2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x8D2
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     AddItem(0x0383, 1)
 
     Return()
 
 # id: 0x0001 offset: 0x8D8
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_8D8')
+def func_01_8D8():
     Return()
 
 # id: 0x0002 offset: 0x8D9
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_8D9')
+def func_02_8D9():
     TalkBegin(0x00FE)
 
     ChrTalk(
@@ -5188,7 +5178,7 @@ def func_36_236C():
     EventBegin(0x00)
     OP_C0(0x01, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000)
     OP_62(0x0000, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
-    OP_22(0x0026, 0x00, 0x64)
+    PlaySE(38, 0x00, 0x64)
     Sleep(500)
 
     ChrTalk(

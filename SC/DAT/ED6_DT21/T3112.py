@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3112   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x770
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,47 +54,47 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Event(0, 0x0002)
+@scena.Code('Init')
+def Init():
+    Event(0, func_02_C4)
 
     Return()
 
 # id: 0x0001 offset: 0xAD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_AD')
+def func_01_AD():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -126,16 +116,16 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0xC4
-@scena.Code('ReInit')
-def ReInit():
-    ClearMapFlags(0x00000001)
+@scena.Code('func_02_C4')
+def func_02_C4():
+    MapClearFlags(0x00000001)
     EventBegin(0x01)
     OP_67(0, 6000, -10000, 0)
-    OP_6B(3000, 0)
+    CameraSetDistance(3000, 0)
     OP_6C(45000, 0)
-    OP_6D(1400, 0, 4500, 0)
-    SetChrPos(0x0000, 1750, 0, 1370, 90)
-    SetChrPos(0x0001, 1280, 0, 2600, 180)
+    CameraMove(1400, 0, 4500, 0)
+    ChrSetPos(0x0000, 1750, 0, 1370, 90)
+    ChrSetPos(0x0001, 1280, 0, 2600, 180)
 
     If(
         (
@@ -147,7 +137,7 @@ def ReInit():
         'loc_13E',
     )
 
-    SetChrPos(0x0002, 70, 0, 1470, 180)
+    ChrSetPos(0x0002, 70, 0, 1470, 180)
 
     def _loc_13E(): pass
 
@@ -163,7 +153,7 @@ def ReInit():
         'loc_15B',
     )
 
-    SetChrPos(0x0003, -50, 0, 2600, 180)
+    ChrSetPos(0x0003, -50, 0, 2600, 180)
 
     def _loc_15B(): pass
 
@@ -179,7 +169,7 @@ def ReInit():
         'loc_178',
     )
 
-    SetChrPos(0x0004, -1380, 0, 1470, 180)
+    ChrSetPos(0x0004, -1380, 0, 1470, 180)
 
     def _loc_178(): pass
 
@@ -195,7 +185,7 @@ def ReInit():
         'loc_195',
     )
 
-    SetChrPos(0x0005, -1380, 0, 2600, 180)
+    ChrSetPos(0x0005, -1380, 0, 2600, 180)
 
     def _loc_195(): pass
 
@@ -583,8 +573,8 @@ def ReInit():
     )
 
     FadeOut(2000, 0, -1)
-    OP_22(0x0067, 0x00, 0x64)
-    OP_6D(1400, -11900, 4500, 2000)
+    PlaySE(103, 0x00, 0x64)
+    CameraMove(1400, -11900, 4500, 2000)
     OP_0D()
     Sleep(800)
 
@@ -607,8 +597,8 @@ def ReInit():
     )
 
     FadeOut(2000, 0, -1)
-    OP_22(0x0067, 0x00, 0x64)
-    OP_6D(1400, 11900, 4500, 2000)
+    PlaySE(103, 0x00, 0x64)
+    CameraMove(1400, 11900, 4500, 2000)
     OP_0D()
     Sleep(800)
 
@@ -735,7 +725,7 @@ def ReInit():
 
     label('loc_6CF')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3111._SN', 106, 0, 0)
@@ -747,7 +737,7 @@ def ReInit():
 
     label('loc_6E5')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3111._SN', 101, 0, 0)
@@ -759,7 +749,7 @@ def ReInit():
 
     label('loc_6FB')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3114._SN', 100, 0, 0)
@@ -771,7 +761,7 @@ def ReInit():
 
     label('loc_711')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3114._SN', 106, 0, 0)
@@ -783,7 +773,7 @@ def ReInit():
 
     label('loc_727')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3114._SN', 112, 0, 0)
@@ -795,7 +785,7 @@ def ReInit():
 
     label('loc_73D')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3119._SN', 100, 0, 0)
@@ -807,7 +797,7 @@ def ReInit():
 
     label('loc_753')
 
-    OP_22(0x000E, 0x00, 0x64)
+    PlaySE(14, 0x00, 0x64)
     Sleep(500)
 
     NewScene('ED6_DT21/T3101._SN', 104, 0, 0)

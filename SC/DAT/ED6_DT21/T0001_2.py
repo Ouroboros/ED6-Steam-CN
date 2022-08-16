@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0001_2 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x414F
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.PushReg, 0x0),
@@ -241,14 +231,14 @@ def PreInit():
 
     label('loc_1A1')
 
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0xFE, 0)
-    SetChrStatus(ChrTable['约修亚'], 0xFE, 0)
-    SetChrStatus(ChrTable['雪拉扎德'], 0xFE, 0)
-    SetChrStatus(ChrTable['奥利维尔'], 0xFE, 0)
-    SetChrStatus(ChrTable['科洛丝'], 0xFE, 0)
-    SetChrStatus(ChrTable['阿加特'], 0xFE, 0)
-    SetChrStatus(ChrTable['提妲'], 0xFE, 0)
-    SetChrStatus(ChrTable['金'], 0xFE, 0)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0xFE, 0)
+    ChrSetStatus(ChrTable['约修亚'], 0xFE, 0)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0xFE, 0)
+    ChrSetStatus(ChrTable['奥利维尔'], 0xFE, 0)
+    ChrSetStatus(ChrTable['科洛丝'], 0xFE, 0)
+    ChrSetStatus(ChrTable['阿加特'], 0xFE, 0)
+    ChrSetStatus(ChrTable['提妲'], 0xFE, 0)
+    ChrSetStatus(ChrTable['金'], 0xFE, 0)
 
     Jump('loc_1CC')
 
@@ -256,7 +246,7 @@ def PreInit():
 
     label('loc_1CC')
 
-    Jump('PreInit')
+    Jump('Init')
 
     def _loc_1CF(): pass
 
@@ -276,8 +266,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x1DD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1DD')
+def func_01_1DD():
     Talk(
         (
             TxtCtl.ShowAll,
@@ -428,8 +418,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x2A1
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_2A1')
+def func_02_2A1():
     If(
         (
             (Expr.PushReg, 0x0),
@@ -527,7 +517,7 @@ def ReInit():
 
     label('loc_386')
 
-    Jump('ReInit')
+    Jump('func_02_2A1')
 
     def _loc_389(): pass
 
@@ -7156,9 +7146,9 @@ def func_36_3813():
 
     label('loc_39C6')
 
-    OP_A2(0x2298)
+    SetScenaFlags(ScenaFlag(0x0453, 0, 0x2298))
     Battle(0x00000465, 0x00300014, 0x00, 0x0000, 0xFF)
-    OP_A3(0x2298)
+    ClearScenaFlags(ScenaFlag(0x0453, 0, 0x2298))
 
     Jump('loc_39F6')
 
@@ -7501,38 +7491,38 @@ def func_39_3BBE():
 # id: 0x003A offset: 0x3BBF
 @scena.Code('func_3A_3BBF')
 def func_3A_3BBF():
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0x00, 85)
-    SetChrStatus(ChrTable['约修亚'], 0x00, 85)
-    SetChrStatus(ChrTable['雪拉扎德'], 0x00, 85)
-    SetChrStatus(ChrTable['奥利维尔'], 0x00, 85)
-    SetChrStatus(ChrTable['提妲'], 0x00, 85)
-    SetChrStatus(ChrTable['科洛丝'], 0x00, 85)
-    SetChrStatus(ChrTable['阿加特'], 0x00, 85)
-    SetChrStatus(ChrTable['金'], 0x00, 85)
-    SetChrStatus(ChrTable['凯文神父'], 0x00, 85)
-    SetChrStatus(ChrTable['亚妮拉丝'], 0x00, 85)
-    SetChrStatus(ChrTable['乔丝特'], 0x00, 85)
-    SetChrStatus(ChrTable['理查德'], 0x00, 85)
-    SetChrStatus(ChrTable['穆拉'], 0x00, 85)
-    SetChrStatus(ChrTable['凯诺娜'], 0x00, 85)
-    SetChrStatus(ChrTable['克鲁茨'], 0x00, 85)
-    SetChrStatus(ChrTable['尤莉亚上尉'], 0x00, 85)
-    SetChrStatus(ChrTable['艾丝蒂尔'], 0x05, 100)
-    SetChrStatus(ChrTable['约修亚'], 0x05, 100)
-    SetChrStatus(ChrTable['雪拉扎德'], 0x05, 100)
-    SetChrStatus(ChrTable['奥利维尔'], 0x05, 100)
-    SetChrStatus(ChrTable['提妲'], 0x05, 100)
-    SetChrStatus(ChrTable['科洛丝'], 0x05, 100)
-    SetChrStatus(ChrTable['阿加特'], 0x05, 100)
-    SetChrStatus(ChrTable['金'], 0x05, 100)
-    SetChrStatus(ChrTable['凯文神父'], 0x05, 100)
-    SetChrStatus(ChrTable['亚妮拉丝'], 0x05, 100)
-    SetChrStatus(ChrTable['乔丝特'], 0x05, 100)
-    SetChrStatus(ChrTable['理查德'], 0x05, 100)
-    SetChrStatus(ChrTable['穆拉'], 0x05, 100)
-    SetChrStatus(ChrTable['凯诺娜'], 0x05, 100)
-    SetChrStatus(ChrTable['克鲁茨'], 0x05, 100)
-    SetChrStatus(ChrTable['尤莉亚上尉'], 0x05, 100)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x00, 85)
+    ChrSetStatus(ChrTable['约修亚'], 0x00, 85)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0x00, 85)
+    ChrSetStatus(ChrTable['奥利维尔'], 0x00, 85)
+    ChrSetStatus(ChrTable['提妲'], 0x00, 85)
+    ChrSetStatus(ChrTable['科洛丝'], 0x00, 85)
+    ChrSetStatus(ChrTable['阿加特'], 0x00, 85)
+    ChrSetStatus(ChrTable['金'], 0x00, 85)
+    ChrSetStatus(ChrTable['凯文神父'], 0x00, 85)
+    ChrSetStatus(ChrTable['亚妮拉丝'], 0x00, 85)
+    ChrSetStatus(ChrTable['乔丝特'], 0x00, 85)
+    ChrSetStatus(ChrTable['理查德'], 0x00, 85)
+    ChrSetStatus(ChrTable['穆拉'], 0x00, 85)
+    ChrSetStatus(ChrTable['凯诺娜'], 0x00, 85)
+    ChrSetStatus(ChrTable['克鲁茨'], 0x00, 85)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0x00, 85)
+    ChrSetStatus(ChrTable['艾丝蒂尔'], 0x05, 100)
+    ChrSetStatus(ChrTable['约修亚'], 0x05, 100)
+    ChrSetStatus(ChrTable['雪拉扎德'], 0x05, 100)
+    ChrSetStatus(ChrTable['奥利维尔'], 0x05, 100)
+    ChrSetStatus(ChrTable['提妲'], 0x05, 100)
+    ChrSetStatus(ChrTable['科洛丝'], 0x05, 100)
+    ChrSetStatus(ChrTable['阿加特'], 0x05, 100)
+    ChrSetStatus(ChrTable['金'], 0x05, 100)
+    ChrSetStatus(ChrTable['凯文神父'], 0x05, 100)
+    ChrSetStatus(ChrTable['亚妮拉丝'], 0x05, 100)
+    ChrSetStatus(ChrTable['乔丝特'], 0x05, 100)
+    ChrSetStatus(ChrTable['理查德'], 0x05, 100)
+    ChrSetStatus(ChrTable['穆拉'], 0x05, 100)
+    ChrSetStatus(ChrTable['凯诺娜'], 0x05, 100)
+    ChrSetStatus(ChrTable['克鲁茨'], 0x05, 100)
+    ChrSetStatus(ChrTable['尤莉亚上尉'], 0x05, 100)
     OP_37(0x00, 0xFF)
     OP_37(0x01, 0xFF)
     OP_37(0x02, 0xFF)

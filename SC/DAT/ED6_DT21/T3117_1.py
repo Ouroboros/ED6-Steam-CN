@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T3117_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x604
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.PushValueByIndex, 0x13),
@@ -577,7 +567,7 @@ def PreInit():
 
     label('loc_2C6')
 
-    SetMapFlags(0x00000080)
+    MapSetFlags(0x00000080)
     OP_C0(0x01, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000)
     Sleep(30)
 
@@ -601,12 +591,12 @@ def PreInit():
 
     EventBegin(0x01)
     OP_62(0x0000, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
-    OP_22(0x0026, 0x00, 0x64)
+    PlaySE(38, 0x00, 0x64)
     Sleep(1000)
 
     OP_63(0x0000)
     OP_62(0x0000, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     OP_63(0x0000)
@@ -688,7 +678,7 @@ def PreInit():
         ),
     )
 
-    OP_22(0x00AA, 0x00, 0x64)
+    PlaySE(170, 0x00, 0x64)
     CloseMessageWindow()
     OP_56(0x00)
     FadeIn(300, 0)
@@ -721,7 +711,7 @@ def PreInit():
         ),
     )
 
-    OP_22(0x00AA, 0x00, 0x64)
+    PlaySE(170, 0x00, 0x64)
     CloseMessageWindow()
     OP_56(0x00)
     FadeIn(300, 0)
@@ -744,7 +734,7 @@ def PreInit():
         ),
     )
 
-    OP_22(0x00AB, 0x00, 0x64)
+    PlaySE(171, 0x00, 0x64)
     CloseMessageWindow()
     OP_56(0x00)
     FadeIn(300, 0)
@@ -755,15 +745,15 @@ def PreInit():
     label('loc_4A7')
 
     OP_0D()
-    ClearMapFlags(0x00000080)
+    MapClearFlags(0x00000080)
 
     Return()
 
 # id: 0x0001 offset: 0x4AE
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_4AE')
+def func_01_4AE():
     EventBegin(0x01)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
 
@@ -790,10 +780,10 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x501
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_501')
+def func_02_501():
     EventBegin(0x01)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
 
@@ -823,7 +813,7 @@ def ReInit():
 @scena.Code('func_03_554')
 def func_03_554():
     EventBegin(0x01)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
 
@@ -853,7 +843,7 @@ def func_03_554():
 @scena.Code('func_04_5A7')
 def func_04_5A7():
     EventBegin(0x01)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
 

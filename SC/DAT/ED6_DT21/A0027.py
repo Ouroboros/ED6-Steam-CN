@@ -9,53 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('A0027   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '04610强化猎兵Ａ待机'),
-    TXT(0x02, '04611强化猎兵Ａ移动'),
-    TXT(0x03, '04612强化猎兵Ａ攻击'),
-    TXT(0x04, '04613强化猎兵Ａ被弹开'),
-    TXT(0x05, '04614强化猎兵Ａ倒下'),
-    TXT(0x06, '04615强化猎兵Ａ魔法咏唱'),
-    TXT(0x07, '04616强化猎兵Ａ魔法发射'),
-    TXT(0x08, '04620强化猎兵Ｂ待机'),
-    TXT(0x09, '04621强化猎兵Ｂ移动'),
-    TXT(0x0A, '04622强化猎兵Ｂ攻击'),
-    TXT(0x0B, '04623强化猎兵Ｂ被弹开'),
-    TXT(0x0C, '04624强化猎兵Ｂ倒下'),
-    TXT(0x0D, '04625强化猎兵Ｂ魔法咏唱'),
-    TXT(0x0E, '04626强化猎兵Ｂ魔法发射'),
-    TXT(0x0F, '04630强化猎兵克鲁茨待机'),
-    TXT(0x10, '04631强化猎兵克鲁茨移动'),
-    TXT(0x11, '04632强化猎兵克鲁茨攻击'),
-    TXT(0x12, '04633强化猎兵克鲁茨被弹开'),
-    TXT(0x13, '04634强化猎兵克鲁茨倒下'),
-    TXT(0x14, '04635强化猎兵克鲁茨魔法咏唱'),
-    TXT(0x15, '04636强化猎兵克鲁茨魔法发射'),
-    TXT(0x16, '04640强化猎兵卡露娜待机'),
-    TXT(0x17, '04641强化猎兵卡露娜移动'),
-    TXT(0x18, '04642强化猎兵卡露娜攻击'),
-    TXT(0x19, '04643强化猎兵卡露娜被弹开'),
-    TXT(0x1A, '04644强化猎兵卡露娜倒下'),
-    TXT(0x1B, '04645强化猎兵卡露娜魔法咏唱'),
-    TXT(0x1C, '04646强化猎兵卡露娜魔法发射'),
-    TXT(0x1D, '04750强化猎兵基尔巴特待机'),
-    TXT(0x1E, '04751强化猎兵基尔巴特移动'),
-    TXT(0x1F, '04752强化猎兵基尔巴特攻击'),
-    TXT(0x20, '04753强化猎兵基尔巴特被弹开'),
-    TXT(0x21, '04754强化猎兵基尔巴特倒下'),
-    TXT(0x22, '04755强化猎兵基尔巴特魔法咏唱'),
-    TXT(0x23, '04756强化猎兵基尔巴特魔法发射'),
-    TXT(0x24, '04820强化猎兵库拉茨待机'),
-    TXT(0x25, '04821强化猎兵库拉茨移动'),
-    TXT(0x26, '04822强化猎兵库拉茨攻击'),
-    TXT(0x27, '04823强化猎兵库拉茨被弹开'),
-    TXT(0x28, '04824强化猎兵库拉茨倒下'),
-    TXT(0x29, '04825强化猎兵库拉茨魔法咏唱'),
-    TXT(0x2A, '04826强化猎兵库拉茨魔法发射'),
-    TXT(0x2B, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -70,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xE2E
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -106,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -173,11 +121,12 @@ def ChipData():
         ('ED6_DT27/CH04823._CH', 'ED6_DT27/CH04823P._CP'),
     ]
 
-# id: 0x10002 offset: 0x28A
+# id: 0x10001 offset: 0x28A
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '04610强化猎兵Ａ待机',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -192,6 +141,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04611强化猎兵Ａ移动',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -206,6 +156,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04612强化猎兵Ａ攻击',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -220,6 +171,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04613强化猎兵Ａ被弹开',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -234,6 +186,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04614强化猎兵Ａ倒下',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -248,6 +201,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04615强化猎兵Ａ魔法咏唱',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -262,6 +216,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04616强化猎兵Ａ魔法发射',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -276,6 +231,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04620强化猎兵Ｂ待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -290,6 +246,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04621强化猎兵Ｂ移动',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -304,6 +261,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04622强化猎兵Ｂ攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -318,6 +276,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04623强化猎兵Ｂ被弹开',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -332,6 +291,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04624强化猎兵Ｂ倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -346,6 +306,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04625强化猎兵Ｂ魔法咏唱',
             x                   = 8000,
             z                   = 0,
             y                   = 24000,
@@ -360,6 +321,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04626强化猎兵Ｂ魔法发射',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -374,6 +336,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04630强化猎兵克鲁茨待机',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -388,6 +351,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04631强化猎兵克鲁茨移动',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -402,6 +366,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04632强化猎兵克鲁茨攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -416,6 +381,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04633强化猎兵克鲁茨被弹开',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -430,6 +396,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04634强化猎兵克鲁茨倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -444,6 +411,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04635强化猎兵克鲁茨魔法咏唱',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -458,6 +426,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04636强化猎兵克鲁茨魔法发射',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -472,6 +441,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04640强化猎兵卡露娜待机',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -486,6 +456,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04641强化猎兵卡露娜移动',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -500,6 +471,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04642强化猎兵卡露娜攻击',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -514,6 +486,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04643强化猎兵卡露娜被弹开',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -528,6 +501,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04644强化猎兵卡露娜倒下',
             x                   = 16000,
             z                   = 0,
             y                   = 20000,
@@ -542,6 +516,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04645强化猎兵卡露娜魔法咏唱',
             x                   = 16000,
             z                   = 0,
             y                   = 24000,
@@ -556,6 +531,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04646强化猎兵卡露娜魔法发射',
             x                   = 16000,
             z                   = 0,
             y                   = 28000,
@@ -570,6 +546,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04750强化猎兵基尔巴特待机',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -584,6 +561,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04751强化猎兵基尔巴特移动',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -598,6 +576,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04752强化猎兵基尔巴特攻击',
             x                   = 20000,
             z                   = 0,
             y                   = 12000,
@@ -612,6 +591,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04753强化猎兵基尔巴特被弹开',
             x                   = 20000,
             z                   = 0,
             y                   = 16000,
@@ -626,6 +606,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04754强化猎兵基尔巴特倒下',
             x                   = 20000,
             z                   = 0,
             y                   = 20000,
@@ -640,6 +621,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04755强化猎兵基尔巴特魔法咏唱',
             x                   = 20000,
             z                   = 0,
             y                   = 24000,
@@ -654,6 +636,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04756强化猎兵基尔巴特魔法发射',
             x                   = 20000,
             z                   = 0,
             y                   = 28000,
@@ -668,6 +651,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04820强化猎兵库拉茨待机',
             x                   = 24000,
             z                   = 0,
             y                   = 4000,
@@ -682,6 +666,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04821强化猎兵库拉茨移动',
             x                   = 24000,
             z                   = 0,
             y                   = 8000,
@@ -696,6 +681,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04822强化猎兵库拉茨攻击',
             x                   = 24000,
             z                   = 0,
             y                   = 12000,
@@ -710,6 +696,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04823强化猎兵库拉茨被弹开',
             x                   = 24000,
             z                   = 0,
             y                   = 16000,
@@ -724,6 +711,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04824强化猎兵库拉茨倒下',
             x                   = 24000,
             z                   = 0,
             y                   = 20000,
@@ -738,6 +726,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04825强化猎兵库拉茨魔法咏唱',
             x                   = 24000,
             z                   = 0,
             y                   = 24000,
@@ -752,6 +741,7 @@ def NpcData():
             talkScenaIndex      = 0x0013,
         ),
         ScenaNpcData(
+            name                = '04826强化猎兵库拉茨魔法发射',
             x                   = 24000,
             z                   = 0,
             y                   = 28000,
@@ -767,37 +757,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x7CA
+# id: 0x10002 offset: 0x7CA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x7CA
+# id: 0x10003 offset: 0x7CA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x7CA
+# id: 0x10004 offset: 0x7CA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x7CA
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x7CB
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x7CB
+@scena.Code('func_01_7CB')
+def func_01_7CB():
+    Return()
+
 # id: 0x0002 offset: 0x7CC
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_7CC')
+def func_02_7CC():
     ExecExpressionWithReg(
         0x0065,
         (
@@ -911,7 +901,7 @@ def func_03_842():
         'loc_85B',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
 
     Jump('loc_846')
 
@@ -937,7 +927,7 @@ def func_04_85C():
         'loc_87A',
     )
 
-    OP_99(0x00FE, 0x00, 0x00, 0x000005DC)
+    OP_99(0x00FE, 0x00, 0x00, 1500)
     Sleep(500)
 
     Jump('loc_860')
@@ -959,7 +949,7 @@ def func_05_87B():
         'loc_895',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
     Sleep(500)
 
     Jump('func_05_87B')
@@ -1053,7 +1043,7 @@ def func_07_8E3():
         'loc_8FC',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_8E7')
 
@@ -1079,7 +1069,7 @@ def func_08_8FD():
         'loc_9BC',
     )
 
-    SetChrChipByIndex(0x00FE, 5)
+    ChrSetChipByIndex(0x00FE, 5)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1177,7 +1167,7 @@ def func_08_8FD():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 6)
+    ChrSetChipByIndex(0x00FE, 6)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1229,7 +1219,7 @@ def func_09_9BD():
         'loc_9D6',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_9C1')
 
@@ -1255,7 +1245,7 @@ def func_0A_9D7():
         'loc_A96',
     )
 
-    SetChrChipByIndex(0x00FE, 15)
+    ChrSetChipByIndex(0x00FE, 15)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1353,7 +1343,7 @@ def func_0A_9D7():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 16)
+    ChrSetChipByIndex(0x00FE, 16)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1405,7 +1395,7 @@ def func_0B_A97():
         'loc_AB0',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_A9B')
 
@@ -1431,7 +1421,7 @@ def func_0C_AB1():
         'loc_B70',
     )
 
-    SetChrChipByIndex(0x00FE, 25)
+    ChrSetChipByIndex(0x00FE, 25)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1529,7 +1519,7 @@ def func_0C_AB1():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 26)
+    ChrSetChipByIndex(0x00FE, 26)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1581,7 +1571,7 @@ def func_0D_B71():
         'loc_B8A',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_B75')
 
@@ -1602,7 +1592,7 @@ def func_0E_B8B():
         'loc_C46',
     )
 
-    SetChrChipByIndex(0x00FE, 35)
+    ChrSetChipByIndex(0x00FE, 35)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1700,7 +1690,7 @@ def func_0E_B8B():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 36)
+    ChrSetChipByIndex(0x00FE, 36)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1752,7 +1742,7 @@ def func_0F_C47():
         'loc_C60',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_C4B')
 
@@ -1773,7 +1763,7 @@ def func_10_C61():
         'loc_D1C',
     )
 
-    SetChrChipByIndex(0x00FE, 45)
+    ChrSetChipByIndex(0x00FE, 45)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1871,7 +1861,7 @@ def func_10_C61():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 46)
+    ChrSetChipByIndex(0x00FE, 46)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1923,7 +1913,7 @@ def func_11_D1D():
         'loc_D36',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x07, 1600)
 
     Jump('loc_D21')
 
@@ -1944,7 +1934,7 @@ def func_12_D37():
         'loc_DF2',
     )
 
-    SetChrChipByIndex(0x00FE, 55)
+    ChrSetChipByIndex(0x00FE, 55)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -2042,7 +2032,7 @@ def func_12_D37():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 56)
+    ChrSetChipByIndex(0x00FE, 56)
 
     ExecExpressionWithValue(
         0x00FE,

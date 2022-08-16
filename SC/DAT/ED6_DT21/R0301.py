@@ -9,21 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('R0301   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '洛连特方向'),
-    TXT(0x02, '翡翠之塔方向'),
-    TXT(0x03, '玛鲁加矿山方向'),
-    TXT(0x04, ''),
-    TXT(0x05, ''),
-    TXT(0x06, ''),
-    TXT(0x07, ''),
-    TXT(0x08, ''),
-    TXT(0x09, ''),
-    TXT(0x0A, ''),
-    TXT(0x0B, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -38,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x4C1
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -74,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -85,11 +65,12 @@ def ChipData():
         ('ED6_DT09/CH10101._CH', 'ED6_DT09/CH10101P._CP'),
     ]
 
-# id: 0x10002 offset: 0xCA
+# id: 0x10001 offset: 0xCA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '洛连特方向',
             x                   = -204970,
             z                   = -10,
             y                   = -35250,
@@ -104,6 +85,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '翡翠之塔方向',
             x                   = -247900,
             z                   = 5880,
             y                   = 53200,
@@ -118,6 +100,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '玛鲁加矿山方向',
             x                   = -143120,
             z                   = 7990,
             y                   = 22520,
@@ -133,11 +116,12 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x12A
+# id: 0x10002 offset: 0x12A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = -217000,
             z           = 4100,
             y           = 25000,
@@ -151,6 +135,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -230000,
             z           = 4000,
             y           = 15000,
@@ -164,6 +149,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -254000,
             z           = 6000,
             y           = 27000,
@@ -177,6 +163,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -190360,
             z           = 3940,
             y           = 18070,
@@ -190,6 +177,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -179000,
             z           = 4000,
             y           = 0,
@@ -203,6 +191,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -180000,
             z           = 4000,
             y           = -14000,
@@ -216,6 +205,7 @@ def MonsterData():
             word_1A     = 0x0000,
         ),
         ScenaMonsterData(
+            name        = '',
             x           = -146620,
             z           = 8090,
             y           = 520,
@@ -230,13 +220,13 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x1EE
+# id: 0x10003 offset: 0x1EE
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x1EE
+# id: 0x10004 offset: 0x1EE
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -282,14 +272,14 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x25A
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x25B
-@scena.Code('Init')
-def Init():
-    OP_16(0x02, 0x00000FA0, 0xFFFAD7B0, 0xFFFE0C00, 0x0023000F)
+@scena.Code('func_01_25B')
+def func_01_25B():
+    OP_16(0x02, 4000, -338000, -128000, 2293775)
 
     If(
         (
@@ -334,8 +324,8 @@ def Init():
         'loc_2B7',
     )
 
-    SetMapFlags(0x00000010)
-    OP_11(0xE6, 0xF0, 0xFF, 0x00000000, 0x0000EA60, 0x00000000)
+    MapSetFlags(0x00000010)
+    OP_11(0xE6, 0xF0, 0xFF, 0, 60000, 0)
 
     Jump('loc_2CC')
 
@@ -343,8 +333,8 @@ def Init():
 
     label('loc_2B7')
 
-    SetMapFlags(0x00000010)
-    OP_11(0xE6, 0xF0, 0xFF, 0x00000000, 0x00013880, 0x00000000)
+    MapSetFlags(0x00000010)
+    OP_11(0xE6, 0xF0, 0xFF, 0, 80000, 0)
 
     def _loc_2CC(): pass
 
@@ -353,10 +343,10 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x2CD
-@scena.Code('ReInit')
-def ReInit():
-    UnlockAchievement(0x02, 0xC8, 0x01, 0x00)
-    SetMapFlags(0x08000000)
+@scena.Code('func_02_2CD')
+def func_02_2CD():
+    UnlockAchievement(0x02, 0x01C8, 0x00)
+    MapSetFlags(0x08000000)
 
     If(
         (
@@ -367,8 +357,8 @@ def ReInit():
         'loc_3AA',
     )
 
-    OP_22(0x002B, 0x00, 0x64)
-    OP_70(0x0000, 0x0000003C)
+    PlaySE(43, 0x00, 0x64)
+    OP_70(0x0000, 60)
     Sleep(500)
 
     If(
@@ -380,9 +370,9 @@ def ReInit():
     )
 
     FadeOut(300, 0, 100)
-    OP_22(0x0011, 0x00, 0x64)
+    PlaySE(17, 0x00, 0x64)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -399,7 +389,7 @@ def ReInit():
     OP_56(0x00)
     SetMessageWindowPos(72, 320, 56, 3)
     FadeIn(300, 0)
-    OP_A2(0x1931)
+    SetScenaFlags(ScenaFlag(0x0326, 1, 0x1931))
 
     Jump('loc_3A7')
 
@@ -408,7 +398,7 @@ def ReInit():
     label('loc_341')
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -427,9 +417,9 @@ def ReInit():
     CloseMessageWindow()
     OP_56(0x00)
     FadeIn(300, 0)
-    OP_22(0x002C, 0x00, 0x64)
+    PlaySE(44, 0x00, 0x64)
     OP_6F(0x0000, 60)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
 
     def _loc_3A7(): pass
 
@@ -442,7 +432,7 @@ def ReInit():
     label('loc_3AA')
 
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -463,7 +453,7 @@ def ReInit():
     Sleep(30)
 
     TalkEnd(0x00FF)
-    ClearMapFlags(0x08000000)
+    MapClearFlags(0x08000000)
 
     Return()
 
@@ -471,7 +461,7 @@ def ReInit():
 @scena.Code('func_03_3E9')
 def func_03_3E9():
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(
@@ -495,7 +485,7 @@ def func_03_3E9():
 @scena.Code('func_04_455')
 def func_04_455():
     FadeOut(300, 0, 100)
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, -1, -1, -1)
 
     Talk(

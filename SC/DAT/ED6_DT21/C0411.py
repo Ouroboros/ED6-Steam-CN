@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C0411   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x13C
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -81,33 +71,33 @@ def ChipData():
         ('ED6_DT29/CH12141._CH', 'ED6_DT29/CH12141P._CP'),
     ]
 
-# id: 0x10002 offset: 0xFA
+# id: 0x10001 offset: 0xFA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xFA
+# id: 0x10002 offset: 0xFA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xFA
+# id: 0x10003 offset: 0xFA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xFA
+# id: 0x10004 offset: 0xFA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xFA
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.PushValueByIndex, 0x0),
@@ -118,8 +108,8 @@ def PreInit():
         'loc_11E',
     )
 
-    SetChrPos(0x0000, 270, 0, -17670, 357)
-    OP_69(0x0000, 0x00000000)
+    ChrSetPos(0x0000, 270, 0, -17670, 357)
+    OP_69(0x0000, 0)
 
     def _loc_11E(): pass
 
@@ -128,13 +118,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x11F
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_11F')
+def func_01_11F():
     Return()
 
 # id: 0x0002 offset: 0x120
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_120')
+def func_02_120():
     OP_C8(0x0200, 0x001E, 'C_PLAC19._CH', 0x01, 0x01F4)
 
     Return()

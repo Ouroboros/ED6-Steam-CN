@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0130_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x4738
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,40 +54,40 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     EventBegin(0x00)
     Fade(1000)
     Call(1, 0x0004)
@@ -463,13 +453,13 @@ def PreInit():
 
     CloseMessageWindow()
     OP_62(0x0029, 0x00000000, 1700, 0x0A, 0x0B, 0x000000FA, 0x02)
-    OP_22(0x000F, 0x00, 0x64)
+    PlaySE(15, 0x00, 0x64)
     Sleep(1500)
 
     OP_62(0x0101, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
     OP_62(0x0103, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
     Sleep(150)
 
     If(
@@ -483,7 +473,7 @@ def PreInit():
     )
 
     OP_62(0x00F8, 0x00000000, 2300, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_716')
 
@@ -502,7 +492,7 @@ def PreInit():
     )
 
     OP_62(0x00F8, 0x00000000, 1700, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_716')
 
@@ -511,7 +501,7 @@ def PreInit():
     label('loc_6FF')
 
     OP_62(0x00F8, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     def _loc_716(): pass
 
@@ -528,7 +518,7 @@ def PreInit():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_77B')
 
@@ -547,7 +537,7 @@ def PreInit():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_77B')
 
@@ -556,7 +546,7 @@ def PreInit():
     label('loc_764')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     def _loc_77B(): pass
 
@@ -791,13 +781,13 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xABD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_ABD')
+def func_01_ABD():
     EventBegin(0x00)
     Fade(1000)
     Call(1, 0x0004)
-    OP_8C(0x000F, 270, 0)
-    OP_8C(0x0010, 270, 0)
+    ChrSetDirection(0x000F, 270, 0)
+    ChrSetDirection(0x0010, 270, 0)
     OP_0D()
 
     ChrTalk(
@@ -930,8 +920,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0xC49
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_C49')
+def func_02_C49():
     ChrTalk(
         0x0101,
         (
@@ -1172,7 +1162,7 @@ def ReInit():
 
     CloseMessageWindow()
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
@@ -1187,7 +1177,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1214,7 +1204,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1241,7 +1231,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1268,7 +1258,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1384,7 +1374,7 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    OP_8C(0x0101, 90, 400)
+    ChrSetDirection(0x0101, 90, 400)
 
     ChrTalk(
         0x0101,
@@ -1407,7 +1397,7 @@ def ReInit():
 
     Call(1, 0x0005)
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
@@ -1422,7 +1412,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1450,7 +1440,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1477,7 +1467,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1504,7 +1494,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1531,7 +1521,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1598,7 +1588,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1625,7 +1615,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1652,7 +1642,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1680,7 +1670,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1871,7 +1861,7 @@ def ReInit():
 
     CloseMessageWindow()
     OP_62(0x0101, 0x00000000, 2000, 0x14, 0x17, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
     Sleep(1000)
 
     OP_63(0x0101)
@@ -1950,7 +1940,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -1981,7 +1971,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2012,7 +2002,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2043,7 +2033,7 @@ def ReInit():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2144,8 +2134,8 @@ def ReInit():
     OP_28(0x0072, 0x04, 0x08)
     OP_28(0x0072, 0x01, 0x0001)
     OP_28(0x0072, 0x01, 0x0002)
-    OP_A2(0x000B)
-    ClearChrFlags(0x000F, 0x0010)
+    SetScenaFlags(ScenaFlag(0x0001, 3, 0xB))
+    ChrClearFlags(0x000F, 0x0010)
     def _loc_1EA7(): pass
 
     label('loc_1EA7')
@@ -2439,7 +2429,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2467,7 +2457,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2494,7 +2484,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2521,7 +2511,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2548,7 +2538,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2615,7 +2605,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2646,7 +2636,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2678,7 +2668,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2710,7 +2700,7 @@ def func_03_1EA8():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -2754,10 +2744,10 @@ def func_03_1EA8():
 def func_04_26B8():
     OP_4A(0x000F, 255)
     OP_4A(0x0010, 255)
-    SetChrPos(0x0101, 62800, 0, 47270, 90)
-    SetChrPos(0x0103, 61790, 0, 46800, 90)
-    SetChrPos(0x00F8, 61270, 0, 47980, 90)
-    SetChrPos(0x00F9, 60320, 0, 47290, 90)
+    ChrSetPos(0x0101, 62800, 0, 47270, 90)
+    ChrSetPos(0x0103, 61790, 0, 46800, 90)
+    ChrSetPos(0x00F8, 61270, 0, 47980, 90)
+    ChrSetPos(0x00F9, 60320, 0, 47290, 90)
 
     If(
         (
@@ -2769,16 +2759,16 @@ def func_04_26B8():
         'loc_2733',
     )
 
-    SetChrPos(0x00F9, 61270, 0, 47980, 90)
-    SetChrPos(0x00F8, 60320, 0, 47290, 90)
+    ChrSetPos(0x00F9, 61270, 0, 47980, 90)
+    ChrSetPos(0x00F8, 60320, 0, 47290, 90)
 
     def _loc_2733(): pass
 
     label('loc_2733')
 
-    OP_6D(61800, 0, 48260, 0)
+    CameraMove(61800, 0, 48260, 0)
     OP_67(0, 6130, -10000, 0)
-    OP_6B(2870, 0)
+    CameraSetDistance(2870, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
 
@@ -2833,12 +2823,12 @@ def func_05_27B0():
     OP_56(0x00)
     OP_59()
     OP_62(0x000F, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(100)
 
     @scena.Lambda('lambda_27E4')
     def lambda_27E4():
-        OP_95(0x00FE, 0x00000000, 0x00000000, 0x00000000, 0x00000190, 0x00000FA0)
+        ChrJumpToRelative(0x00FE, 0, 0, 0, 400, 4000)
 
         ExitThread()
 
@@ -2877,7 +2867,7 @@ def func_05_27B0():
         ),
     )
 
-    OP_7C(0x00000000, 0x000001F4, 0x00000BB8, 0x00000064)
+    OP_7C(0, 500, 3000, 100)
     CloseMessageWindow()
 
     Return()
@@ -2904,8 +2894,8 @@ def func_06_28A1():
     CloseMessageWindow()
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
-    OP_22(0x0011, 0x00, 0x64)
+    TalkSetChrName('')
+    PlaySE(17, 0x00, 0x64)
 
     Talk(
         (
@@ -3048,9 +3038,9 @@ def func_06_28A1():
     Sleep(1000)
 
     OP_62(0x0101, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
     OP_62(0x0103, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
     Sleep(100)
 
     If(
@@ -3064,7 +3054,7 @@ def func_06_28A1():
     )
 
     OP_62(0x00F8, 0x00000000, 2300, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_2C41')
 
@@ -3083,7 +3073,7 @@ def func_06_28A1():
     )
 
     OP_62(0x00F8, 0x00000000, 1700, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_2C41')
 
@@ -3092,7 +3082,7 @@ def func_06_28A1():
     label('loc_2C2A')
 
     OP_62(0x00F8, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     def _loc_2C41(): pass
 
@@ -3109,7 +3099,7 @@ def func_06_28A1():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_2CA6')
 
@@ -3128,7 +3118,7 @@ def func_06_28A1():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     Jump('loc_2CA6')
 
@@ -3137,7 +3127,7 @@ def func_06_28A1():
     label('loc_2C8F')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x10, 0x13, 0x000000FA, 0x01)
-    OP_22(0x0031, 0x00, 0x64)
+    PlaySE(49, 0x00, 0x64)
 
     def _loc_2CA6(): pass
 
@@ -3147,7 +3137,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3175,7 +3165,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3202,7 +3192,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3229,7 +3219,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3254,7 +3244,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3281,7 +3271,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3308,7 +3298,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3335,7 +3325,7 @@ def func_06_28A1():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3384,8 +3374,8 @@ def func_06_28A1():
     CloseMessageWindow()
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
-    OP_22(0x0017, 0x00, 0x64)
+    TalkSetChrName('')
+    PlaySE(23, 0x00, 0x64)
 
     Talk(
         (
@@ -3401,9 +3391,9 @@ def func_06_28A1():
     OP_56(0x00)
     FadeIn(300, 0)
     SetMessageWindowPos(72, 320, 56, 3)
-    SetChrFlags(0x000F, 0x0010)
-    SetChrFlags(0x0010, 0x0010)
-    OP_A2(0x000C)
+    ChrSetFlags(0x000F, 0x0010)
+    ChrSetFlags(0x0010, 0x0010)
+    SetScenaFlags(ScenaFlag(0x0001, 4, 0xC))
 
     Return()
 
@@ -3411,15 +3401,15 @@ def func_06_28A1():
 @scena.Code('func_07_2FE5')
 def func_07_2FE5():
     EventBegin(0x00)
-    UnlockAchievement(0x01, 0x03, 0x00, 0x00)
-    OP_D2(0x000700A8, 0x000700AC, 0x08)
-    ClearChrFlags(0x0011, 0x0080)
-    SetChrPos(0x0008, -17310, 0, 42890, 270)
-    SetChrPos(0x0011, -15330, 0, 42890, 270)
-    SetChrPos(0x0101, -16070, 0, 44880, 180)
-    SetChrPos(0x0103, -15100, 0, 45270, 180)
-    SetChrPos(0x00F8, -16480, 0, 46150, 180)
-    SetChrPos(0x00F9, -15220, 0, 46480, 180)
+    UnlockAchievement(0x01, 0x0003, 0x00)
+    LoadChip('ED6_DT07/CH01040._CH', 'ED6_DT07/CH01040P._CP', 8)
+    ChrClearFlags(0x0011, 0x0080)
+    ChrSetPos(0x0008, -17310, 0, 42890, 270)
+    ChrSetPos(0x0011, -15330, 0, 42890, 270)
+    ChrSetPos(0x0101, -16070, 0, 44880, 180)
+    ChrSetPos(0x0103, -15100, 0, 45270, 180)
+    ChrSetPos(0x00F8, -16480, 0, 46150, 180)
+    ChrSetPos(0x00F9, -15220, 0, 46480, 180)
 
     If(
         (
@@ -3431,25 +3421,25 @@ def func_07_2FE5():
         'loc_3090',
     )
 
-    SetChrPos(0x00F9, -16480, 0, 46150, 180)
-    SetChrPos(0x00F8, -15220, 0, 46480, 180)
+    ChrSetPos(0x00F9, -16480, 0, 46150, 180)
+    ChrSetPos(0x00F8, -15220, 0, 46480, 180)
 
     def _loc_3090(): pass
 
     label('loc_3090')
 
-    OP_6D(-17110, 0, 44470, 0)
+    CameraMove(-17110, 0, 44470, 0)
     OP_67(0, 6150, -10000, 0)
-    OP_6B(2750, 0)
+    CameraSetDistance(2750, 0)
     OP_6C(315000, 0)
     OP_6E(280, 0)
     OP_4A(0x0008, 255)
-    SetChrFlags(0x0009, 0x0080)
+    ChrSetFlags(0x0009, 0x0080)
     FadeIn(1000, 0)
     OP_0D()
     Sleep(2000)
 
-    OP_8F(0x0008, -16830, 0, 42890, 1000, 0x00)
+    ChrMoveTo(0x0008, -16830, 0, 42890, 1000, 0x00)
 
     ChrTalk(
         0x0008,
@@ -3483,7 +3473,7 @@ def func_07_2FE5():
     )
 
     CloseMessageWindow()
-    OP_8E(0x0011, -15710, 0, 42890, 1000, 0x00)
+    ChrWalkTo(0x0011, -15710, 0, 42890, 1000, 0x00)
 
     ChrTalk(
         0x0011,
@@ -3537,26 +3527,26 @@ def func_07_2FE5():
         ),
     )
 
-    SetChrFlags(0x0011, 0x0020)
+    ChrSetFlags(0x0011, 0x0020)
 
     @scena.Lambda('lambda_32CD')
     def lambda_32CD():
-        OP_95(0x00FE, 0x00000000, 0x00000000, 0x00000000, 0x000007D0, 0x000003E8)
+        ChrJumpToRelative(0x00FE, 0, 0, 0, 2000, 1000)
 
         ExitThread()
 
     DispatchAsync(0x0011, 0x0000, lambda_32CD)
 
-    OP_8C(0x0011, 0, 1600)
-    OP_8C(0x0011, 90, 1600)
-    OP_8C(0x0011, 180, 1600)
-    OP_8C(0x0011, 270, 1600)
-    OP_8C(0x0011, 0, 1600)
-    OP_8C(0x0011, 90, 1600)
-    OP_8C(0x0011, 180, 1600)
-    OP_8C(0x0011, 270, 1600)
+    ChrSetDirection(0x0011, 0, 1600)
+    ChrSetDirection(0x0011, 90, 1600)
+    ChrSetDirection(0x0011, 180, 1600)
+    ChrSetDirection(0x0011, 270, 1600)
+    ChrSetDirection(0x0011, 0, 1600)
+    ChrSetDirection(0x0011, 90, 1600)
+    ChrSetDirection(0x0011, 180, 1600)
+    ChrSetDirection(0x0011, 270, 1600)
     WaitForThreadExit(0x0011, 0x0000)
-    ClearChrFlags(0x0011, 0x0020)
+    ChrClearFlags(0x0011, 0x0020)
     Sleep(500)
 
     ChrTalk(
@@ -3581,7 +3571,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F6, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_33DB')
 
@@ -3600,7 +3590,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F6, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_33DB')
 
@@ -3609,7 +3599,7 @@ def func_07_2FE5():
     label('loc_33C4')
 
     OP_62(0x00F6, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_33DB(): pass
 
@@ -3626,7 +3616,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_3440')
 
@@ -3645,7 +3635,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_3440')
 
@@ -3654,7 +3644,7 @@ def func_07_2FE5():
     label('loc_3429')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_3440(): pass
 
@@ -3673,7 +3663,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F7, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_34AA')
 
@@ -3692,7 +3682,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F7, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_34AA')
 
@@ -3701,7 +3691,7 @@ def func_07_2FE5():
     label('loc_3493')
 
     OP_62(0x00F7, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_34AA(): pass
 
@@ -3718,7 +3708,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F8, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_350F')
 
@@ -3737,7 +3727,7 @@ def func_07_2FE5():
     )
 
     OP_62(0x00F8, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_350F')
 
@@ -3746,7 +3736,7 @@ def func_07_2FE5():
     label('loc_34F8')
 
     OP_62(0x00F8, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_350F(): pass
 
@@ -3766,7 +3756,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3791,7 +3781,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3826,7 +3816,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3851,7 +3841,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3876,7 +3866,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3952,7 +3942,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4018,7 +4008,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4147,7 +4137,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4208,7 +4198,7 @@ def func_07_2FE5():
 
     @scena.Lambda('lambda_3CD0')
     def lambda_3CD0():
-        OP_8E(0x00FE, -15680, 0, 45490, 1000, 0x00)
+        ChrWalkTo(0x00FE, -15680, 0, 45490, 1000, 0x00)
 
         ExitThread()
 
@@ -4220,7 +4210,7 @@ def func_07_2FE5():
 
     @scena.Lambda('lambda_3CFB')
     def lambda_3CFB():
-        OP_6D(-14180, 0, 46960, 2000)
+        CameraMove(-14180, 0, 46960, 2000)
 
         ExitThread()
 
@@ -4240,11 +4230,11 @@ def func_07_2FE5():
     TerminateThread(0x00F8, 0x03)
     TerminateThread(0x00F9, 0x03)
     TerminateThread(0x0008, 0x03)
-    SetChrFlags(0x0011, 0x0080)
+    ChrSetFlags(0x0011, 0x0080)
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4254,10 +4244,10 @@ def func_07_2FE5():
     )
 
     OP_62(0x0104, 0x00000000, 2000, 0x08, 0x09, 0x000000FA, 0x02)
-    OP_22(0x000F, 0x00, 0x64)
+    PlaySE(15, 0x00, 0x64)
     CreateThread(0x0104, 0x00, 0x01, 0x0009)
     WaitForThreadExit(0x0104, 0x0000)
-    SetChrFlags(0x0104, 0x0080)
+    ChrSetFlags(0x0104, 0x0080)
 
     Jump('loc_3D76')
 
@@ -4271,11 +4261,11 @@ def func_07_2FE5():
 
     label('loc_3D76')
 
-    OP_6D(-17110, 0, 44470, 2000)
+    CameraMove(-17110, 0, 44470, 2000)
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4302,7 +4292,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4329,7 +4319,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4356,7 +4346,7 @@ def func_07_2FE5():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4415,7 +4405,7 @@ def func_07_2FE5():
     )
 
     CloseMessageWindow()
-    OP_8C(0x0103, 180, 400)
+    ChrSetDirection(0x0103, 180, 400)
 
     ChrTalk(
         0x0103,
@@ -4436,7 +4426,7 @@ def func_07_2FE5():
     CloseMessageWindow()
     FadeOut(1000, 0, -1)
     OP_0D()
-    OP_A2(0x10F1)
+    SetScenaFlags(ScenaFlag(0x021E, 1, 0x10F1))
     NewScene('ED6_DT21/T0131._SN', 101, 0, 0)
     IdleLoop()
 
@@ -4445,37 +4435,37 @@ def func_07_2FE5():
 # id: 0x0008 offset: 0x3FD9
 @scena.Code('func_08_3FD9')
 def func_08_3FD9():
-    OP_8E(0x00FE, -13930, 0, 46920, 3000, 0x00)
-    OP_8E(0x00FE, -12800, 0, 46920, 3000, 0x00)
+    ChrWalkTo(0x00FE, -13930, 0, 46920, 3000, 0x00)
+    ChrWalkTo(0x00FE, -12800, 0, 46920, 3000, 0x00)
 
     @scena.Lambda('lambda_4007')
     def lambda_4007():
-        OP_9F(0x00FE, 0xFF, 0xFF, 0xFF, 0x00, 0x00000190)
+        ChrSetRGBAMask(0x00FE, 255, 255, 255, 0, 400)
 
         ExitThread()
 
     DispatchAsync(0x00FE, 0x0001, lambda_4007)
 
-    OP_8E(0x00FE, -11420, 0, 46920, 3000, 0x00)
+    ChrWalkTo(0x00FE, -11420, 0, 46920, 3000, 0x00)
 
     Return()
 
 # id: 0x0009 offset: 0x4028
 @scena.Code('func_09_4028')
 def func_09_4028():
-    SetChrFlags(0x00FE, 0x0040)
-    OP_8E(0x00FE, -12800, 0, 46920, 5000, 0x00)
+    ChrSetFlags(0x00FE, 0x0040)
+    ChrWalkTo(0x00FE, -12800, 0, 46920, 5000, 0x00)
 
     @scena.Lambda('lambda_4047')
     def lambda_4047():
-        OP_9F(0x00FE, 0xFF, 0xFF, 0xFF, 0x00, 0x00000190)
+        ChrSetRGBAMask(0x00FE, 255, 255, 255, 0, 400)
 
         ExitThread()
 
     DispatchAsync(0x00FE, 0x0001, lambda_4047)
 
-    OP_8E(0x00FE, -11420, 0, 46920, 5000, 0x00)
-    ClearChrFlags(0x00FE, 0x0040)
+    ChrWalkTo(0x00FE, -11420, 0, 46920, 5000, 0x00)
+    ChrClearFlags(0x00FE, 0x0040)
     OP_63(0x0104)
 
     Return()
@@ -4485,10 +4475,10 @@ def func_09_4028():
 def func_0A_4070():
     EventBegin(0x00)
     Fade(1000)
-    SetChrPos(0x0101, 52230, 5000, 51080, 0)
-    SetChrPos(0x0103, 51500, 5000, 50530, 0)
-    SetChrPos(0x00F8, 52220, 5000, 49650, 0)
-    SetChrPos(0x00F9, 52230, 5000, 48630, 0)
+    ChrSetPos(0x0101, 52230, 5000, 51080, 0)
+    ChrSetPos(0x0103, 51500, 5000, 50530, 0)
+    ChrSetPos(0x00F8, 52220, 5000, 49650, 0)
+    ChrSetPos(0x00F9, 52230, 5000, 48630, 0)
 
     If(
         (
@@ -4500,16 +4490,16 @@ def func_0A_4070():
         'loc_40EA',
     )
 
-    SetChrPos(0x00F9, 52220, 5000, 49650, 0)
-    SetChrPos(0x00F8, 52230, 5000, 48630, 0)
+    ChrSetPos(0x00F9, 52220, 5000, 49650, 0)
+    ChrSetPos(0x00F8, 52230, 5000, 48630, 0)
 
     def _loc_40EA(): pass
 
     label('loc_40EA')
 
-    OP_6D(51850, 5000, 50700, 0)
+    CameraMove(51850, 5000, 50700, 0)
     OP_67(0, 8000, -10000, 0)
-    OP_6B(2800, 0)
+    CameraSetDistance(2800, 0)
     OP_6C(315000, 0)
     OP_6E(262, 0)
     OP_0D()
@@ -4530,7 +4520,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4561,7 +4551,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4592,7 +4582,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4623,7 +4613,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x07)"),
+            (Expr.Eval, "OP_42(ChrTable['金'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4661,15 +4651,15 @@ def func_0A_4070():
     CloseMessageWindow()
     OP_94(0x01, 0x0101, 0x0000, 0x000000C8, 0x000003E8, 0x00)
     Fade(250)
-    SetChrChipByIndex(0x0101, 10)
-    SetChrSubChip(0x0101, 0)
+    ChrSetChipByIndex(0x0101, 10)
+    ChrSetSubChip(0x0101, 0)
     OP_0D()
     Sleep(500)
 
     Sleep(1000)
 
     OP_62(0x0101, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
@@ -4685,22 +4675,22 @@ def func_0A_4070():
 
     CloseMessageWindow()
     Fade(250)
-    SetChrChipByIndex(0x0101, 65535)
+    ChrSetChipByIndex(0x0101, 65535)
     OP_0D()
     Sleep(500)
 
-    OP_8C(0x0101, 180, 400)
+    ChrSetDirection(0x0101, 180, 400)
     Fade(1000)
-    SetChrChipByIndex(0x0101, 32)
+    ChrSetChipByIndex(0x0101, 32)
     OP_0D()
     Sleep(1000)
 
     FadeOut(300, 0, 100)
-    OP_AD(0x00240093, 0x00BE, 0x0064, 0x000001F4)
+    OP_AD('ED6_DT24/C_VIS124._CH', 0x00BE, 0x0064, 0x000001F4)
     Sleep(1000)
 
     SetMessageWindowPos(-1, 300, -1, 3)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -4723,7 +4713,7 @@ def func_0A_4070():
     Sleep(1000)
 
     Fade(1000)
-    SetChrChipByIndex(0x0101, 65535)
+    ChrSetChipByIndex(0x0101, 65535)
     OP_0D()
     Sleep(400)
 
@@ -4757,7 +4747,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4785,7 +4775,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4813,7 +4803,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x03)"),
+            (Expr.Eval, "OP_42(ChrTable['奥利维尔'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -4841,7 +4831,7 @@ def func_0A_4070():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,

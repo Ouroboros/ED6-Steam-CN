@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C3605_1 ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x441F
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,50 +54,50 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xA9
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xA9
+@scena.Code('func_01_A9')
+def func_01_A9():
+    Return()
+
 # id: 0x0002 offset: 0xAA
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_AA')
+def func_02_AA():
     Call(1, 0x0003)
     Call(1, 0x0007)
 
@@ -154,8 +144,8 @@ def func_03_B3():
 
     label('loc_E7')
 
-    OP_D2(0x000701D0, 0x000701DC, 0x12)
-    OP_D2(0x000701D1, 0x000701DD, 0x13)
+    LoadChip('ED6_DT07/CH00120._CH', 'ED6_DT07/CH00120P._CP', 18)
+    LoadChip('ED6_DT07/CH00121._CH', 'ED6_DT07/CH00121P._CP', 19)
 
     Jump('loc_15A')
 
@@ -163,8 +153,8 @@ def func_03_B3():
 
     label('loc_FE')
 
-    OP_D2(0x00070218, 0x00070224, 0x12)
-    OP_D2(0x00070219, 0x00070225, 0x13)
+    LoadChip('ED6_DT07/CH00150._CH', 'ED6_DT07/CH00150P._CP', 18)
+    LoadChip('ED6_DT07/CH00151._CH', 'ED6_DT07/CH00151P._CP', 19)
 
     Jump('loc_15A')
 
@@ -172,8 +162,8 @@ def func_03_B3():
 
     label('loc_115')
 
-    OP_D2(0x00070200, 0x0007020C, 0x12)
-    OP_D2(0x00070201, 0x0007020D, 0x13)
+    LoadChip('ED6_DT07/CH00140._CH', 'ED6_DT07/CH00140P._CP', 18)
+    LoadChip('ED6_DT07/CH00141._CH', 'ED6_DT07/CH00141P._CP', 19)
 
     Jump('loc_15A')
 
@@ -181,8 +171,8 @@ def func_03_B3():
 
     label('loc_12C')
 
-    OP_D2(0x00070230, 0x0007023C, 0x12)
-    OP_D2(0x00070231, 0x0007023D, 0x13)
+    LoadChip('ED6_DT07/CH00160._CH', 'ED6_DT07/CH00160P._CP', 18)
+    LoadChip('ED6_DT07/CH00161._CH', 'ED6_DT07/CH00161P._CP', 19)
 
     Jump('loc_15A')
 
@@ -190,8 +180,8 @@ def func_03_B3():
 
     label('loc_143')
 
-    OP_D2(0x00270176, 0x00270183, 0x12)
-    OP_D2(0x00270177, 0x00270184, 0x13)
+    LoadChip('ED6_DT27/CH04080._CH', 'ED6_DT27/CH04080P._CP', 18)
+    LoadChip('ED6_DT27/CH04081._CH', 'ED6_DT27/CH04081P._CP', 19)
 
     Jump('loc_15A')
 
@@ -199,51 +189,51 @@ def func_03_B3():
 
     label('loc_15A')
 
-    OP_D2(0x0026019C, 0x002601A1, 0x14)
-    OP_D2(0x002600A0, 0x002600A5, 0x15)
-    OP_D2(0x00260052, 0x00260057, 0x16)
-    OP_D2(0x0029014C, 0x00290150, 0x17)
-    OP_D2(0x0029014D, 0x00290151, 0x18)
-    OP_6D(-3550, 13000, -1710, 0)
+    LoadChip('ED6_DT26/CH20412._CH', 'ED6_DT26/CH20412P._CP', 20)
+    LoadChip('ED6_DT26/CH20280._CH', 'ED6_DT26/CH20280P._CP', 21)
+    LoadChip('ED6_DT26/CH20242._CH', 'ED6_DT26/CH20242P._CP', 22)
+    LoadChip('ED6_DT29/CH12330._CH', 'ED6_DT29/CH12330P._CP', 23)
+    LoadChip('ED6_DT29/CH12331._CH', 'ED6_DT29/CH12331P._CP', 24)
+    CameraMove(-3550, 13000, -1710, 0)
     OP_67(0, 5150, -10000, 0)
-    OP_6B(2500, 0)
+    CameraSetDistance(2500, 0)
     OP_6C(307000, 0)
     OP_6E(282, 0)
-    SetChrPos(0x0008, -1150, 950, 12410, 180)
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrFlags(0x0008, 0x0002)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 20)
+    ChrSetPos(0x0008, -1150, 950, 12410, 180)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0008, 0x0002)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 20)
     OP_71(0x0005, 0x0004)
     OP_6F(0x0000, 0)
     OP_6F(0x0001, 0)
     OP_6F(0x0002, 0)
     OP_6F(0x0003, 0)
     OP_6F(0x0004, 0)
-    OP_70(0x0000, 0x00000008)
-    OP_70(0x0001, 0x00000008)
-    OP_70(0x0002, 0x00000008)
-    OP_70(0x0003, 0x00000008)
-    OP_70(0x0004, 0x00000008)
+    OP_70(0x0000, 8)
+    OP_70(0x0001, 8)
+    OP_70(0x0002, 8)
+    OP_70(0x0003, 8)
+    OP_70(0x0004, 8)
     LoadEffect(0x00, 'map\\\\mp061_00.eff')
     LoadEffect(0x01, 'Scraft\\\\sc005_03.eff')
     LoadEffect(0x02, 'scraft\\\\sc000_11.eff')
     LoadEffect(0x03, 'battle\\\\btbomb00.eff')
     PlayEffect(0x00, 0xFF, 0x00FF, 0, 1300, 13650, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    SetChrPos(0x0101, 740, -1750, -7480, 0)
-    SetChrPos(0x0102, -650, -1750, -7480, 0)
-    SetChrPos(0x00F9, 820, -1750, -7480, 0)
-    SetChrPos(0x0108, -750, -1750, -7480, 0)
-    SetChrFlags(0x0101, 0x0080)
-    SetChrFlags(0x0102, 0x0080)
-    SetChrFlags(0x0108, 0x0080)
-    SetChrFlags(0x00F9, 0x0080)
+    ChrSetPos(0x0101, 740, -1750, -7480, 0)
+    ChrSetPos(0x0102, -650, -1750, -7480, 0)
+    ChrSetPos(0x00F9, 820, -1750, -7480, 0)
+    ChrSetPos(0x0108, -750, -1750, -7480, 0)
+    ChrSetFlags(0x0101, 0x0080)
+    ChrSetFlags(0x0102, 0x0080)
+    ChrSetFlags(0x0108, 0x0080)
+    ChrSetFlags(0x00F9, 0x0080)
     OP_71(0x000C, 0x0004)
     FadeIn(2000, 0)
 
     @scena.Lambda('lambda_0333')
     def lambda_0333():
-        OP_6D(-550, 0, -1710, 6000)
+        CameraMove(-550, 0, -1710, 6000)
 
         ExitThread()
 
@@ -259,7 +249,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0363')
     def lambda_0363():
-        OP_6B(2900, 3000)
+        CameraSetDistance(2900, 3000)
 
         ExitThread()
 
@@ -283,11 +273,11 @@ def func_03_B3():
 
     Sleep(4000)
 
-    ClearChrFlags(0x0101, 0x0080)
+    ChrClearFlags(0x0101, 0x0080)
 
     @scena.Lambda('lambda_039D')
     def lambda_039D():
-        OP_8E(0x00FE, 740, 0, -2040, 2000, 0x00)
+        ChrWalkTo(0x00FE, 740, 0, -2040, 2000, 0x00)
 
         ExitThread()
 
@@ -295,11 +285,11 @@ def func_03_B3():
 
     Sleep(100)
 
-    ClearChrFlags(0x0102, 0x0080)
+    ChrClearFlags(0x0102, 0x0080)
 
     @scena.Lambda('lambda_03C2')
     def lambda_03C2():
-        OP_8E(0x00FE, -650, 0, -2009, 2000, 0x00)
+        ChrWalkTo(0x00FE, -650, 0, -2009, 2000, 0x00)
 
         ExitThread()
 
@@ -307,11 +297,11 @@ def func_03_B3():
 
     Sleep(800)
 
-    ClearChrFlags(0x00F9, 0x0080)
+    ChrClearFlags(0x00F9, 0x0080)
 
     @scena.Lambda('lambda_03E7')
     def lambda_03E7():
-        OP_8E(0x00FE, 820, 0, -3520, 2000, 0x00)
+        ChrWalkTo(0x00FE, 820, 0, -3520, 2000, 0x00)
 
         ExitThread()
 
@@ -319,11 +309,11 @@ def func_03_B3():
 
     Sleep(100)
 
-    ClearChrFlags(0x0108, 0x0080)
+    ChrClearFlags(0x0108, 0x0080)
 
     @scena.Lambda('lambda_040C')
     def lambda_040C():
-        OP_8E(0x00FE, -750, 0, -3590, 2000, 0x00)
+        ChrWalkTo(0x00FE, -750, 0, -3590, 2000, 0x00)
 
         ExitThread()
 
@@ -367,15 +357,15 @@ def func_03_B3():
 
     CloseMessageWindow()
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     OP_62(0x0108, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     OP_62(0x0102, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     If(
@@ -389,7 +379,7 @@ def func_03_B3():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_589')
 
@@ -408,7 +398,7 @@ def func_03_B3():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_589')
 
@@ -417,7 +407,7 @@ def func_03_B3():
     label('loc_572')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_589(): pass
 
@@ -425,12 +415,12 @@ def func_03_B3():
 
     Sleep(1000)
 
-    OP_1D(0x6F)
+    PlayBGM(111)
     Sleep(500)
 
     @scena.Lambda('lambda_059B')
     def lambda_059B():
-        OP_6D(-1310, 950, 13270, 3000)
+        CameraMove(-1310, 950, 13270, 3000)
 
         ExitThread()
 
@@ -453,22 +443,22 @@ def func_03_B3():
     DispatchAsync(0x0101, 0x0003, lambda_05CB)
 
     WaitForThreadExit(0x0101, 0x0003)
-    SetChrPos(0x0108, 740, -1750, -7480, 0)
-    SetChrPos(0x0102, -650, -1750, -7480, 0)
-    SetChrPos(0x0101, 820, -1750, -7480, 0)
-    SetChrPos(0x00F9, -750, -1750, -7480, 0)
-    SetChrSubChip(0x0101, 0)
-    SetChrChipByIndex(0x0101, 10)
-    SetChrSubChip(0x0102, 0)
-    SetChrChipByIndex(0x0102, 12)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x00F9, 0)
-    SetChrChipByIndex(0x00F9, 18)
+    ChrSetPos(0x0108, 740, -1750, -7480, 0)
+    ChrSetPos(0x0102, -650, -1750, -7480, 0)
+    ChrSetPos(0x0101, 820, -1750, -7480, 0)
+    ChrSetPos(0x00F9, -750, -1750, -7480, 0)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetChipByIndex(0x0101, 10)
+    ChrSetSubChip(0x0102, 0)
+    ChrSetChipByIndex(0x0102, 12)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x00F9, 0)
+    ChrSetChipByIndex(0x00F9, 18)
 
     @scena.Lambda('lambda_064C')
     def lambda_064C():
-        OP_8F(0x00FE, -450, 0, 5000, 6000, 0x00)
+        ChrMoveTo(0x00FE, -450, 0, 5000, 6000, 0x00)
 
         ExitThread()
 
@@ -478,7 +468,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_066C')
     def lambda_066C():
-        OP_8F(0x00FE, 670, 0, 3800, 6000, 0x00)
+        ChrMoveTo(0x00FE, 670, 0, 3800, 6000, 0x00)
 
         ExitThread()
 
@@ -488,7 +478,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_068C')
     def lambda_068C():
-        OP_8F(0x00FE, -1190, 0, 3900, 6000, 0x00)
+        ChrMoveTo(0x00FE, -1190, 0, 3900, 6000, 0x00)
 
         ExitThread()
 
@@ -498,16 +488,16 @@ def func_03_B3():
 
     @scena.Lambda('lambda_06AC')
     def lambda_06AC():
-        OP_8F(0x00FE, 100, 0, 2100, 6000, 0x00)
+        ChrMoveTo(0x00FE, 100, 0, 2100, 6000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x00F9, 0x0001, lambda_06AC)
 
     Fade(500)
-    OP_6D(-1490, 1000, 9000, 0)
+    CameraMove(-1490, 1000, 9000, 0)
     OP_67(0, 3640, -10000, 0)
-    OP_6B(3640, 0)
+    CameraSetDistance(3640, 0)
     OP_6C(333000, 0)
     OP_6E(293, 0)
     OP_0D()
@@ -626,19 +616,19 @@ def func_03_B3():
     )
 
     CloseMessageWindow()
-    OP_99(0x0008, 0x00, 0x02, 0x000005DC)
+    OP_99(0x0008, 0x00, 0x02, 1500)
     Sleep(1000)
 
-    OP_99(0x0008, 0x03, 0x09, 0x000005DC)
+    OP_99(0x0008, 0x03, 0x09, 1500)
     Sleep(200)
 
-    ClearChrFlags(0x0008, 0x0002)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 2)
+    ChrClearFlags(0x0008, 0x0002)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 2)
     Sleep(200)
 
-    OP_99(0x0008, 0x01, 0x02, 0x000003E8)
-    OP_22(0x00BC, 0x00, 0x64)
+    OP_99(0x0008, 0x01, 0x02, 1000)
+    PlaySE(188, 0x00, 0x64)
 
     ExecExpressionWithVar(
         0x1C,
@@ -649,11 +639,11 @@ def func_03_B3():
         ),
     )
 
-    ClearMapFlags(0x00000010)
+    MapClearFlags(0x00000010)
 
     @scena.Lambda('lambda_0A8A')
     def lambda_0A8A():
-        OP_6D(-930, 1000, 5500, 2000)
+        CameraMove(-930, 1000, 5500, 2000)
 
         ExitThread()
 
@@ -669,7 +659,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0ABA')
     def lambda_0ABA():
-        OP_6B(3690, 2000)
+        CameraSetDistance(3690, 2000)
 
         ExitThread()
 
@@ -683,13 +673,13 @@ def func_03_B3():
 
     DispatchAsync(0x0101, 0x0003, lambda_0ACA)
 
-    SetChrPos(0x000A, 12740, 250, 9670, 270)
-    SetChrPos(0x000B, -13570, 250, 6260, 90)
-    SetChrPos(0x000C, 9220, 250, -3940, 270)
-    ClearChrFlags(0x000A, 0x0080)
-    ClearChrFlags(0x000B, 0x0080)
-    ClearChrFlags(0x000C, 0x0080)
-    SetChrFlags(0x000A, 0x0800)
+    ChrSetPos(0x000A, 12740, 250, 9670, 270)
+    ChrSetPos(0x000B, -13570, 250, 6260, 90)
+    ChrSetPos(0x000C, 9220, 250, -3940, 270)
+    ChrClearFlags(0x000A, 0x0080)
+    ChrClearFlags(0x000B, 0x0080)
+    ChrClearFlags(0x000C, 0x0080)
+    ChrSetFlags(0x000A, 0x0800)
     CreateThread(0x000A, 0x03, 0x00, 0x0002)
     CreateThread(0x000B, 0x03, 0x00, 0x0002)
     CreateThread(0x000C, 0x03, 0x00, 0x0002)
@@ -702,15 +692,15 @@ def func_03_B3():
     CreateThread(0x000C, 0x02, 0x01, 0x0006)
     Sleep(500)
 
-    SetChrSubChip(0x0008, 0)
+    ChrSetSubChip(0x0008, 0)
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     OP_62(0x0108, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(100)
 
     OP_62(0x0102, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     If(
         (
@@ -723,7 +713,7 @@ def func_03_B3():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_C08')
 
@@ -742,7 +732,7 @@ def func_03_B3():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_C08')
 
@@ -751,7 +741,7 @@ def func_03_B3():
     label('loc_BF1')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_C08(): pass
 
@@ -761,7 +751,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0C13')
     def lambda_0C13():
-        OP_8C(0x00FE, 90, 400)
+        ChrSetDirection(0x00FE, 90, 400)
 
         ExitThread()
 
@@ -771,7 +761,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0C26')
     def lambda_0C26():
-        OP_8C(0x00FE, 270, 400)
+        ChrSetDirection(0x00FE, 270, 400)
 
         ExitThread()
 
@@ -779,7 +769,7 @@ def func_03_B3():
 
     Sleep(50)
 
-    OP_8C(0x00F9, 180, 400)
+    ChrSetDirection(0x00F9, 180, 400)
     WaitForThreadExit(0x000A, 0x0002)
     WaitForThreadExit(0x000B, 0x0002)
     WaitForThreadExit(0x000C, 0x0002)
@@ -806,7 +796,7 @@ def func_03_B3():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -833,7 +823,7 @@ def func_03_B3():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x02)"),
+            (Expr.Eval, "OP_42(ChrTable['雪拉扎德'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -860,7 +850,7 @@ def func_03_B3():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x06)"),
+            (Expr.Eval, "OP_42(ChrTable['提妲'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -887,7 +877,7 @@ def func_03_B3():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x04)"),
+            (Expr.Eval, "OP_42(ChrTable['科洛丝'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -914,7 +904,7 @@ def func_03_B3():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x08)"),
+            (Expr.Eval, "OP_42(ChrTable['凯文神父'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -950,9 +940,9 @@ def func_03_B3():
     Sleep(300)
 
     Fade(500)
-    OP_6D(-1040, 1200, 9600, 0)
+    CameraMove(-1040, 1200, 9600, 0)
     OP_67(0, 3100, -10000, 0)
-    OP_6B(4200, 0)
+    CameraSetDistance(4200, 0)
     OP_6C(356000, 0)
     OP_6E(240, 0)
     OP_0D()
@@ -984,8 +974,8 @@ def func_03_B3():
     Sleep(300)
 
     Fade(250)
-    SetChrChipByIndex(0x0008, 22)
-    SetChrSubChip(0x0008, 1)
+    ChrSetChipByIndex(0x0008, 22)
+    ChrSetSubChip(0x0008, 1)
     OP_0D()
     Sleep(300)
 
@@ -1000,7 +990,7 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0EEE')
     def lambda_0EEE():
-        OP_6D(-800, 950, 6000, 400)
+        CameraMove(-800, 950, 6000, 400)
 
         ExitThread()
 
@@ -1016,19 +1006,19 @@ def func_03_B3():
 
     @scena.Lambda('lambda_0F1E')
     def lambda_0F1E():
-        OP_6B(3300, 400)
+        CameraSetDistance(3300, 400)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0002, lambda_0F1E)
 
-    SetChrSubChip(0x0008, 2)
-    OP_7D(0x00, 0x0008, 0x0032, 0x01F4)
-    OP_22(0x023B, 0x00, 0x64)
+    ChrSetSubChip(0x0008, 2)
+    ChrSetAfterImage(0x00, 0x0008, 0x0032, 0x01F4)
+    PlaySE(571, 0x00, 0x64)
 
     @scena.Lambda('lambda_0F40')
     def lambda_0F40():
-        OP_96(0x00FE, 0xFFFFFE20, 0x00000000, 0x00001694, 0x000007D0, 0x00001F40)
+        ChrJumpTo(0x00FE, -480, 0, 5780, 2000, 8000)
 
         ExitThread()
 
@@ -1036,38 +1026,38 @@ def func_03_B3():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x000A, 24)
+    ChrSetChipByIndex(0x000A, 24)
 
     @scena.Lambda('lambda_0F68')
     def lambda_0F68():
-        OP_8E(0x00FE, 760, 0, 3750, 8000, 0x00)
+        ChrWalkTo(0x00FE, 760, 0, 3750, 8000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x000A, 0x0000, lambda_0F68)
 
-    SetChrChipByIndex(0x000B, 24)
+    ChrSetChipByIndex(0x000B, 24)
 
     @scena.Lambda('lambda_0F88')
     def lambda_0F88():
-        OP_8E(0x00FE, -1340, 0, 4030, 8000, 0x00)
+        ChrWalkTo(0x00FE, -1340, 0, 4030, 8000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x000B, 0x0000, lambda_0F88)
 
-    SetChrChipByIndex(0x000C, 24)
+    ChrSetChipByIndex(0x000C, 24)
 
     @scena.Lambda('lambda_0FA8')
     def lambda_0FA8():
-        OP_8E(0x00FE, -240, 0, 2470, 8000, 0x00)
+        ChrWalkTo(0x00FE, -240, 0, 2470, 8000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x000C, 0x0000, lambda_0FA8)
 
     WaitForThreadExit(0x0101, 0x0000)
-    OP_7D(0x01, 0x0008, 0x0000, 0x0000)
+    ChrSetAfterImage(0x01, 0x0008, 0x0000, 0x0000)
     TerminateThread(0x0008, 0xFF)
     TerminateThread(0x000A, 0xFF)
     TerminateThread(0x000B, 0xFF)
@@ -1100,39 +1090,39 @@ def func_03_B3():
 # id: 0x0004 offset: 0xFF9
 @scena.Code('func_04_FF9')
 def func_04_FF9():
-    SetChrChipByIndex(0x00FE, 24)
-    OP_8E(0x00FE, 10600, 250, 4960, 6000, 0x00)
-    OP_8E(0x00FE, 6070, 250, 4430, 6000, 0x00)
-    SetChrChipByIndex(0x00FE, 23)
-    OP_8C(0x00FE, 270, 400)
+    ChrSetChipByIndex(0x00FE, 24)
+    ChrWalkTo(0x00FE, 10600, 250, 4960, 6000, 0x00)
+    ChrWalkTo(0x00FE, 6070, 250, 4430, 6000, 0x00)
+    ChrSetChipByIndex(0x00FE, 23)
+    ChrSetDirection(0x00FE, 270, 400)
 
     Return()
 
 # id: 0x0005 offset: 0x1033
 @scena.Code('func_05_1033')
 def func_05_1033():
-    SetChrChipByIndex(0x00FE, 24)
-    OP_8E(0x00FE, -9870, 250, 3200, 6000, 0x00)
-    OP_8E(0x00FE, -6210, 250, 5070, 6000, 0x00)
-    SetChrChipByIndex(0x00FE, 23)
-    OP_8C(0x00FE, 90, 400)
+    ChrSetChipByIndex(0x00FE, 24)
+    ChrWalkTo(0x00FE, -9870, 250, 3200, 6000, 0x00)
+    ChrWalkTo(0x00FE, -6210, 250, 5070, 6000, 0x00)
+    ChrSetChipByIndex(0x00FE, 23)
+    ChrSetDirection(0x00FE, 90, 400)
 
     Return()
 
 # id: 0x0006 offset: 0x106D
 @scena.Code('func_06_106D')
 def func_06_106D():
-    SetChrChipByIndex(0x00FE, 24)
-    SetChrFlags(0x00FE, 0x0004)
-    OP_22(0x00A3, 0x00, 0x64)
-    OP_96(0x00FE, 0x000013E2, 0x00001360, 0xFFFFE610, 0x00001388, 0x00001770)
-    OP_22(0x00A4, 0x00, 0x64)
-    OP_22(0x00A3, 0x00, 0x64)
-    OP_96(0x00FE, 0xFFFFFF92, 0x00000000, 0xFFFFF330, 0x000007D0, 0x00001770)
-    OP_22(0x00A4, 0x00, 0x64)
-    SetChrChipByIndex(0x00FE, 23)
-    ClearChrFlags(0x00FE, 0x0004)
-    OP_8C(0x00FE, 0, 400)
+    ChrSetChipByIndex(0x00FE, 24)
+    ChrSetFlags(0x00FE, 0x0004)
+    PlaySE(163, 0x00, 0x64)
+    ChrJumpTo(0x00FE, 5090, 4960, -6640, 5000, 6000)
+    PlaySE(164, 0x00, 0x64)
+    PlaySE(163, 0x00, 0x64)
+    ChrJumpTo(0x00FE, -110, 0, -3280, 2000, 6000)
+    PlaySE(164, 0x00, 0x64)
+    ChrSetChipByIndex(0x00FE, 23)
+    ChrClearFlags(0x00FE, 0x0004)
+    ChrSetDirection(0x00FE, 0, 400)
 
     Return()
 
@@ -1145,10 +1135,10 @@ def func_07_10CB():
     TerminateThread(0x000B, 0x00)
     TerminateThread(0x000C, 0x00)
     TerminateThread(0x000C, 0x00)
-    SetChrFlags(0x000A, 0x0080)
-    SetChrFlags(0x000B, 0x0080)
-    SetChrFlags(0x000C, 0x0080)
-    OP_7D(0x01, 0x0008, 0x0000, 0x0000)
+    ChrSetFlags(0x000A, 0x0080)
+    ChrSetFlags(0x000B, 0x0080)
+    ChrSetFlags(0x000C, 0x0080)
+    ChrSetAfterImage(0x01, 0x0008, 0x0000, 0x0000)
 
     Switch(
         (
@@ -1167,8 +1157,8 @@ def func_07_10CB():
 
     label('loc_111B')
 
-    OP_D2(0x000701D0, 0x000701DC, 0x12)
-    OP_D2(0x000701D1, 0x000701DD, 0x13)
+    LoadChip('ED6_DT07/CH00120._CH', 'ED6_DT07/CH00120P._CP', 18)
+    LoadChip('ED6_DT07/CH00121._CH', 'ED6_DT07/CH00121P._CP', 19)
 
     Jump('loc_118E')
 
@@ -1176,8 +1166,8 @@ def func_07_10CB():
 
     label('loc_1132')
 
-    OP_D2(0x00070218, 0x00070224, 0x12)
-    OP_D2(0x00070219, 0x00070225, 0x13)
+    LoadChip('ED6_DT07/CH00150._CH', 'ED6_DT07/CH00150P._CP', 18)
+    LoadChip('ED6_DT07/CH00151._CH', 'ED6_DT07/CH00151P._CP', 19)
 
     Jump('loc_118E')
 
@@ -1185,8 +1175,8 @@ def func_07_10CB():
 
     label('loc_1149')
 
-    OP_D2(0x00070200, 0x0007020C, 0x12)
-    OP_D2(0x00070201, 0x0007020D, 0x13)
+    LoadChip('ED6_DT07/CH00140._CH', 'ED6_DT07/CH00140P._CP', 18)
+    LoadChip('ED6_DT07/CH00141._CH', 'ED6_DT07/CH00141P._CP', 19)
 
     Jump('loc_118E')
 
@@ -1194,8 +1184,8 @@ def func_07_10CB():
 
     label('loc_1160')
 
-    OP_D2(0x00070230, 0x0007023C, 0x12)
-    OP_D2(0x00070231, 0x0007023D, 0x13)
+    LoadChip('ED6_DT07/CH00160._CH', 'ED6_DT07/CH00160P._CP', 18)
+    LoadChip('ED6_DT07/CH00161._CH', 'ED6_DT07/CH00161P._CP', 19)
 
     Jump('loc_118E')
 
@@ -1203,8 +1193,8 @@ def func_07_10CB():
 
     label('loc_1177')
 
-    OP_D2(0x00270176, 0x00270183, 0x12)
-    OP_D2(0x00270177, 0x00270184, 0x13)
+    LoadChip('ED6_DT27/CH04080._CH', 'ED6_DT27/CH04080P._CP', 18)
+    LoadChip('ED6_DT27/CH04081._CH', 'ED6_DT27/CH04081P._CP', 19)
 
     Jump('loc_118E')
 
@@ -1212,39 +1202,39 @@ def func_07_10CB():
 
     label('loc_118E')
 
-    OP_D2(0x0026019C, 0x002601A1, 0x14)
-    OP_D2(0x002600A0, 0x002600A5, 0x15)
-    OP_D2(0x00260052, 0x00260057, 0x16)
-    OP_D2(0x00070251, 0x0007025D, 0x17)
-    OP_D2(0x0007024D, 0x00070259, 0x18)
-    OP_D2(0x002601A7, 0x002601AC, 0x19)
-    SetChrSubChip(0x0101, 0)
-    SetChrChipByIndex(0x0101, 10)
-    SetChrSubChip(0x0102, 0)
-    SetChrChipByIndex(0x0102, 12)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 65535)
-    SetChrSubChip(0x00F9, 0)
-    SetChrChipByIndex(0x00F9, 18)
-    SetChrPos(0x0108, 40, 0, 5100, 0)
-    SetChrPos(0x0101, 210, 0, 3200, 0)
-    SetChrPos(0x0102, 1130, 0, 2410, 0)
-    SetChrPos(0x00F9, -530, 0, 1460, 0)
-    SetChrPos(0x0008, 50, 0, 10340, 180)
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrChipByIndex(0x0008, 2)
-    SetChrSubChip(0x0008, 0)
+    LoadChip('ED6_DT26/CH20412._CH', 'ED6_DT26/CH20412P._CP', 20)
+    LoadChip('ED6_DT26/CH20280._CH', 'ED6_DT26/CH20280P._CP', 21)
+    LoadChip('ED6_DT26/CH20242._CH', 'ED6_DT26/CH20242P._CP', 22)
+    LoadChip('ED6_DT07/CH00179._CH', 'ED6_DT07/CH00179P._CP', 23)
+    LoadChip('ED6_DT07/CH00175._CH', 'ED6_DT07/CH00175P._CP', 24)
+    LoadChip('ED6_DT26/CH20431._CH', 'ED6_DT26/CH20431P._CP', 25)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetChipByIndex(0x0101, 10)
+    ChrSetSubChip(0x0102, 0)
+    ChrSetChipByIndex(0x0102, 12)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 65535)
+    ChrSetSubChip(0x00F9, 0)
+    ChrSetChipByIndex(0x00F9, 18)
+    ChrSetPos(0x0108, 40, 0, 5100, 0)
+    ChrSetPos(0x0101, 210, 0, 3200, 0)
+    ChrSetPos(0x0102, 1130, 0, 2410, 0)
+    ChrSetPos(0x00F9, -530, 0, 1460, 0)
+    ChrSetPos(0x0008, 50, 0, 10340, 180)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetChipByIndex(0x0008, 2)
+    ChrSetSubChip(0x0008, 0)
     OP_71(0x0005, 0x0004)
     OP_6F(0x0000, 0)
     OP_6F(0x0001, 0)
     OP_6F(0x0002, 0)
     OP_6F(0x0003, 0)
     OP_6F(0x0004, 0)
-    OP_70(0x0000, 0x00000008)
-    OP_70(0x0001, 0x00000008)
-    OP_70(0x0002, 0x00000008)
-    OP_70(0x0003, 0x00000008)
-    OP_70(0x0004, 0x00000008)
+    OP_70(0x0000, 8)
+    OP_70(0x0001, 8)
+    OP_70(0x0002, 8)
+    OP_70(0x0003, 8)
+    OP_70(0x0004, 8)
     LoadEffect(0x00, 'map\\\\mp061_00.eff')
     LoadEffect(0x01, 'scraft\\sc007_10.eff')
     LoadEffect(0x02, 'scraft\\\\sc000_11.eff')
@@ -1253,9 +1243,9 @@ def func_07_10CB():
     PlayEffect(0x00, 0x00, 0x00FF, 0, 1300, 13650, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
     Sleep(500)
 
-    OP_6D(1110, 0, 8260, 0)
+    CameraMove(1110, 0, 8260, 0)
     OP_67(0, 6210, -10000, 0)
-    OP_6B(2940, 0)
+    CameraSetDistance(2940, 0)
     OP_6C(45000, 0)
     OP_6E(344, 0)
     OP_71(0x000C, 0x0004)
@@ -1285,9 +1275,9 @@ def func_07_10CB():
     Sleep(100)
 
     Fade(500)
-    OP_6D(0, 0, 8800, 0)
+    CameraMove(0, 0, 8800, 0)
     OP_67(0, 4720, -10000, 0)
-    OP_6B(3600, 0)
+    CameraSetDistance(3600, 0)
     OP_6C(0, 0)
     OP_6E(287, 0)
     OP_0D()
@@ -1406,15 +1396,15 @@ def func_07_10CB():
     CloseMessageWindow()
     OP_20(0x000003E8)
     Fade(500)
-    SetChrSubChip(0x0008, 0)
+    ChrSetSubChip(0x0008, 0)
     OP_0D()
-    SetChrChipByIndex(0x0008, 25)
-    OP_99(0x0008, 0x00, 0x02, 0x000003E8)
+    ChrSetChipByIndex(0x0008, 25)
+    OP_99(0x0008, 0x00, 0x02, 1000)
     Sleep(500)
 
     @scena.Lambda('lambda_177A')
     def lambda_177A():
-        OP_6B(3400, 10000)
+        CameraSetDistance(3400, 10000)
 
         ExitThread()
 
@@ -1449,8 +1439,8 @@ def func_07_10CB():
     Sleep(100)
 
     Fade(250)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
     OP_0D()
     Sleep(500)
 
@@ -1480,7 +1470,7 @@ def func_07_10CB():
     WaitForThreadExit(0x0101, 0x0002)
     Sleep(500)
 
-    OP_1D(0x2C)
+    PlayBGM(44)
     Sleep(500)
 
     ExecExpressionWithValue(
@@ -1527,7 +1517,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1950')
     def lambda_1950():
-        OP_6B(2500, 400)
+        CameraSetDistance(2500, 400)
 
         ExitThread()
 
@@ -1543,7 +1533,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1970')
     def lambda_1970():
-        OP_6D(0, 500, 9500, 400)
+        CameraMove(0, 500, 9500, 400)
 
         ExitThread()
 
@@ -1576,12 +1566,12 @@ def func_07_10CB():
 
     DispatchAsync2(0x00F9, 0x0003, lambda_19AA)
 
-    SetChrFlags(0x0008, 0x0040)
-    SetChrFlags(0x0108, 0x0040)
-    SetChrFlags(0x0008, 0x0020)
-    SetChrFlags(0x0108, 0x1000)
-    OP_82(0x01, 0x02)
-    OP_82(0x02, 0x02)
+    ChrSetFlags(0x0008, 0x0040)
+    ChrSetFlags(0x0108, 0x0040)
+    ChrSetFlags(0x0008, 0x0020)
+    ChrSetFlags(0x0108, 0x1000)
+    StopEffect(0x01, 0x02)
+    StopEffect(0x02, 0x02)
 
     ExecExpressionWithVar(
         0x1C,
@@ -1592,13 +1582,13 @@ def func_07_10CB():
         ),
     )
 
-    ClearMapFlags(0x00000010)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    MapClearFlags(0x00000010)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_19ED')
     def lambda_19ED():
-        OP_99(0x00FE, 0x00, 0x01, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x01, 1600)
 
         ExitThread()
 
@@ -1606,28 +1596,28 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_19FD')
     def lambda_19FD():
-        OP_8F(0x00FE, 40, 0, 9990, 12000, 0x00)
+        ChrMoveTo(0x00FE, 40, 0, 9990, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_19FD)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_1A22')
     def lambda_1A22():
-        OP_99(0x00FE, 0x00, 0x04, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x04, 2500)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0002, lambda_1A22)
 
-    OP_8F(0x0108, 40, 0, 9150, 12000, 0x00)
+    ChrMoveTo(0x0108, 40, 0, 9150, 12000, 0x00)
 
     @scena.Lambda('lambda_1A46')
     def lambda_1A46():
-        OP_9E(0x00FE, 0x00000014, 0x00000000, 0x00001388, 0x000009C4)
+        OP_9E(0x00FE, 20, 0, 5000, 2500)
         Yield()
 
         Jump('lambda_1A46')
@@ -1636,7 +1626,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1A63')
     def lambda_1A63():
-        OP_9E(0x00FE, 0x00000014, 0x00000000, 0x00001388, 0x000009C4)
+        OP_9E(0x00FE, 20, 0, 5000, 2500)
         Yield()
 
         Jump('lambda_1A63')
@@ -1644,7 +1634,7 @@ def func_07_10CB():
     DispatchAsync2(0x0108, 0x0003, lambda_1A63)
 
     PlayEffect(0x04, 0xFF, 0x0008, 0, 700, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x00000190, 0x00000BB8, 0x0000012C)
+    OP_7C(100, 400, 3000, 300)
     Sleep(500)
 
     TerminateThread(0x0008, 0x03)
@@ -1660,7 +1650,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1AE3')
     def lambda_1AE3():
-        OP_96(0x00FE, 0x00000910, 0x000000FA, 0x0000286E, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 2320, 250, 10350, 500, 8000)
 
         ExitThread()
 
@@ -1668,23 +1658,23 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1B01')
     def lambda_1B01():
-        OP_96(0x00FE, 0xFFFFF6F0, 0x000000FA, 0x0000286E, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -2320, 250, 10350, 500, 8000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_1B01)
 
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x0108, 0)
-    OP_8C(0x0008, 270, 0)
-    OP_8C(0x0108, 90, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetDirection(0x0008, 270, 0)
+    ChrSetDirection(0x0108, 90, 0)
 
     @scena.Lambda('lambda_1B46')
     def lambda_1B46():
-        OP_6D(-8380, 250, 9110, 600)
+        CameraMove(-8380, 250, 9110, 600)
 
         ExitThread()
 
@@ -1692,60 +1682,60 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1B5E')
     def lambda_1B5E():
-        OP_6B(2820, 2000)
+        CameraSetDistance(2820, 2000)
 
         ExitThread()
 
     DispatchAsync(0x0102, 0x0002, lambda_1B5E)
 
-    SetChrPos(0x0101, 300, 0, 2110, 0)
-    SetChrPos(0x0102, 930, 0, 1470, 0)
-    SetChrPos(0x00F9, -810, 0, 1110, 0)
-    SetChrChipByIndex(0x0101, 65535)
-    SetChrChipByIndex(0x0102, 65535)
-    SetChrChipByIndex(0x00F9, 65535)
-    SetChrSubChip(0x0101, 0)
-    SetChrSubChip(0x0102, 0)
-    SetChrSubChip(0x00F9, 0)
-    OP_96(0x0108, 0xFFFFDB02, 0x000000FA, 0x00002378, 0x000001F4, 0x00001F40)
-    OP_96(0x0008, 0xFFFFDEEA, 0x000000FA, 0x00002364, 0x000001F4, 0x00001F40)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    ChrSetPos(0x0101, 300, 0, 2110, 0)
+    ChrSetPos(0x0102, 930, 0, 1470, 0)
+    ChrSetPos(0x00F9, -810, 0, 1110, 0)
+    ChrSetChipByIndex(0x0101, 65535)
+    ChrSetChipByIndex(0x0102, 65535)
+    ChrSetChipByIndex(0x00F9, 65535)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetSubChip(0x0102, 0)
+    ChrSetSubChip(0x00F9, 0)
+    ChrJumpTo(0x0108, -9470, 250, 9080, 500, 8000)
+    ChrJumpTo(0x0008, -8470, 250, 9060, 500, 8000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_1BF7')
     def lambda_1BF7():
-        OP_99(0x00FE, 0x00, 0x0D, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x0D, 1600)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_1BF7)
 
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
     Sleep(200)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 800, 700, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
 
     @scena.Lambda('lambda_1C50')
     def lambda_1C50():
-        OP_9E(0x00FE, 0x0000001E, 0x00000000, 0x0000012C, 0x00000FA0)
+        OP_9E(0x00FE, 30, 0, 300, 4000)
         Yield()
 
         Jump('lambda_1C50')
 
     DispatchAsync2(0x0108, 0x0001, lambda_1C50)
 
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     Sleep(300)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 800, 700, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
 
     @scena.Lambda('lambda_1CCE')
     def lambda_1CCE():
-        OP_96(0x00FE, 0xFFFFDDA0, 0x000000FA, 0x00002364, 0x0000012C, 0x00001F40)
+        ChrJumpTo(0x00FE, -8800, 250, 9060, 300, 8000)
 
         ExitThread()
 
@@ -1753,62 +1743,62 @@ def func_07_10CB():
 
     Sleep(400)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 1058642330, 1100, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     TerminateThread(0x0108, 0x01)
-    SetChrChipByIndex(0x0108, 24)
-    SetChrSubChip(0x0108, 1)
+    ChrSetChipByIndex(0x0108, 24)
+    ChrSetSubChip(0x0108, 1)
     Sleep(200)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_1D59')
     def lambda_1D59():
-        OP_91(0x00FE, -800, 0, 0, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, -800, 0, 0, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0002, lambda_1D59)
 
     WaitForThreadExit(0x0008, 0x0001)
-    OP_96(0x0108, 0xFFFFDEEA, 0x000000FA, 0x00001F90, 0x000001F4, 0x00001F40)
+    ChrJumpTo(0x0108, -8470, 250, 8080, 500, 8000)
     ChrTurnDirection(0x0108, 0x0008, 0)
     ChrTurnDirection(0x0008, 0x0108, 0)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_1DB2')
     def lambda_1DB2():
-        OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x07, 2000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_1DB2)
 
-    SetChrSubChip(0x0008, 2)
-    SetChrChipByIndex(0x0008, 25)
-    OP_22(0x01FB, 0x00, 0x64)
+    ChrSetSubChip(0x0008, 2)
+    ChrSetChipByIndex(0x0008, 25)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 700, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     Sleep(100)
 
-    OP_91(0x0008, 0, 0, 800, 10000, 0x00)
+    ChrMoveToRelativeAsync(0x0008, 0, 0, 800, 10000, 0x00)
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x0008, 3)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 3)
     Sleep(300)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
 
     @scena.Lambda('lambda_1E53')
     def lambda_1E53():
-        OP_96(0x00FE, 0xFFFFDB02, 0x000000FA, 0x0000209E, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -9470, 250, 8350, 500, 8000)
 
         ExitThread()
 
@@ -1818,7 +1808,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1E76')
     def lambda_1E76():
-        OP_96(0x00FE, 0xFFFFEAA2, 0x000000FA, 0x0000209E, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -5470, 250, 8350, 500, 8000)
 
         ExitThread()
 
@@ -1828,7 +1818,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1E99')
     def lambda_1E99():
-        OP_6D(-6390, 250, 2530, 600)
+        CameraMove(-6390, 250, 2530, 600)
 
         ExitThread()
 
@@ -1842,14 +1832,14 @@ def func_07_10CB():
 
     DispatchAsync(0x0101, 0x0002, lambda_1EB1)
 
-    ClearChrFlags(0x0008, 0x0020)
-    ClearChrFlags(0x0108, 0x1000)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 6)
+    ChrClearFlags(0x0008, 0x0020)
+    ChrClearFlags(0x0108, 0x1000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 6)
 
     @scena.Lambda('lambda_1ED5')
     def lambda_1ED5():
-        OP_8E(0x00FE, -5470, 250, 4500, 7000, 0x00)
+        ChrWalkTo(0x00FE, -5470, 250, 4500, 7000, 0x00)
 
         ExitThread()
 
@@ -1857,34 +1847,34 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_1EF0')
     def lambda_1EF0():
-        OP_8E(0x00FE, -9470, 250, 4520, 7000, 0x00)
+        ChrWalkTo(0x00FE, -9470, 250, 4520, 7000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_1EF0)
 
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
     ChrTurnDirection(0x0108, 0x0008, 0)
     ChrTurnDirection(0x0008, 0x0108, 0)
-    SetChrFlags(0x0008, 0x0020)
-    SetChrFlags(0x0108, 0x1000)
+    ChrSetFlags(0x0008, 0x0020)
+    ChrSetFlags(0x0108, 0x1000)
 
     @scena.Lambda('lambda_1F32')
     def lambda_1F32():
-        OP_96(0x00FE, 0xFFFFEAA2, 0x000000FA, 0x000011A8, 0x000001F4, 0x00001B58)
+        ChrJumpTo(0x00FE, -5470, 250, 4520, 500, 7000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_1F32)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_1F5A')
     def lambda_1F5A():
-        OP_99(0x00FE, 0x00, 0x04, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x04, 2500)
 
         ExitThread()
 
@@ -1892,38 +1882,38 @@ def func_07_10CB():
 
     Sleep(100)
 
-    OP_22(0x0208, 0x00, 0x64)
+    PlaySE(520, 0x00, 0x64)
 
     @scena.Lambda('lambda_1F74')
     def lambda_1F74():
-        OP_96(0x00FE, 0xFFFFEAA2, 0x000000FA, 0x00001784, 0x000001F4, 0x00001B58)
+        ChrJumpTo(0x00FE, -5470, 250, 6020, 500, 7000)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_1F74)
 
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
     WaitForThreadExit(0x0108, 0x0002)
     ChrTurnDirection(0x0108, 0x0008, 0)
     ChrTurnDirection(0x0008, 0x0108, 0)
 
     @scena.Lambda('lambda_1FB4')
     def lambda_1FB4():
-        OP_6D(-2380, 250, -860, 2000)
+        CameraMove(-2380, 250, -860, 2000)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_1FB4)
 
-    SetChrFlags(0x0108, 0x1000)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 9)
+    ChrSetFlags(0x0108, 0x1000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 9)
 
     @scena.Lambda('lambda_1FDB')
     def lambda_1FDB():
-        OP_99(0x00FE, 0x00, 0x0D, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x0D, 2000)
 
         ExitThread()
 
@@ -1932,23 +1922,23 @@ def func_07_10CB():
     Sleep(500)
 
     PlayEffect(0x04, 0xFF, 0x0108, 0, 1000, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x3DCCCCCD, 0x00000FA0, 0x00000BB8, 0x00000064)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 17)
+    OP_7C(1036831949, 4000, 3000, 100)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 17)
 
     @scena.Lambda('lambda_2040')
     def lambda_2040():
-        OP_96(0x00FE, 0xFFFFEAA2, 0x000000FA, 0xFFFFF560, 0x00000064, 0x00003A98)
+        ChrJumpTo(0x00FE, -5470, 250, -2720, 100, 15000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_2040)
 
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
 
     @scena.Lambda('lambda_2077')
     def lambda_2077():
@@ -1960,59 +1950,59 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2087')
     def lambda_2087():
-        OP_96(0x0008, 0xFFFFEAA2, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001B58)
+        ChrJumpTo(0x0008, -5470, 250, -1720, 500, 7000)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0000, lambda_2087)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_20AF')
     def lambda_20AF():
-        OP_99(0x00FE, 0x00, 0x02, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x02, 2500)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_20AF)
 
-    OP_22(0x0208, 0x00, 0x64)
-    OP_96(0x0108, 0xFFFFF088, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001F40)
+    PlaySE(520, 0x00, 0x64)
+    ChrJumpTo(0x0108, -3960, 250, -1720, 500, 8000)
     ChrTurnDirection(0x0108, 0x0008, 0)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
     ChrTurnDirection(0x0008, 0x0108, 0)
-    OP_8F(0x0008, -4960, 250, -1720, 10000, 0x00)
-    OP_96(0x0108, 0xFFFFFC40, 0x000000FA, 0xFFFFFD30, 0x000001F4, 0x00001F40)
-    OP_96(0x0108, 0x000007A8, 0x000000FA, 0xFFFFF560, 0x000001F4, 0x00001F40)
-    OP_96(0x0108, 0x00000B90, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001F40)
+    ChrMoveTo(0x0008, -4960, 250, -1720, 10000, 0x00)
+    ChrJumpTo(0x0108, -960, 250, -720, 500, 8000)
+    ChrJumpTo(0x0108, 1960, 250, -2720, 500, 8000)
+    ChrJumpTo(0x0108, 2960, 250, -1720, 500, 8000)
 
     @scena.Lambda('lambda_214C')
     def lambda_214C():
-        OP_6D(10500, 250, -1530, 1500)
+        CameraMove(10500, 250, -1530, 1500)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_214C)
 
-    OP_96(0x0008, 0x000007A8, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001B58)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 9)
+    ChrJumpTo(0x0008, 1960, 250, -1720, 500, 7000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 9)
 
     @scena.Lambda('lambda_2185')
     def lambda_2185():
-        OP_99(0x00FE, 0x00, 0x0D, 0x00000DAC)
+        OP_99(0x00FE, 0x00, 0x0D, 3500)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_2185)
 
-    OP_22(0x0208, 0x00, 0x64)
-    OP_96(0x0108, 0xFFFFF088, 0x000000FA, 0xFFFFF948, 0x000007D0, 0x00001F40)
+    PlaySE(520, 0x00, 0x64)
+    ChrJumpTo(0x0108, -3960, 250, -1720, 2000, 8000)
     ChrTurnDirection(0x0108, 0x0008, 0)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_21C2')
     def lambda_21C2():
@@ -2024,28 +2014,28 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_21D0')
     def lambda_21D0():
-        OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x07, 2500)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0002, lambda_21D0)
 
-    OP_8F(0x0108, 960, 250, -1720, 20000, 0x00)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 15)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 8)
+    ChrMoveTo(0x0108, 960, 250, -1720, 20000, 0x00)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 15)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 8)
     PlayEffect(0x04, 0xFF, 0x0008, 0, 500, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x00000190, 0x00000BB8, 0x00000064)
-    OP_8F(0x0008, 8960, 250, -1720, 22000, 0x00)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    OP_7C(100, 400, 3000, 100)
+    ChrMoveTo(0x0008, 8960, 250, -1720, 22000, 0x00)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_2276')
     def lambda_2276():
-        OP_99(0x00FE, 0x00, 0x04, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x04, 2000)
 
         ExitThread()
 
@@ -2053,7 +2043,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2286')
     def lambda_2286():
-        OP_8F(0x00FE, 10960, 250, -1720, 20000, 0x00)
+        ChrMoveTo(0x00FE, 10960, 250, -1720, 20000, 0x00)
 
         ExitThread()
 
@@ -2061,11 +2051,11 @@ def func_07_10CB():
 
     Sleep(200)
 
-    OP_22(0x0208, 0x00, 0x64)
+    PlaySE(520, 0x00, 0x64)
 
     @scena.Lambda('lambda_22AB')
     def lambda_22AB():
-        OP_96(0x00FE, 0x00002300, 0x000000FA, 0xFFFFF178, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 8960, 250, -3720, 500, 8000)
 
         ExitThread()
 
@@ -2081,8 +2071,8 @@ def func_07_10CB():
     DispatchAsync2(0x0008, 0x0002, lambda_22C9)
 
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
     WaitForThreadExit(0x0008, 0x0001)
 
     @scena.Lambda('lambda_22EE')
@@ -2095,36 +2085,36 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_22FE')
     def lambda_22FE():
-        OP_6D(10500, 250, -530, 5000)
+        CameraMove(10500, 250, -530, 5000)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_22FE)
 
-    OP_96(0x0008, 0x00001F18, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001F40)
-    OP_96(0x0008, 0x0000267A, 0x000000FA, 0xFFFFF948, 0x000001F4, 0x00001F40)
+    ChrJumpTo(0x0008, 7960, 250, -1720, 500, 8000)
+    ChrJumpTo(0x0008, 9850, 250, -1720, 500, 8000)
     ChrTurnDirection(0x0108, 0x0008, 0)
     TerminateThread(0x0008, 0x02)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_2359')
     def lambda_2359():
-        OP_99(0x00FE, 0x00, 0x0D, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x0D, 1600)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_2359)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0108, 0, 500, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    OP_7C(100, 200, 3000, 100)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_23BE')
     def lambda_23BE():
-        OP_9E(0x00FE, 0x0000001E, 0x00000000, 0x0000012C, 0x00000FA0)
+        OP_9E(0x00FE, 30, 0, 300, 4000)
         Yield()
 
         Jump('lambda_23BE')
@@ -2135,42 +2125,42 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_23E0')
     def lambda_23E0():
-        OP_99(0x00FE, 0x00, 0x02, 0x00000BB8)
+        OP_99(0x00FE, 0x00, 0x02, 3000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0000, lambda_23E0)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0108, 0, 500, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     Sleep(500)
 
-    SetChrChipByIndex(0x0108, 16)
-    SetChrSubChip(0x0108, 0)
-    OP_22(0x01FB, 0x00, 0x64)
+    ChrSetChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0108, 0, 700, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     TerminateThread(0x0108, 0x01)
 
     @scena.Lambda('lambda_2499')
     def lambda_2499():
-        OP_91(0x00FE, 800, 0, 0, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, 800, 0, 0, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_2499)
 
     WaitForThreadExit(0x0008, 0x0001)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_24D2')
     def lambda_24D2():
-        OP_91(0x00FE, -800, 0, 0, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, -800, 0, 0, 12000, 0x00)
 
         ExitThread()
 
@@ -2178,12 +2168,12 @@ def func_07_10CB():
 
     Sleep(100)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_24FC')
     def lambda_24FC():
-        OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x07, 2500)
 
         ExitThread()
 
@@ -2191,14 +2181,14 @@ def func_07_10CB():
 
     Sleep(100)
 
-    OP_22(0x01FB, 0x00, 0x64)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 700, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
     Sleep(100)
 
     @scena.Lambda('lambda_2561')
     def lambda_2561():
-        OP_91(0x00FE, -800, 0, 0, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, -800, 0, 0, 12000, 0x00)
 
         ExitThread()
 
@@ -2208,18 +2198,18 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2581')
     def lambda_2581():
-        OP_91(0x00FE, 800, 0, 0, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, 800, 0, 0, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_2581)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 9)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 9)
 
     @scena.Lambda('lambda_25A6')
     def lambda_25A6():
-        OP_99(0x00FE, 0x00, 0x0D, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x0D, 2000)
 
         ExitThread()
 
@@ -2227,11 +2217,11 @@ def func_07_10CB():
 
     Sleep(400)
 
-    OP_22(0x0208, 0x00, 0x64)
+    PlaySE(520, 0x00, 0x64)
 
     @scena.Lambda('lambda_25C0')
     def lambda_25C0():
-        OP_96(0x00FE, 0x0000267A, 0x000000FA, 0xFFFFED90, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 9850, 250, -4720, 500, 8000)
 
         ExitThread()
 
@@ -2241,12 +2231,12 @@ def func_07_10CB():
     ChrTurnDirection(0x0108, 0x0008, 0)
     WaitForThreadExit(0x0008, 0x0002)
     ChrTurnDirection(0x0008, 0x0108, 0)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
 
     @scena.Lambda('lambda_2600')
     def lambda_2600():
-        OP_96(0x00FE, 0x0000267A, 0x000000FA, 0xFFFFF63C, 0x0000012C, 0x00001F40)
+        ChrJumpTo(0x00FE, 9850, 250, -2500, 300, 8000)
 
         ExitThread()
 
@@ -2254,12 +2244,12 @@ def func_07_10CB():
 
     Sleep(100)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_262D')
     def lambda_262D():
-        OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x07, 2000)
 
         ExitThread()
 
@@ -2267,15 +2257,15 @@ def func_07_10CB():
 
     Sleep(50)
 
-    OP_22(0x0208, 0x00, 0x64)
+    PlaySE(520, 0x00, 0x64)
     Sleep(100)
 
-    OP_96(0x0008, 0x0000267A, 0x000000FA, 0xFFFFFCC2, 0x000001F4, 0x00001F40)
+    ChrJumpTo(0x0008, 9850, 250, -830, 500, 8000)
     WaitForThreadExit(0x0108, 0x0002)
 
     @scena.Lambda('lambda_2668')
     def lambda_2668():
-        OP_96(0x00FE, 0x0000267A, 0x000000FA, 0xFFFFFA06, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 9850, 250, -1530, 500, 8000)
 
         ExitThread()
 
@@ -2285,7 +2275,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_268B')
     def lambda_268B():
-        OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x07, 2000)
 
         ExitThread()
 
@@ -2293,28 +2283,28 @@ def func_07_10CB():
 
     Sleep(50)
 
-    OP_22(0x0208, 0x00, 0x64)
+    PlaySE(520, 0x00, 0x64)
     Sleep(100)
 
-    OP_96(0x0008, 0x0000290E, 0x000000FA, 0x00000384, 0x000001F4, 0x00001F40)
+    ChrJumpTo(0x0008, 10510, 250, 900, 500, 8000)
 
     @scena.Lambda('lambda_26C1')
     def lambda_26C1():
-        OP_6D(8500, 250, 6500, 600)
+        CameraMove(8500, 250, 6500, 600)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_26C1)
 
-    OP_96(0x0008, 0x00002832, 0x000000FA, 0x000012D4, 0x000001F4, 0x00001F40)
-    OP_96(0x0008, 0x00001EDC, 0x000000FA, 0x000022B0, 0x000001F4, 0x00001F40)
-    OP_96(0x0108, 0x00001E1E, 0x000000FA, 0x00001310, 0x000001F4, 0x00001F40)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrJumpTo(0x0008, 10290, 250, 4820, 500, 8000)
+    ChrJumpTo(0x0008, 7900, 250, 8880, 500, 8000)
+    ChrJumpTo(0x0108, 7710, 250, 4880, 500, 8000)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_2728')
     def lambda_2728():
-        OP_96(0x00FE, 0x00001EDC, 0x000000FA, 0x00001CD4, 0x000001F4, 0x00002328)
+        ChrJumpTo(0x00FE, 7900, 250, 7380, 500, 9000)
 
         ExitThread()
 
@@ -2322,18 +2312,18 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2746')
     def lambda_2746():
-        OP_96(0x00FE, 0x00001E1E, 0x000000FA, 0x000018EC, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 7710, 250, 6380, 500, 8000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_2746)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_276E')
     def lambda_276E():
-        OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+        OP_99(0x00FE, 0x00, 0x07, 2000)
 
         ExitThread()
 
@@ -2342,41 +2332,41 @@ def func_07_10CB():
     Sleep(100)
 
     WaitForThreadExit(0x0008, 0x0001)
-    OP_22(0x01FB, 0x00, 0x64)
-    SetChrChipByIndex(0x0008, 25)
-    SetChrSubChip(0x0008, 2)
+    PlaySE(507, 0x00, 0x64)
+    ChrSetChipByIndex(0x0008, 25)
+    ChrSetSubChip(0x0008, 2)
     PlayEffect(0x02, 0xFF, 0x0008, 0, 700, 500, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
 
     @scena.Lambda('lambda_27DD')
     def lambda_27DD():
-        OP_91(0x00FE, 0, 0, 800, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, 0, 0, 800, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_27DD)
 
-    SetChrSubChip(0x0008, 3)
+    ChrSetSubChip(0x0008, 3)
     WaitForThreadExit(0x0108, 0x0002)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
 
     @scena.Lambda('lambda_2816')
     def lambda_2816():
-        OP_91(0x00FE, 0, 0, -800, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, 0, 0, -800, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0001, lambda_2816)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 9)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 9)
 
     @scena.Lambda('lambda_283B')
     def lambda_283B():
-        OP_99(0x00FE, 0x00, 0x0D, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x0D, 1600)
 
         ExitThread()
 
@@ -2384,15 +2374,15 @@ def func_07_10CB():
 
     Sleep(500)
 
-    SetChrChipByIndex(0x0108, 24)
-    SetChrSubChip(0x0108, 0)
-    OP_22(0x01FB, 0x00, 0x64)
+    ChrSetChipByIndex(0x0108, 24)
+    ChrSetSubChip(0x0108, 0)
+    PlaySE(507, 0x00, 0x64)
     PlayEffect(0x02, 0xFF, 0x0108, 0, 1300, 300, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(100, 200, 3000, 100)
 
     @scena.Lambda('lambda_28A5')
     def lambda_28A5():
-        OP_9E(0x00FE, 0x00000014, 0x00000000, 0x00001388, 0x000009C4)
+        OP_9E(0x00FE, 20, 0, 5000, 2500)
         Yield()
 
         Jump('lambda_28A5')
@@ -2401,23 +2391,23 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_28C2')
     def lambda_28C2():
-        OP_91(0x00FE, 0, 0, -800, 12000, 0x00)
+        ChrMoveToRelativeAsync(0x00FE, 0, 0, -800, 12000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_28C2)
 
     WaitForThreadExit(0x0008, 0x0002)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
     TerminateThread(0x0108, 0x03)
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_28FF')
     def lambda_28FF():
-        OP_96(0x00FE, 0x00001EDC, 0x000000FA, 0x000022B0, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 7900, 250, 8880, 500, 8000)
 
         ExitThread()
 
@@ -2425,7 +2415,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_291D')
     def lambda_291D():
-        OP_96(0x00FE, 0x00001E1E, 0x000000FA, 0x00001310, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 7710, 250, 4880, 500, 8000)
 
         ExitThread()
 
@@ -2435,7 +2425,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2940')
     def lambda_2940():
-        OP_6D(630, 0, 6360, 1500)
+        CameraMove(630, 0, 6360, 1500)
 
         ExitThread()
 
@@ -2449,18 +2439,18 @@ def func_07_10CB():
 
     DispatchAsync(0x0101, 0x0002, lambda_2958)
 
-    ClearChrFlags(0x0008, 0x0004)
-    ClearChrFlags(0x0108, 0x0004)
-    ClearChrFlags(0x0008, 0x0020)
-    ClearChrFlags(0x0108, 0x1000)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 6)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrClearFlags(0x0008, 0x0004)
+    ChrClearFlags(0x0108, 0x0004)
+    ChrClearFlags(0x0008, 0x0020)
+    ChrClearFlags(0x0108, 0x1000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 6)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_2990')
     def lambda_2990():
-        OP_8E(0x00FE, 0, 250, 8880, 7000, 0x00)
+        ChrWalkTo(0x00FE, 0, 250, 8880, 7000, 0x00)
 
         ExitThread()
 
@@ -2468,7 +2458,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_29AB')
     def lambda_29AB():
-        OP_8E(0x00FE, 0, 250, 4880, 7000, 0x00)
+        ChrWalkTo(0x00FE, 0, 250, 4880, 7000, 0x00)
 
         ExitThread()
 
@@ -2477,16 +2467,16 @@ def func_07_10CB():
     WaitForThreadExit(0x0108, 0x0001)
     ChrTurnDirection(0x0008, 0x0108, 0)
     ChrTurnDirection(0x0108, 0x0008, 0)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrFlags(0x0008, 0x0020)
-    SetChrFlags(0x0108, 0x1000)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetFlags(0x0008, 0x0020)
+    ChrSetFlags(0x0108, 0x1000)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_29F7')
     def lambda_29F7():
-        OP_96(0x00FE, 0x00000000, 0x000000FA, 0x00001504, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 0, 250, 5380, 500, 8000)
 
         ExitThread()
 
@@ -2494,18 +2484,18 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2A15')
     def lambda_2A15():
-        OP_99(0x00FE, 0x00, 0x01, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x01, 1600)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0002, lambda_2A15)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_2A2F')
     def lambda_2A2F():
-        OP_96(0x00FE, 0x00000000, 0x000000FA, 0x000024A4, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 0, 250, 9380, 500, 8000)
 
         ExitThread()
 
@@ -2513,19 +2503,19 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2A4D')
     def lambda_2A4D():
-        OP_99(0x00FE, 0x00, 0x04, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x04, 2500)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0002, lambda_2A4D)
 
     PlayEffect(0x04, 0xFF, 0x00FF, 0, 1200, 6880, 0, 0, 0, 1200, 1200, 1200, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x00000190, 0x00000BB8, 0x00000096)
+    OP_7C(100, 400, 3000, 150)
     WaitForThreadExit(0x0108, 0x0001)
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_2ABC')
     def lambda_2ABC():
@@ -2540,7 +2530,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2AD6')
     def lambda_2AD6():
-        OP_96(0x00FE, 0x00000B04, 0x000000FA, 0x00001AE0, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 2820, 250, 6880, 500, 8000)
 
         ExitThread()
 
@@ -2548,7 +2538,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2AF4')
     def lambda_2AF4():
-        OP_96(0x00FE, 0xFFFFF4CA, 0x000000FA, 0x00001AE0, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -2870, 250, 6880, 500, 8000)
 
         ExitThread()
 
@@ -2565,7 +2555,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2B3B')
     def lambda_2B3B():
-        OP_8C(0x00FE, 0, 0)
+        ChrSetDirection(0x00FE, 0, 0)
 
         ExitThread()
 
@@ -2573,7 +2563,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2B49')
     def lambda_2B49():
-        OP_8C(0x00FE, 0, 0)
+        ChrSetDirection(0x00FE, 0, 0)
 
         ExitThread()
 
@@ -2581,26 +2571,26 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2B57')
     def lambda_2B57():
-        OP_8C(0x00FE, 0, 0)
+        ChrSetDirection(0x00FE, 0, 0)
 
         ExitThread()
 
     DispatchAsync(0x00F9, 0x0003, lambda_2B57)
 
-    OP_6D(1220, 0, 8760, 0)
+    CameraMove(1220, 0, 8760, 0)
     OP_67(-500, 5590, -10000, 0)
-    OP_6B(1900, 0)
+    CameraSetDistance(1900, 0)
     OP_6C(45000, 0)
     OP_6E(481, 0)
     OP_0D()
     Sleep(500)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 7)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 7)
 
     @scena.Lambda('lambda_2BB2')
     def lambda_2BB2():
-        OP_96(0x00FE, 0xFFFFF4FC, 0x000000FA, 0x00001AE0, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -2820, 250, 6880, 500, 8000)
 
         ExitThread()
 
@@ -2608,18 +2598,18 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2BD0')
     def lambda_2BD0():
-        OP_99(0x00FE, 0x00, 0x01, 0x00000640)
+        OP_99(0x00FE, 0x00, 0x01, 1600)
 
         ExitThread()
 
     DispatchAsync(0x0008, 0x0002, lambda_2BD0)
 
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 16)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 16)
 
     @scena.Lambda('lambda_2BEA')
     def lambda_2BEA():
-        OP_96(0x00FE, 0x00000B36, 0x000000FA, 0x00001AE0, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 2870, 250, 6880, 500, 8000)
 
         ExitThread()
 
@@ -2627,7 +2617,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2C08')
     def lambda_2C08():
-        OP_99(0x00FE, 0x00, 0x04, 0x000009C4)
+        OP_99(0x00FE, 0x00, 0x04, 2500)
 
         ExitThread()
 
@@ -2637,37 +2627,37 @@ def func_07_10CB():
     WaitForThreadExit(0x0108, 0x0001)
     PlayEffect(0x03, 0x03, 0x00FF, -4100, 1000, 7000, 0, 0, 0, 2000, 2000, 2000, 0x00FF, 0, 0, 0, 0)
     PlayEffect(0x03, 0x04, 0x00FF, 4100, 1000, 7000, 0, 0, 0, 2000, 2000, 2000, 0x00FF, 0, 0, 0, 0)
-    OP_7C(0x00000064, 0x000001F4, 0x00000BB8, 0x0000012C)
+    OP_7C(100, 500, 3000, 300)
     OP_B0(0x0008, 0x0F)
     OP_6F(0x0008, 0)
-    OP_70(0x0008, 0x0000001E)
+    OP_70(0x0008, 30)
     OP_B0(0x0009, 0x0F)
     OP_6F(0x0009, 0)
-    OP_70(0x0009, 0x0000001E)
+    OP_70(0x0009, 30)
     OP_73(0x0008)
     OP_73(0x0009)
-    OP_83(0x04, 0x02)
+    WaitEffect(0x04, 0x02)
     Sleep(1000)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_2D13')
     def lambda_2D13():
-        OP_6D(1210, 0, 10570, 1500)
+        CameraMove(1210, 0, 10570, 1500)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0000, lambda_2D13)
 
-    OP_22(0x023B, 0x00, 0x64)
-    SetChrFlags(0x0008, 0x1000)
+    PlaySE(571, 0x00, 0x64)
+    ChrSetFlags(0x0008, 0x1000)
 
     @scena.Lambda('lambda_2D35')
     def lambda_2D35():
-        OP_8C(0x00FE, 90, 600)
+        ChrSetDirection(0x00FE, 90, 600)
 
         ExitThread()
 
@@ -2675,7 +2665,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2D43')
     def lambda_2D43():
-        OP_96(0x00FE, 0xFFFFF182, 0x000000FA, 0x0000218E, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, -3710, 250, 8590, 500, 8000)
 
         ExitThread()
 
@@ -2683,12 +2673,12 @@ def func_07_10CB():
 
     Sleep(100)
 
-    OP_22(0x023B, 0x00, 0x64)
-    SetChrFlags(0x0108, 0x1000)
+    PlaySE(571, 0x00, 0x64)
+    ChrSetFlags(0x0108, 0x1000)
 
     @scena.Lambda('lambda_2D70')
     def lambda_2D70():
-        OP_8C(0x00FE, 270, 600)
+        ChrSetDirection(0x00FE, 270, 600)
 
         ExitThread()
 
@@ -2696,7 +2686,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_2D7E')
     def lambda_2D7E():
-        OP_96(0x00FE, 0x00000FDB, 0x000000FA, 0x00002378, 0x000001F4, 0x00001F40)
+        ChrJumpTo(0x00FE, 4059, 250, 9080, 500, 8000)
 
         ExitThread()
 
@@ -2704,8 +2694,8 @@ def func_07_10CB():
 
     WaitForThreadExit(0x0108, 0x0001)
     WaitForThreadExit(0x0008, 0x0001)
-    ClearChrFlags(0x0108, 0x1000)
-    ClearChrFlags(0x0008, 0x1000)
+    ChrClearFlags(0x0108, 0x1000)
+    ChrClearFlags(0x0008, 0x1000)
 
     ExecExpressionWithVar(
         0x1C,
@@ -2766,7 +2756,7 @@ def func_07_10CB():
 
     CloseMessageWindow()
     OP_62(0x0108, 0xFFFFFF38, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(1000)
 
     ChrTalk(
@@ -2796,10 +2786,10 @@ def func_07_10CB():
 
     CloseMessageWindow()
     Fade(500)
-    SetChrSubChip(0x0008, 0)
+    ChrSetSubChip(0x0008, 0)
     OP_0D()
-    SetChrChipByIndex(0x0008, 25)
-    OP_99(0x0008, 0x00, 0x02, 0x000005DC)
+    ChrSetChipByIndex(0x0008, 25)
+    OP_99(0x0008, 0x00, 0x02, 1500)
     Sleep(500)
 
     PlayEffect(0x01, 0x01, 0x0008, 100, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
@@ -2819,17 +2809,17 @@ def func_07_10CB():
 
     CloseMessageWindow()
     Fade(250)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 23)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 23)
     OP_0D()
-    OP_99(0x0108, 0x00, 0x0F, 0x000007D0)
+    OP_99(0x0108, 0x00, 0x0F, 2000)
     PlayEffect(0x01, 0x02, 0x0108, 0, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
     Sleep(2000)
 
     Fade(500)
-    OP_6D(0, 0, 7000, 0)
+    CameraMove(0, 0, 7000, 0)
     OP_67(0, 4580, -10000, 0)
-    OP_6B(4080, 0)
+    CameraSetDistance(4080, 0)
     OP_6C(33000, 0)
     OP_6E(243, 0)
     OP_0D()
@@ -2858,12 +2848,12 @@ def func_07_10CB():
     Sleep(200)
 
     Fade(500)
-    OP_6D(1000, 0, 10500, 0)
+    CameraMove(1000, 0, 10500, 0)
     OP_67(0, 6490, -10000, 0)
-    OP_6B(2500, 0)
+    CameraSetDistance(2500, 0)
     OP_6C(45000, 0)
     OP_6E(481, 0)
-    ClearMapFlags(0x00000010)
+    MapClearFlags(0x00000010)
     OP_0D()
     Sleep(300)
 
@@ -2878,13 +2868,13 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_320B')
     def lambda_320B():
-        OP_6B(1650, 6000)
+        CameraSetDistance(1650, 6000)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0002, lambda_320B)
 
-    OP_7C(0x00000000, 0x00000064, 0x00000BB8, 0x00001388)
+    OP_7C(0, 100, 3000, 5000)
 
     ChrTalk(
         0x0008,
@@ -2910,17 +2900,17 @@ def func_07_10CB():
     WaitForThreadExit(0x0101, 0x0001)
     Sleep(500)
 
-    SetChrPos(0x000E, 40, 2000, 2090, 270)
-    ClearChrFlags(0x000E, 0x0080)
-    SetChrChipByIndex(0x000E, 4)
-    SetChrSubChip(0x000E, 16)
-    SetChrFlags(0x000E, 0x0002)
-    OP_22(0x038E, 0x00, 0x64)
-    OP_7D(0x00, 0x000E, 0x0032, 0x01F4)
+    ChrSetPos(0x000E, 40, 2000, 2090, 270)
+    ChrClearFlags(0x000E, 0x0080)
+    ChrSetChipByIndex(0x000E, 4)
+    ChrSetSubChip(0x000E, 16)
+    ChrSetFlags(0x000E, 0x0002)
+    PlaySE(910, 0x00, 0x64)
+    ChrSetAfterImage(0x00, 0x000E, 0x0032, 0x01F4)
 
     @scena.Lambda('lambda_32C1')
     def lambda_32C1():
-        OP_99(0x00FE, 0x10, 0x17, 0x00001F40)
+        OP_99(0x00FE, 0x10, 0x17, 8000)
         Yield()
 
         Jump('lambda_32C1')
@@ -2929,20 +2919,20 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_32D4')
     def lambda_32D4():
-        OP_8F(0x00FE, 0, 1200, 9600, 25000, 0x00)
+        ChrMoveTo(0x00FE, 0, 1200, 9600, 25000, 0x00)
 
         ExitThread()
 
     DispatchAsync(0x000E, 0x0002, lambda_32D4)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 5)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 14)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 5)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 14)
 
     @scena.Lambda('lambda_3303')
     def lambda_3303():
-        OP_90(0x00FE, 2700, 0, 0, 7000, 0x00)
+        ChrMoveToRelative(0x00FE, 2700, 0, 0, 7000, 0x00)
 
         ExitThread()
 
@@ -2950,7 +2940,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_331E')
     def lambda_331E():
-        OP_90(0x00FE, -2700, 0, 0, 7000, 0x00)
+        ChrMoveToRelative(0x00FE, -2700, 0, 0, 7000, 0x00)
 
         ExitThread()
 
@@ -2958,11 +2948,11 @@ def func_07_10CB():
 
     WaitForThreadExit(0x0008, 0x0001)
     OP_20(0x00000000)
-    OP_22(0x023B, 0x00, 0x64)
+    PlaySE(571, 0x00, 0x64)
 
     @scena.Lambda('lambda_3348')
     def lambda_3348():
-        OP_96(0x00FE, 0xFFFFF614, 0x000000FA, 0x00002350, 0x000003E8, 0x00001F40)
+        ChrJumpTo(0x00FE, -2540, 250, 9040, 1000, 8000)
 
         ExitThread()
 
@@ -2970,24 +2960,24 @@ def func_07_10CB():
 
     Sleep(100)
 
-    OP_22(0x023B, 0x00, 0x64)
+    PlaySE(571, 0x00, 0x64)
 
     @scena.Lambda('lambda_3370')
     def lambda_3370():
-        OP_96(0x00FE, 0x00000AAA, 0x000000FA, 0x00002224, 0x000003E8, 0x00001F40)
+        ChrJumpTo(0x00FE, 2730, 250, 8740, 1000, 8000)
 
         ExitThread()
 
     DispatchAsync(0x0108, 0x0001, lambda_3370)
 
     OP_62(0x0008, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     OP_62(0x0108, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
-    OP_82(0x01, 0x02)
-    OP_82(0x02, 0x02)
+    PlaySE(39, 0x00, 0x64)
+    StopEffect(0x01, 0x02)
+    StopEffect(0x02, 0x02)
     Sleep(1000)
 
     Sleep(1000)
@@ -3021,15 +3011,15 @@ def func_07_10CB():
         ),
     )
 
-    SetChrPos(0x0009, 40, 0, -3240, 0)
-    ClearChrFlags(0x0009, 0x0080)
-    SetChrFlags(0x0009, 0x0002)
-    SetChrSubChip(0x0009, 2)
-    SetChrChipByIndex(0x0009, 4)
+    ChrSetPos(0x0009, 40, 0, -3240, 0)
+    ChrClearFlags(0x0009, 0x0080)
+    ChrSetFlags(0x0009, 0x0002)
+    ChrSetSubChip(0x0009, 2)
+    ChrSetChipByIndex(0x0009, 4)
 
     @scena.Lambda('lambda_344F')
     def lambda_344F():
-        OP_8F(0x00FE, 500, 500, -3240, 15000, 0x00)
+        ChrMoveTo(0x00FE, 500, 500, -3240, 15000, 0x00)
 
         ExitThread()
 
@@ -3037,7 +3027,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_346A')
     def lambda_346A():
-        OP_6D(310, 300, -800, 2000)
+        CameraMove(310, 300, -800, 2000)
 
         ExitThread()
 
@@ -3053,7 +3043,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_349A')
     def lambda_349A():
-        OP_6B(1450, 2000)
+        CameraSetDistance(1450, 2000)
 
         ExitThread()
 
@@ -3067,20 +3057,20 @@ def func_07_10CB():
 
     DispatchAsync(0x0102, 0x0003, lambda_34AA)
 
-    SetChrSubChip(0x0008, 0)
-    SetChrChipByIndex(0x0008, 2)
-    SetChrSubChip(0x0108, 0)
-    SetChrChipByIndex(0x0108, 65535)
-    SetChrSubChip(0x0101, 0)
-    SetChrChipByIndex(0x0101, 65535)
-    SetChrSubChip(0x0102, 0)
-    SetChrChipByIndex(0x0102, 65535)
-    SetChrSubChip(0x00F9, 0)
-    SetChrChipByIndex(0x00F9, 65535)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetChipByIndex(0x0008, 2)
+    ChrSetSubChip(0x0108, 0)
+    ChrSetChipByIndex(0x0108, 65535)
+    ChrSetSubChip(0x0101, 0)
+    ChrSetChipByIndex(0x0101, 65535)
+    ChrSetSubChip(0x0102, 0)
+    ChrSetChipByIndex(0x0102, 65535)
+    ChrSetSubChip(0x00F9, 0)
+    ChrSetChipByIndex(0x00F9, 65535)
 
     @scena.Lambda('lambda_34EC')
     def lambda_34EC():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -3090,7 +3080,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_34FF')
     def lambda_34FF():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -3100,7 +3090,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_3512')
     def lambda_3512():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -3110,7 +3100,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_3525')
     def lambda_3525():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -3120,7 +3110,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_3538')
     def lambda_3538():
-        OP_8C(0x00FE, 180, 400)
+        ChrSetDirection(0x00FE, 180, 400)
 
         ExitThread()
 
@@ -3128,11 +3118,11 @@ def func_07_10CB():
 
     Sleep(600)
 
-    OP_22(0x00D8, 0x00, 0x64)
+    PlaySE(216, 0x00, 0x64)
     WaitForThreadExit(0x000E, 0x0002)
-    SetChrFlags(0x000E, 0x0080)
+    ChrSetFlags(0x000E, 0x0080)
     WaitForThreadExit(0x0101, 0x0002)
-    OP_99(0x0009, 0x02, 0x08, 0x000005DC)
+    OP_99(0x0009, 0x02, 0x08, 1500)
     Sleep(1000)
 
     ChrTalk(
@@ -3182,7 +3172,7 @@ def func_07_10CB():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x05)"),
+            (Expr.Eval, "OP_42(ChrTable['阿加特'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3210,7 +3200,7 @@ def func_07_10CB():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x02)"),
+            (Expr.Eval, "OP_42(ChrTable['雪拉扎德'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3238,7 +3228,7 @@ def func_07_10CB():
 
     If(
         (
-            (Expr.Eval, "OP_42(0x08)"),
+            (Expr.Eval, "OP_42(ChrTable['凯文神父'])"),
             (Expr.PushLong, 0x1),
             Expr.Neg,
             Expr.Neq,
@@ -3280,18 +3270,18 @@ def func_07_10CB():
     label('loc_3792')
 
     Fade(250)
-    SetMapFlags(0x00000010)
-    OP_22(0x00D5, 0x00, 0x64)
-    ClearChrFlags(0x0009, 0x0002)
-    SetChrSubChip(0x0009, 0)
-    SetChrChipByIndex(0x0009, 1)
+    MapSetFlags(0x00000010)
+    PlaySE(213, 0x00, 0x64)
+    ChrClearFlags(0x0009, 0x0002)
+    ChrSetSubChip(0x0009, 0)
+    ChrSetChipByIndex(0x0009, 1)
     OP_0D()
-    OP_1D(0x50)
+    PlayBGM(80)
     Sleep(1000)
 
     @scena.Lambda('lambda_37BE')
     def lambda_37BE():
-        OP_6D(210, 0, 8800, 4000)
+        CameraMove(210, 0, 8800, 4000)
 
         ExitThread()
 
@@ -3307,7 +3297,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_37EE')
     def lambda_37EE():
-        OP_6B(2880, 4000)
+        CameraSetDistance(2880, 4000)
 
         ExitThread()
 
@@ -3331,7 +3321,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_381E')
     def lambda_381E():
-        OP_8E(0x00FE, 0, 0, 6000, 2000, 0x00)
+        ChrWalkTo(0x00FE, 0, 0, 6000, 2000, 0x00)
 
         ExitThread()
 
@@ -3350,7 +3340,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_384F')
     def lambda_384F():
-        OP_8E(0x00FE, 1500, 0, 1470, 1000, 0x00)
+        ChrWalkTo(0x00FE, 1500, 0, 1470, 1000, 0x00)
 
         ExitThread()
 
@@ -3360,7 +3350,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_386F')
     def lambda_386F():
-        OP_8E(0x00FE, -1000, 0, 1110, 1000, 0x00)
+        ChrWalkTo(0x00FE, -1000, 0, 1110, 1000, 0x00)
 
         ExitThread()
 
@@ -3370,7 +3360,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_388F')
     def lambda_388F():
-        OP_8E(0x00FE, 1000, 0, 2110, 1000, 0x00)
+        ChrWalkTo(0x00FE, 1000, 0, 2110, 1000, 0x00)
 
         ExitThread()
 
@@ -3704,19 +3694,19 @@ def func_07_10CB():
         ),
     )
 
-    OP_7C(0x00000000, 0x000000C8, 0x00000BB8, 0x00000064)
+    OP_7C(0, 200, 3000, 100)
     CloseMessageWindow()
     Sleep(500)
 
-    OP_22(0x0099, 0x00, 0x64)
+    PlaySE(153, 0x00, 0x64)
     OP_23(0x00EB)
     OP_1F(0x5A, 0x000007D0)
     Fade(500)
-    OP_6B(2700, 0)
-    OP_82(0x00, 0x02)
-    OP_82(0x81, 0x02)
+    CameraSetDistance(2700, 0)
+    StopEffect(0x00, 0x02)
+    StopEffect(0x81, 0x02)
     PlayEffect(0x82, 0xFF, 0xFFFF, 0, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_82(0x83, 0x02)
+    StopEffect(0x83, 0x02)
     PlayEffect(0x84, 0xFF, 0xFFFF, 0, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
     OP_79(0x00, 0x0002)
     OP_79(0x01, 0x0002)
@@ -3727,19 +3717,19 @@ def func_07_10CB():
     Sleep(1000)
 
     OP_62(0x0108, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     OP_62(0x0008, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     OP_62(0x0009, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     OP_62(0x0101, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
     Sleep(50)
 
     OP_62(0x0102, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     If(
         (
@@ -3752,7 +3742,7 @@ def func_07_10CB():
     )
 
     OP_62(0x00F9, 0x00000000, 2300, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_416A')
 
@@ -3771,7 +3761,7 @@ def func_07_10CB():
     )
 
     OP_62(0x00F9, 0x00000000, 1700, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     Jump('loc_416A')
 
@@ -3780,7 +3770,7 @@ def func_07_10CB():
     label('loc_4153')
 
     OP_62(0x00F9, 0x00000000, 2000, 0x02, 0x07, 0x00000050, 0x01)
-    OP_22(0x0027, 0x00, 0x64)
+    PlaySE(39, 0x00, 0x64)
 
     def _loc_416A(): pass
 
@@ -3790,7 +3780,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_4175')
     def lambda_4175():
-        OP_6D(-250, 200, 17430, 2500)
+        CameraMove(-250, 200, 17430, 2500)
 
         ExitThread()
 
@@ -3806,7 +3796,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_41A5')
     def lambda_41A5():
-        OP_6B(3460, 2500)
+        CameraSetDistance(3460, 2500)
 
         ExitThread()
 
@@ -3814,7 +3804,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_41B5')
     def lambda_41B5():
-        OP_8C(0x00FE, 45, 400)
+        ChrSetDirection(0x00FE, 45, 400)
 
         ExitThread()
 
@@ -3824,7 +3814,7 @@ def func_07_10CB():
 
     @scena.Lambda('lambda_41C8')
     def lambda_41C8():
-        OP_8C(0x00FE, 315, 400)
+        ChrSetDirection(0x00FE, 315, 400)
 
         ExitThread()
 
@@ -3832,31 +3822,31 @@ def func_07_10CB():
 
     Sleep(50)
 
-    OP_8C(0x0009, 0, 400)
+    ChrSetDirection(0x0009, 0, 400)
     WaitForThreadExit(0x0101, 0x0000)
     OP_72(0x0000, 0x0020)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000003C)
+    OP_70(0x0000, 60)
     Sleep(500)
 
     OP_72(0x0001, 0x0020)
     OP_6F(0x0001, 0)
-    OP_70(0x0001, 0x0000003C)
+    OP_70(0x0001, 60)
     Sleep(100)
 
     OP_72(0x0002, 0x0020)
     OP_6F(0x0002, 0)
-    OP_70(0x0002, 0x0000003C)
+    OP_70(0x0002, 60)
     Sleep(100)
 
     OP_72(0x0003, 0x0020)
     OP_6F(0x0003, 0)
-    OP_70(0x0003, 0x0000003C)
+    OP_70(0x0003, 60)
     Sleep(100)
 
     OP_72(0x0004, 0x0020)
     OP_6F(0x0004, 0)
-    OP_70(0x0004, 0x0000003C)
+    OP_70(0x0004, 60)
 
     ChrTalk(
         0x0101,
@@ -3881,16 +3871,16 @@ def func_07_10CB():
 
     OP_1F(0x64, 0x000007D0)
     Fade(1000)
-    OP_6D(5030, 3860, 11650, 0)
+    CameraMove(5030, 3860, 11650, 0)
     OP_67(0, 1590, -10000, 0)
-    OP_6B(4500, 0)
+    CameraSetDistance(4500, 0)
     OP_6C(45000, 0)
     OP_6E(363, 0)
     OP_0D()
 
     @scena.Lambda('lambda_42F4')
     def lambda_42F4():
-        OP_6B(5500, 5000)
+        CameraSetDistance(5500, 5000)
 
         ExitThread()
 
@@ -3898,18 +3888,18 @@ def func_07_10CB():
 
     Sleep(500)
 
-    OP_22(0x0139, 0x00, 0x64)
+    PlaySE(313, 0x00, 0x64)
     LoadEffect(0x02, 'map\\mp049_02.eff')
     PlayEffect(0x02, 0x02, 0x00FF, 0, 0, 6720, 0, 0, 0, 550, 550, 550, 0x00FF, 0, 0, 0, 0)
     Sleep(800)
 
-    OP_82(0x80, 0x00)
+    StopEffect(0x80, 0x00)
     Sleep(1000)
 
     FadeOut(1000, 0, -1)
     OP_0D()
-    SetMapFlags(0x02000000)
-    OP_A2(0x10F0)
+    MapSetFlags(0x02000000)
+    SetScenaFlags(ScenaFlag(0x021E, 0, 0x10F0))
     NewScene('ED6_DT21/C3607._SN', 100, 0, 0)
     IdleLoop()
 
@@ -3989,10 +3979,10 @@ def func_09_4384():
 @scena.Code('func_0A_43D1')
 def func_0A_43D1():
     OP_98(0x00, 0x000E)
-    OP_98(0x01, 0x00000028, 0x000007D0, 0x0000334A)
-    OP_98(0x01, 0x00000028, 0x00000BB8, 0x00003B1A)
-    OP_98(0x01, 0x00000028, 0x00001770, 0x00004E20)
-    OP_98(0x02, 0x00FE, 0x00004E20, 0x02)
+    OP_98(0x01, 40, 2000, 13130)
+    OP_98(0x01, 40, 3000, 15130)
+    OP_98(0x01, 40, 6000, 20000)
+    OP_98(0x02, 0x00FE, 20000, 0x02)
 
     Return()
 

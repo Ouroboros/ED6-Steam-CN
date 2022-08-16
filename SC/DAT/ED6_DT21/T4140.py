@@ -9,15 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4140   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '夏伊'),
-    TXT(0x02, '史帕德'),
-    TXT(0x03, '塞森'),
-    TXT(0x04, '多姆'),
-    TXT(0x05, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -32,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x667
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -68,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -80,11 +66,12 @@ def ChipData():
         ('ED6_DT07/CH01680._CH', 'ED6_DT07/CH01680P._CP'),
     ]
 
-# id: 0x10002 offset: 0xD2
+# id: 0x10001 offset: 0xD2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '夏伊',
             x                   = 1260,
             z                   = 0,
             y                   = -240,
@@ -99,6 +86,7 @@ def NpcData():
             talkScenaIndex      = 0x0006,
         ),
         ScenaNpcData(
+            name                = '史帕德',
             x                   = -500,
             z                   = 0,
             y                   = 129840,
@@ -113,6 +101,7 @@ def NpcData():
             talkScenaIndex      = 0x0009,
         ),
         ScenaNpcData(
+            name                = '塞森',
             x                   = 58580,
             z                   = 0,
             y                   = 360,
@@ -127,6 +116,7 @@ def NpcData():
             talkScenaIndex      = 0x0004,
         ),
         ScenaNpcData(
+            name                = '多姆',
             x                   = 120030,
             z                   = 0,
             y                   = -1260,
@@ -142,19 +132,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x152
+# id: 0x10002 offset: 0x152
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x152
+# id: 0x10003 offset: 0x152
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x152
+# id: 0x10004 offset: 0x152
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -200,8 +190,8 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x1BE
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x02C7, 1, 0x1639)),
@@ -214,11 +204,11 @@ def PreInit():
     )
 
     TerminateThread(0x000B, 0x00)
-    SetChrSubChip(0x000B, 0)
-    SetChrChipByIndex(0x000B, 3)
-    SetChrFlags(0x000B, 0x0004)
-    SetChrFlags(0x000B, 0x0010)
-    SetChrPos(0x000B, 125240, 200, -1310, 90)
+    ChrSetSubChip(0x000B, 0)
+    ChrSetChipByIndex(0x000B, 3)
+    ChrSetFlags(0x000B, 0x0004)
+    ChrSetFlags(0x000B, 0x0010)
+    ChrSetPos(0x000B, 125240, 200, -1310, 90)
 
     def _loc_1F3(): pass
 
@@ -227,8 +217,8 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0x1F4
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_1F4')
+def func_01_1F4():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x02C7, 2, 0x163A)),
@@ -271,8 +261,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x216
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_216')
+def func_02_216():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -283,7 +273,7 @@ def ReInit():
 
     OP_8D(0x0009, 1470, 131290, -1690, 128210, 2000)
 
-    Jump('ReInit')
+    Jump('func_02_216')
 
     def _loc_239(): pass
 
@@ -582,7 +572,7 @@ def func_06_31A():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     Jump('loc_46C')
 
@@ -794,7 +784,7 @@ def func_09_51B():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_64F')
 

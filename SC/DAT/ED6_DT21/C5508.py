@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5508   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x9BE
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,26 +54,26 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -99,15 +89,15 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0xC8
+# id: 0x10004 offset: 0xC8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xC8
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x0204, 3, 0x1023)),
@@ -117,8 +107,8 @@ def PreInit():
         'loc_D9',
     )
 
-    SetMapFlags(0x10000000)
-    Event(0, 0x0003)
+    MapSetFlags(0x10000000)
+    Event(0, func_03_5F8)
 
     def _loc_D9(): pass
 
@@ -127,16 +117,16 @@ def PreInit():
     Return()
 
 # id: 0x0001 offset: 0xDA
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_DA')
+def func_01_DA():
     OP_10(0x01, 0x00)
-    OP_16(0x02, 0x00000FA0, 0xFFFE0818, 0xFFFDCD80, 0x00230070)
+    OP_16(0x02, 4000, -129000, -144000, 2293872)
 
     Return()
 
 # id: 0x0002 offset: 0xF0
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_F0')
+def func_02_F0():
     ExecExpressionWithReg(
         0x0003,
         (
@@ -190,10 +180,10 @@ def ReInit():
 
     label('loc_11F')
 
-    SetMapFlags(0x00000080)
+    MapSetFlags(0x00000080)
     FadeOut(1000, 0, -1)
     OP_0D()
-    OP_C5(0x00, 0x0000, 0x0000, 0x0280, 0x01E0, 0x0000, 0x0000, 0x0300, 0x0200, 0x0000, 0x0000, 0x0280, 0x01E0, 0x00FFFFFF, 0x00, 'C_VIS137._CH')
+    OP_C5(0x00, 0, 0, 640, 480, 0, 0, 768, 512, 0, 0, 640, 480, 0x00FFFFFF, 0x00, 'C_VIS137._CH')
     OP_C6(0x00, 0x04, 0, 0, 0)
     OP_C6(0x00, 0x03, -1, 500, 0)
     OP_C7(0x00, 0x00, 0x03)
@@ -330,7 +320,7 @@ def ReInit():
 
     label('loc_2A0')
 
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, 120, -1, -1)
 
     Talk(
@@ -418,7 +408,7 @@ def ReInit():
 
     label('loc_320')
 
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, 120, -1, -1)
 
     Talk(
@@ -506,7 +496,7 @@ def ReInit():
 
     label('loc_3A2')
 
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, 120, -1, -1)
 
     Talk(
@@ -594,7 +584,7 @@ def ReInit():
 
     label('loc_424')
 
-    SetChrName('')
+    TalkSetChrName('')
     SetMessageWindowPos(-1, 120, -1, -1)
 
     Talk(
@@ -809,19 +799,19 @@ def ReInit():
 @scena.Code('func_03_5F8')
 def func_03_5F8():
     EventBegin(0x00)
-    OP_6D(-770, 500, -3680, 0)
+    CameraMove(-770, 500, -3680, 0)
     OP_67(0, 12230, -10000, 0)
-    OP_6B(5220, 0)
+    CameraSetDistance(5220, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    SetChrPos(0x0101, -2000, 0, -31300, 13)
-    SetChrPos(0x010A, -200, 0, -31500, 360)
+    ChrSetPos(0x0101, -2000, 0, -31300, 13)
+    ChrSetPos(0x010A, -200, 0, -31500, 360)
     OP_C8(0x0200, 0x0046, 'C_PLAC03._CH', 0x00, 0x07D0)
     FadeIn(2000, 0)
 
     @scena.Lambda('lambda_067D')
     def lambda_067D():
-        OP_6D(-770, 0, -21740, 6000)
+        CameraMove(-770, 0, -21740, 6000)
 
         ExitThread()
 
@@ -831,7 +821,7 @@ def func_03_5F8():
 
     @scena.Lambda('lambda_069A')
     def lambda_069A():
-        OP_8E(0x00FE, -2000, 0, -21130, 3000, 0x00)
+        ChrWalkTo(0x00FE, -2000, 0, -21130, 3000, 0x00)
 
         ExitThread()
 
@@ -841,7 +831,7 @@ def func_03_5F8():
 
     @scena.Lambda('lambda_06BA')
     def lambda_06BA():
-        OP_8E(0x00FE, -200, 0, -21130, 3000, 0x00)
+        ChrWalkTo(0x00FE, -200, 0, -21130, 3000, 0x00)
 
         ExitThread()
 
@@ -850,9 +840,9 @@ def func_03_5F8():
     OP_0D()
     WaitForThreadExit(0x0101, 0x0000)
     Fade(1000)
-    OP_6D(-590, 0, -18490, 0)
+    CameraMove(-590, 0, -18490, 0)
     OP_67(0, 9500, -10000, 0)
-    OP_6B(3080, 0)
+    CameraSetDistance(3080, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
     OP_0D()
@@ -883,7 +873,7 @@ def func_03_5F8():
     )
 
     CloseMessageWindow()
-    OP_8E(0x0101, -800, 0, -19470, 2000, 0x00)
+    ChrWalkTo(0x0101, -800, 0, -19470, 2000, 0x00)
 
     @scena.Lambda('lambda_07EB')
     def lambda_07EB():
@@ -893,15 +883,15 @@ def func_03_5F8():
 
     DispatchAsync(0x010A, 0x0000, lambda_07EB)
 
-    OP_8C(0x0101, 90, 500)
+    ChrSetDirection(0x0101, 90, 500)
     Sleep(200)
 
-    OP_8C(0x0101, 0, 500)
-    OP_8C(0x0101, 270, 500)
+    ChrSetDirection(0x0101, 0, 500)
+    ChrSetDirection(0x0101, 270, 500)
     Sleep(400)
 
-    OP_8C(0x0101, 0, 500)
-    OP_8C(0x0101, 180, 500)
+    ChrSetDirection(0x0101, 0, 500)
+    ChrSetDirection(0x0101, 180, 500)
     Sleep(500)
 
     ChrTalk(
@@ -959,7 +949,7 @@ def func_03_5F8():
     )
 
     CloseMessageWindow()
-    OP_A2(0x1023)
+    SetScenaFlags(ScenaFlag(0x0204, 3, 0x1023))
     OP_28(0x0080, 0x01, 0x0400)
     EventEnd(0x00)
 

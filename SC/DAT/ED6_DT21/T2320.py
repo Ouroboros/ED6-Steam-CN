@@ -9,12 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T2320   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '珂蕾妲婆婆'),
-    TXT(0x02, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -29,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x526
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -65,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -73,11 +62,12 @@ def ChipData():
         ('ED6_DT07/CH01010._CH', 'ED6_DT07/CH01010P._CP'),
     ]
 
-# id: 0x10002 offset: 0xB2
+# id: 0x10001 offset: 0xB2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '珂蕾妲婆婆',
             x                   = -4000,
             z                   = 500,
             y                   = 8800,
@@ -93,19 +83,19 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xD2
+# id: 0x10002 offset: 0xD2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xD2
+# id: 0x10003 offset: 0xD2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xD2
+# id: 0x10004 offset: 0xD2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -125,18 +115,18 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0xF6
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xF7
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xF7
+@scena.Code('func_01_F7')
+def func_01_F7():
+    Return()
+
 # id: 0x0002 offset: 0xF8
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_F8')
+def func_02_F8():
     Call(0, 0x0003)
 
     Return()
@@ -233,7 +223,7 @@ def func_03_FD():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_1EE')
 
@@ -322,7 +312,7 @@ def func_03_FD():
     )
 
     CloseMessageWindow()
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_2D3')
 
@@ -406,7 +396,7 @@ def func_03_FD():
 
     label('loc_33B')
 
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     ChrTalk(
         0x0008,
@@ -485,7 +475,7 @@ def func_03_FD():
 
     label('loc_3FB')
 
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     ChrTalk(
         0x0008,

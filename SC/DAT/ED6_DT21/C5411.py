@@ -9,23 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5411   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '肯帕雷拉'),
-    TXT(0x02, '亡命装甲兵'),
-    TXT(0x03, '强化猎兵'),
-    TXT(0x04, '强化猎兵'),
-    TXT(0x05, '强化猎兵'),
-    TXT(0x06, '强化猎兵'),
-    TXT(0x07, '强化猎兵'),
-    TXT(0x08, '强化猎兵'),
-    TXT(0x09, '强化猎兵'),
-    TXT(0x0A, '强化猎兵'),
-    TXT(0x0B, '强化猎兵'),
-    TXT(0x0C, '强化猎兵'),
-    TXT(0x0D, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -40,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x595
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -76,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -90,11 +68,12 @@ def ChipData():
         ('ED6_DT07/CH00442._CH', 'ED6_DT07/CH00442P._CP'),
     ]
 
-# id: 0x10002 offset: 0xE2
+# id: 0x10001 offset: 0xE2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '肯帕雷拉',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -109,6 +88,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '亡命装甲兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -123,6 +103,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -137,6 +118,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -151,6 +133,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -165,6 +148,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -179,6 +163,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -193,6 +178,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -207,6 +193,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -221,6 +208,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -235,6 +223,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -249,6 +238,7 @@ def NpcData():
             talkScenaIndex      = 0xFFFF,
         ),
         ScenaNpcData(
+            name                = '强化猎兵',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -264,13 +254,13 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x262
+# id: 0x10002 offset: 0x262
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x262
+# id: 0x10003 offset: 0x262
 @scena.EventData('EventData')
 def EventData():
     return (
@@ -286,7 +276,7 @@ def EventData():
         ),
     )
 
-# id: 0x10005 offset: 0x282
+# id: 0x10004 offset: 0x282
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -319,13 +309,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x2CA
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x2CB
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_2CB')
+def func_01_2CB():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -378,16 +368,16 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x33F
-@scena.Code('ReInit')
-def ReInit():
-    OP_A3(0x1C81)
-    OP_A3(0x1C82)
-    OP_A3(0x1C83)
-    OP_A3(0x1C84)
-    OP_A3(0x1C85)
-    OP_A3(0x1C86)
-    OP_A3(0x1C87)
-    OP_A2(0x1C88)
+@scena.Code('func_02_33F')
+def func_02_33F():
+    ClearScenaFlags(ScenaFlag(0x0390, 1, 0x1C81))
+    ClearScenaFlags(ScenaFlag(0x0390, 2, 0x1C82))
+    ClearScenaFlags(ScenaFlag(0x0390, 3, 0x1C83))
+    ClearScenaFlags(ScenaFlag(0x0390, 4, 0x1C84))
+    ClearScenaFlags(ScenaFlag(0x0390, 5, 0x1C85))
+    ClearScenaFlags(ScenaFlag(0x0390, 6, 0x1C86))
+    ClearScenaFlags(ScenaFlag(0x0390, 7, 0x1C87))
+    SetScenaFlags(ScenaFlag(0x0391, 0, 0x1C88))
 
     Return()
 
@@ -406,7 +396,7 @@ def func_03_358():
 
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -487,27 +477,27 @@ def func_03_358():
     Sleep(500)
 
     OP_26(13)
-    OP_82(0x00, 0x02)
+    StopEffect(0x00, 0x02)
     PlayEffect(0x00, 0x00, 0x00FF, 5240, 5000, -181320, 0, 0, 0, 700, 700, 700, 0x00FF, 0, 0, 0, 0)
     OP_6F(0x0005, 0)
-    OP_70(0x0005, 0x00000032)
+    OP_70(0x0005, 50)
     OP_73(0x0005)
     OP_20(0x00000BB8)
-    OP_22(0x000C, 0x00, 0x64)
-    OP_82(0x00, 0x02)
+    PlaySE(12, 0x00, 0x64)
+    StopEffect(0x00, 0x02)
     LoadEffect(0x01, 'map\\\\mp027_01.eff')
     PlayEffect(0x01, 0x01, 0x00FF, 5240, 5000, -181320, 0, 0, 0, 1500, 1500, 1500, 0x00FF, 0, 0, 0, 0)
     FadeOut(1000, 0, -1)
     Sleep(700)
 
-    OP_22(0x000D, 0x00, 0x64)
+    PlaySE(13, 0x00, 0x64)
     OP_0D()
-    SetChrStatus(0x00FF, 0xFE, 0)
-    OP_69(0x0000, 0x00000000)
+    ChrSetStatus(0x00FF, 0xFE, 0)
+    OP_69(0x0000, 0)
     OP_30(0x01)
     Sleep(3500)
 
-    OP_82(0x01, 0x02)
+    StopEffect(0x01, 0x02)
     PlayEffect(0x00, 0x00, 0x00FF, 5240, 5000, -181320, 0, 0, 0, 1300, 1300, 1300, 0x00FF, 0, 0, 0, 0)
     OP_6F(0x0005, 0)
     OP_1E()
@@ -560,7 +550,7 @@ def func_04_565():
         ),
     )
 
-    OP_AD(0x00240135, 0x0000, 0x0000, 0x000001F4)
+    OP_AD('ED6_DT24/C_VIS257._CH', 0x0000, 0x0000, 0x000001F4)
     Sleep(500)
 
     OP_56(0x03)

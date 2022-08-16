@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C0601   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x3AE
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,32 +54,32 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -135,13 +125,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0x114
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x115
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_115')
+def func_01_115():
     OP_72(0x0000, 0x0028)
     OP_72(0x0001, 0x0028)
     OP_72(0x0002, 0x0028)
@@ -206,10 +196,10 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x178
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_178')
+def func_02_178():
     TalkBegin(0x00FF)
-    ClearMapFlags(0x00000001)
+    MapClearFlags(0x00000001)
 
     Talk(
         (
@@ -257,9 +247,9 @@ def ReInit():
     )
 
     OP_6F(0x0002, 0)
-    OP_70(0x0002, 0x0000003C)
+    OP_70(0x0002, 60)
     OP_73(0x0002)
-    OP_A2(0x0000)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_20F')
 
@@ -278,19 +268,19 @@ def ReInit():
     )
 
     OP_6F(0x0002, 100)
-    OP_70(0x0002, 0x000000A0)
+    OP_70(0x0002, 160)
     OP_73(0x0002)
-    OP_A2(0x0001)
+    SetScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_20F(): pass
 
     label('loc_20F')
 
-    OP_6D(52660, -60, 67850, 500)
+    CameraMove(52660, -60, 67850, 500)
     OP_6F(0x0001, 0)
-    OP_70(0x0001, 0x00000078)
+    OP_70(0x0001, 120)
     OP_73(0x0001)
-    OP_69(0x0000, 0x00000258)
+    OP_69(0x0000, 600)
 
     Jump('loc_2C9')
 
@@ -332,9 +322,9 @@ def ReInit():
     )
 
     OP_6F(0x0002, 60)
-    OP_70(0x0002, 0x00000000)
+    OP_70(0x0002, 0)
     OP_73(0x0002)
-    OP_A3(0x0000)
+    ClearScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_2A0')
 
@@ -351,25 +341,25 @@ def ReInit():
     )
 
     OP_6F(0x0002, 160)
-    OP_70(0x0002, 0x00000064)
+    OP_70(0x0002, 100)
     OP_73(0x0002)
-    OP_A3(0x0001)
+    ClearScenaFlags(ScenaFlag(0x0000, 1, 0x1))
 
     def _loc_2A0(): pass
 
     label('loc_2A0')
 
-    OP_6D(52660, -60, 67850, 500)
+    CameraMove(52660, -60, 67850, 500)
     OP_6F(0x0001, 120)
-    OP_70(0x0001, 0x00000000)
+    OP_70(0x0001, 0)
     OP_73(0x0001)
-    OP_69(0x0000, 0x00000258)
+    OP_69(0x0000, 600)
 
     def _loc_2C9(): pass
 
     label('loc_2C9')
 
-    SetMapFlags(0x00000001)
+    MapSetFlags(0x00000001)
     TalkEnd(0x00FF)
 
     Return()
@@ -394,8 +384,8 @@ def func_03_2D2():
 # id: 0x0004 offset: 0x2E9
 @scena.Code('func_04_2E9')
 def func_04_2E9():
-    SetMapFlags(0x00000080)
-    ClearMapFlags(0x00000001)
+    MapSetFlags(0x00000080)
+    MapClearFlags(0x00000001)
 
     Talk(
         (
@@ -429,13 +419,13 @@ def func_04_2E9():
     OP_56(0x00)
     EventBegin(0x00)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000003C)
+    OP_70(0x0000, 60)
     OP_73(0x0000)
     OP_6F(0x0004, 0)
-    OP_70(0x0004, 0x000000FA)
+    OP_70(0x0004, 250)
     OP_73(0x0004)
-    OP_A2(0x0002)
-    SetMapFlags(0x00000001)
+    SetScenaFlags(ScenaFlag(0x0000, 2, 0x2))
+    MapSetFlags(0x00000001)
     EventEnd(0x03)
 
     Return()
@@ -460,13 +450,13 @@ def func_04_2E9():
     OP_56(0x00)
     EventBegin(0x00)
     OP_6F(0x0000, 60)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
     OP_73(0x0000)
     OP_6F(0x0004, 250)
-    OP_70(0x0004, 0x00000000)
+    OP_70(0x0004, 0)
     OP_73(0x0004)
-    OP_A3(0x0002)
-    SetMapFlags(0x00000001)
+    ClearScenaFlags(ScenaFlag(0x0000, 2, 0x2))
+    MapSetFlags(0x00000001)
     EventEnd(0x03)
 
     Return()

@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C5614   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x219
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,62 +54,62 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8
-@scena.Code('PreInit')
-def PreInit():
-    Event(0, 0x0002)
+@scena.Code('Init')
+def Init():
+    Event(0, func_02_AE)
 
     Return()
 
 # id: 0x0001 offset: 0xAD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_AD')
+def func_01_AD():
     Return()
 
 # id: 0x0002 offset: 0xAE
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_AE')
+def func_02_AE():
     EventBegin(0x00)
-    OP_6D(1120, 0, 4019, 0)
+    CameraMove(1120, 0, 4019, 0)
     OP_67(0, 8620, -10000, 0)
-    OP_6B(2800, 0)
+    CameraSetDistance(2800, 0)
     OP_6C(45000, 0)
     OP_6E(262, 0)
-    SetChrPos(0x0000, 650, 0, 2620, 90)
-    SetChrPos(0x0001, 650, 0, 3800, 90)
-    SetChrPos(0x0002, -930, 0, 2620, 90)
-    SetChrPos(0x0003, -930, 0, 3800, 90)
+    ChrSetPos(0x0000, 650, 0, 2620, 90)
+    ChrSetPos(0x0001, 650, 0, 3800, 90)
+    ChrSetPos(0x0002, -930, 0, 2620, 90)
+    ChrSetPos(0x0003, -930, 0, 3800, 90)
     FadeIn(1000, 0)
     OP_0D()
 
@@ -235,8 +225,8 @@ def ReInit():
 @scena.Code('func_03_1C3')
 def func_03_1C3():
     FadeOut(2000, 0, -1)
-    OP_22(0x0067, 0x00, 0x64)
-    OP_6D(1120, -12000, 4019, 2000)
+    PlaySE(103, 0x00, 0x64)
+    CameraMove(1120, -12000, 4019, 2000)
     Sleep(2000)
 
     Return()
@@ -245,8 +235,8 @@ def func_03_1C3():
 @scena.Code('func_04_1E9')
 def func_04_1E9():
     FadeOut(2000, 0, -1)
-    OP_22(0x0067, 0x00, 0x64)
-    OP_6D(1120, 12000, 4019, 2000)
+    PlaySE(103, 0x00, 0x64)
+    CameraMove(1120, 12000, 4019, 2000)
     Sleep(2000)
 
     Return()

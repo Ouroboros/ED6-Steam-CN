@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C4300   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x32E
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,32 +54,32 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -109,13 +99,13 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0xCC
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0xCD
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_CD')
+def func_01_CD():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -145,8 +135,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x132
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_132')
+def func_02_132():
     If(
         (
             (Expr.PushValueByIndex, 0x4),
@@ -159,7 +149,7 @@ def ReInit():
 
     FadeOut(300, 0, 100)
     SetMessageWindowPos(-1, -1, -1, -1)
-    SetChrName('')
+    TalkSetChrName('')
 
     Talk(
         (
@@ -242,30 +232,30 @@ def ReInit():
     OP_26(13)
     OP_72(0x0010, 0x0020)
     OP_6F(0x0010, 300)
-    OP_70(0x0010, 0x000001F4)
+    OP_70(0x0010, 500)
     OP_73(0x0010)
     OP_6F(0x0010, 500)
-    OP_70(0x0010, 0x000002BC)
+    OP_70(0x0010, 700)
     OP_71(0x0010, 0x0020)
     OP_20(0x00000BB8)
-    OP_22(0x000C, 0x00, 0x64)
-    OP_82(0x06, 0x02)
+    PlaySE(12, 0x00, 0x64)
+    StopEffect(0x06, 0x02)
     LoadEffect(0x01, 'map\\\\mp027_01.eff')
     PlayEffect(0x01, 0x01, 0x00FF, 38290, 1200, -3310, 0, 0, 0, 1500, 1500, 1500, 0x00FF, 0, 0, 0, 0)
     FadeOut(1500, 0, -1)
     Sleep(1500)
 
-    OP_22(0x000D, 0x00, 0x64)
+    PlaySE(13, 0x00, 0x64)
     OP_0D()
-    SetChrStatus(0x00FF, 0xFE, 0)
-    OP_69(0x0000, 0x00000000)
+    ChrSetStatus(0x00FF, 0xFE, 0)
+    OP_69(0x0000, 0)
     OP_30(0x01)
     Sleep(3500)
 
-    OP_82(0x01, 0x02)
+    StopEffect(0x01, 0x02)
     PlayEffect(0x05, 0x06, 0x00FF, 38290, 1200, -3310, 0, 0, 0, 1300, 1300, 1300, 0x00FF, 0, 0, 0, 0)
     OP_6F(0x0010, 0)
-    OP_70(0x0010, 0x000000FA)
+    OP_70(0x0010, 250)
     OP_1E()
     FadeIn(1000, 0)
     OP_56(0x00)

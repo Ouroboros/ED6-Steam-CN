@@ -9,12 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('C2111   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-    TXT(0x02, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -29,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x16A
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -65,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -82,17 +71,18 @@ def ChipData():
         ('ED6_DT29/CH12141._CH', 'ED6_DT29/CH12141P._CP'),
     ]
 
-# id: 0x10002 offset: 0xFA
+# id: 0x10001 offset: 0xFA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xFA
+# id: 0x10002 offset: 0xFA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
         ScenaMonsterData(
+            name        = '',
             x           = 6160,
             z           = 0,
             y           = 200,
@@ -107,26 +97,26 @@ def MonsterData():
         ),
     )
 
-# id: 0x10004 offset: 0x116
+# id: 0x10003 offset: 0x116
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x116
+# id: 0x10004 offset: 0x116
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x116
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     Return()
 
 # id: 0x0001 offset: 0x117
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_117')
+def func_01_117():
     If(
         (
             (Expr.TestScenaFlags, ScenaFlag(0x026A, 0, 0x1350)),
@@ -135,15 +125,15 @@ def Init():
         'loc_123',
     )
 
-    SetChrFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0008, 0x0080)
 
     def _loc_123(): pass
 
     label('loc_123')
 
-    OP_25(0x01CB, 0x0000005A, 0x00000000, 0xFFFFD030, 0x000007D0, 0x000061A8, 0x64, 0x00000000)
-    OP_25(0x01CB, 0xFFFFFF6A, 0x00000000, 0x00003002, 0x000007D0, 0x000061A8, 0x64, 0x00000000)
-    OP_22(0x01CD, 0x01, 0x64)
+    OP_25(0x01CB, 90, 0, -12240, 2000, 25000, 0x64, 0x00000000)
+    OP_25(0x01CB, -150, 0, 12290, 2000, 25000, 0x64, 0x00000000)
+    PlaySE(461, 0x01, 0x64)
     OP_E8(0xDC, 0x05, 0x00, 0x00)
 
     Return()

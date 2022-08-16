@@ -9,11 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('A0019   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -28,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x308
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -64,32 +54,32 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
         # (ch, cp)
     ]
 
-# id: 0x10002 offset: 0xA8
+# id: 0x10001 offset: 0xA8
 @scena.NpcData('NpcData')
 def NpcData():
     return (
     )
 
-# id: 0x10003 offset: 0xA8
+# id: 0x10002 offset: 0xA8
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8
+# id: 0x10003 offset: 0xA8
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8
+# id: 0x10004 offset: 0xA8
 @scena.ActorData('ActorData')
 def ActorData():
     return (
@@ -122,16 +112,16 @@ def ActorData():
     )
 
 # id: 0x0000 offset: 0xF0
-@scena.Code('PreInit')
-def PreInit():
+@scena.Code('Init')
+def Init():
     AddItem(0x0383, 1)
     AddItem(ItemTable['夜视眼镜'], 1)
 
     Return()
 
 # id: 0x0001 offset: 0xFB
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_FB')
+def func_01_FB():
     OP_BE(0x00, 0x01, 0x0002, 0x0028, 0x0000, 0x02, 1000, 0, 5000, 5000, 1000, 10000)
     OP_BE(0x01, 0x04, 0x0002, 0x0014, 0x0000, 0x01, 10000, -500, 2000, 6000, 1000, 0)
     OP_BE(0x02, 0x02, 0x0000, 0x003C, 0x0003, 0x00, 0, 0, 0, 0, 0, 0)
@@ -145,8 +135,8 @@ def Init():
     Return()
 
 # id: 0x0002 offset: 0x18B
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_18B')
+def func_02_18B():
     TalkBegin(0x00FF)
 
     If(
@@ -159,12 +149,12 @@ def ReInit():
     )
 
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000003C)
+    OP_70(0x0000, 60)
     Sleep(500)
 
-    OP_82(0x80, 0x02)
-    OP_82(0x81, 0x02)
-    OP_A2(0x0000)
+    StopEffect(0x80, 0x02)
+    StopEffect(0x81, 0x02)
+    SetScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     Jump('loc_235')
 
@@ -173,12 +163,12 @@ def ReInit():
     label('loc_1B5')
 
     OP_6F(0x0000, 60)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
     Sleep(500)
 
     PlayEffect(0x80, 0xFF, 0xFFFF, 0, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
     PlayEffect(0x81, 0xFF, 0xFFFF, 0, 0, 0, 0, 0, 0, 1000, 1000, 1000, 0x00FF, 0, 0, 0, 0)
-    OP_A3(0x0000)
+    ClearScenaFlags(ScenaFlag(0x0000, 0, 0x0))
 
     def _loc_235(): pass
 
@@ -204,21 +194,21 @@ def func_03_239():
     EventBegin(0x00)
     OP_C0(0x01, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000)
     OP_62(0x0000, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
-    OP_22(0x0026, 0x00, 0x64)
+    PlaySE(38, 0x00, 0x64)
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000003C)
+    OP_70(0x0000, 60)
     Sleep(500)
 
     OP_6F(0x0000, 60)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
     Sleep(500)
 
     OP_6F(0x0000, 0)
-    OP_70(0x0000, 0x0000003C)
+    OP_70(0x0000, 60)
     Sleep(500)
 
     OP_6F(0x0000, 60)
-    OP_70(0x0000, 0x00000000)
+    OP_70(0x0000, 0)
     Sleep(500)
 
     EventEnd(0x00)
@@ -246,7 +236,7 @@ def func_04_2CF():
     )
 
     OP_62(0x0000, 0x00000000, 2000, 0x00, 0x01, 0x000000FA, 0x02)
-    OP_22(0x0026, 0x00, 0x64)
+    PlaySE(38, 0x00, 0x64)
 
     def _loc_2FA(): pass
 

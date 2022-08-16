@@ -9,74 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T0037   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '00320王国军士兵待机'),
-    TXT(0x02, '00321王国军士兵移动'),
-    TXT(0x03, '00322王国军士兵攻击'),
-    TXT(0x04, '00323王国军士兵被弹开'),
-    TXT(0x05, '00324王国军士兵倒下'),
-    TXT(0x06, '00325王国军士兵魔法咏唱'),
-    TXT(0x07, '00328王国军士兵魔法发射'),
-    TXT(0x08, '00330王国军士官待机'),
-    TXT(0x09, '00331王国军士官移动'),
-    TXT(0x0A, '00332王国军士官攻击'),
-    TXT(0x0B, '00333王国军士官被弹开'),
-    TXT(0x0C, '00334王国军士官倒下'),
-    TXT(0x0D, '00335王国军士官魔法咏唱'),
-    TXT(0x0E, '00338王国军士官魔法发射'),
-    TXT(0x0F, '00340特务兵待机'),
-    TXT(0x10, '00341特务兵移动'),
-    TXT(0x11, '00342特务兵攻击'),
-    TXT(0x12, '00343特务兵被弹开'),
-    TXT(0x13, '00344特务兵倒下'),
-    TXT(0x14, '00345特务兵魔法咏唱'),
-    TXT(0x15, '00348特务兵魔法发射'),
-    TXT(0x16, '00260洛伦斯待机'),
-    TXT(0x17, '00261洛伦斯移动'),
-    TXT(0x18, '00262洛伦斯攻击'),
-    TXT(0x19, '00263洛伦斯被弹开'),
-    TXT(0x1A, '00264洛伦斯倒下'),
-    TXT(0x1B, '00265洛伦斯魔法咏唱'),
-    TXT(0x1C, '00268洛伦斯魔法发射'),
-    TXT(0x1D, '00270理查德上校待机'),
-    TXT(0x1E, '00271理查德上校移动'),
-    TXT(0x1F, '00272理查德上校攻击'),
-    TXT(0x20, '00273理查德上校被弹开'),
-    TXT(0x21, '00274理查德上校倒下'),
-    TXT(0x22, '00275理查德上校魔法咏唱'),
-    TXT(0x23, '00276理查德上校魔法发射'),
-    TXT(0x24, '00280凯诺娜上尉待机'),
-    TXT(0x25, '00281凯诺娜上尉移动'),
-    TXT(0x26, '00282凯诺娜上尉攻击'),
-    TXT(0x27, '00283凯诺娜上尉被弹开'),
-    TXT(0x28, '00284凯诺娜上尉倒下'),
-    TXT(0x29, '00285凯诺娜上尉魔法咏唱'),
-    TXT(0x2A, '00288凯诺娜上尉魔法发射'),
-    TXT(0x2B, '00430王国军士官Ｂ待机'),
-    TXT(0x2C, '00431王国军士官Ｂ移动'),
-    TXT(0x2D, '00432王国军士官Ｂ攻击'),
-    TXT(0x2E, '00433王国军士官Ｂ被弹开'),
-    TXT(0x2F, '00434王国军士官Ｂ倒下'),
-    TXT(0x30, '00435王国军士官Ｂ魔法咏唱'),
-    TXT(0x31, '00438王国军士官Ｂ魔法发射'),
-    TXT(0x32, '00440特务兵Ｂ待机'),
-    TXT(0x33, '00441特务兵Ｂ移动'),
-    TXT(0x34, '00442特务兵Ｂ攻击'),
-    TXT(0x35, '00443特务兵Ｂ被弹开'),
-    TXT(0x36, '00444特务兵Ｂ倒下'),
-    TXT(0x37, '00445特务兵Ｂ魔法咏唱'),
-    TXT(0x38, '00448特务兵Ｂ魔法发射'),
-    TXT(0x39, '00500特务兵Ｃ中队长待机'),
-    TXT(0x3A, '00501特务兵Ｃ中队长移动'),
-    TXT(0x3B, '00502特务兵Ｃ中队长攻击'),
-    TXT(0x3C, '00503特务兵Ｃ中队长被弹开'),
-    TXT(0x3D, '00504特务兵Ｃ中队长倒下'),
-    TXT(0x3E, '00505特务兵Ｃ中队长魔法咏唱'),
-    TXT(0x3F, '00508特务兵Ｃ中队长魔法发射'),
-    TXT(0x40, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -91,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xE50
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -127,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -198,11 +125,12 @@ def ChipData():
         ('ED6_DT07/CH00506._CH', 'ED6_DT07/CH00506P._CP'),
     ]
 
-# id: 0x10002 offset: 0x2AA
+# id: 0x10001 offset: 0x2AA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '00320王国军士兵待机',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -217,6 +145,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00321王国军士兵移动',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -231,6 +160,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00322王国军士兵攻击',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -245,6 +175,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00323王国军士兵被弹开',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -259,6 +190,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00324王国军士兵倒下',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -273,6 +205,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00325王国军士兵魔法咏唱',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -287,6 +220,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00328王国军士兵魔法发射',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -301,6 +235,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00330王国军士官待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -315,6 +250,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00331王国军士官移动',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -329,6 +265,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00332王国军士官攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -343,6 +280,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00333王国军士官被弹开',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -357,6 +295,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00334王国军士官倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -371,6 +310,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00335王国军士官魔法咏唱',
             x                   = 8000,
             z                   = 0,
             y                   = 24000,
@@ -385,6 +325,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00338王国军士官魔法发射',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -399,6 +340,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00340特务兵待机',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -413,6 +355,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00341特务兵移动',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -427,6 +370,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00342特务兵攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -441,6 +385,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00343特务兵被弹开',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -455,6 +400,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00344特务兵倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -469,6 +415,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00345特务兵魔法咏唱',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -483,6 +430,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00348特务兵魔法发射',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -497,6 +445,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00260洛伦斯待机',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -511,6 +460,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00261洛伦斯移动',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -525,6 +475,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00262洛伦斯攻击',
             x                   = 16000,
             z                   = 0,
             y                   = 12000,
@@ -539,6 +490,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00263洛伦斯被弹开',
             x                   = 16000,
             z                   = 0,
             y                   = 16000,
@@ -553,6 +505,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00264洛伦斯倒下',
             x                   = 16000,
             z                   = 0,
             y                   = 20000,
@@ -567,6 +520,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00265洛伦斯魔法咏唱',
             x                   = 16000,
             z                   = 0,
             y                   = 24000,
@@ -581,6 +535,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00268洛伦斯魔法发射',
             x                   = 16000,
             z                   = 0,
             y                   = 28000,
@@ -595,6 +550,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00270理查德上校待机',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -609,6 +565,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00271理查德上校移动',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -623,6 +580,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00272理查德上校攻击',
             x                   = 20000,
             z                   = 0,
             y                   = 12000,
@@ -637,6 +595,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00273理查德上校被弹开',
             x                   = 20000,
             z                   = 0,
             y                   = 16000,
@@ -651,6 +610,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00274理查德上校倒下',
             x                   = 20000,
             z                   = 0,
             y                   = 20000,
@@ -665,6 +625,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00275理查德上校魔法咏唱',
             x                   = 20000,
             z                   = 0,
             y                   = 24000,
@@ -679,6 +640,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00276理查德上校魔法发射',
             x                   = 20000,
             z                   = 0,
             y                   = 28000,
@@ -693,6 +655,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00280凯诺娜上尉待机',
             x                   = 24000,
             z                   = 0,
             y                   = 4000,
@@ -707,6 +670,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00281凯诺娜上尉移动',
             x                   = 24000,
             z                   = 0,
             y                   = 8000,
@@ -721,6 +685,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00282凯诺娜上尉攻击',
             x                   = 24000,
             z                   = 0,
             y                   = 12000,
@@ -735,6 +700,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00283凯诺娜上尉被弹开',
             x                   = 24000,
             z                   = 0,
             y                   = 16000,
@@ -749,6 +715,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00284凯诺娜上尉倒下',
             x                   = 24000,
             z                   = 0,
             y                   = 20000,
@@ -763,6 +730,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00285凯诺娜上尉魔法咏唱',
             x                   = 24000,
             z                   = 0,
             y                   = 24000,
@@ -777,6 +745,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00288凯诺娜上尉魔法发射',
             x                   = 24000,
             z                   = 0,
             y                   = 28000,
@@ -791,6 +760,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00430王国军士官Ｂ待机',
             x                   = 28000,
             z                   = 0,
             y                   = 4000,
@@ -805,6 +775,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00431王国军士官Ｂ移动',
             x                   = 28000,
             z                   = 0,
             y                   = 8000,
@@ -819,6 +790,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00432王国军士官Ｂ攻击',
             x                   = 28000,
             z                   = 0,
             y                   = 12000,
@@ -833,6 +805,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00433王国军士官Ｂ被弹开',
             x                   = 28000,
             z                   = 0,
             y                   = 16000,
@@ -847,6 +820,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00434王国军士官Ｂ倒下',
             x                   = 28000,
             z                   = 0,
             y                   = 20000,
@@ -861,6 +835,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00435王国军士官Ｂ魔法咏唱',
             x                   = 28000,
             z                   = 0,
             y                   = 24000,
@@ -875,6 +850,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00438王国军士官Ｂ魔法发射',
             x                   = 28000,
             z                   = 0,
             y                   = 28000,
@@ -889,6 +865,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00440特务兵Ｂ待机',
             x                   = 32000,
             z                   = 0,
             y                   = 4000,
@@ -903,6 +880,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00441特务兵Ｂ移动',
             x                   = 32000,
             z                   = 0,
             y                   = 8000,
@@ -917,6 +895,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00442特务兵Ｂ攻击',
             x                   = 32000,
             z                   = 0,
             y                   = 12000,
@@ -931,6 +910,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00443特务兵Ｂ被弹开',
             x                   = 32000,
             z                   = 0,
             y                   = 16000,
@@ -945,6 +925,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00444特务兵Ｂ倒下',
             x                   = 32000,
             z                   = 0,
             y                   = 20000,
@@ -959,6 +940,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00445特务兵Ｂ魔法咏唱',
             x                   = 32000,
             z                   = 0,
             y                   = 24000,
@@ -973,6 +955,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00448特务兵Ｂ魔法发射',
             x                   = 32000,
             z                   = 0,
             y                   = 28000,
@@ -987,6 +970,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00500特务兵Ｃ中队长待机',
             x                   = 36000,
             z                   = 0,
             y                   = 4000,
@@ -1001,6 +985,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00501特务兵Ｃ中队长移动',
             x                   = 36000,
             z                   = 0,
             y                   = 8000,
@@ -1015,6 +1000,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00502特务兵Ｃ中队长攻击',
             x                   = 36000,
             z                   = 0,
             y                   = 12000,
@@ -1029,6 +1015,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00503特务兵Ｃ中队长被弹开',
             x                   = 36000,
             z                   = 0,
             y                   = 16000,
@@ -1043,6 +1030,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00504特务兵Ｃ中队长倒下',
             x                   = 36000,
             z                   = 0,
             y                   = 20000,
@@ -1057,6 +1045,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00505特务兵Ｃ中队长魔法咏唱',
             x                   = 36000,
             z                   = 0,
             y                   = 24000,
@@ -1071,6 +1060,7 @@ def NpcData():
             talkScenaIndex      = 0x001C,
         ),
         ScenaNpcData(
+            name                = '00508特务兵Ｃ中队长魔法发射',
             x                   = 36000,
             z                   = 0,
             y                   = 28000,
@@ -1086,37 +1076,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xA8A
+# id: 0x10002 offset: 0xA8A
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xA8A
+# id: 0x10003 offset: 0xA8A
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xA8A
+# id: 0x10004 offset: 0xA8A
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xA8A
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0xA8B
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0xA8B
+@scena.Code('func_01_A8B')
+def func_01_A8B():
+    Return()
+
 # id: 0x0002 offset: 0xA8C
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_A8C')
+def func_02_A8C():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -1125,9 +1115,9 @@ def ReInit():
         'loc_AA1',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
+    OP_99(0x00FE, 0x00, 0x07, 2500)
 
-    Jump('ReInit')
+    Jump('func_02_A8C')
 
     def _loc_AA1(): pass
 
@@ -1146,7 +1136,7 @@ def func_03_AA2():
         'loc_AB7',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000BB8)
+    OP_99(0x00FE, 0x00, 0x07, 3000)
 
     Jump('func_03_AA2')
 
@@ -1167,7 +1157,7 @@ def func_04_AB8():
         'loc_AD2',
     )
 
-    OP_99(0x00FE, 0x00, 0x00, 0x000005DC)
+    OP_99(0x00FE, 0x00, 0x00, 1500)
     Sleep(500)
 
     Jump('func_04_AB8')
@@ -1189,7 +1179,7 @@ def func_05_AD3():
         'loc_AED',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
     Sleep(500)
 
     Jump('func_05_AD3')
@@ -1211,7 +1201,7 @@ def func_06_AEE():
         'loc_B08',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x00000578)
+    OP_99(0x00FE, 0x00, 0x07, 1400)
     Sleep(500)
 
     Jump('func_06_AEE')
@@ -1233,7 +1223,7 @@ def func_07_B09():
         'loc_B23',
     )
 
-    OP_99(0x00FE, 0x00, 0x0B, 0x00000960)
+    OP_99(0x00FE, 0x00, 0x0B, 2400)
     Sleep(500)
 
     Jump('func_07_B09')
@@ -1276,7 +1266,7 @@ def func_09_B48():
         'loc_B5D',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_09_B48')
 
@@ -1297,10 +1287,10 @@ def func_0A_B5E():
         'loc_B86',
     )
 
-    SetChrChipByIndex(0x00FE, 0)
-    OP_99(0x00FE, 0x00, 0x07, 0x000009C4)
-    SetChrChipByIndex(0x00FE, 6)
-    OP_99(0x00FE, 0x00, 0x07, 0x000005DC)
+    ChrSetChipByIndex(0x00FE, 0)
+    OP_99(0x00FE, 0x00, 0x07, 2500)
+    ChrSetChipByIndex(0x00FE, 6)
+    OP_99(0x00FE, 0x00, 0x07, 1500)
 
     Jump('func_0A_B5E')
 
@@ -1321,7 +1311,7 @@ def func_0B_B87():
         'loc_B9C',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_0B_B87')
 
@@ -1342,11 +1332,11 @@ def func_0C_B9D():
         'loc_BD3',
     )
 
-    SetChrChipByIndex(0x00FE, 12)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 13)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 12)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 13)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_0C_B9D')
@@ -1368,7 +1358,7 @@ def func_0D_BD4():
         'loc_BE9',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_0D_BD4')
 
@@ -1389,11 +1379,11 @@ def func_0E_BEA():
         'loc_C20',
     )
 
-    SetChrChipByIndex(0x00FE, 19)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 20)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 19)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 20)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_0E_BEA')
@@ -1415,7 +1405,7 @@ def func_0F_C21():
         'loc_C36',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_0F_C21')
 
@@ -1436,11 +1426,11 @@ def func_10_C37():
         'loc_C6D',
     )
 
-    SetChrChipByIndex(0x00FE, 26)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 27)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 26)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 27)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_10_C37')
@@ -1462,7 +1452,7 @@ def func_11_C6E():
         'loc_C83',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_11_C6E')
 
@@ -1483,11 +1473,11 @@ def func_12_C84():
         'loc_CBA',
     )
 
-    SetChrChipByIndex(0x00FE, 33)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 34)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 33)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 34)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_12_C84')
@@ -1509,7 +1499,7 @@ def func_13_CBB():
         'loc_CD0',
     )
 
-    OP_99(0x00FE, 0x00, 0x0B, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x0B, 1000)
 
     Jump('func_13_CBB')
 
@@ -1530,7 +1520,7 @@ def func_14_CD1():
         'loc_CE6',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_14_CD1')
 
@@ -1551,11 +1541,11 @@ def func_15_CE7():
         'loc_D1D',
     )
 
-    SetChrChipByIndex(0x00FE, 40)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 41)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 40)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 41)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_15_CE7')
@@ -1577,7 +1567,7 @@ def func_16_D1E():
         'loc_D33',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_16_D1E')
 
@@ -1598,11 +1588,11 @@ def func_17_D34():
         'loc_D6A',
     )
 
-    SetChrChipByIndex(0x00FE, 47)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 48)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 47)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 48)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_17_D34')
@@ -1624,7 +1614,7 @@ def func_18_D6B():
         'loc_D80',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_18_D6B')
 
@@ -1645,11 +1635,11 @@ def func_19_D81():
         'loc_DB7',
     )
 
-    SetChrChipByIndex(0x00FE, 54)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 55)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 54)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 55)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_19_D81')
@@ -1671,7 +1661,7 @@ def func_1A_DB8():
         'loc_DCD',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
 
     Jump('func_1A_DB8')
 
@@ -1692,11 +1682,11 @@ def func_1B_DCE():
         'loc_E04',
     )
 
-    SetChrChipByIndex(0x00FE, 62)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
-    SetChrChipByIndex(0x00FE, 63)
-    OP_99(0x00FE, 0x00, 0x01, 0x000003E8)
+    ChrSetChipByIndex(0x00FE, 62)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
+    ChrSetChipByIndex(0x00FE, 63)
+    OP_99(0x00FE, 0x00, 0x01, 1000)
     Sleep(1000)
 
     Jump('func_1B_DCE')

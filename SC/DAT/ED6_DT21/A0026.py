@@ -9,43 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('A0026   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '04540莱恩哈特待机'),
-    TXT(0x02, '04541莱恩哈特移动'),
-    TXT(0x03, '04542莱恩哈特攻击'),
-    TXT(0x04, '04543莱恩哈特被弹开'),
-    TXT(0x05, '04544莱恩哈特倒下'),
-    TXT(0x06, '04545莱恩哈特魔法咏唱'),
-    TXT(0x07, '04546莱恩哈特魔法发射'),
-    TXT(0x08, '04547莱恩哈特 战技'),
-    TXT(0x09, '04548莱恩哈特 战技'),
-    TXT(0x0A, '04549莱恩哈特Ｓ战技'),
-    TXT(0x0B, '04550怀斯曼待机'),
-    TXT(0x0C, '04551怀斯曼移动'),
-    TXT(0x0D, '04552怀斯曼攻击'),
-    TXT(0x0E, '04553怀斯曼被弹开'),
-    TXT(0x0F, '04554怀斯曼倒下'),
-    TXT(0x10, '04555怀斯曼魔法咏唱'),
-    TXT(0x11, '04556怀斯曼魔法发射'),
-    TXT(0x12, '04558怀斯曼 战技'),
-    TXT(0x13, '04559怀斯曼Ｓ战技'),
-    TXT(0x14, '04560人偶约修亚待机'),
-    TXT(0x15, '04561人偶约修亚移动'),
-    TXT(0x16, '04562人偶约修亚攻击'),
-    TXT(0x17, '04563人偶约修亚被弹开'),
-    TXT(0x18, '04564人偶约修亚倒下'),
-    TXT(0x19, '04565人偶约修亚魔法咏唱'),
-    TXT(0x1A, '04566人偶约修亚魔法发射'),
-    TXT(0x1B, ';CH03870;乌鸦'),
-    TXT(0x1C, ';CH03880;小猫'),
-    TXT(0x1D, '猫的父母'),
-    TXT(0x1E, 'CH20452新郎'),
-    TXT(0x1F, 'CH20453新娘'),
-    TXT(0x20, ';CH03871;乌鸦'),
-    TXT(0x21, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -60,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0xDA1
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -96,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -139,11 +97,12 @@ def ChipData():
         ('ED6_DT27/CH03871._CH', 'ED6_DT27/CH03871P._CP'),
     ]
 
-# id: 0x10002 offset: 0x1CA
+# id: 0x10001 offset: 0x1CA
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '04540莱恩哈特待机',
             x                   = 4000,
             z                   = 0,
             y                   = 4000,
@@ -158,6 +117,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04541莱恩哈特移动',
             x                   = 4000,
             z                   = 0,
             y                   = 8000,
@@ -172,6 +132,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04542莱恩哈特攻击',
             x                   = 4000,
             z                   = 0,
             y                   = 12000,
@@ -186,6 +147,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04543莱恩哈特被弹开',
             x                   = 4000,
             z                   = 0,
             y                   = 16000,
@@ -200,6 +162,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04544莱恩哈特倒下',
             x                   = 4000,
             z                   = 0,
             y                   = 20000,
@@ -214,6 +177,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04545莱恩哈特魔法咏唱',
             x                   = 4000,
             z                   = 0,
             y                   = 24000,
@@ -228,6 +192,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04546莱恩哈特魔法发射',
             x                   = 4000,
             z                   = 0,
             y                   = 28000,
@@ -242,6 +207,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04547莱恩哈特 战技',
             x                   = 4000,
             z                   = 0,
             y                   = 32000,
@@ -256,6 +222,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04548莱恩哈特 战技',
             x                   = 4000,
             z                   = 0,
             y                   = 36000,
@@ -270,6 +237,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04549莱恩哈特Ｓ战技',
             x                   = 4000,
             z                   = 0,
             y                   = 40000,
@@ -284,6 +252,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04550怀斯曼待机',
             x                   = 8000,
             z                   = 0,
             y                   = 4000,
@@ -298,6 +267,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04551怀斯曼移动',
             x                   = 8000,
             z                   = 0,
             y                   = 8000,
@@ -312,6 +282,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04552怀斯曼攻击',
             x                   = 8000,
             z                   = 0,
             y                   = 12000,
@@ -326,6 +297,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04553怀斯曼被弹开',
             x                   = 8000,
             z                   = 0,
             y                   = 16000,
@@ -340,6 +312,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04554怀斯曼倒下',
             x                   = 8000,
             z                   = 0,
             y                   = 20000,
@@ -354,6 +327,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04555怀斯曼魔法咏唱',
             x                   = 8000,
             z                   = 0,
             y                   = 24000,
@@ -368,6 +342,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04556怀斯曼魔法发射',
             x                   = 8000,
             z                   = 0,
             y                   = 28000,
@@ -382,6 +357,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04558怀斯曼 战技',
             x                   = 8000,
             z                   = 0,
             y                   = 32000,
@@ -396,6 +372,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04559怀斯曼Ｓ战技',
             x                   = 8000,
             z                   = 0,
             y                   = 36000,
@@ -410,6 +387,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04560人偶约修亚待机',
             x                   = 12000,
             z                   = 0,
             y                   = 4000,
@@ -424,6 +402,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04561人偶约修亚移动',
             x                   = 12000,
             z                   = 0,
             y                   = 8000,
@@ -438,6 +417,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04562人偶约修亚攻击',
             x                   = 12000,
             z                   = 0,
             y                   = 12000,
@@ -452,6 +432,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04563人偶约修亚被弹开',
             x                   = 12000,
             z                   = 0,
             y                   = 16000,
@@ -466,6 +447,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04564人偶约修亚倒下',
             x                   = 12000,
             z                   = 0,
             y                   = 20000,
@@ -480,6 +462,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04565人偶约修亚魔法咏唱',
             x                   = 12000,
             z                   = 0,
             y                   = 24000,
@@ -494,6 +477,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '04566人偶约修亚魔法发射',
             x                   = 12000,
             z                   = 0,
             y                   = 28000,
@@ -508,6 +492,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = ';CH03870;乌鸦',
             x                   = 16000,
             z                   = 0,
             y                   = 4000,
@@ -522,6 +507,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = ';CH03880;小猫',
             x                   = 16000,
             z                   = 0,
             y                   = 8000,
@@ -536,6 +522,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = '猫的父母',
             x                   = 17000,
             z                   = 0,
             y                   = 8000,
@@ -550,6 +537,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = 'CH20452新郎',
             x                   = 20000,
             z                   = 0,
             y                   = 4000,
@@ -564,6 +552,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = 'CH20453新娘',
             x                   = 20000,
             z                   = 0,
             y                   = 8000,
@@ -578,6 +567,7 @@ def NpcData():
             talkScenaIndex      = 0x0015,
         ),
         ScenaNpcData(
+            name                = ';CH03871;乌鸦',
             x                   = 16000,
             z                   = 0,
             y                   = 6000,
@@ -593,37 +583,37 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0x5CA
+# id: 0x10002 offset: 0x5CA
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0x5CA
+# id: 0x10003 offset: 0x5CA
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0x5CA
+# id: 0x10004 offset: 0x5CA
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0x5CA
-@scena.Code('PreInit')
-def PreInit():
-    Return()
-
-# id: 0x0001 offset: 0x5CB
 @scena.Code('Init')
 def Init():
     Return()
 
+# id: 0x0001 offset: 0x5CB
+@scena.Code('func_01_5CB')
+def func_01_5CB():
+    Return()
+
 # id: 0x0002 offset: 0x5CC
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_5CC')
+def func_02_5CC():
     If(
         (
             (Expr.PushLong, 0x1),
@@ -632,9 +622,9 @@ def ReInit():
         'loc_5E1',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
 
-    Jump('ReInit')
+    Jump('func_02_5CC')
 
     def _loc_5E1(): pass
 
@@ -653,7 +643,7 @@ def func_03_5E2():
         'loc_5FC',
     )
 
-    OP_99(0x00FE, 0x00, 0x00, 0x000005DC)
+    OP_99(0x00FE, 0x00, 0x00, 1500)
     Sleep(500)
 
     Jump('func_03_5E2')
@@ -675,7 +665,7 @@ def func_04_5FD():
         'loc_617',
     )
 
-    OP_99(0x00FE, 0x00, 0x03, 0x000003E8)
+    OP_99(0x00FE, 0x00, 0x03, 1000)
     Sleep(500)
 
     Jump('func_04_5FD')
@@ -764,7 +754,7 @@ def func_06_665():
         'loc_67A',
     )
 
-    OP_99(0x00FE, 0x00, 0x0A, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x0A, 1600)
 
     Jump('func_06_665')
 
@@ -785,7 +775,7 @@ def func_07_67B():
         'loc_736',
     )
 
-    SetChrChipByIndex(0x00FE, 5)
+    ChrSetChipByIndex(0x00FE, 5)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -883,7 +873,7 @@ def func_07_67B():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 6)
+    ChrSetChipByIndex(0x00FE, 6)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -930,7 +920,7 @@ def func_08_737():
         'loc_751',
     )
 
-    OP_99(0x00FE, 0x00, 0x0F, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0F, 2000)
     Sleep(500)
 
     Jump('func_08_737')
@@ -952,7 +942,7 @@ def func_09_752():
         'loc_76C',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_09_752')
@@ -966,7 +956,7 @@ def func_09_752():
 # id: 0x000A offset: 0x76D
 @scena.Code('func_0A_76D')
 def func_0A_76D():
-    SetChrFlags(0x00FE, 0x0002)
+    ChrSetFlags(0x00FE, 0x0002)
     def _loc_772(): pass
 
     label('loc_772')
@@ -1396,7 +1386,7 @@ def func_0B_994():
         'loc_9A9',
     )
 
-    OP_99(0x00FE, 0x00, 0x0D, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x0D, 1600)
 
     Jump('func_0B_994')
 
@@ -1417,7 +1407,7 @@ def func_0C_9AA():
         'loc_A65',
     )
 
-    SetChrChipByIndex(0x00FE, 15)
+    ChrSetChipByIndex(0x00FE, 15)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1515,7 +1505,7 @@ def func_0C_9AA():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 16)
+    ChrSetChipByIndex(0x00FE, 16)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1562,7 +1552,7 @@ def func_0D_A66():
         'loc_A80',
     )
 
-    OP_99(0x00FE, 0x00, 0x09, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x09, 2000)
     Sleep(500)
 
     Jump('func_0D_A66')
@@ -1584,7 +1574,7 @@ def func_0E_A81():
         'loc_A9B',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_0E_A81')
@@ -1598,7 +1588,7 @@ def func_0E_A81():
 # id: 0x000F offset: 0xA9C
 @scena.Code('func_0F_A9C')
 def func_0F_A9C():
-    SetChrFlags(0x00FE, 0x0002)
+    ChrSetFlags(0x00FE, 0x0002)
     def _loc_AA1(): pass
 
     label('loc_AA1')
@@ -1776,7 +1766,7 @@ def func_10_B73():
         'loc_B88',
     )
 
-    OP_99(0x00FE, 0x00, 0x0C, 0x00000640)
+    OP_99(0x00FE, 0x00, 0x0C, 1600)
 
     Jump('func_10_B73')
 
@@ -1797,7 +1787,7 @@ def func_11_B89():
         'loc_C44',
     )
 
-    SetChrChipByIndex(0x00FE, 25)
+    ChrSetChipByIndex(0x00FE, 25)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1895,7 +1885,7 @@ def func_11_B89():
 
     Sleep(100)
 
-    SetChrChipByIndex(0x00FE, 26)
+    ChrSetChipByIndex(0x00FE, 26)
 
     ExecExpressionWithValue(
         0x00FE,
@@ -1942,7 +1932,7 @@ def func_12_C45():
         'loc_C5F',
     )
 
-    OP_99(0x00FE, 0x00, 0x0A, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x0A, 2000)
     Sleep(500)
 
     Jump('func_12_C45')
@@ -1964,7 +1954,7 @@ def func_13_C60():
         'loc_C7A',
     )
 
-    OP_99(0x00FE, 0x00, 0x07, 0x000007D0)
+    OP_99(0x00FE, 0x00, 0x07, 2000)
     Sleep(500)
 
     Jump('func_13_C60')
@@ -1978,7 +1968,7 @@ def func_13_C60():
 # id: 0x0014 offset: 0xC7B
 @scena.Code('func_14_C7B')
 def func_14_C7B():
-    SetChrFlags(0x00FE, 0x0002)
+    ChrSetFlags(0x00FE, 0x0002)
     def _loc_C80(): pass
 
     label('loc_C80')

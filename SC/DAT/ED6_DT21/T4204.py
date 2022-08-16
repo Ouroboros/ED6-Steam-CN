@@ -9,12 +9,6 @@ except ModuleNotFoundError:
 
 scena = createScenaWriter('T4204   ._SN')
 
-stringTable = [
-    TXT(0x00, '@FileName'),
-    TXT(0x01, '约修亚'),
-    TXT(0x02, ''),
-]
-
 # id: 0xFFFF offset: 0x0
 @scena.Header('Header')
 def Header():
@@ -29,12 +23,7 @@ def Header():
     header.reserved       = 0
     return header
 
-# id: 0xFFFF offset: 0x34B
-@scena.StringTable('StringTable')
-def StringTable():
-    return stringTable
-
-# id: 0x10000 offset: 0x64
+# id: 0xFFFF offset: 0x64
 @scena.EntryPoint('EntryPoint')
 def EntryPoint():
     return (
@@ -65,7 +54,7 @@ def EntryPoint():
         ),
     )
 
-# id: 0x10001 offset: 0xA8
+# id: 0x10000 offset: 0xA8
 @scena.ChipData('ChipData')
 def ChipData():
     return [
@@ -75,11 +64,12 @@ def ChipData():
         ('ED6_DT06/CH20154._CH', 'ED6_DT06/CH20154P._CP'),
     ]
 
-# id: 0x10002 offset: 0xC2
+# id: 0x10001 offset: 0xC2
 @scena.NpcData('NpcData')
 def NpcData():
     return (
         ScenaNpcData(
+            name                = '约修亚',
             x                   = 0,
             z                   = 0,
             y                   = 0,
@@ -95,57 +85,57 @@ def NpcData():
         ),
     )
 
-# id: 0x10003 offset: 0xE2
+# id: 0x10002 offset: 0xE2
 @scena.MonsterData('MonsterData')
 def MonsterData():
     return (
     )
 
-# id: 0x10004 offset: 0xE2
+# id: 0x10003 offset: 0xE2
 @scena.EventData('EventData')
 def EventData():
     return (
     )
 
-# id: 0x10005 offset: 0xE2
+# id: 0x10004 offset: 0xE2
 @scena.ActorData('ActorData')
 def ActorData():
     return (
     )
 
 # id: 0x0000 offset: 0xE2
-@scena.Code('PreInit')
-def PreInit():
-    Event(0, 0x0002)
+@scena.Code('Init')
+def Init():
+    Event(0, func_02_E8)
 
     Return()
 
 # id: 0x0001 offset: 0xE7
-@scena.Code('Init')
-def Init():
+@scena.Code('func_01_E7')
+def func_01_E7():
     Return()
 
 # id: 0x0002 offset: 0xE8
-@scena.Code('ReInit')
-def ReInit():
+@scena.Code('func_02_E8')
+def func_02_E8():
     EventBegin(0x00)
     OP_77(0xFF, 0xA0, 0x46, 0x00, 0x00000000)
     OP_20(0x00000000)
-    OP_6D(-42280, 16000, 81720, 0)
+    CameraMove(-42280, 16000, 81720, 0)
     OP_67(0, 5390, -10000, 0)
-    OP_6B(1470, 0)
+    CameraSetDistance(1470, 0)
     OP_6C(45000, 0)
     OP_6E(532, 0)
-    ClearChrFlags(0x0008, 0x0002)
-    ClearChrFlags(0x0008, 0x0080)
-    SetChrFlags(0x0008, 0x0004)
-    SetChrPos(0x0008, -42780, 16000, 81000, 90)
-    SetChrChipByIndex(0x0008, 0)
-    SetChrSubChip(0x0008, 0)
-    SetChrPos(0x0101, -41300, 16000, 81000, 0)
-    SetChrFlags(0x0101, 0x0002)
-    SetChrChipByIndex(0x0101, 1)
-    SetChrSubChip(0x0101, 5)
+    ChrClearFlags(0x0008, 0x0002)
+    ChrClearFlags(0x0008, 0x0080)
+    ChrSetFlags(0x0008, 0x0004)
+    ChrSetPos(0x0008, -42780, 16000, 81000, 90)
+    ChrSetChipByIndex(0x0008, 0)
+    ChrSetSubChip(0x0008, 0)
+    ChrSetPos(0x0101, -41300, 16000, 81000, 0)
+    ChrSetFlags(0x0101, 0x0002)
+    ChrSetChipByIndex(0x0101, 1)
+    ChrSetSubChip(0x0101, 5)
     FadeIn(1000, 0)
     Sleep(1250)
 
@@ -177,20 +167,20 @@ def ReInit():
     )
 
     CloseMessageWindow()
-    OP_99(0x0101, 0x07, 0x09, 0x00000320)
+    OP_99(0x0101, 0x07, 0x09, 800)
     Sleep(400)
 
     @scena.Lambda('lambda_02D8')
     def lambda_02D8():
-        OP_6D(-41280, 16000, 81720, 2000)
+        CameraMove(-41280, 16000, 81720, 2000)
 
         ExitThread()
 
     DispatchAsync(0x0101, 0x0002, lambda_02D8)
 
-    OP_8F(0x0008, -42000, 16000, 81100, 1000, 0x00)
-    SetChrChipByIndex(0x0008, 2)
-    SetChrFlags(0x0008, 0x0002)
+    ChrMoveTo(0x0008, -42000, 16000, 81100, 1000, 0x00)
+    ChrSetChipByIndex(0x0008, 2)
+    ChrSetFlags(0x0008, 0x0002)
 
     ExecExpressionWithValue(
         0x0008,
@@ -202,14 +192,14 @@ def ReInit():
         ),
     )
 
-    OP_99(0x0008, 0x00, 0x02, 0x000004B0)
+    OP_99(0x0008, 0x00, 0x02, 1200)
     Sleep(2000)
 
     FadeOut(1500, 0, -1)
     OP_0D()
-    SetChrChipByIndex(0x0101, 65535)
-    SetChrSubChip(0x0101, 0)
-    ClearChrFlags(0x0101, 0x0002)
+    ChrSetChipByIndex(0x0101, 65535)
+    ChrSetSubChip(0x0101, 0)
+    ChrClearFlags(0x0101, 0x0002)
     NewScene('ED6_DT21/E0001._SN', 100, 0, 0)
     IdleLoop()
 
