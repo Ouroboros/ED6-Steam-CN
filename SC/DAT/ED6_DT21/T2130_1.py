@@ -5000,8 +5000,9 @@ def func_01_867():
         ),
     )
 
-    OP_56(0x01)
-    OP_59()
+    CloseMessageWindow()
+    OP_56(0x00)
+    SetMessageWindowPos(480, 280, 80, 3)
 
     ChrTalk(
         0x0101,
